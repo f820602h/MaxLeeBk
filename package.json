@@ -5,9 +5,32 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "lint": "eslint --ext .ts,.js,.vue ."
+  },
+  "overrides": {
+    "vue": "latest"
   },
   "devDependencies": {
-    "nuxt": "^3.0.0"
+    "@nuxtjs/eslint-config-typescript": "^12.1.0",
+    "@typescript-eslint/parser": "^6.8.0",
+    "@unocss/nuxt": "^0.57.1",
+    "@vueuse/core": "^10.5.0",
+    "@vueuse/nuxt": "^10.5.0",
+    "eslint": "^8.51.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "nuxt": "^3.8.0",
+    "prettier": "^3.0.3",
+    "sass": "^1.69.4",
+    "typescript": "^5.2.2",
+    "vue-tsc": "^1.8.19"
+  },
+  "dependencies": {
+    "@pinia/nuxt": "^0.5.1",
+    "@unocss/reset": "^0.57.1",
+    "node-html-parser": "^6.1.10",
+    "pinia": "^2.1.7",
+    "vue3-marquee": "^4.1.0"
   }
 }

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_圖層_2" data-name="圖層 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 441.86 82.77">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-3 {
+        fill: #c5670f;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="30.98" y1="42.99" x2="23.45" y2="75.25" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffc831"/>
+      <stop offset="1" stop-color="#feb82a"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="432.37" y1="20.94" x2="421.62" y2="49.97" xlink:href="#linear-gradient"/>
+  </defs>
+  <g id="Layer_1" data-name="Layer 1">
+    <g>
+      <polygon class="cls-3" points="32.92 38.98 42.33 38.98 51.73 15.99 32.92 0 44.21 18.81 37.62 32.92 25.87 30.1 25.87 41.39 51.73 67.72 51.73 75.24 56.63 70.96 56.63 62.26 32.92 38.98"/>
+      <polygon class="cls-1" points="51.73 75.24 0 82.77 0 54.55 32.92 0 44.21 18.81 37.62 32.92 25.87 30.1 25.87 41.39 51.73 67.72 51.73 75.24"/>
+    </g>
+    <g>
+      <polygon class="cls-3" points="427.76 56.9 420.24 56.9 419.29 40.92 413.65 25.86 406.7 31.52 413.65 43.31 413.65 62.4 427.76 62.4 441.86 40.92 432.46 50.32 427.76 56.9"/>
+      <polygon class="cls-2" points="413.65 25.86 423.05 25.86 427.76 33.19 436.22 25.86 441.86 25.86 441.86 40.92 432.46 50.32 427.76 56.9 420.24 56.9 419.29 40.92 413.65 25.86"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_圖層_2" data-name="圖層 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 549.78 511.76">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5 {
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        fill: url(#linear-gradient-4);
+      }
+
+      .cls-3 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-4 {
+        fill: url(#linear-gradient-3);
+      }
+
+      .cls-5 {
+        fill: #c5670f;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="80.68" y1="78.05" x2="56.49" y2="94.18" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffc831"/>
+      <stop offset="1" stop-color="#feb82a"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="50.83" y1="402.98" x2="50.83" y2="468.58" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-3" x1="463.66" y1=".9" x2="390.53" y2="68.65" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-4" x1="542.52" y1="410.21" x2="509.18" y2="451.07" xlink:href="#linear-gradient"/>
+  </defs>
+  <g id="Layer_1" data-name="Layer 1">
+    <g>
+      <g>
+        <polygon class="cls-5" points="25.23 72.68 63.06 132.15 76.43 135.43 75.86 131.24 31.28 59.73 25.23 72.68"/>
+        <polygon class="cls-1" points="76.43 132.15 76.43 76.19 61.38 42.8 31.28 59.73 76.43 132.15"/>
+      </g>
+      <g>
+        <polygon class="cls-5" points="74.45 404.03 55.16 417.66 30.5 404.03 4.5 411.76 0 420.24 30.25 411.76 55.68 423.87 76.25 411.76 101.66 431.87 101.66 424.72 74.45 404.03"/>
+        <polygon class="cls-3" points="67.78 473.51 101.66 431.87 76.25 411.76 55.68 423.87 30.25 411.76 0 420.24 37.52 460.04 50.83 453.39 67.78 473.51"/>
+      </g>
+      <g>
+        <polygon class="cls-5" points="465.2 15.99 454.16 15.99 432.43 24.4 436.99 27.27 465.2 15.99"/>
+        <polygon class="cls-5" points="387.69 0 364.11 70.37 368.32 81.83 393.72 0 387.69 0"/>
+        <polygon class="cls-5" points="387.69 89.72 387.69 114.93 393.72 119.45 393.72 92.17 387.69 89.72"/>
+        <polygon class="cls-4" points="393.72 119.45 393.72 92.17 368.32 81.83 393.72 0 436.99 27.27 465.2 15.99 436.05 92.17 420.99 92.17 401.25 119.45 393.72 119.45"/>
+      </g>
+      <g>
+        <polygon class="cls-5" points="467 478.85 520.62 409.24 544.12 409.24 539.32 403.6 518.99 403.6 464.28 472.96 429.98 485.28 424.21 495.78 424.21 507.06 431.26 491.25 467 478.85"/>
+        <polygon class="cls-2" points="544.12 409.24 520.62 409.24 467 478.85 431.26 491.25 424.21 507.06 450.07 507.06 462.3 503.51 467.95 511.76 483.7 511.76 506.5 491.25 521.55 491.25 549.78 449.69 544.12 442.16 544.12 409.24"/>
+      </g>
+    </g>
+  </g>
+</svg>
