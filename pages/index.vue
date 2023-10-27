@@ -4,6 +4,11 @@ import { useParallax } from "@vueuse/core";
 const container = ref<HTMLElement | null>(null);
 const parallax = reactive(useParallax(container));
 
+const { hide } = useLoading();
+onMounted(() => {
+  window.setTimeout(hide, 500);
+});
+
 const cardStyle = computed<StyleValue>(() => ({
   transform: `translateZ(20px) rotateX(${parallax.roll * 10}deg) rotateY(${
     parallax.tilt * 10
@@ -12,15 +17,22 @@ const cardStyle = computed<StyleValue>(() => ({
 
 const layerHead = computed<StyleValue>(() => ({
   transition: ".3s ease-out all",
-  transform: `translateX(${parallax.tilt * 30}px) translateY(${
-    parallax.roll * 30
+  transform: `translateX(${parallax.tilt * 10}px) translateY(${
+    parallax.roll * 10
   }px)`,
 }));
 
 const layerBlow = computed<StyleValue>(() => ({
   transition: ".3s ease-out all",
+  transform: `translateX(${parallax.tilt * 20}px) translateY(${
+    parallax.roll * 20
+  }px)`,
+}));
+
+const layerGreeting = computed<StyleValue>(() => ({
+  transition: ".3s ease-out all",
   transform: `translateX(${parallax.tilt * 30}px) translateY(${
-    parallax.roll * 50
+    parallax.roll * 30
   }px)`,
 }));
 
@@ -47,10 +59,7 @@ const layerFragmentsF = computed<StyleValue>(() => ({
 </script>
 
 <template>
-  <div
-    ref="container"
-    class="main flex items-center w-screen h-screen overflow-hidden"
-  >
+  <div ref="container" class="main flex items-center overflow-hidden">
     <div class="relative z-15 flex items-center w-50% h-full rotate-y-60">
       <div class="line left relative overflow-hidden">
         <div class="text-shadow flex items-center h-full">
@@ -83,8 +92,6 @@ const layerFragmentsF = computed<StyleValue>(() => ({
       </div>
     </div>
 
-    <div class="absolute inset-70px z-10 border-[0.5px]"></div>
-
     <div
       class="absolute top-0 left-0 z-20 w-full h-full flex items-center justify-center"
       :style="cardStyle"
@@ -102,10 +109,11 @@ const layerFragmentsF = computed<StyleValue>(() => ({
           :style="layerHead"
         />
         <div
-          class="greeting flex items-center justify-center"
-          :style="layerBlow"
+          class="greeting absolute top-50% left-0 w-full h-50px sm:h-55px flex items-center justify-center pt-4px bg-black text-white font-bold"
+          :style="layerGreeting"
         >
-          Hello! I'm <span class="text-purple-600 font-bold ml-3">Max</span>
+          <span class="text-25px sm:text-35px">Hello! I'm</span>
+          <span class="text-purple-600 ml-3 text-35px sm:text-45px">Max</span>
         </div>
       </div>
     </div>
@@ -122,6 +130,8 @@ const layerFragmentsF = computed<StyleValue>(() => ({
 
 <style scoped lang="scss">
 .main {
+  width: 100vw;
+  height: calc(100dvh - 80px);
   perspective: 100px;
   perspective-origin: center center;
 }
@@ -208,7 +218,7 @@ const layerFragmentsF = computed<StyleValue>(() => ({
 }
 
 .mind {
-  width: 70%;
+  width: 50%;
   max-width: 300px;
   min-width: 200px;
 
@@ -217,23 +227,9 @@ const layerFragmentsF = computed<StyleValue>(() => ({
   }
 
   .greeting {
-    position: absolute;
-    z-index: 5;
-    top: 49%;
-    left: 0;
-    width: 100%;
-    height: 55px;
-    padding-top: 4px;
-    box-shadow: rgb(0, 0, 0) 0px 20px 30px -10px;
     font-family: "Bebas Neue", sans-serif;
-    font-size: 35px;
     letter-spacing: 3px;
-    background: black;
-    color: white;
-
-    span {
-      font-size: 45px;
-    }
+    box-shadow: rgb(0, 0, 0) 0px 20px 30px -10px;
   }
 }
 </style>

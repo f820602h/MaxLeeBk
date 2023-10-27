@@ -1,4 +1,10 @@
 export default {
+  content: {
+    highlight: {
+      // Theme used in all color schemes.
+      theme: "vitesse-dark",
+    },
+  },
   app: {
     head: {
       link: [
@@ -12,11 +18,12 @@ export default {
           crossorigin: true,
         },
         {
-          href: "https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap",
+          href: "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fira+Mono:wght@400;700&family=Roboto:wght@400;700&display=swap",
           rel: "stylesheet",
         },
       ],
     },
+    pageTransition: { name: "page", mode: "out-in" },
   },
   nitro: {
     preset: "vercel-edge",
@@ -24,6 +31,6 @@ export default {
       typeCheck: true,
     },
   },
-  modules: ["@pinia/nuxt", "@unocss/nuxt", "@vueuse/nuxt"],
+  modules: ["@nuxt/content", "@pinia/nuxt", "@unocss/nuxt", "@vueuse/nuxt"],
   css: ["@unocss/reset/tailwind.css"],
 };
