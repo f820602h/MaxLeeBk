@@ -16,7 +16,7 @@ IntersectionObserver 幫我們觀察的是元素的「相交（intersect）」�
 
 簡單來說就是頁面元素因捲動而進入到可視範圍中，或是離開了可視範圍時，IntersectionObserver 就會執行指定任務，所以我們可以利用它來偵測「某個元素是不是進入視窗中」了，而且還可以調整許多細微的偵測設定，相當強大。
 
-<img src="/img/content/webapi-22/inter.gif" style="max-width: 600px;" />
+<img src="/img/content/webApi-22/inter.gif" style="max-width: 600px;" />
 
 <br/>
 
@@ -67,7 +67,7 @@ const observer = new IntersectionObserver(callback, {
   - 設定為 `1`： 當相交範圍的比例「開始大於 100%」或「開始小於 100%」 的瞬間會觸發。
   - 設定成陣列 `[0, 0.5, 1]`： 規則如上，但目標元素就會有三個觸發時機。
 
-<img src="/img/content/webapi-22/options2.png" style="margin: 24px auto;" />
+<img src="/img/content/webApi-22/options2.png" style="margin: 24px auto;" />
 
 <br/>
 
@@ -167,7 +167,7 @@ const observer = new IntersectionObserver((entries) => {
 - **IntersectionObserverEntry.intersectionRect**
   和前面都一樣，不過提供的區塊範圍很特別，是目標元素與可視窗口的「交疊範圍」。
 
-<img src="/img/content/webapi-22/rect.png" style="max-width: 600px;" />
+<img src="/img/content/webApi-22/rect.png" style="max-width: 600px;" />
 
 <br/>
 
@@ -175,7 +175,7 @@ const observer = new IntersectionObserver((entries) => {
 
 IntersectionObserver 的使用情境很多，可以做「捲動特效」或是「無限捲動」，下面我們就來試試寫個無間捲動的功能看看，先看效果：
 
-<img src="/img/content/webapi-22/infinity.gif" style="max-width: 600px;" />
+<img src="/img/content/webApi-22/infinity.gif" style="max-width: 600px;" />
 
 ```html
 <ul class="list">

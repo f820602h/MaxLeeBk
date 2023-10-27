@@ -16,7 +16,7 @@ tags: [JavaScript, WebApi, 13th鐵人賽]
 
 MessageChannel 就像是在兩個頁面中建立一個熱線系統，這樣就不會再那些不想收到訊息，只有綁定的雙方可以透過 MessageChannel 來進行溝通，就像是一個專屬的頻道。如果以圖像來表示整個頻道建立的過程的話，會像是下圖這樣：
 
-<img src="/img/content/webapi-16/channel.png" style="margin: 24px auto;" />
+<img src="/img/content/webApi-16/channel.png" style="margin: 24px auto;" />
 
 <br/>
 
@@ -120,7 +120,7 @@ console.log(msgChannel.port2);
 </script>
 ```
 
-<img src="/img/content/webapi-16/post.gif" style="margin: 24px auto;" />
+<img src="/img/content/webApi-16/post.gif" style="margin: 24px auto;" />
 
 <br/>
 
@@ -154,7 +154,7 @@ console.log(msgChannel.port2);
 </script>
 ```
 
-<img src="/img/content/webapi-16/post2.gif" style="margin: 24px auto;" />
+<img src="/img/content/webApi-16/post2.gif" style="margin: 24px auto;" />
 
 <br/>
 

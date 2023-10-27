@@ -24,13 +24,13 @@ GetBoundingClientRect 可以使我們取得 Element 元素的寬高以及相對�
 - **clientWidth / clientHeight**： 元素 `paddingBox` 的寬/高，包含 `padding`，不包含 `border`
 - **scrollWidth / scrollHeight**： 元素包含 `padding` 及外溢內容的寬/高，不包含 `border`
 
-<img src="/img/content/webapi-21/width.png" style="max-width: 600px;" />
+<img src="/img/content/webApi-21/width.png" style="max-width: 600px;" />
 
 - **offsetTop / offsetLeft**： 元素 `borderBox` 相對於 `offsetParent` 的垂直/水平距離
 - **clientTop / clientLeft**： 元素 `paddingBox` 相對於 `borderBox` 的垂直/水平距離
 - **scrollTop / scrollLeft**： 元素 `paddingBox` 被捲動的垂直/水平距離
 
-<img src="/img/content/webapi-21/top.png" style="max-width: 600px;" />
+<img src="/img/content/webApi-21/top.png" style="max-width: 600px;" />
 
 <br/>
 
@@ -62,7 +62,7 @@ console.log(div.getBoundingClientRect());
 
 > DOMRect 跟昨天介紹的 `ResizeObserverEntry.contentRect` 所回傳的 DOMRectReadOnly 格式是一樣的，但當中數值所代表的意義完全不同，不要被混淆囉。
 
-<img src="/img/content/webapi-21/rect.png" style="margin: 24px auto;" />
+<img src="/img/content/webApi-21/rect.png" style="margin: 24px auto;" />
 
 有了這些資訊後，針對一些捲動事件的需求其實就會變得簡單許多，像是我們常常會做的事情是「判斷某元素是否進入可視範圍」，就可以來看看使用 `getBoundingClientRect` 後的差別：
 
@@ -97,7 +97,7 @@ window.addEventListener("scroll", function (e) {
 
 為了讓大家更能感受到 `getBoundingClientRect` 的強大，我們來做一個 「動態 Highlight」 的小練習，需求是「當游標滑到文章中的粗體字時會自動添加底色，且底色在不同關鍵字之間切換時，要有移動的過渡效果」。先看效果：
 
-<img src="/img/content/webapi-21/bounding.gif" style="max-width: 700px;" />
+<img src="/img/content/webApi-21/bounding.gif" style="max-width: 700px;" />
 
 ```css
 .highlight {

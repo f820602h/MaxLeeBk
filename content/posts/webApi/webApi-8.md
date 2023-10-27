@@ -61,7 +61,7 @@ document.designMode = "on"; // 關閉則設定成 "off"
 </script>
 ```
 
-<img src="/img/content/webapi-8/design-mode.gif" style="margin: 24px auto;" />
+<img src="/img/content/webApi-8/design-mode.gif" style="margin: 24px auto;" />
 
 當然了，你可能還是會問說這樣的效果可以做些什麼？但其實許多部落格或筆記網站能夠讓你在網頁中進行文字編輯，靠的就是 DesignMode，只不過它們通常都會搭配一些編輯工具，讓你可以將文字放大縮小、粗體斜體或設定顏色等等。
 

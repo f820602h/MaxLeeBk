@@ -95,7 +95,7 @@ channel.onmessage = function (event) {
 </script>
 ```
 
-<img src="/img/content/webapi-17/broadcast.gif" style="margin: 24px auto;" />
+<img src="/img/content/webApi-17/broadcast.gif" style="margin: 24px auto;" />
 
 <br/>
 

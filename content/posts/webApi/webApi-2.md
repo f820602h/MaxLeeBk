@@ -104,7 +104,7 @@ console.groupEnd(); // 關閉 level_2
 console.log("1-2"); // 在 level_1 中打印  1-2
 ```
 
-<img src="/img/content/webapi-2/console-group.png" style="margin: 24px auto;" />
+<img src="/img/content/webApi-2/console-group.png" style="margin: 24px auto;" />
 
 透過上面的程式碼打印出的結果就會像是這樣，當你開啟了一個 `group` 後，之後的打印內容都會歸類在該 `group` 底下，並且你可以進行收合，讓 Console 面板的訊息可以更乾淨更有系統。例如下面這段程式碼，相比直接印出來，在前後進行 `group` 的操作，應該是更能看出程式順序。
 
@@ -124,7 +124,7 @@ for (let i = 1; i <= 3; i++) {
 }
 ```
 
-<img src="/img/content/webapi-2/console-group2.png" style="margin: 24px auto;" />
+<img src="/img/content/webApi-2/console-group2.png" style="margin: 24px auto;" />
 
 <br/>
 
@@ -140,7 +140,7 @@ let badminton_scoring = {
 console.table(badminton_scoring);
 ```
 
-<img src="/img/content/webapi-2/console-table.png" style="margin: 24px auto;" />
+<img src="/img/content/webApi-2/console-table.png" style="margin: 24px auto;" />
 
 ```javascript
 let olympics = [
@@ -151,7 +151,7 @@ let olympics = [
 console.table(olympics);
 ```
 
-<img src="/img/content/webapi-2/console-table2.png" style="margin: 24px auto;" />
+<img src="/img/content/webApi-2/console-table2.png" style="margin: 24px auto;" />
 
 可以看到，利用 `console.table` 把陣列或物件打印就會是上面這樣的效果，另外要提的是，如果你打印的不是陣列或物件，那 `console.table` 就跟 `console.log` 沒有什麼不同。
 

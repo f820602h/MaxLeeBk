@@ -49,7 +49,7 @@ tags: [JavaScript, WebApi, 13th鐵人賽]
 <div class="delete">刪除</div>
 ```
 
-<img src="/img/content/webapi-26/layout.png" style="margin: 24px auto;" />
+<img src="/img/content/webApi-26/layout.png" style="margin: 24px auto;" />
 
 <br/>
 
@@ -83,7 +83,7 @@ button.addEventListener("click", () => {
 });
 ```
 
-<img src="/img/content/webapi-26/add.gif" style="margin: 24px auto;" />
+<img src="/img/content/webApi-26/add.gif" style="margin: 24px auto;" />
 
 <br/>
 
@@ -130,7 +130,7 @@ columns.forEach((column) => {
 });
 ```
 
-<img src="/img/content/webapi-26/drag.gif" style="margin: 24px auto;" />
+<img src="/img/content/webApi-26/drag.gif" style="margin: 24px auto;" />
 
 <br/>
 
@@ -197,7 +197,7 @@ function addDropEvt(element) {
 }
 ```
 
-<img src="/img/content/webapi-26/sort.gif" style="margin: 24px auto;" />
+<img src="/img/content/webApi-26/sort.gif" style="margin: 24px auto;" />
 
 接著我們只要在修改一下 `drop` 事件，在當中判斷目前被 `dragover` 元素的狀態就可以放到對應的位置了：
 
@@ -225,7 +225,7 @@ function addDropEvt(element) {
 }
 ```
 
-<img src="/img/content/webapi-26/done.gif" style="margin: 24px auto;" />
+<img src="/img/content/webApi-26/done.gif" style="margin: 24px auto;" />
 
 <br/>
 

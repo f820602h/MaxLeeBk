@@ -68,7 +68,7 @@ images.forEach((img) => {
 });
 ```
 
-<img src="/img/content/webapi-5/fullscreen.gif" style="margin: 24px auto;" />
+<img src="/img/content/webApi-5/fullscreen.gif" style="margin: 24px auto;" />
 
 <br/>
 

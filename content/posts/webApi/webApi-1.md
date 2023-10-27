@@ -18,7 +18,7 @@ tags: [JavaScript, WebApi, 13th鐵人賽]
 
 而這次的系列文章就是想要介紹那些深埋在 `window` 裡，你不曾發覺或是常常遺忘的 API，或許在你開發網頁的過程中有遇過一些特殊需求，當下雖然用了一些管用手法解決，但看完這次的系列文章，你可能會有新的靈感或發現。
 
-<img src="/img/content/webapi-1/web-api.png" style="max-width: 500px;" />
+<img src="/img/content/webApi-1/web-api.png" style="max-width: 500px;" />
 
 #### # 尷尬的痛點
 

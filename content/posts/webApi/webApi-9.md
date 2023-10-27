@@ -14,7 +14,7 @@ tags: [JavaScript, WebApi, 13th鐵人賽]
 
 Selection 本身是一個物件，它代表的是目前使用者所選的文本範圍，或是「輸入游標」插入的位置，這文本範圍可能會涵蓋到多個元素，也可能會坍縮在一個點(也就是沒有選取到任何文本)，而這整個選取範圍又包含了幾個專有術語：
 
-<img src="/img/content/webapi-9/selection.png" style="margin: 24px auto;" />
+<img src="/img/content/webApi-9/selection.png" style="margin: 24px auto;" />
 
 > 你該知道：
 >
@@ -43,7 +43,7 @@ let selectionObj = window.getSelection();
 console.log(selectionObj.anchorNode); // 一個文字節點
 ```
 
-<img src="/img/content/webapi-9/anchor.gif" style="margin: 24px auto;" />
+<img src="/img/content/webApi-9/anchor.gif" style="margin: 24px auto;" />
 
 <br/>
 

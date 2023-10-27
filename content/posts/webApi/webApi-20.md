@@ -146,7 +146,7 @@ ResizeObserverEntry 的屬性雖然不多，但都較為複雜，所以下面就
   - **left**： 變動元素之 `contentBox` 的「左側」的Ｘ座標，通常與 `x` 相同。
   - **right**： 變動元素之 `contentBox` 的「右側」的Ｘ座標，通常與 `x + width` 相同。
 
-<img src="/img/content/webapi-20/rect.png" style="max-width: 600px;" />
+<img src="/img/content/webApi-20/rect.png" style="max-width: 600px;" />
 
 <br/>
 
@@ -166,7 +166,7 @@ ResizeObserverEntry 的屬性雖然不多，但都較為複雜，所以下面就
 
   - **inlineSize**： 「平行」於書寫方向的元素邊長尺寸(單位:px)。
 
-<img src="/img/content/webapi-20/box.png" style="max-width: 600px;" />
+<img src="/img/content/webApi-20/box.png" style="max-width: 600px;" />
 
 以上這些資訊我們都可以在 Callback 中取得，想要做任何判斷或計算都是非常方便，所以大家可以根據需求去決定需要利用的資訊有哪些。
 

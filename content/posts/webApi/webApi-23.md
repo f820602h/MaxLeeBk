@@ -225,7 +225,7 @@ const appear = new Appear();
 </script>
 ```
 
-<img src="/img/content/webapi-23/result.gif" style="max-width: 800px;" />
+<img src="/img/content/webApi-23/result.gif" style="max-width: 800px;" />
 
 <br/>
 

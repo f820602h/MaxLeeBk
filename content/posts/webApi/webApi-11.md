@@ -30,7 +30,7 @@ tags: [JavaScript, WebApi, 13th鐵人賽]
 <div id="editable" contenteditable="true"></div>
 ```
 
-<img src="/img/content/webapi-11/rich.png" style="margin: 24px auto;" />
+<img src="/img/content/webApi-11/rich.png" style="margin: 24px auto;" />
 
 那上面就是我們這次的編輯器，上面是工具列的部分，下面則是文字編輯的區域，樣式的話各位可以自由發揮，CSS 的部分就不額外放上來了。而為了方便，這次的可編輯範圍我們使用 `contenteditable` 屬性，各位也可以改用 iframe 搭配 DesignMode。
 

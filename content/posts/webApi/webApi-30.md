@@ -22,7 +22,7 @@ tags: [JavaScript, WebApi, 13th鐵人賽]
 
 <br/>
 
-<img src="/img/content/webapi-30/think.png" style="max-width: 400px;" />
+<img src="/img/content/webApi-30/think.png" style="max-width: 400px;" />
 
 ---
 
@@ -34,7 +34,7 @@ tags: [JavaScript, WebApi, 13th鐵人賽]
 
 今年選擇不囤積文章，讓自己真的以「每天寫一篇」的形式來完賽，沒想到這真的是一個很大的挑戰，由於白天還有工作，下班後也有健身的習慣，所以每天能夠寫文章的時間大約只有三到四個小時，我必須要將大量的資訊歸納成條列式的內容，甚至還要寫些小範例，真的是好幾天都是壓線完成。但也很感謝自己有堅持不懈，今年又順利完賽了。
 
-<img src="/img/content/webapi-30/success.png" style="max-width: 400px;" />
+<img src="/img/content/webApi-30/success.png" style="max-width: 400px;" />
 
 > 本次系列文章中的所有範例列表：[https://codepen.io/max-lee/pens/tags/?selected_tag=2021ithome](https://codepen.io/max-lee/pens/tags/?selected_tag=2021ithome)
 
@@ -44,7 +44,7 @@ tags: [JavaScript, WebApi, 13th鐵人賽]
 
 目前對於明年是否參賽以及參賽主題都還沒有任何想法，只期許自己可以不斷吸收新知並且抱持一個樂於分享的心情，並且只要在準備好的狀況下，就要把握機會將自己所擁有的訊息歸納整理並傳遞出去。非常感謝對此系列文章有興趣的各位，順利的話，明年再繼續和鐵人賽的大家見面。
 
-<img src="/img/content/webapi-30/grow.png" style="max-width: 400px;" />
+<img src="/img/content/webApi-30/grow.png" style="max-width: 400px;" />
 
 ---
 

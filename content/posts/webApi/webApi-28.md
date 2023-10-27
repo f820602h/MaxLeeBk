@@ -14,7 +14,7 @@ tags: [JavaScript, WebApi, 13th鐵人賽]
 
 不過實話是，真的要像 Youtube 那樣在使用者沒有拜訪網站的狀況下發送通知，是需要使用 [Service Worker](https://developer.mozilla.org/zh-CN/docs/Web/API/Service_Worker_API/Using_Service_Workers) 以及後端的配合，有興趣的人可以看看 [這篇文章](https://whien.medium.com/%E5%BB%BA%E7%AB%8B-service-worker-web-push-notification-web-notification-%E5%AF%A6%E4%BD%9C%E7%B4%80%E9%8C%84-8a3bb9ff09e8)，有詳細說明如何推送未拜訪網站情況下的通知，而今天我們的範疇就先聚焦在如何在「瀏覽情況下」發送通知吧。
 
-<img src="/img/content/webapi-28/os.png" style="margin: 24px auto;" />
+<img src="/img/content/webApi-28/os.png" style="margin: 24px auto;" />
 
 Notification 對於電腦瀏覽器到支援度是不錯的，但在行動裝置上就很糟糕了，iOS 全軍覆沒，Android 也是有使用上的限制，所以使用上還是需要注意一下的。
 
@@ -59,7 +59,7 @@ Notification 的第一個參數是 `title`，會顯示為通知的標題，該�
 </script>
 ```
 
-<img src="/img/content/webapi-28/mic.png" style="margin: 24px auto;" />
+<img src="/img/content/webApi-28/mic.png" style="margin: 24px auto;" />
 
 可以看到不同作業系統本身在通知的顯示上有很大的不同，而且針對同一個屬性也會有不同的行為模式：
 
@@ -154,7 +154,7 @@ if (!window.Notification) {
 }
 ```
 
-<img src="/img/content/webapi-28/pr.png" style="margin: 24px auto;" />
+<img src="/img/content/webApi-28/pr.png" style="margin: 24px auto;" />
 
 前面有說，其實 `requestPermission` 會自己再去確認一次狀態，如果為 `"default"` 才會詢問使用者，反之則會直接將授權狀態丟給我們，所以我們其實直接呼叫它就好，不一定要先透過 `permission` 來判斷。
 

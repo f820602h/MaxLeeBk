@@ -99,7 +99,7 @@ navigator.getBattery().then((battery) => {
 });
 ```
 
-<img src="/img/content/webapi-6/battery.png" style="margin: 24px auto;" />
+<img src="/img/content/webApi-6/battery.png" style="margin: 24px auto;" />
 
 <br/>
 

@@ -14,7 +14,7 @@ Selection API 掌管著網頁中的「反白」，Clipboard API 則是掌管著�
 
 Clipboard 指的是瀏覽器中的系統剪貼簿，我們可以透過一些指令來訪問它，進而執行讀寫的動作，不過由於使用者可能會將一些機敏性的資料存放在剪貼簿中，所以為了避免個資外洩，除非使用者允許授權，不然瀏覽器都會限制網頁讀取使用者的剪貼簿，不過寫入的部分就沒有限制了。
 
-<img src="/img/content/webapi-10/clipboard.png" style="margin: 24px auto;" />
+<img src="/img/content/webApi-10/clipboard.png" style="margin: 24px auto;" />
 
 > 如果使用者拒絕了授權，只能透過使用者主動調整授權才能夠開啟功能，所以記得透過 [Permissions.query()](https://developer.mozilla.org/zh-CN/docs/Web/API/Permissions_API/Using_the_Permissions_API) 來確認授權狀態，並提醒使用者。
 

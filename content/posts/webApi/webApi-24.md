@@ -27,7 +27,7 @@ window.addEventListener("click", function () {
 });
 ```
 
-<img src="/img/content/webapi-24/intoView.gif" style="max-width: 600px;" />
+<img src="/img/content/webApi-24/intoView.gif" style="max-width: 600px;" />
 
 呼叫之後，視窗捲軸就會直接 **「跳」** 到 **「元素頂部對齊視窗頂部」** 的距離，而其實我們可以傳入參數來調整捲軸移動的方式與位置，可以接收的參數形式有兩種：
 
@@ -54,7 +54,7 @@ element.scrollIntoView({
 });
 ```
 
-<img src="/img/content/webapi-24/align.png" style="margin: 24px auto;" />
+<img src="/img/content/webApi-24/align.png" style="margin: 24px auto;" />
 
 另外如果目標元素被放在其他也有「捲軸」的元素中，那它會將每一層的捲軸都進行滾動，並且盡可能的達成我們指定的位置，會說「盡可能」是因為未必視窗會有垂直或水平捲軸，若沒有捲軸，ScrollIntoView 也是無能為力的。
 
@@ -75,7 +75,7 @@ target.scrollIntoView({
 });
 ```
 
-<img src="/img/content/webapi-24/move.gif" style="max-width: 600px;" />
+<img src="/img/content/webApi-24/move.gif" style="max-width: 600px;" />
 
 <br/>
 

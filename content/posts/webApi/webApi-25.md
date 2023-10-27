@@ -161,7 +161,7 @@ containers.forEach((container) => {
 });
 ```
 
-<img src="/img/content/webapi-25/move.gif" style="margin: 24px auto;" />
+<img src="/img/content/webApi-25/move.gif" style="margin: 24px auto;" />
 
 <br/>
 

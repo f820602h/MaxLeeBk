@@ -68,7 +68,7 @@ navigator.geolocation.getCurrentPosition(successHandler, errorHandler, {
 
 由於定位資訊屬於隱私範圍，所以在呼叫 `getCurrentPosition` 時，它會先確認裝置的授權狀態，若使用者不接受則會發生錯誤，若使用者未表明授權與否，則會出現詢問對話框。
 
-<img src="/img/content/webapi-29/check.png" style="max-width: 500px;" />
+<img src="/img/content/webApi-29/check.png" style="max-width: 500px;" />
 
 <br/>
 
