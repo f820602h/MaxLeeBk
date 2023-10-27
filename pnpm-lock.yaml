@@ -8,9 +8,6 @@ dependencies:
   '@nuxt/content':
     specifier: ^2.8.5
     version: 2.8.5(vue@3.3.7)
-  '@pinia/nuxt':
-    specifier: ^0.5.1
-    version: 0.5.1(typescript@5.2.2)(vue@3.3.7)
   '@unocss/reset':
     specifier: ^0.57.1
     version: 0.57.1
@@ -1586,19 +1583,6 @@ packages:
       '@parcel/watcher-win32-arm64': 2.3.0
       '@parcel/watcher-win32-ia32': 2.3.0
       '@parcel/watcher-win32-x64': 2.3.0
-
-  /@pinia/nuxt@0.5.1(typescript@5.2.2)(vue@3.3.7):
-    resolution: {integrity: sha512-6wT6TqY81n+7/x3Yhf0yfaJVKkZU42AGqOR0T3+UvChcaOJhSma7OWPN64v+ptYlznat+fS1VTwNAcbi2lzHnw==}
-    dependencies:
-      '@nuxt/kit': 3.8.0
-      pinia: 2.1.7(typescript@5.2.2)(vue@3.3.7)
-    transitivePeerDependencies:
-      - '@vue/composition-api'
-      - rollup
-      - supports-color
-      - typescript
-      - vue
-    dev: false
 
   /@pkgjs/parseargs@0.11.0:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}

@@ -31,6 +31,6 @@ export default {
       typeCheck: true,
     },
   },
-  modules: ["@nuxt/content", "@pinia/nuxt", "@unocss/nuxt", "@vueuse/nuxt"],
+  modules: ["@nuxt/content", "@unocss/nuxt", "@vueuse/nuxt"],
   css: ["@unocss/reset/tailwind.css"],
 };
