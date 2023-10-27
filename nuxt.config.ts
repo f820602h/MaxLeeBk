@@ -26,7 +26,6 @@ export default {
     pageTransition: { name: "page", mode: "out-in" },
   },
   nitro: {
-    preset: "vercel-edge",
     typescript: {
       typeCheck: true,
     },
