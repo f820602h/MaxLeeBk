@@ -4,6 +4,20 @@ onMounted(() => {
   window.setTimeout(hide, 500);
 });
 
+useHead({
+  title: "Blog - Max Lee",
+  meta: [
+    {
+      property: "og:title",
+      content: "Blog - Max Lee",
+    },
+    {
+      name: "twitter:title",
+      content: "Blog - Max Lee",
+    },
+  ],
+});
+
 const { data } = await useAsyncData("blog", () =>
   queryContent("/posts").sort({ date: -1, $numeric: true }).find(),
 );

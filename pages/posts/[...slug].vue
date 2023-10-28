@@ -4,6 +4,30 @@ onMounted(() => {
   window.setTimeout(hide, 500);
 });
 
+const route = useRoute();
+const postPath = computed(() => {
+  return typeof route.params.slug === "string"
+    ? route.params.slug
+    : route.params.slug.join("/");
+});
+
+const { data } = await useAsyncData(postPath.value, () =>
+  queryContent(`/posts/${postPath.value}`).findOne(),
+);
+useHead({
+  title: `${data.value?.title} - Max Lee`,
+  meta: [
+    {
+      property: "og:title",
+      content: `${data.value?.title} - Max Lee`,
+    },
+    {
+      name: "twitter:title",
+      content: `${data.value?.title} - Max Lee`,
+    },
+  ],
+});
+
 function dateFormatter(date: string) {
   return new Date(date).toLocaleString("en-us", {
     year: "numeric",
@@ -16,17 +40,13 @@ function dateFormatter(date: string) {
 <template>
   <div class="max-w-1920px mx-auto my-60px px-24px md:px-48px">
     <div class="max-w-1000px mx-auto pb-60px">
-      <NuxtLink to="/blog" class="text-gray-500 hover:text-white duration-150">
-        &lt; Blog
-      </NuxtLink>
-      <ContentDoc
-        v-slot="{ doc }"
-        :path="`/posts/${
-          typeof $route.params.slug === 'string'
-            ? $route.params.slug
-            : $route.params.slug.join('/')
-        }`"
+      <NuxtLink
+        to="/blog"
+        class="inline-block p-1 text-gray-500 hover:text-white duration-150"
       >
+        <div class="i-iconoir:reply" />
+      </NuxtLink>
+      <ContentDoc v-slot="{ doc }" :path="`/posts/${postPath}`">
         <article id="max-post">
           <h1 class="!text-32px sm:!text-40px">{{ doc.title }}</h1>
           <span class="text-gray-500 text-sm font-medium">
@@ -114,6 +134,8 @@ function dateFormatter(date: string) {
       color: unset;
       background: unset;
       overflow: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
 
       &::-webkit-scrollbar {
         display: none;
