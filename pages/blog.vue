@@ -55,7 +55,7 @@ const groupingByYear = computed(() => {
       :key="yearDate.year"
       class="relative max-w-650px min-h-300px mx-auto pb-60px"
     >
-      <div class="year absolute top-50px right-0 w-250px sm:w-400px">
+      <div class="year absolute top-30px right-0 w-250px sm:w-400px">
         <h3 v-for="i in 10" :key="i" class="text-100px sm:text-150px">
           {{ yearDate.year }}
         </h3>

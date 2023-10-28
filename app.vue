@@ -42,7 +42,7 @@ const { isLoadingShow } = useLoading();
             </li>
             <li>
               <NuxtLink
-                to="/blog"
+                to="/works"
                 class="p-2px hover:text-white duration-150"
                 title="Works"
               >
