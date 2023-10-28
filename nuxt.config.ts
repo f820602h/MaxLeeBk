@@ -9,6 +9,11 @@ export default {
     head: {
       link: [
         {
+          rel: "icon",
+          type: "image/svg+xml",
+          href: "/favicon.ico",
+        },
+        {
           rel: "preconnect",
           href: "https://fonts.googleapis.com",
         },
