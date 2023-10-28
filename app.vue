@@ -8,7 +8,7 @@ const { isLoadingShow } = useLoading();
       <div
         class="flex items-center justify-between max-w-1920px h-68px mx-auto px-24px md:px-48px"
       >
-        <h1>
+        <h1 class="pt-2">
           <NuxtLink href="/" class="flex items-center" focusable="false">
             <div class="w-30px h-30px sm:w-50px sm:h-50px">
               <img src="/img/logo.svg" alt="max.lee" />
@@ -76,7 +76,7 @@ body {
   min-width: 360px;
   font-family: "Roboto", sans-serif;
   color: #bbb;
-  background: #171717;
+  background: #111;
 }
 
 .page-enter-active,
@@ -92,8 +92,8 @@ body {
 
 <style scoped lang="scss">
 header {
-  background: rgba(23, 23, 23, 0.9);
-  box-shadow: 0 5px 20px rgba(23, 23, 23, 1);
+  background: rgba(17, 17, 17, 0.7);
+  box-shadow: 0 5px 20px rgba(17, 17, 17, 1);
   backdrop-filter: blur(5px);
 }
 </style>

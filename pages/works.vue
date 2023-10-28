@@ -97,7 +97,7 @@ const littleWorks = [
 <template>
   <main class="max-w-1920px mx-auto my-60px px-24px md:px-48px">
     <section class="max-w-900px mx-auto pb-60px">
-      <h2 class="text-32px font-bold italic text-white text-center mb-3">
+      <h2 class="text-32px font-bold italic text-white text-center mb-5">
         Main Project
       </h2>
       <article class="flex justify-between flex-wrap -mx-12px mb-48px">
@@ -126,7 +126,7 @@ const littleWorks = [
         </div>
       </article>
 
-      <h2 class="text-32px font-bold italic text-white text-center mb-3">
+      <h2 class="text-32px font-bold italic text-white text-center mb-5">
         Little Project
       </h2>
       <article class="flex flex-wrap -mx-12px">

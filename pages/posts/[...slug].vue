@@ -177,9 +177,11 @@ function dateFormatter(date: string) {
     display: block;
     width: 100%;
     margin: 16px auto !important;
-    padding: 12px;
-    border-radius: 4px;
+    // padding: 12px;
+    border-radius: 8px;
+    overflow: hidden;
     background: white;
+    // background: rgba(255, 255, 255, 0.6);
   }
 
   ul,
@@ -200,9 +202,12 @@ function dateFormatter(date: string) {
 
   table {
     width: 100%;
+    margin: 12px 0;
+    border-radius: 4px;
+    overflow: hidden;
 
     th {
-      padding: 8px 0;
+      padding: 8px 12px;
       font-weight: bold;
       color: white;
       background: #333;
@@ -219,7 +224,7 @@ function dateFormatter(date: string) {
     }
 
     td {
-      padding: 12px 0;
+      padding: 12px;
 
       &:not(:last-child) {
         border-right: 1px solid #444;
