@@ -41,8 +41,10 @@ const groupingByYear = computed(() => {
       :key="yearDate.year"
       class="relative max-w-650px min-h-300px mx-auto pb-60px"
     >
-      <div class="year absolute right-0">
-        <h3 v-for="i in 10" :key="i">{{ yearDate.year }}</h3>
+      <div class="year absolute top-50px right-0 w-250px sm:w-400px">
+        <h3 v-for="i in 10" :key="i" class="text-100px sm:text-150px">
+          {{ yearDate.year }}
+        </h3>
       </div>
 
       <ul>
@@ -54,20 +56,20 @@ const groupingByYear = computed(() => {
             <li
               v-if="!yearDate.hidden || index < 5"
               :data-index="index"
-              class="py-2 mb-4"
+              class="py-3"
             >
               <NuxtLink
                 :to="article._path"
-                class="group flex items-center gap-2 duration-300"
+                class="group block sm:flex items-center duration-300"
               >
-                <h3 class="text-lg group-hover:text-white duration-150">
-                  {{ article.title }}
-                </h3>
-                <p
+                <h3
+                  class="mr-2 text-base sm:text-lg group-hover:text-white duration-150"
+                  v-text="article.title"
+                />
+                <span
                   class="text-sm text-gray-600 group-hover:text-gray-400 duration-150"
-                >
-                  {{ dateFormatter(article.date) }}
-                </p>
+                  v-text="dateFormatter(article.date)"
+                />
               </NuxtLink>
             </li>
           </template>
@@ -108,7 +110,6 @@ ul {
     position: absolute;
     top: 0;
     left: 0;
-    font-size: 150px;
     font-weight: bold;
     color: transparent;
 

@@ -28,7 +28,7 @@ function dateFormatter(date: string) {
         }`"
       >
         <article id="max-post">
-          <h1>{{ doc.title }}</h1>
+          <h1 class="!text-32px sm:!text-40px">{{ doc.title }}</h1>
           <span class="text-gray-500 text-sm font-medium">
             {{ dateFormatter(doc.date) }}
           </span>
@@ -109,17 +109,20 @@ function dateFormatter(date: string) {
     code {
       display: block;
       margin: 0;
-      padding: 0;
       border: none;
       background: none;
       color: unset;
       background: unset;
+      overflow: auto;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
   }
 
   code {
     font-family: "Fira Mono", monospace;
-    // border: 1px solid #666;
     border-radius: 4px;
     color: #ddd;
     background: #333;

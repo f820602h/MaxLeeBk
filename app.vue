@@ -6,11 +6,11 @@ const { isLoadingShow } = useLoading();
   <div>
     <header class="sticky top-0 z-500">
       <div
-        class="flex items-center justify-between max-w-1920px h-80px mx-auto px-24px md:px-48px"
+        class="flex items-center justify-between max-w-1920px h-68px mx-auto px-24px md:px-48px"
       >
         <h1>
           <NuxtLink href="/" class="flex items-center" focusable="false">
-            <div class="w-50px h-50px">
+            <div class="w-30px h-30px sm:w-50px sm:h-50px">
               <img src="/img/logo.svg" alt="max.lee" />
             </div>
             <div class="hidden sm:block ml-2 pb-2px">
@@ -21,7 +21,7 @@ const { isLoadingShow } = useLoading();
         </h1>
 
         <nav>
-          <ul class="flex gap-3 text-gray-400 text-base">
+          <ul class="flex items-center gap-5 text-gray-300 text-sm font-bold">
             <li>
               <NuxtLink
                 to="/blog"
@@ -52,7 +52,7 @@ const { isLoadingShow } = useLoading();
             <li class="flex items-center">
               <a
                 href="https://github.com/f820602h"
-                class="p-2px hover:text-white duration-150"
+                class="p-2px hover:text-white duration-150 !text-lg"
                 target="_blank"
                 title="Github"
               >
@@ -66,9 +66,7 @@ const { isLoadingShow } = useLoading();
 
     <NuxtPage />
 
-    <Teleport to="body">
-      <PageLoading :show="isLoadingShow" />
-    </Teleport>
+    <PageLoading :show="isLoadingShow" />
   </div>
 </template>
 
@@ -89,5 +87,13 @@ body {
 .page-leave-to {
   opacity: 0;
   filter: blur(1rem);
+}
+</style>
+
+<style scoped lang="scss">
+header {
+  background: rgba(23, 23, 23, 0.9);
+  box-shadow: 0 5px 20px rgba(23, 23, 23, 1);
+  backdrop-filter: blur(5px);
 }
 </style>

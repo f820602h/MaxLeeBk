@@ -131,7 +131,7 @@ const layerFragmentsF = computed<StyleValue>(() => ({
 <style scoped lang="scss">
 .main {
   width: 100vw;
-  height: calc(100dvh - 80px);
+  height: calc(100dvh - 68px);
   perspective: 100px;
   perspective-origin: center center;
 }
