@@ -113,9 +113,66 @@ function dateFormatter(date: string) {
   a {
     text-decoration: underline;
     text-underline-offset: 3px;
+    word-break: break-all;
+    transition: 0.3s;
 
     &:hover {
       color: white;
+    }
+  }
+
+  a.preview {
+    justify-content: space-between;
+    border-radius: 4px;
+    overflow: hidden;
+    background: white;
+    text-decoration: none;
+
+    &:hover {
+      background: #ccc;
+    }
+
+    h6 {
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+      margin: 0;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      overflow: hidden;
+      line-height: unset;
+    }
+
+    p {
+      line-height: unset;
+      font-size: 14px;
+      letter-spacing: normal;
+      color: #666;
+      min-height: 42px;
+      margin: 4px 0;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+    }
+
+    span {
+      font-size: 12px;
+      color: #888;
+      margin: 0;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      overflow: hidden;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      margin: 0 !important;
+      border-radius: 0;
     }
   }
 
@@ -151,6 +208,7 @@ function dateFormatter(date: string) {
     font-size: 14px;
     padding: 3px;
     margin: 0 2px;
+    word-break: keep-all;
   }
 
   blockquote {

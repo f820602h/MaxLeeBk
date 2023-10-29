@@ -61,7 +61,7 @@ CLS 能針對使用者開啟網頁期間，加總計算每一次非預期版面�
 
 #### Route Lazy Load 
 
-[https://router.vuejs.org/zh/guide/advanced/lazy-loading.html](https://router.vuejs.org/zh/guide/advanced/lazy-loading.html)
+:preview-link{url="https://router.vuejs.org/zh/guide/advanced/lazy-loading.html"}
 
 ```jsx
 const viewsModules = import.meta.glob("../views/**/*.vue");
@@ -72,9 +72,10 @@ const views = Object.keys(viewsModules).reduce((acc, path) => {
 }, {});
 ```
 
-#### Vite ManualChunks  
+#### Vite ManualChunks
 
-[https://rollupjs.org/configuration-options/#output-manualchunks](https://rollupjs.org/configuration-options/#output-manualchunks)
+:preview-link{url="https://rollupjs.org/configuration-options/#output-manualchunks"}
+
 
 ```javascript
 build: {
