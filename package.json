@@ -33,6 +33,7 @@
   "dependencies": {
     "@nuxt/content": "^2.8.5",
     "@unocss/reset": "^0.57.1",
-    "pinia": "^2.1.7"
+    "pinia": "^2.1.7",
+    "sitemap": "^7.1.1"
   }
 }

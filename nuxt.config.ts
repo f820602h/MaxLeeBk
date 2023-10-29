@@ -94,6 +94,9 @@ export default {
     typescript: {
       typeCheck: true,
     },
+    prerender: {
+      routes: ["/sitemap.xml"],
+    },
   },
   modules: ["@nuxt/content", "@unocss/nuxt", "@vueuse/nuxt"],
   css: ["@unocss/reset/tailwind.css"],
