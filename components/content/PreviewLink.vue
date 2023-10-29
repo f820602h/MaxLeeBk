@@ -6,7 +6,7 @@ const config = useRuntimeConfig();
 const { data } = await useAsyncData(props.url, () =>
   fetch("https://api.linkpreview.net/", {
     method: "POST",
-    headers: { "X-Linkpreview-Api-Key": config.linkApiKay },
+    headers: { "X-Linkpreview-Api-Key": config.public.linkApiKay },
     mode: "cors",
     body: JSON.stringify({ q: props.url }),
   }).then((res) => res.json()),

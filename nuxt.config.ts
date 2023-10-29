@@ -6,7 +6,9 @@ export default {
     },
   },
   runtimeConfig: {
-    linkApiKay: process.env.NUXT_LINK_API_KEY,
+    public: {
+      linkApiKay: process.env.NUXT_LINK_API_KEY,
+    },
   },
   app: {
     head: {
