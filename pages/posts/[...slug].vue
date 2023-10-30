@@ -42,7 +42,7 @@ function dateFormatter(date: string) {
     <div class="max-w-1000px mx-auto pb-60px">
       <NuxtLink
         to="/blog"
-        class="inline-block p-1 text-gray-500 hover:text-white duration-150"
+        class="inline-block p-1 text-gray-500 hover:text-black dark:hover:text-white duration-150"
       >
         <div class="i-iconoir:reply" />
       </NuxtLink>
