@@ -213,7 +213,7 @@ const layerFragmentsF = computed<StyleValue>(() => ({
   }
 
   .text {
-    transform: translateZ(4px) scaleX(0.6);
+    transform: translateZ(3px);
 
     // > div {
     //   animation: marquee 5s linear infinite;
@@ -222,8 +222,8 @@ const layerFragmentsF = computed<StyleValue>(() => ({
 
   .text-back-shadow {
     color: rgba(0, 0, 0, 0.25) !important;
-    transform: scaleX(0.6) scaleY(1.5) translateX(-18px);
-    filter: blur(4px);
+    transform: scaleY(1.3);
+    filter: blur(2px);
 
     // > div {
     //   animation: marquee 5s linear infinite;
@@ -251,7 +251,7 @@ const layerFragmentsF = computed<StyleValue>(() => ({
   }
 
   .text-back-shadow {
-    color: rgba(0, 0, 0, 0.75) !important;
+    color: rgba(0, 0, 0, 0.5) !important;
   }
 }
 
