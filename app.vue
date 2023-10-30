@@ -1,5 +1,26 @@
 <script setup lang="ts">
 const { isLoadingShow } = useLoading();
+
+const colorMode = useColorMode();
+
+// useHead({
+//   htmlAttrs: {
+//     class: colorMode.value === "dark" ? "dark" : "",
+//   },
+// });
+
+// watch(
+//   () => colorMode.value,
+//   () => {
+//     const html = document.querySelector("html");
+//     if (!html) return;
+//     if (colorMode.value === "dark") {
+//       html.classList.add("dark");
+//     } else {
+//       html.classList.remove("dark");
+//     }
+//   },
+// );
 </script>
 
 <template>
@@ -10,54 +31,76 @@ const { isLoadingShow } = useLoading();
       >
         <h1 class="pt-2">
           <NuxtLink href="/" class="flex items-center" focusable="false">
-            <div class="w-30px h-30px sm:w-50px sm:h-50px">
+            <div
+              class="w-30px h-30px sm:w-50px sm:h-50px brightness-50 dark:brightness-100"
+            >
               <img src="/img/logo.svg" alt="max.lee" />
             </div>
             <div class="hidden sm:block ml-2 pb-2px">
-              <p class="text-white font-bold text-sm">Max Lee BK</p>
-              <p class="text-gray-500 font-bold text-xs">Front End Developer</p>
+              <p class="text-black dark:text-white font-bold text-sm">
+                Max Lee BK
+              </p>
+              <p class="text-gray-400 text-xs">Front End Developer</p>
             </div>
           </NuxtLink>
         </h1>
 
         <nav>
-          <ul class="flex items-center gap-5 text-gray-300 text-sm font-bold">
-            <li>
+          <ul class="flex items-center gap-5">
+            <li
+              class="text-gray-700 hover:text-black dark:text-#bbb hover:dark:text-white duration-150"
+            >
               <NuxtLink
                 to="/blog"
-                class="p-2px hover:text-white duration-150"
+                class="p-2px text-sm font-bold"
                 title="About"
               >
                 About
               </NuxtLink>
             </li>
-            <li>
-              <NuxtLink
-                to="/blog"
-                class="p-2px hover:text-white duration-150"
-                title="Blog"
-              >
+            <li
+              class="text-gray-700 hover:text-black dark:text-#bbb hover:dark:text-white duration-150"
+            >
+              <NuxtLink to="/blog" class="p-2px text-sm font-bold" title="Blog">
                 Blog
               </NuxtLink>
             </li>
-            <li>
+            <li
+              class="text-gray-700 hover:text-black dark:text-#bbb hover:dark:text-white duration-150"
+            >
               <NuxtLink
                 to="/works"
-                class="p-2px hover:text-white duration-150"
+                class="p-2px text-sm font-bold"
                 title="Works"
               >
                 Works
               </NuxtLink>
             </li>
-            <li class="flex items-center">
+            <li
+              class="flex items-center text-gray-700 hover:text-black dark:text-#bbb hover:dark:text-white duration-150"
+            >
               <a
                 href="https://github.com/f820602h"
-                class="p-2px hover:text-white duration-150 !text-lg"
+                class="p-2px text-lg font-bold"
                 target="_blank"
                 title="Github"
               >
                 <div class="i-iconoir:github" />
               </a>
+            </li>
+            <li
+              class="flex items-center text-gray-700 hover:text-black dark:text-#bbb hover:dark:text-white duration-150"
+            >
+              <button
+                class="p-2px text-lg font-bold"
+                @click="
+                  $colorMode.preference =
+                    $colorMode.value === 'dark' ? 'light' : 'dark'
+                "
+              >
+                <div class="i-iconoir:sun-light dark:hidden" />
+                <div class="i-iconoir:half-moon hidden dark:block" />
+              </button>
             </li>
           </ul>
         </nav>
@@ -70,11 +113,20 @@ const { isLoadingShow } = useLoading();
   </div>
 </template>
 
-<style>
+<style lang="scss">
 html,
 body {
   min-width: 360px;
   font-family: "Roboto", sans-serif;
+  color: #393939;
+  background: #f1f1f1;
+  transition:
+    color 0.2s,
+    background 0.2s;
+}
+
+.dark-mode,
+.dark-mode body {
   color: #bbb;
   background: #111;
 }
@@ -92,8 +144,12 @@ body {
 
 <style scoped lang="scss">
 header {
-  background: rgba(17, 17, 17, 0.7);
-  box-shadow: 0 5px 20px rgba(17, 17, 17, 1);
+  background: rgba(241, 241, 241, 0.7);
   backdrop-filter: blur(5px);
+  transition: background 0.2s;
+}
+
+.dark-mode header {
+  background: rgba(17, 17, 17, 0.7);
 }
 </style>

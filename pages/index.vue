@@ -10,29 +10,31 @@ onMounted(() => {
 });
 
 const cardStyle = computed<StyleValue>(() => ({
-  transform: `translateZ(20px) rotateX(${parallax.roll * 10}deg) rotateY(${
-    parallax.tilt * 10
+  transform: `rotateX(${parallax.roll * 5}deg) rotateY(${
+    parallax.tilt * 5
   }deg)`,
+  perspective: "100px",
+  perspectiveOrigin: "center center",
 }));
 
 const layerHead = computed<StyleValue>(() => ({
   transition: ".3s ease-out all",
-  transform: `translateX(${parallax.tilt * 10}px) translateY(${
-    parallax.roll * 10
+  transform: `translateX(${parallax.tilt * 3}px) translateY(${
+    parallax.roll * 3
   }px)`,
 }));
 
 const layerBlow = computed<StyleValue>(() => ({
   transition: ".3s ease-out all",
-  transform: `translateX(${parallax.tilt * 20}px) translateY(${
-    parallax.roll * 20
+  transform: `translateX(${parallax.tilt * 8}px) translateY(${
+    parallax.roll * 8
   }px)`,
 }));
 
 const layerGreeting = computed<StyleValue>(() => ({
   transition: ".3s ease-out all",
-  transform: `translateX(${parallax.tilt * 30}px) translateY(${
-    parallax.roll * 30
+  transform: `translateX(${parallax.tilt * 15}px) translateY(${
+    parallax.roll * 15
   }px)`,
 }));
 
@@ -45,15 +47,15 @@ const layerFragmentsB = computed<StyleValue>(() => ({
 
 const layerFragmentsM = computed<StyleValue>(() => ({
   transition: ".2s ease-out all",
-  transform: `translateX(${parallax.tilt * 60}px) translateY(${
-    parallax.roll * 60
+  transform: `translateX(${parallax.tilt * 80}px) translateY(${
+    parallax.roll * 80
   }px)`,
 }));
 
 const layerFragmentsF = computed<StyleValue>(() => ({
   transition: ".1s ease-out all",
-  transform: `translateX(${parallax.tilt * 80}px) translateY(${
-    parallax.roll * 80
+  transform: `translateX(${parallax.tilt * 120}px) translateY(${
+    parallax.roll * 120
   }px)`,
 }));
 </script>
@@ -62,14 +64,14 @@ const layerFragmentsF = computed<StyleValue>(() => ({
   <div ref="container" class="main flex items-center overflow-hidden">
     <div class="relative z-15 flex items-center w-50% h-full rotate-y-60">
       <div class="line left relative overflow-hidden">
-        <div class="text-shadow flex items-center h-full">
-          <div v-for="i in 3" :key="i" class="flex items-center h-full blur-2">
+        <div class="text-back-shadow flex items-center h-full">
+          <div class="flex items-center h-full">
             <span v-for="j in 3" :key="j" class="mx-4">MAX YOUR MIND</span>
           </div>
         </div>
 
         <div class="text absolute top-0 -left-0 flex items-center h-full">
-          <div v-for="i in 3" :key="i" class="flex items-center h-full">
+          <div class="flex items-center h-full">
             <span v-for="j in 3" :key="j" class="mx-4">MAX YOUR MIND</span>
           </div>
         </div>
@@ -78,14 +80,14 @@ const layerFragmentsF = computed<StyleValue>(() => ({
 
     <div class="relative z-15 flex items-center w-50% h-full -rotate-y-60">
       <div class="line right relative overflow-hidden">
-        <div class="text-shadow flex items-center h-full">
-          <div v-for="i in 3" :key="i" class="flex items-center h-full blur-2">
+        <div class="text-back-shadow flex items-center h-full">
+          <div class="flex items-center h-full">
             <span v-for="j in 3" :key="j" class="mx-4">MAX YOUR MIND</span>
           </div>
         </div>
 
         <div class="text absolute top-0 -left-0 flex items-center h-full">
-          <div v-for="i in 3" :key="i" class="flex items-center h-full">
+          <div class="flex items-center h-full">
             <span v-for="j in 3" :key="j" class="mx-4">MAX YOUR MIND</span>
           </div>
         </div>
@@ -160,6 +162,10 @@ const layerFragmentsF = computed<StyleValue>(() => ({
   filter: blur(8px);
 }
 
+.mind {
+  transform: translateZ(20px);
+}
+
 .line {
   width: 100%;
   height: 140px;
@@ -168,12 +174,67 @@ const layerFragmentsF = computed<StyleValue>(() => ({
   font-weight: bold;
   line-height: 1;
   white-space: nowrap;
-  color: #d2d5dc;
+  color: #111;
   box-sizing: border-box;
   perspective: 300px;
 
   &.right {
     perspective-origin: right center;
+    background: linear-gradient(
+      to left,
+      rgba(255, 255, 255, 1) 50%,
+      rgba(255, 255, 255, 0.3)
+    );
+
+    &.dark-mode {
+      background: linear-gradient(
+        to left,
+        rgba(36, 36, 36, 1) 50%,
+        rgba(36, 36, 36, 0.3)
+      );
+    }
+  }
+
+  &.left {
+    perspective-origin: left center;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 1) 50%,
+      rgba(255, 255, 255, 0.3)
+    );
+
+    &.dark-mode {
+      background: linear-gradient(
+        to right,
+        rgba(36, 36, 36, 1) 50%,
+        rgba(36, 36, 36, 0.3)
+      );
+    }
+  }
+
+  .text {
+    transform: translateZ(4px) scaleX(0.6);
+
+    // > div {
+    //   animation: marquee 5s linear infinite;
+    // }
+  }
+
+  .text-back-shadow {
+    color: rgba(0, 0, 0, 0.25) !important;
+    transform: scaleX(0.6) scaleY(1.5) translateX(-18px);
+    filter: blur(4px);
+
+    // > div {
+    //   animation: marquee 5s linear infinite;
+    // }
+  }
+}
+
+.dark-mode .line {
+  color: #bbb;
+
+  &.right {
     background: linear-gradient(
       to left,
       rgba(36, 36, 36, 1) 50%,
@@ -182,7 +243,6 @@ const layerFragmentsF = computed<StyleValue>(() => ({
   }
 
   &.left {
-    perspective-origin: left center;
     background: linear-gradient(
       to right,
       rgba(36, 36, 36, 1) 50%,
@@ -190,30 +250,17 @@ const layerFragmentsF = computed<StyleValue>(() => ({
     );
   }
 
-  .text {
-    transform: translateZ(4px);
-
-    > div {
-      animation: marquee 20s linear infinite;
-    }
-  }
-
-  .text-shadow {
-    color: rgba(0, 0, 0, 0.1);
-    transform: scaleY(1.5);
-
-    > div {
-      animation: marquee 20s linear infinite;
-    }
+  .text-back-shadow {
+    color: rgba(0, 0, 0, 0.75) !important;
   }
 }
 
 @keyframes marquee {
   0% {
-    transform: translateX(-100%);
+    transform: translateX(0%);
   }
   100% {
-    transform: translateX(-200%);
+    transform: translateX(-100%);
   }
 }
 
@@ -223,13 +270,19 @@ const layerFragmentsF = computed<StyleValue>(() => ({
   min-width: 200px;
 
   img {
-    filter: drop-shadow(0 0 20px #000);
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.3));
   }
 
   .greeting {
     font-family: "Bebas Neue", sans-serif;
     letter-spacing: 3px;
-    box-shadow: rgb(0, 0, 0) 0px 20px 30px -10px;
+    box-shadow:
+      rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+      rgba(0, 0, 0, 0.5) 0px 3px 7px -3px;
   }
+}
+
+.dark-mode .mind img {
+  filter: drop-shadow(0 0 20px #000);
 }
 </style>

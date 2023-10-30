@@ -49,7 +49,7 @@ const groupingByYear = computed(() => {
 </script>
 
 <template>
-  <div class="max-w-1920px mx-auto my-60px px-24px md:px-48px">
+  <div class="max-w-1920px mx-auto py-60px px-24px md:px-48px">
     <div
       v-for="yearDate in groupingByYear"
       :key="yearDate.year"
@@ -70,18 +70,18 @@ const groupingByYear = computed(() => {
             <li
               v-if="!yearDate.hidden || index < 5"
               :data-index="index"
-              class="py-3"
+              class="group py-3"
             >
               <NuxtLink
                 :to="article._path"
-                class="group block sm:flex items-center duration-300"
+                class="block sm:flex items-center duration-200"
               >
                 <h3
-                  class="mr-2 text-base sm:text-lg group-hover:text-white duration-150"
+                  class="mr-2 text-base sm:text-lg text-gray-700 dark:text-#bbb group-hover:text-black dark:group-hover:text-white group-hover:font-bold duration-200"
                   v-text="article.title"
                 />
                 <span
-                  class="text-sm text-gray-600 group-hover:text-gray-400 duration-150"
+                  class="text-sm text-gray-500"
                   v-text="dateFormatter(article.date)"
                 />
               </NuxtLink>
@@ -93,7 +93,7 @@ const groupingByYear = computed(() => {
       <a
         v-if="yearDate.articles.length > 5 && yearDate.hidden"
         href="javascript:;"
-        class="text-gray-500"
+        class="text-gray-400 hover:text-black dark:hover:text-white duration-200"
         @click="seeMoreYear.push(yearDate.year)"
       >
         see more ...
@@ -110,7 +110,7 @@ ul {
 
     &:hover {
       a {
-        transform: translateZ(10px);
+        transform: translateZ(8px);
       }
     }
   }
@@ -126,12 +126,22 @@ ul {
     left: 0;
     font-weight: bold;
     color: transparent;
+    transition: 0.2s;
 
     @for $i from 1 through 10 {
       &:nth-child(#{$i}) {
-        -webkit-text-stroke: 1px rgba(50, 50, 50, 1 - $i * 0.1);
+        -webkit-text-stroke: 1px rgba(200, 200, 200, 1 - $i * 0.1);
         transform: translateX(-#{$i * 2}px) rotateZ(-#{$i * 2}deg);
       }
+    }
+  }
+}
+
+.dark-mode .year h3 {
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      -webkit-text-stroke: 1px rgba(50, 50, 50, 1 - $i * 0.1);
+      transform: translateX(-#{$i * 2}px) rotateZ(-#{$i * 2}deg);
     }
   }
 }

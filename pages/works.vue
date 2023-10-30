@@ -95,48 +95,64 @@ const littleWorks = [
 </script>
 
 <template>
-  <main class="max-w-1920px mx-auto my-60px px-24px md:px-48px">
+  <main class="max-w-1920px mx-auto py-60px px-24px md:px-48px">
     <section class="max-w-900px mx-auto pb-60px">
-      <h2 class="text-32px font-bold italic text-white text-center mb-5">
+      <h2
+        class="text-32px font-bold italic text-black dark:text-white text-center mb-5"
+      >
         Main Project
       </h2>
       <article class="flex justify-between flex-wrap -mx-12px mb-48px">
         <div
           v-for="work in mainWorks"
           :key="work.title"
-          class="works block w-full md:w-1/2 px-12px mb-24px cursor-pointer"
+          class="works relative block w-full md:w-1/2 px-12px mb-24px cursor-pointer group hover:-translate-y-5px duration-550"
         >
-          <a :href="work.link" target="_blank">
-            <figure class="relative w-full rounded overflow-hidden mb-1">
+          <a :href="work.link" target="_blank" class="">
+            <figure
+              class="relative w-full rounded overflow-hidden mb-1 duration-550"
+            >
               <img class="absolute top-0 left-0 block w-full" :src="work.gif" />
               <img class="image relative z-10 block w-full" :src="work.image" />
             </figure>
-            <div class="p-1">
-              <h4 class="text-lg font-bold mb-1" v-text="work.title" />
 
+            <div class="p-1">
+              <h4
+                class="text-lg font-bold mb-1 text-gray-700 dark:text-#bbb group-hover:text-black dark:group-hover:text-white duration-350"
+                v-text="work.title"
+              />
               <p
-                class="multiline-ellipsis text-sm text-gray-500"
+                class="min-h-40px text-sm text-gray-500 group-hover:text-black dark:group-hover:text-white duration-350"
                 v-text="work.description"
               />
             </div>
           </a>
-          <a :href="work.github" target="_blank" class="github">
+
+          <a
+            :href="work.github"
+            target="_blank"
+            class="github p-4px text-lg text-gray-600 hover:text-black dark:text-#bbb dark:hover:text-white duration-350"
+          >
             <div class="i-iconoir:github" />
           </a>
         </div>
       </article>
 
-      <h2 class="text-32px font-bold italic text-white text-center mb-5">
+      <h2
+        class="text-32px font-bold italic text-black dark:text-white text-center mb-5"
+      >
         Little Project
       </h2>
       <article class="flex flex-wrap -mx-12px">
         <div
           v-for="work in littleWorks"
           :key="work.title"
-          class="works block w-full sm:w-1/2 md:w-1/3 px-12px mb-24px cursor-pointer"
+          class="works relative block w-full md:w-1/2 px-12px mb-24px cursor-pointer group hover:-translate-y-5px duration-550"
         >
           <a :href="work.link" target="_blank">
-            <figure class="relative w-full rounded overflow-hidden mb-1">
+            <figure
+              class="relative w-full rounded overflow-hidden mb-1 bg-transparent"
+            >
               <img class="absolute top-0 left-0 block w-full" :src="work.gif" />
               <img
                 class="image relative z-10 block w-full"
@@ -144,15 +160,24 @@ const littleWorks = [
                 :src="work.image"
               />
             </figure>
+
             <div class="p-1">
-              <h4 class="text-lg font-bold mb-1" v-text="work.title" />
+              <h4
+                class="text-lg font-bold mb-1 text-gray-700 dark:text-#bbb group-hover:text-black dark:group-hover:text-white duration-350"
+                v-text="work.title"
+              />
               <p
-                class="multiline-ellipsis text-sm text-gray-500"
+                class="min-h-40px text-sm text-gray-500 group-hover:text-black dark:group-hover:text-white duration-350"
                 v-text="work.description"
               />
             </div>
           </a>
-          <a :href="work.github" target="_blank" class="github">
+
+          <a
+            :href="work.github"
+            target="_blank"
+            class="github p-4px text-lg text-gray-600 hover:text-black dark:text-#bbb dark:hover:text-white duration-350"
+          >
             <div class="i-iconoir:github" />
           </a>
         </div>
@@ -163,26 +188,15 @@ const littleWorks = [
 
 <style scoped lang="scss">
 .works {
-  position: relative;
-  transition: transform 0.55s;
-
   figure {
     filter: grayscale(30%);
-    transition: all 0.55s;
-
-    img {
-      aspect-ratio: 2/1;
-    }
+    aspect-ratio: 2/1;
+    transition: all 0.2s;
 
     .image {
       opacity: 1;
       transition: all 0.55s;
     }
-  }
-
-  .icon {
-    opacity: 0;
-    transition: all 0.35s;
   }
 
   .github {
@@ -191,16 +205,6 @@ const littleWorks = [
     bottom: 50px;
     right: 12px;
     z-index: 15;
-    transition: all 0.35s;
-    padding: 4px;
-
-    &:hover {
-      color: white;
-    }
-  }
-
-  h4 {
-    transition: all 0.35s;
   }
 
   p {
@@ -208,33 +212,15 @@ const littleWorks = [
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     overflow: hidden;
-    transition: all 0.35s;
-    min-height: 40px;
   }
 
   &:hover {
-    transform: translateY(-5px);
-
     figure {
       filter: grayscale(0%);
-      box-shadow: rgba(120, 120, 120, 0.2) 0px 7px 29px 0px;
 
       .image:not(.freeze) {
         opacity: 0;
-        transition: all 0.55s;
       }
-    }
-
-    h4 {
-      color: white;
-    }
-
-    p {
-      color: rgb(107 114 128);
-    }
-
-    .icon {
-      opacity: 1;
     }
   }
 }

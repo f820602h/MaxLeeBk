@@ -7,7 +7,7 @@ const props = withDefaults(defineProps<{ show: boolean }>(), { show: false });
     <Transition name="loading">
       <div
         v-if="props.show"
-        class="fixed top-0 z-1000 w-screen h-screen bg-black flex items-center justify-center"
+        class="main fixed top-0 z-1000 w-screen h-screen bg-white dark:bg-black flex items-center justify-center"
       >
         <div class="loading-circle w-150px h-150px">
           <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
@@ -20,7 +20,7 @@ const props = withDefaults(defineProps<{ show: boolean }>(), { show: false });
               />
             </defs>
 
-            <text fill="white">
+            <text>
               <textPath href="#MyPath" startOffset="50%" text-anchor="middle">
                 ~~~ L O A D I N G ~~~~~ L O A D I N G ~~~~~ L O A D I N G ~~~
               </textPath>
@@ -33,18 +33,35 @@ const props = withDefaults(defineProps<{ show: boolean }>(), { show: false });
 </template>
 
 <style scoped lang="scss">
+.main {
+  perspective: 100px;
+  perspective-origin: center center;
+}
+
 .loading-circle {
   font-family: sans-serif;
   font-weight: bold;
-  animation: spine 100s infinite linear;
+  transform: rotateX(30deg);
+
+  svg {
+    animation: spine 20s infinite linear;
+  }
+}
+
+text {
+  fill: black;
+}
+
+.dark-mode text {
+  fill: white;
 }
 
 @keyframes spine {
   0% {
-    transform: rotate(0deg);
+    transform: rotateZ(0deg);
   }
   100% {
-    transform: rotate(3600deg);
+    transform: rotateZ(720deg);
   }
 }
 

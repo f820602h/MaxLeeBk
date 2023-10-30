@@ -38,7 +38,7 @@ function dateFormatter(date: string) {
 </script>
 
 <template>
-  <div class="max-w-1920px mx-auto my-60px px-24px md:px-48px">
+  <div class="max-w-1920px mx-auto py-60px px-24px md:px-48px">
     <div class="max-w-1000px mx-auto pb-60px">
       <NuxtLink
         to="/blog"
@@ -66,7 +66,7 @@ function dateFormatter(date: string) {
   :is(h1, h2, h3, h4, h5, h6) {
     font-weight: bold;
     line-height: 1.5;
-    color: white;
+    color: black;
 
     a {
       text-decoration: none;
@@ -107,7 +107,7 @@ function dateFormatter(date: string) {
   em,
   b,
   i {
-    color: white;
+    color: black;
   }
 
   a {
@@ -117,19 +117,20 @@ function dateFormatter(date: string) {
     transition: 0.3s;
 
     &:hover {
-      color: white;
+      color: black;
     }
   }
 
   a.preview {
     justify-content: space-between;
+    border: 1px solid #ddd;
     border-radius: 4px;
     overflow: hidden;
     background: white;
     text-decoration: none;
 
     &:hover {
-      background: #ccc;
+      background: #ddd;
     }
 
     h6 {
@@ -176,9 +177,19 @@ function dateFormatter(date: string) {
     }
   }
 
+  code {
+    font-family: "Fira Mono", monospace;
+    border-radius: 4px;
+    background: #e3e3e3;
+    font-size: 14px;
+    padding: 3px 4px;
+    margin: 0 2px;
+    word-break: keep-all;
+  }
+
   pre {
     font-family: "Fira Mono", monospace;
-    background: #222;
+    background: #e3e3e3;
     margin: 12px 0;
     padding: 20px;
     border-radius: 8px;
@@ -200,25 +211,14 @@ function dateFormatter(date: string) {
     }
   }
 
-  code {
-    font-family: "Fira Mono", monospace;
-    border-radius: 4px;
-    color: #ddd;
-    background: #333;
-    font-size: 14px;
-    padding: 3px;
-    margin: 0 2px;
-    word-break: keep-all;
-  }
-
   blockquote {
     position: relative;
     margin: 20px 0;
     padding: 0px 16px;
-    border: 1px solid #666;
+    border: 1px solid #ccc;
     border-radius: 4px;
-    color: #ddd;
-    background: #333;
+    background: #ddd;
+    color: black;
 
     p {
       font-size: 14px;
@@ -228,18 +228,15 @@ function dateFormatter(date: string) {
   hr {
     height: 0;
     margin: 24px 0;
-    border-top-color: #333;
+    border-top-color: #ddd;
   }
 
   img {
     display: block;
     width: 100%;
     margin: 16px auto !important;
-    // padding: 12px;
     border-radius: 8px;
     overflow: hidden;
-    background: white;
-    // background: rgba(255, 255, 255, 0.6);
   }
 
   ul,
@@ -267,17 +264,19 @@ function dateFormatter(date: string) {
     th {
       padding: 8px 12px;
       font-weight: bold;
-      color: white;
-      background: #333;
+      color: black;
+      background: #e3e3e3;
 
       &:not(:last-child) {
-        border-right: 1px solid #444;
+        border-right: 1px solid #ccc;
       }
     }
 
     tr {
+      background: #eee;
+
       &:not(:last-child) {
-        border-bottom: 1px solid #444;
+        border-bottom: 1px solid #ccc;
       }
     }
 
@@ -285,7 +284,75 @@ function dateFormatter(date: string) {
       padding: 12px;
 
       &:not(:last-child) {
-        border-right: 1px solid #444;
+        border-right: 1px solid #ccc;
+      }
+    }
+  }
+}
+
+.dark-mode #max-post {
+  :is(h1, h2, h3, h4, h5, h6) {
+    color: white;
+  }
+
+  strong,
+  em,
+  b,
+  i {
+    color: white;
+  }
+
+  a {
+    &:hover {
+      color: white;
+    }
+  }
+
+  code {
+    color: #e9e9e9;
+    background: #222;
+  }
+
+  pre {
+    background: #222;
+
+    code {
+      background: none;
+      color: unset;
+    }
+  }
+
+  blockquote {
+    border: 1px solid #666;
+    color: white;
+    background: #333;
+  }
+
+  hr {
+    border-top-color: #333;
+  }
+
+  table {
+    th {
+      color: white;
+      background: #444;
+
+      &:not(:last-child) {
+        border-right: 1px solid #666;
+      }
+    }
+
+    tr {
+      background: #222;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid #666;
+      }
+    }
+
+    td {
+      &:not(:last-child) {
+        border-right: 1px solid #666;
       }
     }
   }

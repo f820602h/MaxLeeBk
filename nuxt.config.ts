@@ -2,7 +2,10 @@ export default {
   content: {
     contentHead: false,
     highlight: {
-      theme: "vitesse-dark",
+      theme: {
+        default: "vitesse-light",
+        dark: "vitesse-dark",
+      },
     },
   },
   runtimeConfig: {
@@ -98,6 +101,11 @@ export default {
       routes: ["/sitemap.xml"],
     },
   },
-  modules: ["@nuxt/content", "@unocss/nuxt", "@vueuse/nuxt"],
+  modules: [
+    "@nuxt/content",
+    "@unocss/nuxt",
+    "@vueuse/nuxt",
+    "@nuxtjs/color-mode",
+  ],
   css: ["@unocss/reset/tailwind.css"],
 };
