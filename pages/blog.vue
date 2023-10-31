@@ -5,7 +5,7 @@ onMounted(() => {
   window.setTimeout(() => {
     hide();
     enter.value = true;
-  }, 500);
+  }, 800);
 });
 
 useHead({
@@ -96,14 +96,16 @@ const groupingByYear = computed(() => {
         </TransitionGroup>
       </ul>
 
-      <a
-        v-if="yearDate.articles.length > 5 && yearDate.hidden"
-        href="javascript:;"
-        class="text-gray-400 hover:text-black dark:hover:text-white duration-200"
-        @click="seeMoreYear.push(yearDate.year)"
-      >
-        see more ...
-      </a>
+      <Transition name="fade" appear>
+        <a
+          v-show="enter && yearDate.articles.length > 5 && yearDate.hidden"
+          href="javascript:;"
+          class="text-gray-400 hover:text-black dark:hover:text-white duration-200"
+          @click="seeMoreYear.push(yearDate.year)"
+        >
+          see more ...
+        </a>
+      </Transition>
     </div>
   </div>
 </template>
@@ -114,12 +116,14 @@ ul {
     perspective: 100px;
     perspective-origin: left center;
 
-    @for $i from 1 through 50 {
-      &:nth-child(#{$i}) {
-        @if $i < 6 {
-          transition-delay: #{0.3 + $i * 0.05}s;
-        } @else {
-          transition-delay: #{($i - 5) * 0.05}s;
+    &.list-enter-active {
+      @for $i from 1 through 50 {
+        &:nth-child(#{$i}) {
+          @if $i < 6 {
+            transition-delay: #{0.3 + $i * 0.05}s;
+          } @else {
+            transition-delay: #{($i - 5) * 0.05}s;
+          }
         }
       }
     }
@@ -148,7 +152,14 @@ ul {
       &:nth-child(#{$i}) {
         -webkit-text-stroke: 1px rgba(200, 200, 200, 1 - $i * 0.1);
         transform: translateX(-#{$i * 2}px) rotateZ(-#{$i * 2}deg);
-        transition-delay: #{1 - $i * 0.05}s;
+      }
+    }
+
+    &.fade-enter-active {
+      @for $i from 1 through 10 {
+        &:nth-child(#{$i}) {
+          transition-delay: #{1 - $i * 0.05}s;
+        }
       }
     }
   }
@@ -165,6 +176,7 @@ ul {
 
 .fade-enter-active {
   transition: all 0.5s;
+  transition-delay: 0.8s;
 }
 .fade-enter-from {
   opacity: 0;

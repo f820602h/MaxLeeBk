@@ -5,7 +5,7 @@ onMounted(() => {
   window.setTimeout(() => {
     hide();
     enter.value = true;
-  }, 500);
+  }, 800);
 });
 
 useHead({
@@ -161,7 +161,7 @@ const littleWorks = [
       <Transition name="slide" appear>
         <h2
           v-show="enter"
-          class="text-32px font-bold italic text-black dark:text-white text-center mb-5 delay-300"
+          class="text-32px font-bold italic text-black dark:text-white text-center mb-5"
         >
           Little Project
         </h2>
@@ -268,6 +268,7 @@ const littleWorks = [
 .slide-enter-active {
   pointer-events: none;
   transition: all 0.8s;
+  transition-delay: 0.5s;
 }
 .slide-enter-from {
   opacity: 0;
