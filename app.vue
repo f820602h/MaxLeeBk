@@ -1,38 +1,17 @@
 <script setup lang="ts">
 const { isLoadingShow } = useLoading();
-
-const colorMode = useColorMode();
-
-// useHead({
-//   htmlAttrs: {
-//     class: colorMode.value === "dark" ? "dark" : "",
-//   },
-// });
-
-// watch(
-//   () => colorMode.value,
-//   () => {
-//     const html = document.querySelector("html");
-//     if (!html) return;
-//     if (colorMode.value === "dark") {
-//       html.classList.add("dark");
-//     } else {
-//       html.classList.remove("dark");
-//     }
-//   },
-// );
 </script>
 
 <template>
   <div>
     <header class="sticky top-0 z-500">
       <div
-        class="flex items-center justify-between max-w-1920px h-68px mx-auto px-24px md:px-48px"
+        class="flex items-center justify-between max-w-1920px mx-auto h-68px px-24px md:px-48px"
       >
-        <h1 class="pt-2">
+        <h1 class="pt-1">
           <NuxtLink href="/" class="flex items-center" focusable="false">
             <div
-              class="w-30px h-30px sm:w-50px sm:h-50px brightness-50 dark:brightness-100"
+              class="w-32px h-32px sm:w-50px sm:h-50px brightness-55 dark:brightness-100"
             >
               <img src="/img/logo.svg" alt="max.lee" />
             </div>
@@ -40,7 +19,9 @@ const colorMode = useColorMode();
               <p class="text-black dark:text-white font-bold text-sm">
                 Max Lee BK
               </p>
-              <p class="text-gray-400 text-xs">Front End Developer</p>
+              <p class="text-gray-600 dark:text-gray-400 text-xs">
+                Front End Developer
+              </p>
             </div>
           </NuxtLink>
         </h1>
@@ -127,7 +108,7 @@ body {
 
 .dark-mode,
 .dark-mode body {
-  color: #bbb;
+  color: #c1c1c1;
   background: #111;
 }
 

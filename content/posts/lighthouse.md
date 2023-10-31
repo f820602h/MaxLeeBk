@@ -31,8 +31,6 @@ CLS 能針對使用者開啟網頁期間，加總計算每一次非預期版面�
 | CLS | 0.1 以下 | 0.25 以下 | 超過 0.25 |
 | FCP | 1.8 秒以下 | 3 秒以下 | 超過 3 秒 |
 
-<br/>
-
 - 提升 LCP：[https://web.dev/lcp/](https://web.dev/lcp/)
 - 提升 FID：[https://web.dev/fid/](https://web.dev/fid/)
 - 提升 CLS：[https://web.dev/cls/](https://web.dev/cls/)
@@ -61,7 +59,7 @@ CLS 能針對使用者開啟網頁期間，加總計算每一次非預期版面�
 
 #### Route Lazy Load 
 
-:preview-link{url="https://router.vuejs.org/zh/guide/advanced/lazy-loading.html"}
+:preview-link{url="https://router.vuejs.org/guide/advanced/lazy-loading.html"}
 
 ```jsx
 const viewsModules = import.meta.glob("../views/**/*.vue");

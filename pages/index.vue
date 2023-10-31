@@ -162,10 +162,6 @@ const layerFragmentsF = computed<StyleValue>(() => ({
   filter: blur(8px);
 }
 
-.mind {
-  transform: translateZ(20px);
-}
-
 .line {
   width: 100%;
   height: 140px;
@@ -185,14 +181,6 @@ const layerFragmentsF = computed<StyleValue>(() => ({
       rgba(255, 255, 255, 1) 50%,
       rgba(255, 255, 255, 0.3)
     );
-
-    &.dark-mode {
-      background: linear-gradient(
-        to left,
-        rgba(36, 36, 36, 1) 50%,
-        rgba(36, 36, 36, 0.3)
-      );
-    }
   }
 
   &.left {
@@ -202,14 +190,6 @@ const layerFragmentsF = computed<StyleValue>(() => ({
       rgba(255, 255, 255, 1) 50%,
       rgba(255, 255, 255, 0.3)
     );
-
-    &.dark-mode {
-      background: linear-gradient(
-        to right,
-        rgba(36, 36, 36, 1) 50%,
-        rgba(36, 36, 36, 0.3)
-      );
-    }
   }
 
   .text {
@@ -268,9 +248,10 @@ const layerFragmentsF = computed<StyleValue>(() => ({
   width: 50%;
   max-width: 300px;
   min-width: 200px;
+  transform: translateZ(20px);
 
   img {
-    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.3));
+    filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.2));
   }
 
   .greeting {

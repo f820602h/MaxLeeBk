@@ -13,6 +13,7 @@ export default {
       linkApiKay: process.env.NUXT_LINK_API_KEY,
     },
   },
+  devtools: { enabled: false },
   app: {
     head: {
       link: [
@@ -31,7 +32,7 @@ export default {
           crossorigin: true,
         },
         {
-          href: "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fira+Mono:wght@400;700&family=Roboto:ital,wght@0,400;0,700;1,900&display=swap",
+          href: "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fira+Mono:wght@400;700&family=Roboto:ital,wght@0,400;0,700;0,900;1,900&display=swap",
           rel: "stylesheet",
         },
       ],

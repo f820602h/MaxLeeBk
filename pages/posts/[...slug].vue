@@ -62,14 +62,44 @@ function dateFormatter(date: string) {
 </template>
 
 <style lang="scss">
+$code-font: "Fira Mono", monospace;
+
+$highlight-color: black;
+$highlight-color-invert: white;
+
+$highlight-light-color: #292929;
+$highlight-light-color-invert: #ddd;
+
+$box-bg-color: #e3e3e3;
+$box-bg-color-invert: #222;
+
+$box-bg-light-color: #eee;
+$box-bg-light-color-invert: #1d1d1d;
+
+$box-border-color: #ccc;
+$box-border-color-invert: #444;
+
+$img-bg-color: transparent;
+$img-bg-color-invert: white;
+
+%typography {
+  letter-spacing: 1.2px;
+  line-height: 26px;
+}
+
+%rounded {
+  border-radius: 4px;
+  overflow: hidden;
+}
+
 #max-post {
   :is(h1, h2, h3, h4, h5, h6) {
-    font-weight: bold;
+    font-weight: 900;
     line-height: 1.5;
-    color: black;
+    color: $highlight-color;
 
     a {
-      text-decoration: none;
+      text-decoration: none !important;
     }
   }
 
@@ -82,117 +112,71 @@ function dateFormatter(date: string) {
   }
   h3 {
     font-size: 24px;
-    margin: 20px 0px;
+    margin: 16px 0px;
   }
   h4 {
     font-size: 20px;
-    margin: 20px 0px;
+    margin: 16px 0px;
   }
   h5 {
-    font-size: 16px;
+    font-size: 18px;
     margin: 12px 0px;
   }
   h6 {
-    font-size: 14px;
+    font-size: 16px;
     margin: 12px 0px;
   }
 
   p {
-    margin: 12px 0px;
-    letter-spacing: 2px;
-    line-height: 1.8;
+    margin: 16px 0 0 0;
+    @extend %typography;
   }
 
   strong,
   em,
   b,
   i {
-    color: black;
+    color: $highlight-light-color;
   }
 
-  a {
+  a:not(.preview) {
     text-decoration: underline;
     text-underline-offset: 3px;
     word-break: break-all;
     transition: 0.3s;
 
     &:hover {
-      color: black;
+      color: $highlight-color;
     }
   }
 
   a.preview {
-    justify-content: space-between;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    overflow: hidden;
-    background: white;
-    text-decoration: none;
+    border: 1px solid $box-border-color;
+    background: $box-bg-light-color;
+    transition: 0.3s;
 
     &:hover {
-      background: #ddd;
-    }
-
-    h6 {
-      font-size: 16px;
-      font-weight: bold;
-      color: #333;
-      margin: 0;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 1;
-      overflow: hidden;
-      line-height: unset;
-    }
-
-    p {
-      line-height: unset;
-      font-size: 14px;
-      letter-spacing: normal;
-      color: #666;
-      min-height: 42px;
-      margin: 4px 0;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
-      overflow: hidden;
-    }
-
-    span {
-      font-size: 12px;
-      color: #888;
-      margin: 0;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 1;
-      overflow: hidden;
-    }
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      margin: 0 !important;
-      border-radius: 0;
+      color: $highlight-color;
+      background: $highlight-color-invert;
     }
   }
 
   code {
-    font-family: "Fira Mono", monospace;
-    border-radius: 4px;
-    background: #e3e3e3;
+    font-family: $code-font;
+    background: $box-bg-color;
     font-size: 14px;
     padding: 3px 4px;
     margin: 0 2px;
     word-break: keep-all;
+    @extend %rounded;
   }
 
   pre {
-    font-family: "Fira Mono", monospace;
-    background: #e3e3e3;
+    font-family: $code-font;
+    background: $box-bg-color;
     margin: 12px 0;
     padding: 20px;
-    border-radius: 8px;
+    @extend %rounded;
 
     code {
       display: block;
@@ -200,7 +184,6 @@ function dateFormatter(date: string) {
       border: none;
       background: none;
       color: unset;
-      background: unset;
       overflow: auto;
       scrollbar-width: none;
       -ms-overflow-style: none;
@@ -212,15 +195,15 @@ function dateFormatter(date: string) {
   }
 
   blockquote {
-    position: relative;
     margin: 20px 0;
-    padding: 0px 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background: #ddd;
-    color: black;
+    padding: 16px;
+    border: 1px solid $box-border-color;
+    color: $highlight-color;
+    background: $box-bg-color;
+    @extend %rounded;
 
     p {
+      margin: 0;
       font-size: 14px;
     }
   }
@@ -228,20 +211,20 @@ function dateFormatter(date: string) {
   hr {
     height: 0;
     margin: 24px 0;
-    border-top-color: #ddd;
+    border-top-color: $box-border-color;
   }
 
   img {
     display: block;
     width: 100%;
-    margin: 16px auto !important;
-    border-radius: 8px;
-    overflow: hidden;
+    margin: 12px auto;
+    background: $img-bg-color;
+    @extend %rounded;
   }
 
   ul,
   ol {
-    margin: 12px 0;
+    margin: 8px 0 24px;
     padding: 0 0 0 24px;
   }
   ul {
@@ -250,33 +233,34 @@ function dateFormatter(date: string) {
   ol {
     list-style-type: decimal;
   }
-
   li {
-    margin: 12px 0;
+    margin: 8px 0;
+    @extend %typography;
   }
 
   table {
     width: 100%;
-    margin: 12px 0;
-    border-radius: 4px;
-    overflow: hidden;
+    margin: 20px 0;
+    box-shadow: 0 0 0 1px $box-border-color;
+    @extend %rounded;
 
     th {
       padding: 8px 12px;
       font-weight: bold;
-      color: black;
-      background: #e3e3e3;
+      color: $highlight-color;
+      background: $box-bg-color;
+      border-bottom: 1px solid $box-border-color;
 
       &:not(:last-child) {
-        border-right: 1px solid #ccc;
+        border-right: 1px solid $box-border-color;
       }
     }
 
     tr {
-      background: #eee;
+      background: $box-bg-light-color;
 
       &:not(:last-child) {
-        border-bottom: 1px solid #ccc;
+        border-bottom: 1px solid $box-border-color;
       }
     }
 
@@ -284,7 +268,7 @@ function dateFormatter(date: string) {
       padding: 12px;
 
       &:not(:last-child) {
-        border-right: 1px solid #ccc;
+        border-right: 1px solid $box-border-color;
       }
     }
   }
@@ -292,29 +276,37 @@ function dateFormatter(date: string) {
 
 .dark-mode #max-post {
   :is(h1, h2, h3, h4, h5, h6) {
-    color: white;
+    color: $highlight-color-invert;
   }
 
   strong,
   em,
-  b,
-  i {
-    color: white;
+  b {
+    color: $highlight-light-color-invert;
   }
 
   a {
     &:hover {
-      color: white;
+      color: $highlight-color-invert;
+    }
+  }
+
+  a.preview {
+    border: 1px solid $box-border-color-invert;
+    background: $box-bg-light-color-invert;
+
+    &:hover {
+      color: $highlight-color-invert;
+      background: $highlight-color;
     }
   }
 
   code {
-    color: #e9e9e9;
-    background: #222;
+    background: $box-bg-color-invert;
   }
 
   pre {
-    background: #222;
+    background: $box-bg-color-invert;
 
     code {
       background: none;
@@ -323,36 +315,43 @@ function dateFormatter(date: string) {
   }
 
   blockquote {
-    border: 1px solid #666;
-    color: white;
-    background: #333;
+    border: 1px solid $box-border-color-invert;
+    color: $highlight-color-invert;
+    background: $box-bg-color-invert;
   }
 
   hr {
-    border-top-color: #333;
+    border-top-color: $box-border-color-invert;
+  }
+
+  img {
+    background: $img-bg-color-invert;
   }
 
   table {
+    box-shadow: 0 0 0 1px $box-border-color-invert;
+
     th {
-      color: white;
-      background: #444;
+      color: $highlight-color-invert;
+      background: $box-bg-color-invert;
+      border-bottom: 1px solid $box-border-color-invert;
 
       &:not(:last-child) {
-        border-right: 1px solid #666;
+        border-right: 1px solid $box-border-color-invert;
       }
     }
 
     tr {
-      background: #222;
+      background: $box-bg-light-color-invert;
 
       &:not(:last-child) {
-        border-bottom: 1px solid #666;
+        border-bottom: 1px solid $box-border-color-invert;
       }
     }
 
     td {
       &:not(:last-child) {
-        border-right: 1px solid #666;
+        border-right: 1px solid $box-border-color-invert;
       }
     }
   }
