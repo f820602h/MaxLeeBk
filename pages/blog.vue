@@ -76,7 +76,7 @@ const groupingByYear = computed(() => {
             <li
               v-show="enter && (!yearDate.hidden || index < 5)"
               :data-index="index"
-              class="group py-3"
+              class="group py-3 cursor-pointer"
             >
               <NuxtLink
                 :to="article._path"
@@ -163,22 +163,18 @@ ul {
   }
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 0.5s ease;
+.fade-enter-active {
+  transition: all 0.5s;
 }
-.fade-enter-from,
-.fade-leave-to {
+.fade-enter-from {
   opacity: 0;
 }
 
-.list-enter-active,
-.list-leave-active {
+.list-enter-active {
   pointer-events: none;
-  transition: all 0.5s ease;
+  transition: all 0.5s;
 }
-.list-enter-from,
-.list-leave-to {
+.list-enter-from {
   opacity: 0;
   transform: translateX(30px);
 }

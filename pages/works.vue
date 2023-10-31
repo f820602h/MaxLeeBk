@@ -104,7 +104,7 @@ const littleWorks = [
       <Transition name="slide" appear>
         <h2
           v-show="enter"
-          class="text-32px font-bold italic text-black dark:text-white text-center mb-5 delay-500"
+          class="text-32px font-bold italic text-black dark:text-white text-center mb-5"
         >
           Main Project
         </h2>
@@ -120,9 +120,9 @@ const littleWorks = [
             v-show="enter"
             class="works relative w-full md:w-1/2 px-12px mb-24px cursor-pointer group hover:-translate-y-5px duration-550"
           >
-            <a :href="work.link" target="_blank" class="">
+            <a :href="work.link" target="_blank">
               <figure
-                class="relative w-full rounded overflow-hidden mb-1 duration-550"
+                class="relative w-full rounded overflow-hidden mb-1 bg-gray-300 dark:bg-gray-800"
               >
                 <img
                   class="absolute top-0 left-0 block w-full"
@@ -130,6 +130,7 @@ const littleWorks = [
                 />
                 <img
                   class="image relative z-10 block w-full"
+                  :class="{ freeze: !work.gif }"
                   :src="work.image"
                 />
               </figure>
@@ -149,7 +150,7 @@ const littleWorks = [
             <a
               :href="work.github"
               target="_blank"
-              class="github p-4px text-lg text-gray-600 hover:text-black dark:text-#bbb dark:hover:text-white duration-500"
+              class="github p-4px text-lg text-gray-600 hover:text-black dark:text-#bbb dark:hover:text-white duration-350"
             >
               <div class="i-iconoir:github" />
             </a>
@@ -219,9 +220,11 @@ const littleWorks = [
 
 <style scoped lang="scss">
 .works {
-  @for $i from 1 through 6 {
-    &:nth-child(#{$i}) {
-      transition-delay: #{0.1 + $i * 0.1}s;
+  &.slide-enter-active {
+    @for $i from 1 through 6 {
+      &:nth-child(#{$i}) {
+        transition-delay: #{0.1 + $i * 0.1}s;
+      }
     }
   }
 
@@ -262,14 +265,12 @@ const littleWorks = [
   }
 }
 
-.slide-enter-active,
-.slide-leave-active {
+.slide-enter-active {
   pointer-events: none;
-  transition: all 0.5s ease;
+  transition: all 0.8s;
 }
-.slide-enter-from,
-.slide-leave-to {
+.slide-enter-from {
   opacity: 0;
-  transform: translateX(30px) skewX(-10deg);
+  transform: translateX(30px) skewX(-6deg);
 }
 </style>
