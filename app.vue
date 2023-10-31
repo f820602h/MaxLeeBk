@@ -125,12 +125,12 @@ body {
 
 <style scoped lang="scss">
 header {
-  background: rgba(241, 241, 241, 0.7);
+  background: rgba(241, 241, 241, 0.5);
   backdrop-filter: blur(5px);
   transition: background 0.2s;
 }
 
 .dark-mode header {
-  background: rgba(17, 17, 17, 0.7);
+  background: rgba(17, 17, 17, 0.5);
 }
 </style>

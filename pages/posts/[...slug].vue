@@ -74,10 +74,10 @@ $box-bg-color: #e3e3e3;
 $box-bg-color-invert: #222;
 
 $box-bg-light-color: #eee;
-$box-bg-light-color-invert: #1d1d1d;
+$box-bg-light-color-invert: #171717;
 
-$box-border-color: #ccc;
-$box-border-color-invert: #444;
+$box-border-color: #d9d9d9;
+$box-border-color-invert: #333;
 
 $img-bg-color: transparent;
 $img-bg-color-invert: white;
@@ -152,7 +152,7 @@ $img-bg-color-invert: white;
 
   a.preview {
     border: 1px solid $box-border-color;
-    background: $box-bg-light-color;
+    background: transparent;
     transition: 0.3s;
 
     &:hover {
@@ -293,7 +293,7 @@ $img-bg-color-invert: white;
 
   a.preview {
     border: 1px solid $box-border-color-invert;
-    background: $box-bg-light-color-invert;
+    background: transparent;
 
     &:hover {
       color: $highlight-color-invert;

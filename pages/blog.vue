@@ -1,7 +1,11 @@
 <script setup lang="ts">
+const enter = ref(false);
 const { hide } = useLoading();
 onMounted(() => {
-  window.setTimeout(hide, 500);
+  window.setTimeout(() => {
+    hide();
+    enter.value = true;
+  }, 500);
 });
 
 useHead({
@@ -56,19 +60,21 @@ const groupingByYear = computed(() => {
       class="relative max-w-650px min-h-300px mx-auto pb-60px"
     >
       <div class="year absolute top-30px right-0 w-250px sm:w-400px">
-        <h3 v-for="i in 10" :key="i" class="text-100px sm:text-150px">
-          {{ yearDate.year }}
-        </h3>
+        <Transition v-for="i in 10" :key="i" name="fade" appear>
+          <h3 v-show="enter" class="text-100px sm:text-150px">
+            {{ yearDate.year }}
+          </h3>
+        </Transition>
       </div>
 
       <ul>
-        <TransitionGroup name="list">
+        <TransitionGroup name="list" appear>
           <template
             v-for="(article, index) in yearDate.articles"
             :key="article.title"
           >
             <li
-              v-if="!yearDate.hidden || index < 5"
+              v-show="enter && (!yearDate.hidden || index < 5)"
               :data-index="index"
               class="group py-3"
             >
@@ -108,6 +114,16 @@ ul {
     perspective: 100px;
     perspective-origin: left center;
 
+    @for $i from 1 through 50 {
+      &:nth-child(#{$i}) {
+        @if $i < 6 {
+          transition-delay: #{0.3 + $i * 0.05}s;
+        } @else {
+          transition-delay: #{($i - 5) * 0.05}s;
+        }
+      }
+    }
+
     &:hover {
       a {
         transform: translateZ(8px);
@@ -132,6 +148,7 @@ ul {
       &:nth-child(#{$i}) {
         -webkit-text-stroke: 1px rgba(200, 200, 200, 1 - $i * 0.1);
         transform: translateX(-#{$i * 2}px) rotateZ(-#{$i * 2}deg);
+        transition-delay: #{1 - $i * 0.05}s;
       }
     }
   }
@@ -146,8 +163,18 @@ ul {
   }
 }
 
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.5s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
 .list-enter-active,
 .list-leave-active {
+  pointer-events: none;
   transition: all 0.5s ease;
 }
 .list-enter-from,

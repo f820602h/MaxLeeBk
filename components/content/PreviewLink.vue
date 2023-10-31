@@ -25,7 +25,9 @@ const { data } = await useAsyncData(props.url, () =>
         <div class="i-iconoir:link relative top-1 -rotate-45 text-sm" />
         <div>
           <h6 class="!m-0 !text-base !font-bold">{{ data.title }}</h6>
-          <p class="!min-h-40px !mt-1 !text-sm !leading-20px">
+          <p
+            class="!min-h-40px !my-2px !text-sm !leading-20px !text-gray-500 !dark:text-gray-400"
+          >
             {{ data.description }}
           </p>
           <span class="!m-0 !text-xs !text-gray-400 !dark:text-gray-600">{{
