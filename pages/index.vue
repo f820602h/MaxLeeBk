@@ -10,8 +10,8 @@ onMounted(() => {
 });
 
 const cardStyle = computed<StyleValue>(() => ({
-  transform: `rotateX(${parallax.roll * 5}deg) rotateY(${
-    parallax.tilt * 5
+  transform: `rotateX(${parallax.roll * 8}deg) rotateY(${
+    parallax.tilt * 8
   }deg)`,
   perspective: "100px",
   perspectiveOrigin: "center center",
@@ -58,6 +58,11 @@ const layerFragmentsF = computed<StyleValue>(() => ({
     parallax.roll * 120
   }px)`,
 }));
+
+const meq = computed<StyleValue>(() => ({
+  transition: ".1s ease-out all",
+  transform: `translateX(${parallax.tilt * 150 + parallax.roll * 100}px)`,
+}));
 </script>
 
 <template>
@@ -65,14 +70,14 @@ const layerFragmentsF = computed<StyleValue>(() => ({
     <div class="relative z-15 flex items-center w-50% h-full rotate-y-60">
       <div class="line left relative overflow-hidden">
         <div class="text-back-shadow flex items-center h-full">
-          <div class="flex items-center h-full">
-            <span v-for="j in 3" :key="j" class="mx-4">MAX YOUR MIND</span>
+          <div :style="meq">
+            <span v-for="j in 5" :key="j" class="mx-4">MAX YOUR MIND</span>
           </div>
         </div>
 
         <div class="text absolute top-0 -left-0 flex items-center h-full">
-          <div class="flex items-center h-full">
-            <span v-for="j in 3" :key="j" class="mx-4">MAX YOUR MIND</span>
+          <div :style="meq">
+            <span v-for="j in 5" :key="j" class="mx-4">MAX YOUR MIND</span>
           </div>
         </div>
       </div>
@@ -81,14 +86,14 @@ const layerFragmentsF = computed<StyleValue>(() => ({
     <div class="relative z-15 flex items-center w-50% h-full -rotate-y-60">
       <div class="line right relative overflow-hidden">
         <div class="text-back-shadow flex items-center h-full">
-          <div class="flex items-center h-full">
-            <span v-for="j in 3" :key="j" class="mx-4">MAX YOUR MIND</span>
+          <div :style="meq">
+            <span v-for="j in 5" :key="j" class="mx-4">MAX YOUR MIND</span>
           </div>
         </div>
 
         <div class="text absolute top-0 -left-0 flex items-center h-full">
-          <div class="flex items-center h-full">
-            <span v-for="j in 3" :key="j" class="mx-4">MAX YOUR MIND</span>
+          <div :style="meq">
+            <span v-for="j in 5" :key="j" class="mx-4">MAX YOUR MIND</span>
           </div>
         </div>
       </div>
@@ -195,19 +200,16 @@ const layerFragmentsF = computed<StyleValue>(() => ({
   .text {
     transform: translateZ(3px);
 
-    // > div {
-    //   animation: marquee 5s linear infinite;
-    // }
+    span {
+      outline: 1px solid transparent;
+      -webkit-text-stroke: 1px transparent;
+    }
   }
 
   .text-back-shadow {
     color: rgba(0, 0, 0, 0.25) !important;
     transform: scaleY(1.3);
-    filter: blur(2px);
-
-    // > div {
-    //   animation: marquee 5s linear infinite;
-    // }
+    filter: blur(5px);
   }
 }
 
@@ -231,16 +233,7 @@ const layerFragmentsF = computed<StyleValue>(() => ({
   }
 
   .text-back-shadow {
-    color: rgba(0, 0, 0, 0.5) !important;
-  }
-}
-
-@keyframes marquee {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-100%);
+    color: rgba(0, 0, 0, 1) !important;
   }
 }
 
