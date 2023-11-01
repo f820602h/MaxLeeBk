@@ -112,14 +112,11 @@ const littleWorks = [
       </Transition>
 
       <article class="flex justify-between flex-wrap -mx-12px mb-48px">
-        <Transition
-          v-for="work in mainWorks"
-          :key="work.title"
-          name="slide"
-          appear
-        >
+        <TransitionGroup name="slide" appear>
           <div
+            v-for="work in mainWorks"
             v-show="enter"
+            :key="work.title"
             class="works relative w-full md:w-1/2 px-12px mb-24px cursor-pointer group hover:-translate-y-5px duration-550"
           >
             <a :href="work.link" target="_blank">
@@ -157,7 +154,7 @@ const littleWorks = [
               <div class="i-iconoir:github" />
             </a>
           </div>
-        </Transition>
+        </TransitionGroup>
       </article>
 
       <Transition name="slide" appear>
@@ -169,14 +166,11 @@ const littleWorks = [
         </h2>
       </Transition>
       <article class="flex flex-wrap -mx-12px">
-        <Transition
-          v-for="work in littleWorks"
-          :key="work.title"
-          name="slide"
-          appear
-        >
+        <TransitionGroup name="slide" appear>
           <div
+            v-for="work in littleWorks"
             v-show="enter"
+            :key="work.title"
             class="works relative w-full md:w-1/2 px-12px mb-24px cursor-pointer group hover:-translate-y-5px duration-550"
           >
             <a :href="work.link" target="_blank">
@@ -214,7 +208,7 @@ const littleWorks = [
               <div class="i-iconoir:github" />
             </a>
           </div>
-        </Transition>
+        </TransitionGroup>
       </article>
     </section>
   </main>
@@ -222,14 +216,6 @@ const littleWorks = [
 
 <style scoped lang="scss">
 .works {
-  &.slide-enter-active {
-    @for $i from 1 through 6 {
-      &:nth-child(#{$i}) {
-        transition-delay: #{0.1 + $i * 0.1}s;
-      }
-    }
-  }
-
   figure {
     filter: grayscale(30%);
     aspect-ratio: 2/1;
@@ -268,7 +254,7 @@ const littleWorks = [
 .slide-enter-active {
   pointer-events: none;
   transition: all 0.5s;
-  transition-delay: 0.8s;
+  transition-delay: 0.5s;
 }
 .slide-enter-from {
   opacity: 0;
