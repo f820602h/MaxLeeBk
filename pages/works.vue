@@ -1,11 +1,12 @@
 <script setup lang="ts">
-const enter = ref(false);
+const enter = ref(true);
 const { hide } = useLoading();
 onMounted(() => {
+  enter.value = false;
   window.setTimeout(() => {
     hide();
     enter.value = true;
-  }, 800);
+  }, 600);
 });
 
 useHead({
@@ -129,7 +130,7 @@ const littleWorks = [
                   :src="work.gif"
                 />
                 <img
-                  class="image relative z-10 block w-full"
+                  class="image relative z-10 block w-full duration-550"
                   :class="{ freeze: !work.gif }"
                   :src="work.image"
                 />
@@ -179,14 +180,14 @@ const littleWorks = [
           >
             <a :href="work.link" target="_blank">
               <figure
-                class="relative w-full rounded overflow-hidden mb-1 bg-gray-300 dark:bg-gray-800"
+                class="relative w-full rounded overflow-hidden mb-1 bg-gray-300 dark:bg-gray-800 duration-200"
               >
                 <img
                   class="absolute top-0 left-0 block w-full"
                   :src="work.gif"
                 />
                 <img
-                  class="image relative z-10 block w-full"
+                  class="image relative z-10 block w-full duration-550"
                   :class="{ freeze: !work.gif }"
                   :src="work.image"
                 />
@@ -231,11 +232,9 @@ const littleWorks = [
   figure {
     filter: grayscale(30%);
     aspect-ratio: 2/1;
-    transition: all 0.2s;
 
     .image {
       opacity: 1;
-      transition: all 0.55s;
     }
   }
 
@@ -267,8 +266,8 @@ const littleWorks = [
 
 .slide-enter-active {
   pointer-events: none;
-  transition: all 0.8s;
-  transition-delay: 0.5s;
+  transition: all 0.5s;
+  transition-delay: 0.8s;
 }
 .slide-enter-from {
   opacity: 0;

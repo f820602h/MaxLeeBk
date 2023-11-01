@@ -1,11 +1,12 @@
 <script setup lang="ts">
-const enter = ref(false);
+const enter = ref(true);
 const { hide } = useLoading();
 onMounted(() => {
+  enter.value = false;
   window.setTimeout(() => {
     hide();
     enter.value = true;
-  }, 800);
+  }, 600);
 });
 
 useHead({
@@ -185,6 +186,7 @@ ul {
 .list-enter-active {
   pointer-events: none;
   transition: all 0.5s;
+  transition-delay: 0.8s;
 }
 .list-enter-from {
   opacity: 0;
