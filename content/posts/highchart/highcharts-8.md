@@ -143,7 +143,7 @@ var myChart = Highcharts.chart(container, {
 #### # xAxis.labels.style
 `型別: Object` `預設: { color: "#666666", fontSize: "11px" }`
 
-樣式屬性在前面已經介紹過蠻多次了，如果需要複習的話可以 **[按這邊](/posts/highcharts/highcharts-5/#titlestyle)**，這裡就不再多做介紹。
+樣式屬性在前面已經介紹過蠻多次了，如果需要複習的話可以 **[按這邊](/posts/highchart/highcharts-5/#titlestyle)**，這裡就不再多做介紹。
 
 <br/>
 

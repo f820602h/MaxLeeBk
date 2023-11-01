@@ -18,7 +18,7 @@ tags: [JavaScript,Highcharts,12th鐵人賽]
 
 當圖表的資料是包含時間維度的，那就有使用「日期座標軸的」需求，用來標示個別數據點的測量／紀錄時間。
 
-而在 **[座標軸設定](/posts/highcharts/highcharts-9/#axistype)** 介紹過了，只要將 `Axis.type` 設為 `datetime` 即可將座標軸設定為「日期座標軸」。
+而在 **[座標軸設定](/posts/highchart/highcharts-9/#axistype)** 介紹過了，只要將 `Axis.type` 設為 `datetime` 即可將座標軸設定為「日期座標軸」。
 
 ```javascript
 var myChart = Highcharts.chart(container, {
@@ -47,7 +47,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-首先，我們先將座標刻度的間距改為「一天」，這裡要運用的屬性是 `Axis.tickInterval`，之前在 **[座標軸設定](/posts/highcharts/highcharts-9/#axistickinterval-axisminortickinterval)** 裡一樣有介紹過。
+首先，我們先將座標刻度的間距改為「一天」，這裡要運用的屬性是 `Axis.tickInterval`，之前在 **[座標軸設定](/posts/highchart/highcharts-9/#axistickinterval-axisminortickinterval)** 裡一樣有介紹過。
 
 ```javascript
 xAxis: {
@@ -66,7 +66,7 @@ xAxis: {
 
 <br/>
 
-為了解決上面的問題，要利用之前在 **[數據點設定](/posts/highcharts/highcharts-11/#seriespointinterval)** 中提過的 `series.pointInterval` 來將數據點的間距改為一天。
+為了解決上面的問題，要利用之前在 **[數據點設定](/posts/highchart/highcharts-11/#seriespointinterval)** 中提過的 `series.pointInterval` 來將數據點的間距改為一天。
 
 ```javascript
 series: [{

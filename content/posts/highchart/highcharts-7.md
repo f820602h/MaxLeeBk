@@ -34,13 +34,13 @@ var myChart = Highcharts.chart(container, {
 
 `型別: String|Object|Null` `預設: undefined`
 
-背景色的設定方式與 `chart.backgroundColor` 一樣，可以按 **[這裡](/posts/highcharts/highcharts-4/#chartbackgroundColor-chartplotBackgroundColor)** 複習。
+背景色的設定方式與 `chart.backgroundColor` 一樣，可以按 **[這裡](/posts/highchart/highcharts-4/#chartbackgroundColor-chartplotBackgroundColor)** 複習。
 
 <br/>
 
 #### # tooltip.border系列
 
-因為 `border` 的相關設定在 **[圖表整體設定](/posts/highcharts/highcharts-4/#chartborderWidth-chartplotBorderWidth)** 提過了，所以這邊就只放預設值給大家參考。
+因為 `border` 的相關設定在 **[圖表整體設定](/posts/highchart/highcharts-4/#chartborderWidth-chartplotBorderWidth)** 提過了，所以這邊就只放預設值給大家參考。
 
 ```javascript
 legend: {
@@ -55,7 +55,7 @@ legend: {
 #### # tooltip.style
 `型別: Object` `預設: 如下顯示`
 
-樣式屬性在前面已經介紹過蠻多次了，如果需要複習的話可以 **[按這邊](/posts/highcharts/highcharts-5/#titlestyle)**，這裡就不再多做介紹。
+樣式屬性在前面已經介紹過蠻多次了，如果需要複習的話可以 **[按這邊](/posts/highchart/highcharts-5/#titlestyle)**，這裡就不再多做介紹。
 
 ```javascript
 tooltip: {

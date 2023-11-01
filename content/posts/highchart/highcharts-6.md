@@ -82,13 +82,13 @@ var myChart = Highcharts.chart(container, {
 
 `型別: String|Object` `預設: undefined`
 
-背景色的設定方式與 `chart.backgroundColor` 一樣，可以按 **[這裡](/posts/highcharts/highcharts-4/#chartbackgroundcolor-chartplotbackgroundcolor)** 複習。
+背景色的設定方式與 `chart.backgroundColor` 一樣，可以按 **[這裡](/posts/highchart/highcharts-4/#chartbackgroundcolor-chartplotbackgroundcolor)** 複習。
 
 <br/>
 
 #### # legend.border系列
 
-因為 `border` 的相關設定在 **[圖表整體設定](/posts/highcharts/highcharts-4/#chartborderWidth-chartplotBorderWidth)** 提過了，所以這邊就只放預設值給大家參考。
+因為 `border` 的相關設定在 **[圖表整體設定](/posts/highchart/highcharts-4/#chartborderWidth-chartplotBorderWidth)** 提過了，所以這邊就只放預設值給大家參考。
 
 ```javascript
 legend: {
@@ -152,7 +152,7 @@ legend: {
   }
 }
 ```
-圖例本身有 `normal`、`hover`、`hidden` 三種狀態，而這三種狀態下的樣式你都可以作調整，剛好對應的就是這三個屬性，用法和之前介紹的樣式屬性都一樣，如果需要複習的話可以 **[按這邊](/posts/highcharts/highcharts-5/#titlestyle)**。
+圖例本身有 `normal`、`hover`、`hidden` 三種狀態，而這三種狀態下的樣式你都可以作調整，剛好對應的就是這三個屬性，用法和之前介紹的樣式屬性都一樣，如果需要複習的話可以 **[按這邊](/posts/highchart/highcharts-5/#titlestyle)**。
 
 <br/>
 
