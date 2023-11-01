@@ -110,6 +110,7 @@ const littleWorks = [
           Main Project
         </h2>
       </Transition>
+
       <article class="flex justify-between flex-wrap -mx-12px mb-48px">
         <Transition
           v-for="work in mainWorks"

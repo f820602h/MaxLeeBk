@@ -54,19 +54,19 @@ const groupingByYear = computed(() => {
 </script>
 
 <template>
-  <div class="max-w-1920px mx-auto py-60px px-24px md:px-48px">
-    <div
+  <main class="max-w-1920px mx-auto py-60px px-24px md:px-48px">
+    <section
       v-for="yearDate in groupingByYear"
       :key="yearDate.year"
       class="relative max-w-650px min-h-300px mx-auto pb-60px"
     >
-      <div class="year absolute top-30px right-0 w-250px sm:w-400px">
+      <h2 class="year absolute top-30px right-0 w-250px sm:w-400px">
         <Transition v-for="i in 10" :key="i" name="fade" appear>
-          <h3 v-show="enter" class="text-100px sm:text-150px">
+          <div v-show="enter" class="text-100px sm:text-150px">
             {{ yearDate.year }}
-          </h3>
+          </div>
         </Transition>
-      </div>
+      </h2>
 
       <ul>
         <TransitionGroup name="list" appear>
@@ -98,17 +98,16 @@ const groupingByYear = computed(() => {
       </ul>
 
       <Transition name="fade" appear>
-        <a
+        <button
           v-show="enter && yearDate.articles.length > 5 && yearDate.hidden"
-          href="javascript:;"
           class="text-gray-400 hover:text-black dark:hover:text-white duration-200"
           @click="seeMoreYear.push(yearDate.year)"
         >
           see more ...
-        </a>
+        </button>
       </Transition>
-    </div>
-  </div>
+    </section>
+  </main>
 </template>
 
 <style scoped lang="scss">
@@ -141,7 +140,7 @@ ul {
   perspective: 100px;
   perspective-origin: center center;
 
-  h3 {
+  div {
     position: absolute;
     top: 0;
     left: 0;
@@ -166,7 +165,7 @@ ul {
   }
 }
 
-.dark-mode .year h3 {
+.dark-mode .year div {
   @for $i from 1 through 10 {
     &:nth-child(#{$i}) {
       -webkit-text-stroke: 1px rgba(50, 50, 50, 1 - $i * 0.1);

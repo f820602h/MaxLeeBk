@@ -7,7 +7,7 @@ const props = withDefaults(defineProps<{ show: boolean }>(), { show: false });
     <Transition name="loading">
       <div
         v-if="props.show"
-        class="main fixed top-0 z-1000 w-screen h-screen bg-white dark:bg-black flex items-center justify-center"
+        class="loading fixed top-0 z-1000 w-screen h-screen bg-white dark:bg-black flex items-center justify-center"
       >
         <div class="loading-circle w-150px h-150px">
           <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
@@ -33,7 +33,7 @@ const props = withDefaults(defineProps<{ show: boolean }>(), { show: false });
 </template>
 
 <style scoped lang="scss">
-.main {
+.loading {
   perspective: 100px;
   perspective-origin: center center;
 }

@@ -12,7 +12,11 @@ const postPath = computed(() => {
 });
 
 const { data } = await useAsyncData(postPath.value, () =>
-  queryContent(`/posts/${postPath.value}`).findOne(),
+  queryContent(`/posts/${postPath.value}`)
+    .findOne()
+    .catch(() => {
+      useError();
+    }),
 );
 useHead({
   title: `${data.value?.title} - Max Lee`,
@@ -46,16 +50,34 @@ function dateFormatter(date: string) {
       >
         <div class="i-iconoir:reply" />
       </NuxtLink>
-      <ContentDoc v-slot="{ doc }" :path="`/posts/${postPath}`">
-        <article id="max-post">
-          <h1 class="!text-32px sm:!text-40px">{{ doc.title }}</h1>
-          <span class="text-gray-500 text-sm font-medium">
-            {{ dateFormatter(doc.date) }}
-          </span>
-          <span class="text-gray-500 text-sm font-medium ml-3">Max Lee</span>
-          <hr />
-          <ContentRenderer :value="doc" />
-        </article>
+      <ContentDoc :path="`/posts/${postPath}`">
+        <template #default="{ doc }">
+          <article id="max-post">
+            <h1 class="!text-32px sm:!text-40px">{{ doc.title }}</h1>
+            <span class="text-gray-500 text-sm font-medium">
+              {{ dateFormatter(doc.date) }}
+            </span>
+            <span class="text-gray-500 text-sm font-medium ml-3">Max Lee</span>
+            <hr />
+            <ContentRenderer :value="doc" />
+          </article>
+        </template>
+
+        <template #not-found>
+          <div id="max-post">
+            <h1
+              class="flex gap-3 justify-end items-center !text-32px sm:!text-40px"
+            >
+              <div class="i-iconoir:warning-triangle" />
+              Article Not Found
+            </h1>
+            <hr class="!my-1" />
+            <p class="text-right text-xs">
+              Oops! The article does not exist.<br />
+              It might have been moved or deleted.
+            </p>
+          </div>
+        </template>
       </ContentDoc>
     </div>
   </div>

@@ -66,7 +66,7 @@ const meq = computed<StyleValue>(() => ({
 </script>
 
 <template>
-  <div ref="container" class="main flex items-center overflow-hidden">
+  <main ref="container" class="flex items-center overflow-hidden">
     <div class="relative z-15 flex items-center w-50% h-full rotate-y-60">
       <div class="line left relative overflow-hidden">
         <div class="text-back-shadow flex items-center h-full">
@@ -99,7 +99,7 @@ const meq = computed<StyleValue>(() => ({
       </div>
     </div>
 
-    <div
+    <section
       class="absolute top-0 left-0 z-20 w-full h-full flex items-center justify-center"
       :style="cardStyle"
     >
@@ -115,15 +115,15 @@ const meq = computed<StyleValue>(() => ({
           src="/img/face.png"
           :style="layerHead"
         />
-        <div
+        <h2
           class="greeting absolute top-50% left-0 w-full h-50px sm:h-55px flex items-center justify-center pt-4px bg-black text-white font-bold"
           :style="layerGreeting"
         >
           <span class="text-25px sm:text-35px">Hello! I'm</span>
           <span class="text-purple-600 ml-3 text-35px sm:text-45px">Max</span>
-        </div>
+        </h2>
       </div>
-    </div>
+    </section>
 
     <div
       class="absolute top-50% left-50% z-30 -translate-x-50% -translate-y-50% w-full h-full min-w-1200px"
@@ -132,11 +132,11 @@ const meq = computed<StyleValue>(() => ({
       <div class="fragments-m absolute inset-0" :style="layerFragmentsM"></div>
       <div class="fragments-f absolute inset-0" :style="layerFragmentsF"></div>
     </div>
-  </div>
+  </main>
 </template>
 
 <style scoped lang="scss">
-.main {
+main {
   width: 100vw;
   height: calc(100dvh - 68px);
   perspective: 100px;
