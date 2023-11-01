@@ -17,10 +17,10 @@ const { isLoadingShow } = useLoading();
             </div>
             <div class="hidden sm:block ml-2 pb-2px">
               <p class="text-black dark:text-white font-bold text-sm">
-                Max Lee BK
+                Max Lee
               </p>
               <p class="text-gray-600 dark:text-gray-400 text-xs">
-                Front End Developer
+                Max Your Mind
               </p>
             </div>
           </NuxtLink>
