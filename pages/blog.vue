@@ -1,12 +1,7 @@
 <script setup lang="ts">
-const enter = ref(true);
-const { hide } = useLoading();
+const { isAnimationEnd, hide } = useLoading();
 onMounted(() => {
-  enter.value = false;
-  window.setTimeout(() => {
-    hide();
-    enter.value = true;
-  }, 600);
+  window.setTimeout(hide, 600);
 });
 
 useHead({
@@ -62,7 +57,7 @@ const groupingByYear = computed(() => {
     >
       <h2 class="year absolute top-30px right-0 w-250px sm:w-400px">
         <Transition v-for="i in 10" :key="i" name="fade" appear>
-          <div v-show="enter" class="text-100px sm:text-150px">
+          <div v-show="isAnimationEnd" class="text-100px sm:text-150px">
             {{ yearDate.year }}
           </div>
         </Transition>
@@ -70,36 +65,35 @@ const groupingByYear = computed(() => {
 
       <ul>
         <TransitionGroup name="list" appear>
-          <template
+          <li
             v-for="(article, index) in yearDate.articles"
+            v-show="isAnimationEnd && (!yearDate.hidden || index < 5)"
             :key="article.title"
+            :data-index="index"
+            class="group py-3 cursor-pointer"
           >
-            <li
-              v-show="enter && (!yearDate.hidden || index < 5)"
-              :data-index="index"
-              class="group py-3 cursor-pointer"
+            <NuxtLink
+              :to="article._path"
+              class="block sm:flex items-center duration-200"
             >
-              <NuxtLink
-                :to="article._path"
-                class="block sm:flex items-center duration-200"
-              >
-                <h3
-                  class="mr-2 text-base sm:text-lg text-gray-700 dark:text-#bbb group-hover:text-black dark:group-hover:text-white group-hover:font-bold duration-200"
-                  v-text="article.title"
-                />
-                <span
-                  class="text-sm text-gray-500"
-                  v-text="dateFormatter(article.date)"
-                />
-              </NuxtLink>
-            </li>
-          </template>
+              <h3
+                class="mr-2 text-base sm:text-lg text-gray-700 dark:text-#bbb group-hover:text-black dark:group-hover:text-white group-hover:font-bold duration-200"
+                v-text="article.title"
+              />
+              <span
+                class="text-sm text-gray-500"
+                v-text="dateFormatter(article.date)"
+              />
+            </NuxtLink>
+          </li>
         </TransitionGroup>
       </ul>
 
       <Transition name="fade" appear>
         <button
-          v-show="enter && yearDate.articles.length > 5 && yearDate.hidden"
+          v-show="
+            isAnimationEnd && yearDate.articles.length > 5 && yearDate.hidden
+          "
           class="text-gray-400 hover:text-black dark:hover:text-white duration-200"
           @click="seeMoreYear.push(yearDate.year)"
         >
@@ -120,7 +114,7 @@ ul {
       @for $i from 1 through 50 {
         &:nth-child(#{$i}) {
           @if $i < 6 {
-            transition-delay: #{0.3 + $i * 0.05}s;
+            transition-delay: #{$i * 0.05}s;
           } @else {
             transition-delay: #{($i - 5) * 0.05}s;
           }
@@ -185,7 +179,7 @@ ul {
 .list-enter-active {
   pointer-events: none;
   transition: all 0.5s;
-  transition-delay: 0.8s;
+  transition-delay: 0.5s;
 }
 .list-enter-from {
   opacity: 0;

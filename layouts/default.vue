@@ -1,6 +1,4 @@
-<script setup lang="ts">
-const { isLoadingShow } = useLoading();
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div>
@@ -90,7 +88,7 @@ const { isLoadingShow } = useLoading();
 
     <slot />
 
-    <PageLoading :show="isLoadingShow" />
+    <PageLoading />
   </div>
 </template>
 

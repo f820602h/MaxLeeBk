@@ -1,14 +1,8 @@
 <script setup lang="ts">
-const enter = ref(true);
-const { hide } = useLoading();
+const { isAnimationEnd, hide } = useLoading();
 onMounted(() => {
-  enter.value = false;
-  window.setTimeout(() => {
-    hide();
-    enter.value = true;
-  }, 600);
+  window.setTimeout(hide, 600);
 });
-
 useHead({
   title: "Works - Max Lee",
   meta: [
@@ -101,116 +95,101 @@ const littleWorks = [
 
 <template>
   <main class="max-w-1920px mx-auto py-60px px-24px md:px-48px">
-    <section class="max-w-900px mx-auto pb-60px">
-      <Transition name="slide" appear>
-        <h2
-          v-show="enter"
-          class="text-32px font-bold italic text-black dark:text-white text-center mb-5"
+    <div class="max-w-900px mx-auto pb-60px">
+      <h2
+        class="min-h-48px text-32px font-bold italic text-black dark:text-white text-center mb-5"
+      >
+        <p :class="{ slide: isAnimationEnd }">Main Project</p>
+      </h2>
+
+      <section class="flex justify-between flex-wrap -mx-12px mb-48px">
+        <article
+          v-for="work in mainWorks"
+          :key="work.title"
+          :class="{ slide: isAnimationEnd }"
+          class="works relative w-full md:w-1/2 px-12px mb-24px cursor-pointer group hover:-translate-y-5px duration-550"
         >
-          Main Project
-        </h2>
-      </Transition>
-
-      <article class="flex justify-between flex-wrap -mx-12px mb-48px">
-        <TransitionGroup name="slide" appear>
-          <div
-            v-for="work in mainWorks"
-            v-show="enter"
-            :key="work.title"
-            class="works relative w-full md:w-1/2 px-12px mb-24px cursor-pointer group hover:-translate-y-5px duration-550"
-          >
-            <a :href="work.link" target="_blank">
-              <figure
-                class="relative w-full rounded overflow-hidden mb-1 bg-gray-300 dark:bg-gray-800"
-              >
-                <img
-                  class="absolute top-0 left-0 block w-full"
-                  :src="work.gif"
-                />
-                <img
-                  class="image relative z-10 block w-full duration-550"
-                  :class="{ freeze: !work.gif }"
-                  :src="work.image"
-                />
-              </figure>
-
-              <div class="p-1">
-                <h4
-                  class="text-lg font-bold mb-1 text-gray-700 dark:text-#bbb group-hover:text-black dark:group-hover:text-white duration-350"
-                  v-text="work.title"
-                />
-                <p
-                  class="min-h-40px text-sm text-gray-500 group-hover:text-black dark:group-hover:text-white duration-350"
-                  v-text="work.description"
-                />
-              </div>
-            </a>
-
-            <a
-              :href="work.github"
-              target="_blank"
-              class="github p-4px text-lg text-gray-600 hover:text-black dark:text-#bbb dark:hover:text-white duration-350"
+          <a :href="work.link" target="_blank">
+            <figure
+              class="relative w-full rounded overflow-hidden mb-1 bg-gray-300 dark:bg-gray-800"
             >
-              <div class="i-iconoir:github" />
-            </a>
-          </div>
-        </TransitionGroup>
-      </article>
+              <img class="absolute top-0 left-0 block w-full" :src="work.gif" />
+              <img
+                class="image relative z-10 block w-full duration-550"
+                :class="{ freeze: !work.gif }"
+                :src="work.image"
+              />
+            </figure>
 
-      <Transition name="slide" appear>
-        <h2
-          v-show="enter"
-          class="text-32px font-bold italic text-black dark:text-white text-center mb-5"
+            <div class="p-1">
+              <h4
+                class="text-lg font-bold mb-1 text-gray-700 dark:text-#bbb group-hover:text-black dark:group-hover:text-white duration-350"
+                v-text="work.title"
+              />
+              <p
+                class="min-h-40px text-sm text-gray-500 group-hover:text-black dark:group-hover:text-white duration-350"
+                v-text="work.description"
+              />
+            </div>
+          </a>
+
+          <a
+            :href="work.github"
+            target="_blank"
+            class="github p-4px text-lg text-gray-600 hover:text-black dark:text-#bbb dark:hover:text-white duration-350"
+          >
+            <div class="i-iconoir:github" />
+          </a>
+        </article>
+      </section>
+
+      <h2
+        class="min-h-48px text-32px font-bold italic text-black dark:text-white text-center mb-5"
+      >
+        <p :class="{ slide: isAnimationEnd }">Little Project</p>
+      </h2>
+
+      <section class="flex flex-wrap -mx-12px">
+        <article
+          v-for="work in littleWorks"
+          :key="work.title"
+          :class="{ slide: isAnimationEnd }"
+          class="works relative w-full md:w-1/2 px-12px mb-24px cursor-pointer group hover:-translate-y-5px duration-550"
         >
-          Little Project
-        </h2>
-      </Transition>
-      <article class="flex flex-wrap -mx-12px">
-        <TransitionGroup name="slide" appear>
-          <div
-            v-for="work in littleWorks"
-            v-show="enter"
-            :key="work.title"
-            class="works relative w-full md:w-1/2 px-12px mb-24px cursor-pointer group hover:-translate-y-5px duration-550"
-          >
-            <a :href="work.link" target="_blank">
-              <figure
-                class="relative w-full rounded overflow-hidden mb-1 bg-gray-300 dark:bg-gray-800 duration-200"
-              >
-                <img
-                  class="absolute top-0 left-0 block w-full"
-                  :src="work.gif"
-                />
-                <img
-                  class="image relative z-10 block w-full duration-550"
-                  :class="{ freeze: !work.gif }"
-                  :src="work.image"
-                />
-              </figure>
-
-              <div class="p-1">
-                <h4
-                  class="text-lg font-bold mb-1 text-gray-700 dark:text-#bbb group-hover:text-black dark:group-hover:text-white duration-350"
-                  v-text="work.title"
-                />
-                <p
-                  class="min-h-40px text-sm text-gray-500 group-hover:text-black dark:group-hover:text-white duration-350"
-                  v-text="work.description"
-                />
-              </div>
-            </a>
-
-            <a
-              :href="work.github"
-              target="_blank"
-              class="github p-4px text-lg text-gray-600 hover:text-black dark:text-#bbb dark:hover:text-white duration-350"
+          <a :href="work.link" target="_blank">
+            <figure
+              class="relative w-full rounded overflow-hidden mb-1 bg-gray-300 dark:bg-gray-800 duration-200"
             >
-              <div class="i-iconoir:github" />
-            </a>
-          </div>
-        </TransitionGroup>
-      </article>
-    </section>
+              <img class="absolute top-0 left-0 block w-full" :src="work.gif" />
+              <img
+                class="image relative z-10 block w-full duration-550"
+                :class="{ freeze: !work.gif }"
+                :src="work.image"
+              />
+            </figure>
+
+            <div class="p-1">
+              <h4
+                class="text-lg font-bold mb-1 text-gray-700 dark:text-#bbb group-hover:text-black dark:group-hover:text-white duration-350"
+                v-text="work.title"
+              />
+              <p
+                class="min-h-40px text-sm text-gray-500 group-hover:text-black dark:group-hover:text-white duration-350"
+                v-text="work.description"
+              />
+            </div>
+          </a>
+
+          <a
+            :href="work.github"
+            target="_blank"
+            class="github p-4px text-lg text-gray-600 hover:text-black dark:text-#bbb dark:hover:text-white duration-350"
+          >
+            <div class="i-iconoir:github" />
+          </a>
+        </article>
+      </section>
+    </div>
   </main>
 </template>
 
@@ -251,13 +230,20 @@ const littleWorks = [
   }
 }
 
-.slide-enter-active {
-  pointer-events: none;
-  transition: all 0.5s;
-  transition-delay: 0.5s;
+.slide {
+  animation: slide 1s;
 }
-.slide-enter-from {
-  opacity: 0;
-  transform: translateX(30px) skewX(-6deg);
+
+@keyframes slide {
+  0% {
+    pointer-events: none;
+    opacity: 0;
+    transform: translateX(30px) skewX(-6deg);
+  }
+  100% {
+    pointer-events: unset;
+    opacity: 1;
+    transform: translateX(0) skewX(0);
+  }
 }
 </style>

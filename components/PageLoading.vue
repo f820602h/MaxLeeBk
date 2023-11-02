@@ -1,12 +1,12 @@
 <script setup lang="ts">
-const props = withDefaults(defineProps<{ show: boolean }>(), { show: false });
+const { isLoadingShow, animationEnd } = useLoading();
 </script>
 
 <template>
   <Teleport to="body">
-    <Transition name="loading">
+    <Transition name="loading" @before-leave="animationEnd()">
       <div
-        v-if="props.show"
+        v-show="isLoadingShow"
         class="loading fixed top-0 z-1000 w-screen h-screen bg-white dark:bg-black flex items-center justify-center"
       >
         <div class="loading-circle w-150px h-150px">
