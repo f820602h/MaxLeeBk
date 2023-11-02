@@ -46,7 +46,7 @@ function dateFormatter(date: string) {
 
 <template>
   <div class="max-w-1920px mx-auto py-60px px-24px md:px-48px">
-    <div class="max-w-1000px mx-auto pb-60px">
+    <div class="max-w-1000px mx-auto">
       <NuxtLink
         to="/blog"
         class="inline-block p-1 text-gray-500 hover:text-black dark:hover:text-white duration-150"
@@ -55,7 +55,7 @@ function dateFormatter(date: string) {
       </NuxtLink>
       <ContentDoc :path="`/posts/${postPath}`">
         <template #default="{ doc }">
-          <article id="max-post">
+          <article id="max-post" class="pb-40px">
             <h1 class="!text-32px sm:!text-40px">{{ doc.title }}</h1>
             <span class="text-gray-500 text-sm font-medium">
               {{ dateFormatter(doc.date) }}
@@ -87,32 +87,50 @@ function dateFormatter(date: string) {
         <NuxtLink
           v-if="postNav.data.value?.[0]"
           :to="postNav.data.value[0]._path"
-          class="post-nav w-1/2 p-3 rounded"
+          class="post-nav md:w-1/2 p-3 rounded"
         >
-          <hgroup class="flex items-center">
-            <div class="i-iconoir:arrow-left-circle mr-3" />
-            <h5 class="font-bold">{{ postNav.data.value[0].title }}</h5>
-          </hgroup>
-          <p class="text-xs text-left mt-1">
-            https://maxlee.me{{ postNav.data.value[0]._path }}
-          </p>
+          <div class="hidden md:block">
+            <hgroup class="flex items-center">
+              <div
+                class="i-iconoir:arrow-left-circle flex-shrink-0 duration-200"
+              />
+              <h5 class="font-bold truncate ml-1 duration-200">
+                {{ postNav.data.value[0].title }}
+              </h5>
+            </hgroup>
+            <p class="text-xs text-left mt-1 duration-200">
+              https://maxlee.me{{ postNav.data.value[0]._path }}
+            </p>
+          </div>
+
+          <div class="md:hidden text-gray-500 duration-200">
+            <div class="i-iconoir:arrow-left-circle" />
+          </div>
         </NuxtLink>
         <div v-else class="w-1/2" />
 
-        <div class="line mx-3" />
+        <div class="line hidden md:block mx-3" />
 
         <NuxtLink
           v-if="postNav.data.value?.[1]"
           :to="postNav.data.value[1]._path"
-          class="post-nav w-1/2 p-3 rounded"
+          class="post-nav md:w-1/2 p-3 rounded"
         >
-          <hgroup class="flex justify-end items-center">
-            <h5 class="font-bold">{{ postNav.data.value[1].title }}</h5>
-            <div class="i-iconoir:arrow-right-circle ml-3" />
-          </hgroup>
-          <p class="text-xs text-right mt-1">
-            https://maxlee.me{{ postNav.data.value[1]._path }}
-          </p>
+          <div class="hidden md:block">
+            <hgroup class="flex items-center justify-end">
+              <h5 class="font-bold truncate mr-1 duration-200">
+                {{ postNav.data.value[0].title }}
+              </h5>
+              <div class="i-iconoir:arrow-right-circle flex-shrink-0 duration-200" />
+            </hgroup>
+            <p class="text-xs text-right mt-1 duration-200">
+              https://maxlee.me{{ postNav.data.value[0]._path }}
+            </p>
+          </div>
+
+          <div class="md:hidden text-gray-500 duration-200">
+            <div class="i-iconoir:arrow-right-circle" />
+          </div>
         </NuxtLink>
         <div v-else class="w-1/2" />
       </div>
@@ -240,9 +258,8 @@ $img-bg-color-invert: white;
     font-size: 14px;
     padding: 3px 4px;
     margin: 0 2px;
-    word-break: keep-all;
-    @extend %rounded;
     color: rgb(196, 127, 0);
+    @extend %rounded;
   }
 
   pre {
@@ -433,20 +450,23 @@ $img-bg-color-invert: white;
 
 .post-nav-group {
   a {
-    color: $box-border-color;
-    transition: 0.2s;
+    flex: 0 0 1;
+    color: #bbb;
+    border: 1px solid $box-border-color;
 
     p {
       color: $box-border-color;
-      transition: 0.2s;
     }
 
     &:hover {
-      color: $highlight-color;
+      background: $box-bg-color;
+
+      * {
+        color: $highlight-color;
+      }
 
       p {
         color: #6b7280;
-        transition: 0.2s;
       }
     }
   }
@@ -459,14 +479,19 @@ $img-bg-color-invert: white;
 
 .dark-mode .post-nav-group {
   a {
-    color: $box-border-color-invert;
+    color: #363636;
+    border: 1px solid $box-border-color-invert;
 
     p {
       color: $box-border-color-invert;
     }
 
     &:hover {
-      color: $highlight-color-invert;
+      background: $box-bg-color-invert;
+
+      * {
+        color: $highlight-color-invert;
+      }
 
       p {
         color: #6b7280;

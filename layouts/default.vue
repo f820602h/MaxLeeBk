@@ -2,7 +2,7 @@
 
 <template>
   <div>
-    <header class="sticky top-0 z-500">
+    <header class="fixed top-0 z-500 w-full">
       <div
         class="flex items-center justify-between max-w-1920px mx-auto h-68px px-24px md:px-48px"
       >
@@ -86,7 +86,9 @@
       </div>
     </header>
 
-    <slot />
+    <div class="pt-68px">
+      <slot />
+    </div>
 
     <PageLoading />
   </div>
