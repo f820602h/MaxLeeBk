@@ -19,7 +19,10 @@ useHead({
 });
 
 const { data } = await useAsyncData("blog", () =>
-  queryContent("/posts").sort({ date: -1, $numeric: true }).find(),
+  queryContent("/posts")
+    .sort({ date: -1, $numeric: true })
+    .only(["_path", "title", "date"])
+    .find(),
 );
 
 const seeMoreYear = ref<string[]>([]);

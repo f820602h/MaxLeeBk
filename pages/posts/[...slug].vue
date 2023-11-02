@@ -12,12 +12,15 @@ const postPath = computed(() => {
 });
 
 const { data } = await useAsyncData(postPath.value, () =>
-  queryContent(`/posts/${postPath.value}`)
-    .findOne()
-    .catch(() => {
-      useError();
-    }),
+  queryContent(`/posts/${postPath.value}`).findOne(),
 );
+const postNav = await useAsyncData(`${postPath.value}-nav`, () =>
+  queryContent()
+    .sort({ date: 1, $numeric: true })
+    .only(["_path", "title"])
+    .findSurround(`/posts/${postPath.value}`),
+);
+
 useHead({
   title: `${data.value?.title} - Max Lee`,
   meta: [
@@ -79,6 +82,40 @@ function dateFormatter(date: string) {
           </div>
         </template>
       </ContentDoc>
+
+      <div class="post-nav-group flex justify-between items-center mt-80px">
+        <NuxtLink
+          v-if="postNav.data.value?.[0]"
+          :to="postNav.data.value[0]._path"
+          class="post-nav w-1/2 p-3 rounded"
+        >
+          <hgroup class="flex items-center">
+            <div class="i-iconoir:arrow-left-circle mr-3" />
+            <h5 class="font-bold">{{ postNav.data.value[0].title }}</h5>
+          </hgroup>
+          <p class="text-xs text-left mt-1">
+            https://maxlee.me{{ postNav.data.value[0]._path }}
+          </p>
+        </NuxtLink>
+        <div v-else class="w-1/2" />
+
+        <div class="line mx-3" />
+
+        <NuxtLink
+          v-if="postNav.data.value?.[1]"
+          :to="postNav.data.value[1]._path"
+          class="post-nav w-1/2 p-3 rounded"
+        >
+          <hgroup class="flex justify-end items-center">
+            <h5 class="font-bold">{{ postNav.data.value[1].title }}</h5>
+            <div class="i-iconoir:arrow-right-circle ml-3" />
+          </hgroup>
+          <p class="text-xs text-right mt-1">
+            https://maxlee.me{{ postNav.data.value[1]._path }}
+          </p>
+        </NuxtLink>
+        <div v-else class="w-1/2" />
+      </div>
     </div>
   </div>
 </template>
@@ -391,6 +428,37 @@ $img-bg-color-invert: white;
         border-right: 1px solid $box-border-color-invert;
       }
     }
+  }
+}
+
+.post-nav-group {
+  a {
+    color: $box-border-color;
+    transition: 0.2s;
+
+    &:hover {
+      color: $highlight-color;
+
+      p {
+        color: #6b7280;
+        transition: 0.2s;
+      }
+    }
+  }
+
+  .line {
+    height: 28px;
+    border-right: 1px solid $box-border-color;
+  }
+}
+
+.dark-mode .post-nav-group {
+  a {
+    color: $box-border-color-invert;
+  }
+
+  .line {
+    border-right: 1px solid $box-border-color-invert;
   }
 }
 </style>
