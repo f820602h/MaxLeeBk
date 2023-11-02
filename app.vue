@@ -12,7 +12,7 @@ body {
   min-width: 360px;
   font-family: "Roboto", sans-serif;
   color: #393939;
-  background: #f1f1f1;
+  background: #f9f9f9;
   transition:
     color 0.2s,
     background 0.2s;
@@ -37,17 +37,5 @@ main {
 .page-leave-to {
   opacity: 0;
   filter: blur(1rem);
-}
-</style>
-
-<style scoped lang="scss">
-header {
-  background: rgba(241, 241, 241, 0.5);
-  backdrop-filter: blur(5px);
-  transition: background 0.2s;
-}
-
-.dark-mode header {
-  background: rgba(17, 17, 17, 0.5);
 }
 </style>

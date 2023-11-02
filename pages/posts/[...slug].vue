@@ -92,11 +92,11 @@ $highlight-color-invert: white;
 $highlight-light-color: #292929;
 $highlight-light-color-invert: #ddd;
 
-$box-bg-color: #e3e3e3;
-$box-bg-color-invert: #222;
+$box-bg-color: #efefef;
+$box-bg-color-invert: #1a1a1a;
 
-$box-bg-light-color: #eee;
-$box-bg-light-color-invert: #171717;
+$box-bg-light-color: #f6f6f6;
+$box-bg-light-color-invert: #151515;
 
 $box-border-color: #d9d9d9;
 $box-border-color-invert: #333;
@@ -115,6 +115,13 @@ $img-bg-color-invert: white;
 }
 
 #max-post {
+  * {
+    transition:
+      color 0.2s,
+      background-color 0.2s,
+      border 0.2s;
+  }
+
   :is(h1, h2, h3, h4, h5, h6) {
     font-weight: 900;
     line-height: 1.5;
@@ -183,6 +190,13 @@ $img-bg-color-invert: white;
     }
   }
 
+  br {
+    content: "." !important;
+    display: block !important;
+    height: 12px;
+    margin: 0 !important;
+  }
+
   code {
     font-family: $code-font;
     background: $box-bg-color;
@@ -191,6 +205,7 @@ $img-bg-color-invert: white;
     margin: 0 2px;
     word-break: keep-all;
     @extend %rounded;
+    color: rgb(196, 127, 0);
   }
 
   pre {
@@ -217,7 +232,7 @@ $img-bg-color-invert: white;
   }
 
   blockquote {
-    margin: 20px 0;
+    margin: 16px 0 4px;
     padding: 16px;
     border: 1px solid $box-border-color;
     color: $highlight-color;

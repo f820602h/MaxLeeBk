@@ -94,7 +94,7 @@
 
 <style scoped lang="scss">
 header {
-  background: rgba(241, 241, 241, 0.5);
+  background: rgba(249, 249, 249, 0.5);
   backdrop-filter: blur(5px);
   transition: background 0.2s;
 }

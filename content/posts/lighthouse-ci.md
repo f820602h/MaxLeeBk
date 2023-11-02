@@ -21,7 +21,7 @@ $ npm run <your script>
 
 ## **Configuration**
 
-```javascript
+```js
 // lighthouserc.js
 
 module.exports = {
