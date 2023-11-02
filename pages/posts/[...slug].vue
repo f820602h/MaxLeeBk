@@ -436,6 +436,11 @@ $img-bg-color-invert: white;
     color: $box-border-color;
     transition: 0.2s;
 
+    p {
+      color: $box-border-color;
+      transition: 0.2s;
+    }
+
     &:hover {
       color: $highlight-color;
 
@@ -455,6 +460,18 @@ $img-bg-color-invert: white;
 .dark-mode .post-nav-group {
   a {
     color: $box-border-color-invert;
+
+    p {
+      color: $box-border-color-invert;
+    }
+
+    &:hover {
+      color: $highlight-color-invert;
+
+      p {
+        color: #6b7280;
+      }
+    }
   }
 
   .line {
