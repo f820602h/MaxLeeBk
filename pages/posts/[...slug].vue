@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { hide } = useLoading();
 onMounted(() => {
-  window.setTimeout(hide, 500);
+  window.setTimeout(hide, 600);
 });
 
 const route = useRoute();
@@ -45,7 +45,7 @@ function dateFormatter(date: string) {
 </script>
 
 <template>
-  <div class="max-w-1920px mx-auto py-60px px-24px md:px-48px">
+  <main class="max-w-1920px mx-auto py-60px px-24px md:px-48px">
     <div class="max-w-1000px mx-auto">
       <NuxtLink
         to="/blog"
@@ -83,18 +83,18 @@ function dateFormatter(date: string) {
         </template>
       </ContentDoc>
 
-      <div class="post-nav-group flex justify-between items-center mt-80px">
+      <div
+        class="post-nav-group flex justify-between items-center gap-4 mt-80px"
+      >
         <NuxtLink
           v-if="postNav.data.value?.[0]"
           :to="postNav.data.value[0]._path"
-          class="post-nav md:w-1/2 p-3 rounded"
+          class="post-nav md:w-1/2 p-3 rounded duration-200"
         >
           <div class="hidden md:block">
             <hgroup class="flex items-center">
-              <div
-                class="i-iconoir:arrow-left-circle flex-shrink-0 duration-200"
-              />
-              <h5 class="font-bold truncate ml-1 duration-200">
+              <div class="i-iconoir:arrow-left-circle flex-shrink-0" />
+              <h5 class="font-bold truncate ml-1">
                 {{ postNav.data.value[0].title }}
               </h5>
             </hgroup>
@@ -103,39 +103,39 @@ function dateFormatter(date: string) {
             </p>
           </div>
 
-          <div class="md:hidden text-gray-500 duration-200">
+          <div class="flex items-center gap-1 md:hidden">
             <div class="i-iconoir:arrow-left-circle" />
+            <div class="text-sm">Prev</div>
           </div>
         </NuxtLink>
         <div v-else class="w-1/2" />
 
-        <div class="line hidden md:block mx-3" />
-
         <NuxtLink
           v-if="postNav.data.value?.[1]"
           :to="postNav.data.value[1]._path"
-          class="post-nav md:w-1/2 p-3 rounded"
+          class="post-nav group md:w-1/2 p-3 rounded duration-200"
         >
           <div class="hidden md:block">
             <hgroup class="flex items-center justify-end">
-              <h5 class="font-bold truncate mr-1 duration-200">
-                {{ postNav.data.value[0].title }}
+              <h5 class="font-bold truncate mr-1">
+                {{ postNav.data.value[1].title }}
               </h5>
-              <div class="i-iconoir:arrow-right-circle flex-shrink-0 duration-200" />
+              <div class="i-iconoir:arrow-right-circle flex-shrink-0" />
             </hgroup>
             <p class="text-xs text-right mt-1 duration-200">
-              https://maxlee.me{{ postNav.data.value[0]._path }}
+              https://maxlee.me{{ postNav.data.value[1]._path }}
             </p>
           </div>
 
-          <div class="md:hidden text-gray-500 duration-200">
+          <div class="flex items-center gap-1 md:hidden">
+            <div class="text-sm">Next</div>
             <div class="i-iconoir:arrow-right-circle" />
           </div>
         </NuxtLink>
         <div v-else class="w-1/2" />
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <style lang="scss">
@@ -459,21 +459,13 @@ $img-bg-color-invert: white;
     }
 
     &:hover {
+      color: $highlight-color;
       background: $box-bg-color;
-
-      * {
-        color: $highlight-color;
-      }
 
       p {
         color: #6b7280;
       }
     }
-  }
-
-  .line {
-    height: 28px;
-    border-right: 1px solid $box-border-color;
   }
 }
 
@@ -487,20 +479,13 @@ $img-bg-color-invert: white;
     }
 
     &:hover {
+      color: $highlight-color-invert;
       background: $box-bg-color-invert;
-
-      * {
-        color: $highlight-color-invert;
-      }
 
       p {
         color: #6b7280;
       }
     }
-  }
-
-  .line {
-    border-right: 1px solid $box-border-color-invert;
   }
 }
 </style>
