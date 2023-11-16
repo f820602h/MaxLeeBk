@@ -38,7 +38,6 @@ body {
 
 main {
   min-width: 360px;
-  overflow: hidden;
 }
 
 .dark-mode,
