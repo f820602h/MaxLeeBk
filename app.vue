@@ -31,7 +31,6 @@ body {
   font-family: "Roboto", sans-serif;
   color: #393939;
   background: #f9f9f9;
-  overflow: hidden;
   transition:
     color 0.2s,
     background 0.2s;
@@ -39,6 +38,7 @@ body {
 
 main {
   min-width: 360px;
+  overflow: hidden;
 }
 
 .dark-mode,
