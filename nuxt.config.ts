@@ -92,7 +92,6 @@ export default {
         },
       ],
     },
-    pageTransition: { name: "page", mode: "out-in" },
   },
   nitro: {
     typescript: {

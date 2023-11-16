@@ -3,20 +3,24 @@ const props = defineProps<{ url: string }>();
 
 const config = useRuntimeConfig();
 
-const { data } = await useAsyncData(props.url, () =>
-  fetch("https://api.linkpreview.net/", {
-    method: "POST",
-    headers: { "X-Linkpreview-Api-Key": config.public.linkApiKay },
-    mode: "cors",
-    body: JSON.stringify({ q: props.url }),
-  }).then((res) => res.json()),
+const { data, pending } = await useAsyncData(
+  props.url,
+  () =>
+    fetch("https://api.linkpreview.net/", {
+      method: "POST",
+      headers: { "X-Linkpreview-Api-Key": config.public.linkApiKay },
+      mode: "cors",
+      body: JSON.stringify({ q: props.url }),
+    }).then((res) => res.json()),
+  { lazy: true, default: () => ({}) },
 );
 </script>
 
 <template>
   <div class="my-12px">
+    <a v-if="!pending && !data.title" :href="props.url">{{ props.url }}</a>
     <a
-      v-if="data.title"
+      v-else
       :href="props.url"
       class="preview flex justify-between"
       target="_blank"
@@ -24,11 +28,13 @@ const { data } = await useAsyncData(props.url, () =>
       <div class="flex gap-2 px-2 py-2">
         <div class="i-iconoir:link relative top-1 -rotate-45 text-sm" />
         <div>
-          <h6 class="!m-0 !text-base !font-bold">{{ data.title }}</h6>
+          <h6 class="!m-0 !text-base !font-bold">
+            {{ data.title || props.url }}
+          </h6>
           <p
             class="!min-h-40px !my-2px !text-sm !leading-20px !text-gray-500 !dark:text-gray-400"
           >
-            {{ data.description }}
+            {{ data.description || `Go to external link ${props.url}` }}
           </p>
           <span class="!m-0 !text-xs !text-gray-400 !dark:text-gray-600">{{
             props.url
@@ -39,8 +45,6 @@ const { data } = await useAsyncData(props.url, () =>
         <img :src="data.image" :alt="data.title" class="!m-0 !bg-transparent" />
       </div>
     </a>
-
-    <a v-else :href="props.url">{{ props.url }}</a>
   </div>
 </template>
 

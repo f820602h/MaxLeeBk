@@ -65,6 +65,7 @@ text {
   }
 }
 
+.loading-enter-active,
 .loading-leave-active {
   transition: opacity 0.5s;
 }

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { hide } = useLoading();
 onMounted(() => {
-  window.setTimeout(hide, 600);
+  window.setTimeout(hide, 1000);
 });
 
 const route = useRoute();
@@ -55,15 +55,67 @@ function dateFormatter(date: string) {
       </NuxtLink>
       <ContentDoc :path="`/posts/${postPath}`">
         <template #default="{ doc }">
-          <article id="max-post" class="pb-40px">
-            <h1 class="!text-32px sm:!text-40px">{{ doc.title }}</h1>
-            <span class="text-gray-500 text-sm font-medium">
-              {{ dateFormatter(doc.date) }}
-            </span>
-            <span class="text-gray-500 text-sm font-medium ml-3">Max Lee</span>
+          <article id="max-post" class="pb-120px">
+            <hgroup>
+              <h1 class="!text-32px sm:!text-40px">{{ doc.title }}</h1>
+              <div class="text-gray-500 text-sm font-medium">
+                <span>{{ dateFormatter(doc.date) }}</span>
+                <span class="ml-3"> Max Lee </span>
+              </div>
+            </hgroup>
             <hr />
             <ContentRenderer :value="doc" />
           </article>
+
+          <div class="post-nav-group flex justify-between items-center gap-4">
+            <NuxtLink
+              v-if="postNav.data.value?.[0]"
+              :to="postNav.data.value[0]._path"
+              class="post-nav md:w-1/2 p-3 rounded duration-200"
+            >
+              <div class="hidden md:block">
+                <hgroup class="flex items-center">
+                  <div class="i-iconoir:arrow-left-circle flex-shrink-0" />
+                  <h5 class="font-bold truncate ml-1">
+                    {{ postNav.data.value[0].title }}
+                  </h5>
+                </hgroup>
+                <p class="text-xs text-left mt-1 duration-200">
+                  https://maxlee.me{{ postNav.data.value[0]._path }}
+                </p>
+              </div>
+
+              <div class="flex items-center gap-1 md:hidden">
+                <div class="i-iconoir:arrow-left-circle" />
+                <div class="text-sm">Prev</div>
+              </div>
+            </NuxtLink>
+            <div v-else class="w-1/2" />
+
+            <NuxtLink
+              v-if="postNav.data.value?.[1]"
+              :to="postNav.data.value[1]._path"
+              class="post-nav group md:w-1/2 p-3 rounded duration-200"
+            >
+              <div class="hidden md:block">
+                <hgroup class="flex items-center justify-end">
+                  <h5 class="font-bold truncate mr-1">
+                    {{ postNav.data.value[1].title }}
+                  </h5>
+                  <div class="i-iconoir:arrow-right-circle flex-shrink-0" />
+                </hgroup>
+                <p class="text-xs text-right mt-1 duration-200">
+                  https://maxlee.me{{ postNav.data.value[1]._path }}
+                </p>
+              </div>
+
+              <div class="flex items-center gap-1 md:hidden">
+                <div class="text-sm">Next</div>
+                <div class="i-iconoir:arrow-right-circle" />
+              </div>
+            </NuxtLink>
+            <div v-else class="w-1/2" />
+          </div>
         </template>
 
         <template #not-found>
@@ -82,58 +134,6 @@ function dateFormatter(date: string) {
           </div>
         </template>
       </ContentDoc>
-
-      <div
-        class="post-nav-group flex justify-between items-center gap-4 mt-80px"
-      >
-        <NuxtLink
-          v-if="postNav.data.value?.[0]"
-          :to="postNav.data.value[0]._path"
-          class="post-nav md:w-1/2 p-3 rounded duration-200"
-        >
-          <div class="hidden md:block">
-            <hgroup class="flex items-center">
-              <div class="i-iconoir:arrow-left-circle flex-shrink-0" />
-              <h5 class="font-bold truncate ml-1">
-                {{ postNav.data.value[0].title }}
-              </h5>
-            </hgroup>
-            <p class="text-xs text-left mt-1 duration-200">
-              https://maxlee.me{{ postNav.data.value[0]._path }}
-            </p>
-          </div>
-
-          <div class="flex items-center gap-1 md:hidden">
-            <div class="i-iconoir:arrow-left-circle" />
-            <div class="text-sm">Prev</div>
-          </div>
-        </NuxtLink>
-        <div v-else class="w-1/2" />
-
-        <NuxtLink
-          v-if="postNav.data.value?.[1]"
-          :to="postNav.data.value[1]._path"
-          class="post-nav group md:w-1/2 p-3 rounded duration-200"
-        >
-          <div class="hidden md:block">
-            <hgroup class="flex items-center justify-end">
-              <h5 class="font-bold truncate mr-1">
-                {{ postNav.data.value[1].title }}
-              </h5>
-              <div class="i-iconoir:arrow-right-circle flex-shrink-0" />
-            </hgroup>
-            <p class="text-xs text-right mt-1 duration-200">
-              https://maxlee.me{{ postNav.data.value[1]._path }}
-            </p>
-          </div>
-
-          <div class="flex items-center gap-1 md:hidden">
-            <div class="text-sm">Next</div>
-            <div class="i-iconoir:arrow-right-circle" />
-          </div>
-        </NuxtLink>
-        <div v-else class="w-1/2" />
-      </div>
     </div>
   </main>
 </template>
@@ -296,6 +296,11 @@ $img-bg-color-invert: white;
     p {
       margin: 0;
       font-size: 14px;
+    }
+
+    ol,
+    ul {
+      margin: 8px 0;
     }
   }
 

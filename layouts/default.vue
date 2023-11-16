@@ -1,4 +1,29 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { VueSurf } from "vue-surf";
+const colorMode = useColorMode();
+
+const waveColor = computed<string>(() => {
+  return colorMode.value === "dark" ? "#fff" : "#000";
+});
+
+const color1 = computed(() => ({
+  name: "myGradient1",
+  rotate: 90,
+  steps: [
+    { offset: 0, color: waveColor.value, opacity: 0.07 },
+    { offset: 1, color: waveColor.value, opacity: 0 },
+  ],
+}));
+
+const color2 = computed(() => ({
+  name: "myGradient2",
+  rotate: 90,
+  steps: [
+    { offset: 0, color: waveColor.value, opacity: 0.05 },
+    { offset: 1, color: waveColor.value, opacity: 0 },
+  ],
+}));
+</script>
 
 <template>
   <div>
@@ -6,23 +31,23 @@
       <div
         class="flex items-center justify-between max-w-1920px mx-auto h-68px px-24px md:px-48px"
       >
-        <h1 class="pt-1">
+        <hgroup class="pt-1">
           <NuxtLink href="/" class="flex items-center" focusable="false">
             <div
               class="w-32px h-32px sm:w-50px sm:h-50px brightness-55 dark:brightness-100"
             >
               <img src="/img/logo.svg" alt="max.lee" />
             </div>
-            <div class="hidden sm:block ml-2 pb-2px">
-              <p class="text-black dark:text-white font-bold text-sm">
+            <h2 class="hidden sm:block ml-2 pb-2px">
+              <p class="text-black dark:text-white font-black text-sm">
                 Max Lee
               </p>
               <p class="text-gray-600 dark:text-gray-400 text-xs">
                 Max Your Mind
               </p>
-            </div>
+            </h2>
           </NuxtLink>
-        </h1>
+        </hgroup>
 
         <nav>
           <ul class="flex items-center gap-5">
@@ -30,7 +55,7 @@
               class="text-gray-700 hover:text-black dark:text-#bbb hover:dark:text-white duration-150"
             >
               <NuxtLink
-                to="/blog"
+                to="/about"
                 class="p-2px text-sm font-bold"
                 title="About"
               >
@@ -86,11 +111,47 @@
       </div>
     </header>
 
-    <div class="pt-68px">
+    <div class="relative pt-68px">
       <slot />
     </div>
 
     <PageLoading />
+
+    <Teleport to="body">
+      <ClientOnly>
+        <div class="fixed top-80% left-0 w-full">
+          <VueSurf
+            v-if="$route.path !== '/' && !$route.path.includes('/posts')"
+            class="top-50px"
+            width="100%"
+            :marquee-speed="5"
+            :apexes-series="[
+              [
+                [0, 60],
+                [500, 30],
+                [500, 50],
+              ],
+            ]"
+            :color="color1"
+          />
+          <VueSurf
+            v-if="$route.path !== '/' && !$route.path.includes('/posts')"
+            width="100%"
+            :marquee-speed="3"
+            :apexes-series="[
+              [
+                [0, 20],
+                [500, 80],
+                [500, 40],
+                [500, 60],
+                [500, 20],
+              ],
+            ]"
+            :color="color2"
+          />
+        </div>
+      </ClientOnly>
+    </Teleport>
   </div>
 </template>
 

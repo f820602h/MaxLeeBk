@@ -38,7 +38,7 @@ GetBoundingClientRect 可以使我們取得 Element 元素的寬高以及相對�
 
 其實剛剛介紹的眾多屬性，相信大家或多或少都有使用過，尤其在一些捲動事件中常常會出現它們的身影，不過在今天之後，你使用它們的機會可能會漸漸減少了。
 
-`getBoundingClientRect` 的使用方式非常簡單，它屬於 Element 的原生 method，直接互叫即可：
+`getBoundingClientRect` 的使用方式非常簡單，它屬於 Element 的原生 method，直接呼叫即可：
 
 ```javascript
 const div = document.querySelector("div");

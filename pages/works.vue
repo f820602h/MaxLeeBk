@@ -1,8 +1,9 @@
 <script setup lang="ts">
 const { isAnimationEnd, hide } = useLoading();
 onMounted(() => {
-  window.setTimeout(hide, 600);
+  window.setTimeout(hide, 1000);
 });
+
 useHead({
   title: "Works - Max Lee",
   meta: [
@@ -91,103 +92,69 @@ const littleWorks = [
     github: "https://github.com/f820602h/Max-Persona",
   },
 ];
+
+const works = {
+  "Main Project": mainWorks,
+  "Little Project": littleWorks,
+};
 </script>
 
 <template>
   <main class="max-w-1920px mx-auto py-60px px-24px md:px-48px">
-    <div class="max-w-900px mx-auto pb-60px">
-      <h2
-        class="min-h-48px text-32px font-bold italic text-black dark:text-white text-center mb-5"
-      >
-        <p :class="{ slide: isAnimationEnd }">Main Project</p>
-      </h2>
-
-      <section class="flex justify-between flex-wrap -mx-12px mb-48px">
-        <article
-          v-for="work in mainWorks"
-          :key="work.title"
-          :class="{ slide: isAnimationEnd }"
-          class="works relative w-full md:w-1/2 px-12px mb-24px cursor-pointer group hover:-translate-y-5px duration-550"
+    <div class="max-w-900px mx-auto">
+      <section v-for="(list, name) in works" :key="name">
+        <h2
+          class="min-h-48px mb-5 text-32px font-black italic text-center text-black dark:text-white"
         >
-          <a :href="work.link" target="_blank">
-            <figure
-              class="relative w-full rounded overflow-hidden mb-1 bg-gray-300 dark:bg-gray-800"
-            >
-              <img class="absolute top-0 left-0 block w-full" :src="work.gif" />
-              <img
-                class="image relative z-10 block w-full duration-550"
-                :class="{ freeze: !work.gif }"
-                :src="work.image"
-              />
-            </figure>
+          <p :class="{ slide: isAnimationEnd }">{{ name }}</p>
+        </h2>
 
-            <div class="p-1">
-              <h4
-                class="text-lg font-bold mb-1 text-gray-700 dark:text-#bbb group-hover:text-black dark:group-hover:text-white duration-350"
-                v-text="work.title"
-              />
-              <p
-                class="min-h-40px text-sm text-gray-500 group-hover:text-black dark:group-hover:text-white duration-350"
-                v-text="work.description"
-              />
-            </div>
-          </a>
-
-          <a
-            :href="work.github"
-            target="_blank"
-            class="github p-4px text-lg text-gray-600 hover:text-black dark:text-#bbb dark:hover:text-white duration-350"
+        <ul class="flex justify-between flex-wrap -mx-12px mb-48px">
+          <li
+            v-for="work in list"
+            :key="work.title"
+            :class="{
+              slide: isAnimationEnd,
+              'lg:w-1/3': name === 'Little Project',
+            }"
+            class="works relative w-full md:w-1/2 px-12px mb-24px cursor-pointer group hover:-translate-y-5px"
           >
-            <div class="i-iconoir:github" />
-          </a>
-        </article>
-      </section>
+            <a :href="work.link" target="_blank" class="block">
+              <figure
+                class="relative w-full rounded overflow-hidden mb-1 bg-gray-300 dark:bg-gray-800"
+              >
+                <img
+                  class="absolute top-0 left-0 block w-full"
+                  :src="work.gif"
+                />
+                <img
+                  class="image relative z-10 block w-full duration-550"
+                  :class="{ freeze: !work.gif }"
+                  :src="work.image"
+                />
+              </figure>
 
-      <h2
-        class="min-h-48px text-32px font-bold italic text-black dark:text-white text-center mb-5"
-      >
-        <p :class="{ slide: isAnimationEnd }">Little Project</p>
-      </h2>
+              <div class="p-1">
+                <h4
+                  class="text-lg font-bold mb-1 text-gray-700 dark:text-#bbb group-hover:text-black dark:group-hover:text-white duration-350"
+                  v-text="work.title"
+                />
+                <p
+                  class="min-h-40px text-sm text-gray-500 group-hover:text-black dark:group-hover:text-white duration-350"
+                  v-text="work.description"
+                />
+              </div>
+            </a>
 
-      <section class="flex flex-wrap -mx-12px">
-        <article
-          v-for="work in littleWorks"
-          :key="work.title"
-          :class="{ slide: isAnimationEnd }"
-          class="works relative w-full md:w-1/2 px-12px mb-24px cursor-pointer group hover:-translate-y-5px duration-550"
-        >
-          <a :href="work.link" target="_blank">
-            <figure
-              class="relative w-full rounded overflow-hidden mb-1 bg-gray-300 dark:bg-gray-800 duration-200"
+            <a
+              :href="work.github"
+              target="_blank"
+              class="github p-4px text-lg text-gray-600 hover:text-black dark:text-#bbb dark:hover:text-white duration-350"
             >
-              <img class="absolute top-0 left-0 block w-full" :src="work.gif" />
-              <img
-                class="image relative z-10 block w-full duration-550"
-                :class="{ freeze: !work.gif }"
-                :src="work.image"
-              />
-            </figure>
-
-            <div class="p-1">
-              <h4
-                class="text-lg font-bold mb-1 text-gray-700 dark:text-#bbb group-hover:text-black dark:group-hover:text-white duration-350"
-                v-text="work.title"
-              />
-              <p
-                class="min-h-40px text-sm text-gray-500 group-hover:text-black dark:group-hover:text-white duration-350"
-                v-text="work.description"
-              />
-            </div>
-          </a>
-
-          <a
-            :href="work.github"
-            target="_blank"
-            class="github p-4px text-lg text-gray-600 hover:text-black dark:text-#bbb dark:hover:text-white duration-350"
-          >
-            <div class="i-iconoir:github" />
-          </a>
-        </article>
+              <div class="i-iconoir:github" />
+            </a>
+          </li>
+        </ul>
       </section>
     </div>
   </main>
@@ -195,8 +162,10 @@ const littleWorks = [
 
 <style scoped lang="scss">
 .works {
+  transition: transform 0.55s;
+
   figure {
-    filter: grayscale(30%);
+    filter: grayscale(50%);
     aspect-ratio: 2/1;
 
     .image {

@@ -6,7 +6,7 @@ const parallax = reactive(useParallax(container));
 
 const { hide } = useLoading();
 onMounted(() => {
-  window.setTimeout(hide, 800);
+  window.setTimeout(hide, 1000);
 });
 
 const cardStyle = computed<StyleValue>(() => ({

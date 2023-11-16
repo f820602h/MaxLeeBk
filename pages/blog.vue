@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { isAnimationEnd, hide } = useLoading();
 onMounted(() => {
-  window.setTimeout(hide, 600);
+  window.setTimeout(hide, 1000);
 });
 
 useHead({

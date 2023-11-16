@@ -26,7 +26,7 @@ navigator.getBattery().then((battery) => {
 });
 ```
 
-可以看到，互叫後 `getBattery` 回傳的是 Promise，其被 `resolve` 後才會傳遞 BatteryManager 給我們，所以我們要用 `then` 去串接取得。
+可以看到，呼叫後 `getBattery` 回傳的是 Promise，其被 `resolve` 後才會傳遞 BatteryManager 給我們，所以我們要用 `then` 去串接取得。
 
 <br/>
 

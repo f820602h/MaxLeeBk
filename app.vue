@@ -1,18 +1,37 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const { show, hide } = useLoading();
+</script>
 
 <template>
-  <NuxtLayout>
-    <NuxtPage />
-  </NuxtLayout>
+  <StagePlaySpotlight>
+    <NuxtLayout>
+      <NuxtPage
+        :transition="{
+          name: 'page',
+          mode: 'out-in',
+          appear: true,
+          onEnter: (el, done) => {
+            hide();
+            done();
+          },
+          onBeforeLeave(el) {
+            show();
+          },
+        }"
+      />
+    </NuxtLayout>
+  </StagePlaySpotlight>
 </template>
 
 <style lang="scss">
 html,
 body {
   min-width: 360px;
+  min-height: 100dvh;
   font-family: "Roboto", sans-serif;
   color: #393939;
   background: #f9f9f9;
+  overflow: hidden;
   transition:
     color 0.2s,
     background 0.2s;
@@ -20,7 +39,6 @@ body {
 
 main {
   min-width: 360px;
-  overflow: hidden;
 }
 
 .dark-mode,
@@ -31,8 +49,7 @@ main {
 
 .page-enter-active,
 .page-leave-active {
-  transition: all 0.5s;
-  transition-delay: 0.5s;
+  transition: all 1s;
 }
 .page-enter-from,
 .page-leave-to {
