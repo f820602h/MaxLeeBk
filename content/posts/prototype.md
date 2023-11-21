@@ -131,8 +131,8 @@ Car {
 ```
 
 `Car.prototype` 我們可以稱之為 `Car` 的原型，在原型中會有兩個固定的訪問器屬性：
-- **\_\_proto\_\_：**後面會再介紹，這裡暫時先跳過。
-- **constructor：**中文翻譯就是建構函式，有趣的是它的值就是原本的 `Car`，所以會造成一個很特別的現象。
+- **\_\_proto\_\_：** 後面會再介紹，這裡暫時先跳過。
+- **constructor：** 中文翻譯就是建構函式，有趣的是它的值就是原本的 `Car`，所以會造成一個很特別的現象。
 
 ```javascript
 console.log(Car === Car.prototype.constructor); // true
