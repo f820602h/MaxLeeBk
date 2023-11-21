@@ -13,6 +13,10 @@ export default defineEventHandler(async (event) => {
     changefreq: "monthly",
   });
   sitemap.write({
+    url: "/about",
+    changefreq: "monthly",
+  });
+  sitemap.write({
     url: "/blog",
     changefreq: "monthly",
   });
