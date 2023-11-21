@@ -93,14 +93,14 @@ function Car(wheel, door, fuel) {
   this.door = door,
   this.fuel = fuel
 };
-let truck = new Car(6, 2, "柴油");
+let Truck = new Car(6, 2, "柴油");
 ```
 
 可以看到 `Car` 其實只是一個普通的函式，但如果你用 `new` 運算子來呼叫它的話，JavaScript 就會將它視為建構函式。
-而 `truck` 就是透過 `Car` 新建出來的實例，印出來會長這樣：
+而 `Truck` 就是透過 `Car` 新建出來的實例，印出來會長這樣：
 
 ```javascript
-// console.log(truck)
+// console.log(Truck)
 Car {
   door: 2
   fuel: "柴油"
@@ -109,7 +109,7 @@ Car {
 }
 ```
 
-你會發現 `Car` 確實依據我們傳入的參數把 `truck` 的相關屬性給設定好了，而且在前面標註了 `Car`，以此說明 `truck` 是 `Car` 的實例。
+你會發現 `Car` 確實依據我們傳入的參數把 `Truck` 的相關屬性給設定好了，而且在前面標註了 `Car`，以此說明 `Truck` 是 `Car` 的實例。
 
 ---
 
@@ -149,22 +149,22 @@ console.log(Car === Car.prototype.constructor.prototype.constructor.prototype.co
 <p style="font-size:12px; line-height:1.5; margin-top: 4px">＊ 物件型別(Object) - 例如：物件、陣列、函式、日期等。</p>
 
 ```javascript
-// console.log(truck.__proto__)
+// console.log(Truck.__proto__)
 {
   constructor: Car(wheel, door, fuel),
   __proto__: Object
 }
 ```
 
-把 `truck.__proto__` 印出來後就會發現它跟 `Car.prototype` 長得一模一樣，所以我們可以來做個大膽的假設：
+把 `Truck.__proto__` 印出來後就會發現它跟 `Car.prototype` 長得一模一樣，所以我們可以來做個大膽的假設：
 
-> 身為一個實例，`truck` 應該繼承 `Car` 類別的屬性，但 `Car` 只是建構函式而不是真的類別，所以 JavaScrip 為函式設計了 `prototype` 屬性，讓實例被創建時，可以繼承建構函式的原型。
+> 身為一個實例，`Truck` 應該繼承 `Car` 類別的屬性，但 `Car` 只是建構函式而不是真的類別，所以 JavaScrip 為函式設計了 `prototype` 屬性，讓實例被創建時，可以繼承建構函式的原型。
 
 要證明這個假設也很簡單：
 ```javascript
-console.log(truck.__proto__ === Car.prototype); // true
+console.log(Truck.__proto__ === Car.prototype); // true
 ```
-`truck.__proto__` 和 `Car.prototype` 不只是長得一樣，它們指向的就是同一個物件，所以 `truck` 確實繼承了 `Car` 的屬性。
+`Truck.__proto__` 和 `Car.prototype` 不只是長得一樣，它們指向的就是同一個物件，所以 `Truck` 確實繼承了 `Car` 的屬性。
 
 ---
 
@@ -191,7 +191,7 @@ function newObject(Constructor, arguments) {
   Constructor.apply(o, arguments);  // 3. 初始化物件
   return o; // 4. 回傳新物件
 };
-let truck = newObject(Car, [6, 2, "柴油"]);
+let Truck = newObject(Car, [6, 2, "柴油"]);
 ```
 
 <br />
@@ -223,9 +223,9 @@ console.log(Car.prototype.__proto__ === Object.prototype); // true
 ```
 更重要的是物件之間的繼承關係，原來是一個接著一個不斷延續的，看起來就像條鎖鏈一樣。
 ```javascript
-truck.__proto__ // Car.prototype
-truck.__proto__.__proto__ // Object.prototype
-truck.__proto__.__proto__.__proto__  // null
+Truck.__proto__ // Car.prototype
+Truck.__proto__.__proto__ // Object.prototype
+Truck.__proto__.__proto__.__proto__  // null
 ```
 不過原型鏈也是有終點的，`Object.prototype.__proto__` 指向的是 `null`，代表 `Object` 是原型鏈的最頂端，這也是為什麼會說 **JavaScript 中一切都是物件**的原因了。用圖像表示應該可以更容易理解：
 ![](/img/content/prototype/chain.png)
@@ -258,17 +258,17 @@ function Car(wheel, door, fuel) {
     console.log(`消耗${this.fuel}前進`)
   }
 };
-let truck = new Car(6, 2, "柴油");
-let gogoro = new Car(2, 0, "電力");
+let Truck = new Car(6, 2, "柴油");
+let Gogoro = new Car(2, 0, "電力");
 
-truck.drive(); // 消耗柴油前進
-gogoro.drive(); // 消耗電力前進
+Truck.drive(); // 消耗柴油前進
+Gogoro.drive(); // 消耗電力前進
 ```
 
 不過 `drive` 其實在每個實例中都是做同樣的事情，應該是可以抽出來共享的，如果用上面這種方式寫的話，反而會造成記憶體空間的浪費：
 
 ```javascript
-console.log(truck.drive === gogoro.drive); // false
+console.log(Truck.drive === Gogoro.drive); // false
 ```
 
 上面的等式不成立表示兩個實例中的 `drive` 雖然長得一樣，卻是兩個不同的函式，為了解決這個缺點可以這樣做：
@@ -284,22 +284,22 @@ Car.prototype.drive = function() {
   console.log(`消耗${this.fuel}前進`);
 };
 
-let truck = new Car(6, 2, "柴油");
-let gogoro = new Car(2, 0, "電力");
+let Truck = new Car(6, 2, "柴油");
+let Gogoro = new Car(2, 0, "電力");
 
-truck.drive(); // 消耗柴油前進
-gogoro.drive(); // 消耗電力前進
+Truck.drive(); // 消耗柴油前進
+Gogoro.drive(); // 消耗電力前進
 
-console.log(truck.drive === gogoro.drive); // true
+console.log(Truck.drive === Gogoro.drive); // true
 ```
 
 我們把 `drive` 抽出來放進 `Car` 的原型裡，這樣就算是不同的實體，操作的還是同一個函式，因為它們呼叫的都是 `Car.prototype.drive`。
 
-不過你可能會驚訝 `drive` 其實不是 `truck` 的屬性之一，而你能夠呼叫它是因為 JavaScript 如果在物件中找不到某個屬性時就會去 `__proto__` 裡面找，一路找到 `Object.prototype`。
+不過你可能會驚訝 `drive` 其實不是 `Truck` 的屬性之一，而你能夠呼叫它是因為 JavaScript 如果在物件中找不到某個屬性時就會去 `__proto__` 裡面找，一路找到 `Object.prototype`。
 
 ```javascript
-truck.hasOwnProperty("drive"); // true
-console.log(truck.drive === truck.__proto__.drive); // true
+Truck.hasOwnProperty("drive"); // true
+console.log(Truck.drive === Truck.__proto__.drive); // true
 ```
 
 而這也是為什麼當你在 `let today = new Date()` 後可以使用 `getMonth()` 或 `getDate()` 等方法的原因，這些 methods 實際上是在 `Date.prototype` 裡，甚至下面這些你平常在寫語法背後也是同樣的道理：
