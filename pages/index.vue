@@ -139,7 +139,7 @@ const meq = computed<StyleValue>(() => ({
 main {
   width: 100vw;
   height: calc(100dvh - 68px);
-  perspective: 100px;
+  perspective: 15vw;
   perspective-origin: center center;
 }
 
@@ -177,6 +177,9 @@ main {
   white-space: nowrap;
   color: #111;
   box-sizing: border-box;
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
   perspective: 300px;
 
   &.right {
