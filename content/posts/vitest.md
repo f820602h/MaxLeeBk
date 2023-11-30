@@ -162,7 +162,7 @@ describe("add function" ,() => {
 ```
 ::
 
-> Spy 比較特殊，會根據你的使用方法，時而為 Mock 時而為 Stub
+> Spy 比較微妙，有時候你的使用方式會使它看起來像個 Stub，但其實它依然是個 Mock，你只是沒有使用它觀測行為的功能。
 
 <br/>
 
@@ -335,9 +335,9 @@ export const viewPageMiddleWare = async (store, to, from, done) => {
 const mySpy = vi.spyOn(document, "hasFocus").mockImplementation(() => true);
 
 describe("viewPageMiddleWare", () => {
-  it("should not push data when to.name is in excludePages", async () => {
+  it("should push data when to.name is not in excludePages", async () => {
     await viewPageMiddleWare(store, to, from, done);
-    expect(mySpy).toHaveBeenCalled(); // 有沒有這行決定了 mySpy 是 Mock 還是 Stub 
+    expect(mySpy).toHaveBeenCalled(); // 基本上不會測試這行，但它確實是一個 spy
     expect(done).toHaveBeenCalled();
   });
 });
