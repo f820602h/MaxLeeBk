@@ -30,20 +30,21 @@ body {
   min-height: 100dvh;
   font-family: "Roboto", sans-serif;
   color: #393939;
-  background: #f9f9f9;
+  background-color: #f9f9f9;
   transition:
-    color 0.2s,
-    background 0.2s;
+    color 0.2s linear,
+    background-color 0.2s linear !important;
 }
 
 main {
+  position: relative;
   min-width: 360px;
 }
 
 .dark-mode,
 .dark-mode body {
-  color: #c1c1c1;
-  background: #111;
+  color: #aaa;
+  background-color: #202020;
 }
 
 .page-enter-active,

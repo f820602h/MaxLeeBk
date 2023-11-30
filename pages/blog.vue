@@ -165,7 +165,7 @@ ul {
 .dark-mode .year div {
   @for $i from 1 through 10 {
     &:nth-child(#{$i}) {
-      -webkit-text-stroke: 1px rgba(50, 50, 50, 1 - $i * 0.1);
+      -webkit-text-stroke: 1px rgba(55, 55, 55, 1 - $i * 0.1);
       transform: translateX(-#{$i * 2}px) rotateZ(-#{$i * 2}deg);
     }
   }

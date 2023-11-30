@@ -219,16 +219,16 @@ main {
   &.right {
     background: linear-gradient(
       to left,
-      rgba(36, 36, 36, 1) 50%,
-      rgba(36, 36, 36, 0.3)
+      rgba(45, 45, 45, 1) 50%,
+      rgba(45, 45, 45, 0.3)
     );
   }
 
   &.left {
     background: linear-gradient(
       to right,
-      rgba(36, 36, 36, 1) 50%,
-      rgba(36, 36, 36, 0.3)
+      rgba(45, 45, 45, 1) 50%,
+      rgba(45, 45, 45, 0.3)
     );
   }
 

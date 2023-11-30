@@ -27,6 +27,40 @@ const color2 = computed(() => ({
 
 <template>
   <div>
+    <ClientOnly>
+      <div class="fixed top-80% left-0 w-full">
+        <VueSurf
+          v-if="$route.path !== '/' && !$route.path.includes('/posts')"
+          class="top-50px"
+          width="100%"
+          :marquee-speed="5"
+          :apexes-series="[
+            [
+              [0, 60],
+              [500, 30],
+              [500, 50],
+            ],
+          ]"
+          :color="color1"
+        />
+        <VueSurf
+          v-if="$route.path !== '/' && !$route.path.includes('/posts')"
+          width="100%"
+          :marquee-speed="3"
+          :apexes-series="[
+            [
+              [0, 20],
+              [500, 80],
+              [500, 40],
+              [500, 60],
+              [500, 20],
+            ],
+          ]"
+          :color="color2"
+        />
+      </div>
+    </ClientOnly>
+
     <header class="fixed top-0 z-500 w-full">
       <div
         class="flex items-center justify-between max-w-1920px mx-auto h-68px px-24px md:px-48px"
@@ -116,53 +150,12 @@ const color2 = computed(() => ({
     </div>
 
     <PageLoading />
-
-    <Teleport to="body">
-      <ClientOnly>
-        <div class="fixed top-80% left-0 w-full">
-          <VueSurf
-            v-if="$route.path !== '/' && !$route.path.includes('/posts')"
-            class="top-50px"
-            width="100%"
-            :marquee-speed="5"
-            :apexes-series="[
-              [
-                [0, 60],
-                [500, 30],
-                [500, 50],
-              ],
-            ]"
-            :color="color1"
-          />
-          <VueSurf
-            v-if="$route.path !== '/' && !$route.path.includes('/posts')"
-            width="100%"
-            :marquee-speed="3"
-            :apexes-series="[
-              [
-                [0, 20],
-                [500, 80],
-                [500, 40],
-                [500, 60],
-                [500, 20],
-              ],
-            ]"
-            :color="color2"
-          />
-        </div>
-      </ClientOnly>
-    </Teleport>
   </div>
 </template>
 
 <style scoped lang="scss">
 header {
-  background: rgba(249, 249, 249, 0.5);
-  backdrop-filter: blur(5px);
-  transition: background 0.2s;
-}
-
-.dark-mode header {
-  background: rgba(17, 17, 17, 0.5);
+  backdrop-filter: blur(3px);
+  transition: background 0.2s linear;
 }
 </style>

@@ -49,7 +49,7 @@ function dateFormatter(date: string) {
     <div class="max-w-1000px mx-auto">
       <NuxtLink
         to="/blog"
-        class="inline-block p-1 text-gray-500 hover:text-black dark:hover:text-white duration-150"
+        class="inline-block p-1 text-gray-500 hover:text-black dark:hover:text-white duration-200"
       >
         <div class="i-iconoir:reply" />
       </NuxtLink>
@@ -155,6 +155,13 @@ $box-bg-light-color-invert: #151515;
 
 $box-border-color: #d9d9d9;
 $box-border-color-invert: #333;
+$box-border-color-sp: #9578f7;
+
+$code-bg-color: white;
+$code-bg-color-invert: #161618;
+
+$code-highlight-bg-color: #f4f4fa;
+$code-highlight-bg-color-invert: #232529;
 
 $img-bg-color: transparent;
 $img-bg-color-invert: white;
@@ -172,9 +179,9 @@ $img-bg-color-invert: white;
 #max-post {
   * {
     transition:
-      color 0.2s,
-      background-color 0.2s,
-      border 0.2s;
+      color 0.2s linear,
+      background-color 0.2s linear,
+      border 0.2s linear;
   }
 
   :is(h1, h2, h3, h4, h5, h6) {
@@ -236,12 +243,12 @@ $img-bg-color-invert: white;
 
   a.preview {
     border: 1px solid $box-border-color;
-    background: transparent;
+    background-color: transparent;
     transition: 0.3s;
 
     &:hover {
       color: $highlight-color;
-      background: $highlight-color-invert;
+      background-color: $highlight-color-invert;
     }
   }
 
@@ -254,7 +261,7 @@ $img-bg-color-invert: white;
 
   code {
     font-family: $code-font;
-    background: $box-bg-color;
+    background-color: $box-bg-color;
     font-size: 14px;
     padding: 3px 4px;
     margin: 0 2px;
@@ -264,16 +271,16 @@ $img-bg-color-invert: white;
 
   pre {
     font-family: $code-font;
-    background: $box-bg-color;
+    box-shadow: 0px 0px 3px $box-border-color;
+    background-color: $code-bg-color;
     margin: 12px 0;
-    padding: 20px;
     @extend %rounded;
 
     code {
       display: block;
       margin: 0;
-      border: none;
-      background: none;
+      padding: 20px 0;
+      background-color: unset;
       color: unset;
       overflow: auto;
       scrollbar-width: none;
@@ -282,15 +289,23 @@ $img-bg-color-invert: white;
       &::-webkit-scrollbar {
         display: none;
       }
+
+      .line {
+        padding: 2px 20px;
+
+        &.hl {
+          background-color: $code-highlight-bg-color;
+        }
+      }
     }
   }
 
   blockquote {
     margin: 16px 0 4px;
     padding: 16px;
-    border: 1px solid $box-border-color;
+    border: 1px solid $box-border-color-sp;
     color: $highlight-color;
-    background: $box-bg-color;
+    background-color: rgba($box-border-color-sp, 0.1);
     @extend %rounded;
 
     p {
@@ -314,7 +329,7 @@ $img-bg-color-invert: white;
     display: block;
     width: 100%;
     margin: 12px auto;
-    background: $img-bg-color;
+    background-color: $img-bg-color;
     @extend %rounded;
   }
 
@@ -353,7 +368,7 @@ $img-bg-color-invert: white;
     }
 
     tr {
-      background: $box-bg-light-color;
+      background-color: $box-bg-light-color;
 
       &:not(:last-child) {
         border-bottom: 1px solid $box-border-color;
@@ -389,31 +404,38 @@ $img-bg-color-invert: white;
 
   a.preview {
     border: 1px solid $box-border-color-invert;
-    background: transparent;
+    background-color: transparent;
 
     &:hover {
       color: $highlight-color-invert;
-      background: $highlight-color;
+      background-color: $highlight-color;
     }
   }
 
   code {
-    background: $box-bg-color-invert;
+    background-color: $box-bg-color-invert;
   }
 
   pre {
-    background: $box-bg-color-invert;
+    box-shadow: unset;
+    background-color: $code-bg-color-invert;
 
     code {
-      background: none;
+      background-color: unset;
       color: unset;
+
+      .line {
+        &.hl {
+          background-color: $code-highlight-bg-color-invert;
+        }
+      }
     }
   }
 
   blockquote {
-    border: 1px solid $box-border-color-invert;
+    border: 1px solid $box-border-color-sp;
     color: $highlight-color-invert;
-    background: $box-bg-color-invert;
+    background-color: rgba($box-border-color-sp, 0.1);
   }
 
   hr {
@@ -421,7 +443,7 @@ $img-bg-color-invert: white;
   }
 
   img {
-    background: $img-bg-color-invert;
+    background-color: $img-bg-color-invert;
   }
 
   table {
@@ -429,7 +451,7 @@ $img-bg-color-invert: white;
 
     th {
       color: $highlight-color-invert;
-      background: $box-bg-color-invert;
+      background-color: $box-bg-color-invert;
       border-bottom: 1px solid $box-border-color-invert;
 
       &:not(:last-child) {
@@ -438,7 +460,7 @@ $img-bg-color-invert: white;
     }
 
     tr {
-      background: $box-bg-light-color-invert;
+      background-color: $box-bg-light-color-invert;
 
       &:not(:last-child) {
         border-bottom: 1px solid $box-border-color-invert;
@@ -465,7 +487,7 @@ $img-bg-color-invert: white;
 
     &:hover {
       color: $highlight-color;
-      background: $box-bg-color;
+      background-color: $box-bg-color;
 
       p {
         color: #6b7280;
@@ -476,7 +498,7 @@ $img-bg-color-invert: white;
 
 .dark-mode .post-nav-group {
   a {
-    color: #363636;
+    color: #777;
     border: 1px solid $box-border-color-invert;
 
     p {
@@ -485,7 +507,7 @@ $img-bg-color-invert: white;
 
     &:hover {
       color: $highlight-color-invert;
-      background: $box-bg-color-invert;
+      background-color: $box-bg-color-invert;
 
       p {
         color: #6b7280;

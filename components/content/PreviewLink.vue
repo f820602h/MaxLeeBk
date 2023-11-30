@@ -36,7 +36,7 @@ const { data, pending } = await useAsyncData(
           >
             {{ data.description || `Go to external link ${props.url}` }}
           </p>
-          <span class="!m-0 !text-xs !text-gray-400 !dark:text-gray-600">{{
+          <span class="!m-0 !text-xs !text-gray-400 !dark:text-gray-500">{{
             props.url
           }}</span>
         </div>

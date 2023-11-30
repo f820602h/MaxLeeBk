@@ -136,7 +136,7 @@ const works = {
 
               <div class="p-1">
                 <h4
-                  class="text-lg font-bold mb-1 text-gray-700 dark:text-#bbb group-hover:text-black dark:group-hover:text-white duration-350"
+                  class="text-lg font-bold mb-1 text-gray-700 dark:text-gray-400 group-hover:text-black dark:group-hover:text-white duration-350"
                   v-text="work.title"
                 />
                 <p
