@@ -32,8 +32,9 @@ body {
   color: #393939;
   background-color: #f9f9f9;
   transition:
-    color 0.2s linear,
-    background-color 0.2s linear !important;
+    border 0.2s,
+    color 0.2s,
+    background-color 0.2s;
 }
 
 main {
@@ -44,7 +45,7 @@ main {
 .dark-mode,
 .dark-mode body {
   color: #aaa;
-  background-color: #202020;
+  background-color: #1a1a1a;
 }
 
 .page-enter-active,

@@ -112,15 +112,16 @@ console.log(result); // { id: 1, name: 'John Doe' }
 #### # Mock
 是一種完全模擬的對象，用於模擬外部系統或復雜行為，並且允許進行徹底的行為驗證。
 
+::advance-code{file-name="math.js" :line='[]'}
 ```js
-// math.js
 export function add(a, b) {
   return a + b;
 }
 ```
+::
 
+::advance-code{file-name="math.spec.js" :line='[]'}
 ```js
-// math.spec.js
 import math from "./math";
 
 describe("add function" ,() => {
@@ -131,21 +132,23 @@ describe("add function" ,() => {
   });
 })
 ```
+::
 
 <br/>
 
 #### # Spy
 用於監控已存在的對象或函數的行為，而不改變它們的原有行為。它適用於需要確保函數被調用，且調用方式正確的情境。
 
+::advance-code{file-name="math.js" :line='[]'}
 ```js
-// math.js
 export function add(a, b) {
   return a + b;
 }
 ```
+::
 
+::advance-code{file-name="math.spec.js" :line='[]'}
 ```js
-// math.spec.js
 import math from "./math";
 
 describe("add function" ,() => {
@@ -157,6 +160,7 @@ describe("add function" ,() => {
   });
 })
 ```
+::
 
 > Spy 比較特殊，會根據你的使用方法，時而為 Mock 時而為 Stub
 

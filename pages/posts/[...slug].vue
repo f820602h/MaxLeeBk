@@ -148,20 +148,20 @@ $highlight-light-color: #292929;
 $highlight-light-color-invert: #ddd;
 
 $box-bg-color: #efefef;
-$box-bg-color-invert: #1a1a1a;
+$box-bg-color-invert: #222;
 
 $box-bg-light-color: #f6f6f6;
 $box-bg-light-color-invert: #151515;
 
 $box-border-color: #d9d9d9;
-$box-border-color-invert: #333;
+$box-border-color-invert: #444;
 $box-border-color-sp: #9578f7;
 
 $code-bg-color: white;
 $code-bg-color-invert: #161618;
 
 $code-highlight-bg-color: #f4f4fa;
-$code-highlight-bg-color-invert: #232529;
+$code-highlight-bg-color-invert: #222;
 
 $img-bg-color: transparent;
 $img-bg-color-invert: white;
@@ -177,13 +177,6 @@ $img-bg-color-invert: white;
 }
 
 #max-post {
-  * {
-    transition:
-      color 0.2s linear,
-      background-color 0.2s linear,
-      border 0.2s linear;
-  }
-
   :is(h1, h2, h3, h4, h5, h6) {
     font-weight: 900;
     line-height: 1.5;
@@ -234,7 +227,7 @@ $img-bg-color-invert: white;
     text-decoration: underline;
     text-underline-offset: 3px;
     word-break: break-all;
-    transition: 0.3s;
+    transition: 0.2s;
 
     &:hover {
       color: $highlight-color;
