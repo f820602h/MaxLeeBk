@@ -172,25 +172,23 @@ describe("add function" ,() => {
 
 ::advance-code{file-name="categoryTool.js" :line='[3]'}
 ```js
-export const categoryToolMiddleWare = async (store, to, from, next, done) => {
+export const categoryTool = () => {
   const link = document.createElement("link");
-  link.href = `${import.meta.env.VITE_CDN_URL}category-picker-2.0.0.css`;
-  // ... 插入 script 的邏輯
+  link.href = `${import.meta.env.VITE_URL}category.css`;
+  // ... 插入 link 的邏輯
 };
 ```
 ::
 
 ::advance-code{file-name="categoryTool.spec.js" :line='[2]'}
 ```js
-const domain = "https://cdn.104-dev.com.tw/";
-vi.stubEnv("VITE_CDN_URL", domain);
+const domain = "https://my.domain.com/";
+vi.stubEnv("VITE_URL", domain);
 
 describe("categoryToolMiddleWare", () => {
-  it("should append link and script tag when window.categoryPicker is falsy", async () => {
-    await categoryToolMiddleWare(store, to, from, next, done);
-    expect(document.head.innerHTML).toContain(
-      `${domain}category-picker-2.0.0.css`
-    );
+  it("should append css link", async () => {
+    categoryToolMiddleWare();
+    expect(document.head.innerHTML).toContain(`${domain}category.css`);
   });
 });
 ```
@@ -198,9 +196,9 @@ describe("categoryToolMiddleWare", () => {
 
 #### # vi.stubGlobal
 
-::advance-code{file-name="utmInherit.js" :line='[3]'}
+::advance-code{file-name="query.js" :line='[3]'}
 ```js
-export const utmInheritMiddleWare = async (store, to, from, next, done) => {
+export const queryMiddleWare = (next) => {
   // 取得 window.opener
   const openerHost = window?.opener?.window?.location?.host;
 
@@ -213,7 +211,7 @@ export const utmInheritMiddleWare = async (store, to, from, next, done) => {
 ```
 ::
 
-::advance-code{file-name="utmInherit.spec.js" :line='[6,7,8,9,10,11,12]'}
+::advance-code{file-name="query.spec.js" :line='[6,7,8,9,10,11,12]'}
 ```js
 const utm_source = "source";
 const utm_medium = "medium";
@@ -228,9 +226,9 @@ vi.stubGlobal("window", {
   }
 });
 
-describe("categoryToolMiddleWare", () => {
-  it("isNewTab, opener has utm query", async () => {
-    await utmInheritMiddleWare(store, to, from, next, done);
+describe("queryMiddleWare", () => {
+  it("should next have been called with query", async () => {
+    await utmInheritMiddleWare(next);
     expect(next).toHaveBeenCalledWith({
       ...to,
       query: { utm_source, utm_medium, utm_campaign }
@@ -244,21 +242,20 @@ describe("categoryToolMiddleWare", () => {
 
 ::advance-code{file-name="windowFocus.js" :line='[9]'}
 ```js
-const checkStateOnFocus = () => {
-  window.addEventListener("focus", checkComebackStatus);
+const registerFocusEvent = () => {
+  window.addEventListener("focus", focusHandler);
 };
 
-const checkComebackStatus = async () => {
+const focusHandler = async () => {
   await getUserInfoFocus(); // call api 取得使用者資料 ...
 
-  window.removeEventListener("focus", checkComebackStatus);
-  window.setTimeout(checkStateOnFocus, 15000);   // 過 15 秒後會再次註冊 focus 事件
+  window.removeEventListener("focus", focusHandler);
+  window.setTimeout(registerFocusEvent, 15000);   // 過 15 秒後會再次註冊 focus 事件
 };
 
-export const windowFocusMiddleWare = (store, to, from, next, done) => {
-  window.removeEventListener("focus", checkComebackStatus);
-  checkStateOnFocus();
-  done();
+export const windowFocusMiddleWare = () => {
+  window.removeEventListener("focus", focusHandler);
+  registerFocusEvent();
 };
 ```
 ::
@@ -271,8 +268,8 @@ describe("windowFocusMiddleWare", () => {
     vi.useFakeTimers(); 
   });
 
-  it("should call getUserInfoFocus when focus event is triggered twice over 15 sec", async () => {
-    await windowFocusMiddleWare(null, to, from, null, done);
+  it("should call getUserInfoFocus when focus event is triggered twice after 15 sec", async () => {
+    windowFocusMiddleWare();
     window.dispatchEvent(new Event("focus"));
     expect(mockedMethod).toHaveBeenCalledTimes(1);
 
@@ -291,7 +288,7 @@ describe("windowFocusMiddleWare", () => {
 ```js
 import { getUserInfoFocus } from "@/apis/user";
 
-const checkComebackStatus = async () => {
+const focusHandler = () => {
   await getUserInfoFocus(); // call api 取得使用者資料 ...
 
   // 其他邏輯...
@@ -308,8 +305,8 @@ vi.mock("@/apis/user", () => {
 });
 
 describe("windowFocusMiddleWare", () => {
-  it("should call getUserInfoFocus when to.name is not in excludePages", async () => {
-    await windowFocusMiddleWare(null, to, from, null, done);
+  it("should call getUserInfoFocus", async () => {
+    windowFocusMiddleWare();
     window.dispatchEvent(new Event("focus"));
     expect(mockedMethod).toHaveBeenCalledTimes(1);
   });
@@ -319,26 +316,24 @@ describe("windowFocusMiddleWare", () => {
 
 #### # vi.spyOn
 
-::advance-code{file-name="nccLogViewPage.js" :line='[2]'}
+::advance-code{file-name="viewPage.js" :line='[2]'}
 ```js
-export const viewPageMiddleWare = async (store, to, from, done) => {
+export const viewPageMiddleWare = () => {
   if (document.hasFocus()) {
     // 一些邏輯...
-    done()
   }
 };
 ```
 ::
 
-::advance-code{file-name="nccLogViewPage.spec.js" :line='[1,6]'}
+::advance-code{file-name="viewPage.spec.js" :line='[1,6]'}
 ```js
 const mySpy = vi.spyOn(document, "hasFocus").mockImplementation(() => true);
 
 describe("viewPageMiddleWare", () => {
-  it("should push data when to.name is not in excludePages", async () => {
-    await viewPageMiddleWare(store, to, from, done);
-    expect(mySpy).toHaveBeenCalled(); // 基本上不會測試這行，但它確實是一個 spy
-    expect(done).toHaveBeenCalled();
+  it("should check hasFocus first", async () => {
+    viewPageMiddleWare();
+    expect(mySpy).toHaveBeenCalled();
   });
 });
 ```
