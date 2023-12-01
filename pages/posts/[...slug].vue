@@ -267,21 +267,23 @@ $img-bg-color-invert: white;
     box-shadow: 0px 0px 3px $box-border-color;
     background-color: $code-bg-color;
     margin: 12px 0;
+    padding: 20px 0;
+    overflow: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     @extend %rounded;
 
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
     code {
-      display: block;
+      display: inline-block;
       margin: 0;
-      padding: 20px 0;
+      padding: 0;
       background-color: unset;
       color: unset;
-      overflow: auto;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-
-      &::-webkit-scrollbar {
-        display: none;
-      }
+      overflow: visible;
 
       .line {
         padding: 2px 20px;
