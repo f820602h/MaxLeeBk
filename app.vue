@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { show, hide } = useLoading();
+// const { show, hide } = useLoading();
 </script>
 
 <template>
@@ -10,13 +10,6 @@ const { show, hide } = useLoading();
           name: 'page',
           mode: 'out-in',
           appear: true,
-          onEnter: (el, done) => {
-            hide();
-            done();
-          },
-          onBeforeLeave(el) {
-            show();
-          },
         }"
       />
     </NuxtLayout>
@@ -50,7 +43,7 @@ main {
 
 .page-enter-active,
 .page-leave-active {
-  transition: all 1s;
+  transition: all 0.5s;
 }
 .page-enter-from,
 .page-leave-to {

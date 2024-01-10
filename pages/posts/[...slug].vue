@@ -3,7 +3,6 @@ const { hide } = useLoading();
 onMounted(() => {
   window.setTimeout(hide, 1000);
 });
-
 const route = useRoute();
 const postPath = computed(() => {
   return typeof route.params.slug === "string"
@@ -14,11 +13,14 @@ const postPath = computed(() => {
 const { data } = await useAsyncData(postPath.value, () =>
   queryContent(`/posts/${postPath.value}`).findOne(),
 );
-const postNav = await useAsyncData(`${postPath.value}-nav`, () =>
-  queryContent()
-    .sort({ date: 1, $numeric: true })
-    .only(["_path", "title"])
-    .findSurround(`/posts/${postPath.value}`),
+const postNav = await useAsyncData(
+  `${postPath.value}-nav`,
+  () =>
+    queryContent()
+      .sort({ date: 1, $numeric: true })
+      .only(["_path", "title"])
+      .findSurround(`/posts/${postPath.value}`),
+  { watch: [postPath] },
 );
 
 useHead({

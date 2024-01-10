@@ -52,7 +52,7 @@ const groupingByYear = computed(() => {
 </script>
 
 <template>
-  <main class="max-w-1920px mx-auto py-60px px-24px md:px-48px">
+  <main class="max-w-1920px mx-auto py-60px px-24px md:px-48px overflow-hidden">
     <section
       v-for="yearDate in groupingByYear"
       :key="yearDate.year"

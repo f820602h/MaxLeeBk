@@ -158,7 +158,7 @@ console.log(Car === Car.prototype.constructor.prototype.constructor.prototype.co
 
 把 `Truck.__proto__` 印出來後就會發現它跟 `Car.prototype` 長得一模一樣，所以我們可以來做個大膽的假設：
 
-> 身為一個實例，`Truck` 應該繼承 `Car` 類別的屬性，但 `Car` 只是建構函式而不是真的類別，所以 JavaScrip 為函式設計了 `prototype` 屬性，讓實例被創建時，可以繼承建構函式的原型。
+> 身為一個實例，`Truck` 應該繼承 `Car` 類別的屬性，但 `Car` 只是建構函式而不是真的類別，所以 JavaScript 為函式設計了 `prototype` 屬性，讓實例被創建時，可以繼承建構函式的原型。
 
 要證明這個假設也很簡單：
 ```javascript
