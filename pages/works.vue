@@ -1,8 +1,8 @@
 <script setup lang="ts">
-const { isAnimationEnd, hide } = useLoading();
-onMounted(() => {
-  window.setTimeout(hide, 1000);
-});
+// const { isAnimationEnd, hide } = useLoading();
+// onMounted(() => {
+//   window.setTimeout(hide, 1000);
+// });
 
 useHead({
   title: "Works - Max Lee",
@@ -106,18 +106,15 @@ const works = {
         <h2
           class="min-h-48px mb-5 text-32px font-black italic text-center text-black dark:text-white"
         >
-          <p :class="{ slide: isAnimationEnd }">{{ name }}</p>
+          <p class="slide">{{ name }}</p>
         </h2>
 
         <ul class="flex justify-between flex-wrap -mx-12px mb-48px">
           <li
             v-for="work in list"
             :key="work.title"
-            :class="{
-              slide: isAnimationEnd,
-              'lg:w-1/3': name === 'Little Project',
-            }"
-            class="works relative w-full md:w-1/2 px-12px mb-24px cursor-pointer group hover:-translate-y-5px"
+            :class="{ 'lg:w-1/3': name === 'Little Project' }"
+            class="works slide relative w-full md:w-1/2 px-12px mb-24px cursor-pointer group hover:-translate-y-5px"
           >
             <a :href="work.link" target="_blank" class="block">
               <figure

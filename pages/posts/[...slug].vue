@@ -1,8 +1,8 @@
 <script setup lang="ts">
-const { hide } = useLoading();
-onMounted(() => {
-  window.setTimeout(hide, 1000);
-});
+// const { hide } = useLoading();
+// onMounted(() => {
+//   window.setTimeout(hide, 1000);
+// });
 const route = useRoute();
 const postPath = computed(() => {
   return typeof route.params.slug === "string"

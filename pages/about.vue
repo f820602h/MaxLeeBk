@@ -2,10 +2,10 @@
 import { useStagePlay } from "vue-stage-play";
 const { action } = useStagePlay();
 
-const { hide } = useLoading();
-onMounted(() => {
-  window.setTimeout(hide, 1000);
-});
+// const { hide } = useLoading();
+// onMounted(() => {
+//   window.setTimeout(hide, 1000);
+// });
 
 useHead({
   title: "About - Max Lee",

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-const { isAnimationEnd, hide } = useLoading();
-onMounted(() => {
-  window.setTimeout(hide, 1000);
-});
+// const { isAnimationEnd, hide } = useLoading();
+// onMounted(() => {
+//   window.setTimeout(hide, 1000);
+// });
 
 useHead({
   title: "Blog - Max Lee",
@@ -60,7 +60,7 @@ const groupingByYear = computed(() => {
     >
       <h2 class="year absolute top-30px right-0 w-250px sm:w-400px">
         <Transition v-for="i in 10" :key="i" name="fade" appear>
-          <div v-show="isAnimationEnd" class="text-100px sm:text-150px">
+          <div class="text-100px sm:text-150px">
             {{ yearDate.year }}
           </div>
         </Transition>
@@ -70,7 +70,7 @@ const groupingByYear = computed(() => {
         <TransitionGroup name="list" appear>
           <li
             v-for="(article, index) in yearDate.articles"
-            v-show="isAnimationEnd && (!yearDate.hidden || index < 5)"
+            v-show="!yearDate.hidden || index < 5"
             :key="article.title"
             :data-index="index"
             class="group py-3 cursor-pointer"
@@ -94,9 +94,7 @@ const groupingByYear = computed(() => {
 
       <Transition name="fade" appear>
         <button
-          v-show="
-            isAnimationEnd && yearDate.articles.length > 5 && yearDate.hidden
-          "
+          v-show="yearDate.articles.length > 5 && yearDate.hidden"
           class="text-gray-400 hover:text-black dark:hover:text-white duration-200"
           @click="seeMoreYear.push(yearDate.year)"
         >

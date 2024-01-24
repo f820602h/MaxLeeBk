@@ -1,10 +1,19 @@
 <script setup lang="ts">
-const { isLoadingShow, animationEnd } = useLoading();
+const { show, hide, isLoadingShow } = useLoading();
+
+const nuxtApp = useNuxtApp();
+const unsubPageStart = nuxtApp.hook("page:start", show);
+const unsubPageFinish = nuxtApp.hook("page:finish", hide);
+
+onBeforeUnmount(() => {
+  unsubPageStart();
+  unsubPageFinish();
+});
 </script>
 
 <template>
   <Teleport to="body">
-    <Transition name="loading" @before-leave="animationEnd()">
+    <Transition name="loading">
       <div
         v-show="isLoadingShow"
         class="loading fixed top-0 z-1000 w-screen h-screen bg-white dark:bg-black flex items-center justify-center"
