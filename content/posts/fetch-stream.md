@@ -1,5 +1,5 @@
 ---
-title: Fetch Stream 
+title: Fetch & Streams API
 date: 2024/3/20 15:30:00
 tags: [Javascript]
 ---
@@ -112,9 +112,9 @@ xhr.send();
 
 ---
 
-## Fetch Stream
+## Streams API 
 
-Fetch Stream 是 Fetch API 的一個特性，它可以讓我們以流（Stream）的方式獲取資料，若資料足夠龐大便會以數個片段的形式獲取資料，這樣的好處是可以節省記憶體的使用，並且能在資料還沒完全下載完之前就開始處理資料。
+Streams API 可以讓我們以流（Stream）的方式獲取資料，若資料足夠龐大便會以數個片段的形式獲取資料，這樣的好處是可以節省記憶體的使用，並且能在資料還沒完全下載完之前就開始處理資料。而 Fetch API 中也是在 `Response` 中實裝了 Streams API。
 
 除此之外，以流（Stream）形式獲取資料也可以透過管道（Pipe）的概念來處理資料，這樣的好處是可以將資料的處理分成多個步驟，讓程式碼更加模組化。
 
@@ -226,7 +226,7 @@ fetch("http://localhost:3000/")
 
 #### # ReadableStream.tee
 
-除了 `Response.clone` 之外，Fetch API 還提供了 `Response.body.tee` 這個方法，可以將 `ReadableStream` 複製成兩個，你可以想像它是把一個資料流分流成兩條了，而這兩條分流拿到的資料會是一樣的。
+除了 `Response.clone` 之外 `Response.body` 還有 `tee()` 這個方法，可以將 `ReadableStream` 複製成兩個，你可以想像它是把一個資料流分流成兩條了，而這兩條分流拿到的資料會是一樣的。
 
 <img src="/img/content/fetch-stream/tee.webp" style="max-width: 800px;" />
 
@@ -267,7 +267,7 @@ fetch("http://localhost:3000/")
 
 #### # ReadableStream.cancel / ReadableStreamDefaultReader.cancel
 
-在 `Response.body` 中還有一個 `cancel` 方法，它可以用來關閉一個流（Stream），而當一個流被關閉了，那對應得 `Response` 也就會被取消。所以我們嘗試這樣處理：
+在 `Response.body` 中還有一個 `cancel` 方法，它可以用來關閉一個流，而當一個流被關閉了，那對應得 `Response` 也就會被取消。所以我們嘗試這樣處理：
 
 ::advance-code{:line='[6]'}
 ```javascript
