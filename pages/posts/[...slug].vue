@@ -280,6 +280,7 @@ $img-bg-color-invert: white;
     }
 
     code {
+      min-width: 100%;
       display: inline-block;
       margin: 0;
       padding: 0;

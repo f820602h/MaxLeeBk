@@ -20,6 +20,7 @@ onMounted(() => {
 <template>
   <div ref="code" class="advance-code mt-12px">
     <div
+      v-if="fileName"
       class="flex items-center -mb-4px pl-1 text-gray-400 dark:text-gray-400 text-xs"
     >
       <div class="i-iconoir:multiple-pages-empty mt-1px" />

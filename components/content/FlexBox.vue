@@ -7,7 +7,8 @@
 </template>
 
 <style scoped lang="scss">
-div :deep(*) {
+div :deep(> *) {
+  flex-grow: 1;
   margin: 0 !important;
 }
 </style>
