@@ -280,9 +280,9 @@ function Parent() {
 
 #### # 差異
 
-我們在各階層的元件中都加入了 `Math.random()` 來觀察每次渲染時的情況，只要數字有更新就可以判斷元件有被重新渲染過，另外 `ChildrenOne` 會接收 `Parent` 所傳入的 `count` 狀態，而 `ChildrenTwo` 則是單純顯示的元件。
+我們在各階層的元件中都加入了 `Math.random()` 來觀察每次渲染時的情況，只要數字有更新就可以判斷元件有被重新渲染過，另外 `ChildrenOne` 會接收 `Parent` 所傳入的 `count` 狀態，`ChildrenTwo` 則是單純顯示的元件。
 
-而當我們透過按鈕來更新 `Parent` 中的 `count` 時，可以觀察到 `Math.random()` 重新執行的情況：
+當我們透過按鈕來更新 `Parent` 中的 `count` 時，可以觀察到 `Math.random()` 重新執行的情況：
 
 | 框架 | Parent | ChildrenOne | ChildrenTwo |
 | --- | --- | --- | --- |
@@ -290,9 +290,9 @@ function Parent() {
 | Vue | Ｏ | Ｏ | Ｘ |
 | Solid.js | Ｘ | Ｘ| Ｘ |
 
-而會有這樣的差異，主要來自於各個框架採取的編譯及渲染機制，其中 React 和 Vue 因為使用了 Virtual DOM，必須在每次狀態更新時重新「render」一組全新的 Virtual DOM Tree 用來比較所導致的，如果要避免多餘的渲染，需要額外透過 `React.memo` 或 `computed` 來協助。
+會有這樣的差異，主要來自於各個框架採取的編譯及渲染機制，其中 React 和 Vue 因為使用了 Virtual DOM，必須在每次狀態更新時重新「render」一組全新的 Virtual DOM Tree 用來比較所導致的，如果要避免多餘的渲染，需要額外透過 `React.memo` 或 `computed` 來協助。
 
-反觀 Solid.js 因為是直接狀態更新編譯為獨立的 DOM 操作，所以可以讓狀態響應的單位降低至資料等級。
+反觀 Solid.js 因為是直接將狀態更新編譯為獨立的 DOM 操作，所以可以讓狀態響應的單位降低至資料等級。
 
 ---
 
@@ -360,7 +360,7 @@ React 不像 Solid 有那麼重的編譯程度，僅僅只是透過 Babel 的插
 
 #### # Vue (v3.4)
 
-Vue 的編譯程度則在 React 與 Solid 之間，Vue 依然會將模板編譯為一個 render 函式，不過 Vue 還會在編譯階段為元件中的元素進行 Patch Flag 的標記以及靜態提升（Static Hoisting），目的是讓其在執行階段進行畫面更新時可以再更精確，避免 Diff 演算法的過度比對。也就是所謂的「靶向更新」，更是 Vue 3 大幅提升效能的原因之一。
+Vue 的編譯程度也不低，畢竟它需要將模板語言轉換為 Javascript，首先依然會將元件編譯為一個 render 函式，不過 Vue 還會在編譯階段為元件中的元素進行 Patch Flag 的標記以及靜態提升（Static Hoisting），目的是讓其在執行階段進行畫面更新時可以再更精確，避免 Diff 演算法的過度比對。也就是所謂的「靶向更新」，更是 Vue 3 大幅提升效能的原因之一。
 
 ::flex-box
   ::advance-code{file-name="Patch Flag - 編譯前"}
