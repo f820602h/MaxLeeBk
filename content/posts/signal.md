@@ -56,7 +56,7 @@ setInterval(() => counter.set(counter.get() + 1), 1000);
 
 #### # Vue Vapor Mode
 
-如果你在 2022 年之後，有聽過尤雨溪大大在各大技術 Conf 上的演講，高機率會聽到他提到 [Vapor Mode](https://github.com/vuejs/core-vapor)，它是一個正在開發的不同版本的 Vue，而與原版最大的不同在於，它不再使用 Virtual DOM 來進行 DOM 的比對，而是直接對 DOM 進行操作。在 Vue 的 [官方文件](https://vuejs.org/guide/extras/reactivity-in-depth.html#connection-to-signals) 中你也可以看到關於 Vapor 的描述，並且也可以看到 Signal 的字眼，而會有這個版本誕生，尤雨溪也避言表示是受到 Solid.js 的啟發。
+如果你在 2022 年之後，有聽過尤雨溪大大在各大技術 Conf 上的演講，高機率會聽到他提到 [Vapor Mode](https://github.com/vuejs/core-vapor)，它是一個正在開發的不同版本的 Vue，而與原版最大的不同在於，它不再使用 Virtual DOM 來進行 DOM 的比對，而是直接對 DOM 進行操作。在 Vue 的 [官方文件](https://vuejs.org/guide/extras/reactivity-in-depth.html#connection-to-signals) 中你也可以看到關於 Vapor 的描述，並且也可以看到 Signal 的字眼，而會有這個版本誕生，尤雨溪也不避言得表示是受到 Solid.js 的啟發。
 
 ![](/img/content/signal/vapor.webp)
 
