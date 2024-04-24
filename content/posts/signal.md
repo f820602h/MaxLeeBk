@@ -120,7 +120,7 @@ React 的 vdom 其實性能不怎麼樣。Vue 2.0 引入 vdom 的主要原因是
 
 ## Virtual DOM vs. Real DOM
 
-了解 Virtual DOM 的優勢與劣勢後，下面我想用具體的程式碼來展示用 Virtual DOM 的框架與不用 Virtual DOM 的框架選染機制上的巨大差異。下面我們會使用 React、Vue 以及 Solid.js 來寫一個 `App -> Parent -> ChildrenOne -> ChildrenTwo` 的元件結構，並觀察父元件的狀態改變時，子元件的渲染情況。
+了解 Virtual DOM 的優勢與劣勢後，下面我想用具體的程式碼來展示用 Virtual DOM 的框架與不用 Virtual DOM 的框架渲染機制上的巨大差異。下面我們會使用 React、Vue 以及 Solid.js 來寫一個 `App -> Parent -> ChildrenOne -> ChildrenTwo` 的元件結構，並觀察父元件的狀態改變時，子元件的渲染情況。
 
 #### # React (v18.2)
 
@@ -280,7 +280,7 @@ function Parent() {
 
 #### # 差異
 
-我們在各階層的元件中都加入了 `Math.random()` 來觀察每次渲染時的情況，只要數字有更新就可以判斷元件有被重新選染過，另外 `ChildrenOne` 會接收 `Parent` 所傳入的 `count` 狀態，而 `ChildrenTwo` 則是單純顯示的元件。
+我們在各階層的元件中都加入了 `Math.random()` 來觀察每次渲染時的情況，只要數字有更新就可以判斷元件有被重新渲染過，另外 `ChildrenOne` 會接收 `Parent` 所傳入的 `count` 狀態，而 `ChildrenTwo` 則是單純顯示的元件。
 
 而當我們透過按鈕來更新 `Parent` 中的 `count` 時，可以觀察到 `Math.random()` 重新執行的情況：
 
@@ -290,7 +290,7 @@ function Parent() {
 | Vue | Ｏ | Ｏ | Ｘ |
 | Solid.js | Ｘ | Ｘ| Ｘ |
 
-而會有這樣的差異，主要來自於各個框架採取的編譯及渲染機制，其中 React 和 Vue 因為使用了 Virtual DOM，必須在每次狀態更新時重新「render」一組全新的 Virtual DOM Tree 用來比較所導致的，如果要避免多餘的渲染，需要額外透過 `React.memo` 或 `computed` 來避免。
+而會有這樣的差異，主要來自於各個框架採取的編譯及渲染機制，其中 React 和 Vue 因為使用了 Virtual DOM，必須在每次狀態更新時重新「render」一組全新的 Virtual DOM Tree 用來比較所導致的，如果要避免多餘的渲染，需要額外透過 `React.memo` 或 `computed` 來協助。
 
 反觀 Solid.js 因為是直接狀態更新編譯為獨立的 DOM 操作，所以可以讓狀態響應的單位降低至資料等級。
 
@@ -300,7 +300,7 @@ function Parent() {
 
 #### # Solid.js (v1.8)
 
-前面說了，Solid 能夠在極小的粒度上進行狀態更新，是得益於它將狀態更新編譯為獨立的 DOM 操作。我們可以用官方提供的 Playground 來看看程式碼的編譯結果：
+前面說了，Solid 能夠在極小的粒度上進行狀態更新，是得益於它將狀態更新編譯為獨立的 DOM 操作。我們可以用官方提供的 [Playground](https://playground.solidjs.com/) 來看看程式碼的編譯結果：
 
 ::flex-box
   ::advance-code{file-name="編譯前"}
