@@ -336,9 +336,9 @@ function Parent() {
 
 可以看到 Solid 和 React 或 Vue 一樣會將元件編譯為一個函式，但不同的是，這個函式只會在初次渲染時執行一次，因為 Solid 不需要「產生新 vDOM Tree」這個過程。
 
-接著 `createSignal` 則是 Solid 的核心 API，用來創建一個 Signal，並且透過訂閱發布模式（Pub-Sub）來收集依賴的訂閱者，以便在狀態更新時通知相應的訂閱者。
+當中的 `createSignal` 是 Solid 的核心 API，用來創建一個 Signal，並且當有任何角落透過其返回的 getter（例如範例中的 `count`）來獲取狀態的值時，便會透過訂閱發布機制（Pub-Sub）來通知訂閱者更新。這也是為什麼在 Solid 中，我們需要通過 `value()` 的方式來取得值，而不像 React `useState` 所提供的 `value` 一樣直接讀取。
 
-再來可以看到一個 IIFE 函式，這個就是主要的渲染函式，其中有幾個 API：
+接著可以看到一個 IIFE 函式，這個就是主要的渲染函式，其中有幾個 API：
 
 - `_tmpl$` 是用來創建元素的方法，背後其實就是執行 `createElement`。
 - `_$effect` 背後是創建一個觀察者並向對應的 Signal 訂閱依賴，這樣當 Signal 的值改變時，就會執行傳入的回呼函式。
