@@ -4,7 +4,8 @@ export default {
     highlight: {
       theme: {
         default: "vitesse-light",
-        dark: "vitesse-dark",
+        "light-mode": "vitesse-light",
+        "dark-mode": "vitesse-dark",
       },
     },
   },

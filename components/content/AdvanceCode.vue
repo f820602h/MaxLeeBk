@@ -18,7 +18,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="code" class="advance-code mt-12px">
+  <div ref="code" class="advance-code flex flex-col mt-12px">
     <div
       v-if="fileName"
       class="flex items-center -mb-4px pl-1 text-gray-400 dark:text-gray-400 text-xs"
@@ -33,5 +33,9 @@ onMounted(() => {
 <style scoped lang="scss">
 .advance-code {
   font-family: "Fira Mono", monospace;
+
+  :deep(pre) {
+    flex-grow: 1;
+  }
 }
 </style>

@@ -314,6 +314,7 @@ $img-bg-color-invert: white;
     ol,
     ul {
       margin: 8px 0;
+      font-size: 14px;
     }
   }
 
