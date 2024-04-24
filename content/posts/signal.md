@@ -346,6 +346,8 @@ function Parent() {
 
 看完編譯結果後就可以知道 Solid 最核心就是透過 Signal 來實現 Pub-Sub 模式，並用直接的 DOM 操作取代 Virtual DOM Render。
 
+> 如果你對於 Solid.js 的響應式原理很感興趣的話，可以看看這支 Youtube 影片 [Simplifying reactivity with solidJS - Dan Jutan](https://www.youtube.com/watch?v=qB5jK-KeXOs&list=PL16vUvov3c5D1_KlYevpriA9QMkVkY32l&index=9)
+
 <br/>
 
 #### # React (v18.2)
