@@ -516,7 +516,7 @@ Similarly, the recent chorus of "The Virtual DOM is slow" is just as ill-informe
 </p>
 
 
-但確實在 Svelte 和 Solid.js 這類不使用 Virtual DOM 的框架出現後，開始讓大家思考似乎 Virtual DOM 並不一定是前端框架的唯一解，而每當有新的蓋難或實作出現時，我們燈應該抱持著「好奇、了解、實驗」的態度，而不是一味的跟風或吹捧，Virtual DOM 是如此，Signal 亦是如此。
+但確實在 Svelte 和 Solid.js 這類不使用 Virtual DOM 的框架出現後，開始讓大家思考似乎 Virtual DOM 並不一定是前端框架的唯一解，而每當有新的概念或實作出現時，我們應該抱持著「好奇、了解、實驗」的態度，而不是一味的跟風或吹捧，Virtual DOM 是如此，Signal 亦是如此。
 
 > 文章開頭也說了，Signal 標準化的提案其實也有不少人提出質疑，下面貼上幾個不錯的 issue 連結，建議大家多可以看看不同的意見。
 > - [What are Signals introducing that Proxy doesn't currently handle? #101 - ddamato](https://github.com/tc39/proposal-signals/issues/101)
