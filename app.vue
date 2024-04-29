@@ -1,6 +1,4 @@
-<script setup lang="ts">
-// const { show, hide } = useLoading();
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <StagePlaySpotlight>

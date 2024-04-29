@@ -1,8 +1,4 @@
 <script setup lang="ts">
-// const { hide } = useLoading();
-// onMounted(() => {
-//   window.setTimeout(hide, 1000);
-// });
 const route = useRoute();
 const postPath = computed(() => {
   return typeof route.params.slug === "string"
@@ -37,6 +33,8 @@ useHead({
   ],
 });
 
+defineOgImageComponent("PostOgImage", { title: data.value?.title });
+
 function dateFormatter(date: string) {
   return new Date(date).toLocaleString("en-us", {
     year: "numeric",
@@ -55,6 +53,7 @@ function dateFormatter(date: string) {
       >
         <div class="i-iconoir:reply" />
       </NuxtLink>
+
       <ContentDoc :path="`/posts/${postPath}`">
         <template #default="{ doc }">
           <article id="max-post" class="pb-120px">

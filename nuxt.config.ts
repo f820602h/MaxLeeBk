@@ -1,4 +1,7 @@
 export default {
+  site: {
+    url: "https://maxlee.me",
+  },
   content: {
     contentHead: false,
     highlight: {
@@ -94,6 +97,9 @@ export default {
       ],
     },
   },
+  ogImage: {
+    fonts: ["Noto+Sans+TC:700"],
+  },
   nitro: {
     typescript: {
       typeCheck: true,
@@ -107,6 +113,7 @@ export default {
     "@unocss/nuxt",
     "@vueuse/nuxt",
     "@nuxtjs/color-mode",
+    "nuxt-og-image",
   ],
   css: ["@unocss/reset/tailwind.css"],
 };

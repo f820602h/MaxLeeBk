@@ -1,9 +1,4 @@
 <script setup lang="ts">
-const { hide } = useLoading();
-onMounted(() => {
-  window.setTimeout(hide, 300);
-});
-
 defineProps<{
   error: { url: string; statusCode: number; message: string };
 }>();

@@ -4,11 +4,6 @@ import { useParallax } from "@vueuse/core";
 const container = ref<HTMLElement | null>(null);
 const parallax = reactive(useParallax(container));
 
-// const { hide } = useLoading();
-// onMounted(() => {
-//   window.setTimeout(hide, 1000);
-// });
-
 const cardStyle = computed<StyleValue>(() => ({
   transform: `rotateX(${parallax.roll * 8}deg) rotateY(${
     parallax.tilt * 8
