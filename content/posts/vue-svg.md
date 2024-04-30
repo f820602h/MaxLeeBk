@@ -16,7 +16,7 @@ tags: [Vus.js,SVG,Webpack]
 
 ##### 第一種：Using SVG as an ＜img＞
 利用 `<img>` 標籤來引入，此時 SVG 被視為一個圖檔載入，最大的缺點就是無法利用 CSS 來改變 SVG 的樣式。
-但不幸的是如果你的 icon 會有改變顏色的需求，你就需要兩張不同顏色的圖檔，兩個 `<img>` 標籤，然後用判斷式來控制，非常繁瑣。
+如果你有 Icon 會有改變顏色的需求，你就需要兩張不同顏色的圖檔，兩個 `<img>` 標籤，然後用判斷式來控制，非常繁瑣。
 
 ```html
 <template>
@@ -30,7 +30,7 @@ tags: [Vus.js,SVG,Webpack]
 ##### 第二種：Inline SVG
 直接將 `<svg>` 標籤放進 Html 結構中，這種方法雖然解決了改變顏色的問題，但卻讓程式碼看起來非常雜亂。
 
-::advance-code{:line='[3]'}
+::advance-code{:line='[4]'}
 ```html
 <template>
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
@@ -49,13 +49,19 @@ tags: [Vus.js,SVG,Webpack]
 
 ## SVG Sprites 精靈圖
 
-為了解決上述的困擾 SVG Sprites 是一種對於 SVG 中 `<use>` 及 `<symbol>` 標籤的應用，透過這兩個標籤，我們可以將所有的 SVG 圖示放在一個檔案中，並且透過 `id` 來引用，這樣就可以達到一次引入，多次使用的效果。例如下面的範例：
+為了解決上述的困擾 SVG Sprites 是一種對於 SVG 中 `<use>` 及 `<symbol>` 標籤的應用，透過這兩個標籤，我們可以將所有的 SVG 圖示定義為 Symbol，且透過 `<use>` 並指定 Symbol 的 `id` 來引用，這樣就可以達到一次引入，多次使用的效果。例如下面的範例：
 
 ```html
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="myDot" width="10" height="10" viewBox="0 0 2 2">
     <circle cx="1" cy="1" r="1" />
   </symbol>
+</svg>
+
+<svg>
+  <use xlink:href="#myDot" />
+  <use xlink:href="#myDot" />
+  <use xlink:href="#myDot" />
 </svg>
 
 <svg>
@@ -253,6 +259,12 @@ $ yarn add svg-sprite-loader -D
 
 ::advance-code{:file-name='vue.config.js'}
 ```javascript
+const path = require("path");
+
+function resolve(dir) {
+  return path.join(__dirname, dir);
+}
+
 module.exports = {
   chainWebpack: (config) => {
     // 先刪除預設的svg配置
@@ -286,7 +298,7 @@ module.exports = {
 
 ##### 二、使用
 
-這樣處理完之後就可以在 Vue 元件中引入 `.svg` 檔，並且在 `template` 裡使用 `<use>`，你就可以獲得一個能夠改變顏色的 SVG icon 了。
+這樣處理完之後就可以在 Vue 元件中引入 `.svg` 檔，並且在 `template` 裡使用 `<use>`，你就可以獲得一個能夠改變顏色的 SVG Icon 了。
 
 ```vue
 <template>
