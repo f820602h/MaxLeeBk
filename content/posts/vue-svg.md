@@ -202,11 +202,10 @@ app.mount("#app");
 ```
 ::
 
+::advance-code{:file-name='SvgIcon.vue'}
 ```vue
 <template>
-  <svg aria-hidden="true">
-    <use :xlink:href="`#${iconName}`" />
-  </svg>
+  <svg aria-hidden="true"><use :xlink:href="`#${iconName}`" /></svg>
 </template>
 
 <script setup>
@@ -227,6 +226,7 @@ defineProps({
 }
 </style>
 ```
+::
 
 你就可以在專案中像這樣使用這個元件了，若顏色並未照你預期的變換，請看文末的補充
 
@@ -339,11 +339,10 @@ Vue.component("icon", SvgIcon)
 ```
 ::
 
+::advance-code{:file-name='SvgIcon.vue'}
 ```vue
 <template>
-  <svg aria-hidden="true">
-    <use :xlink:href="`#${iconName}`" />
-  </svg>
+  <svg aria-hidden="true"><use :xlink:href="`#${iconName}`" /></svg>
 </template>
 
 <script>
@@ -367,6 +366,7 @@ export default {
 }
 </style>
 ```
+::
 
 這樣就可以直接用元件的方式使用 SVG 囉！
 
