@@ -8,8 +8,9 @@
 
 <style scoped lang="scss">
 div :deep(> *) {
-  width: 50%;
-  flex-grow: 0;
+  min-width: 50%;
+  flex-grow: 1;
+  flex-shrink: 1;
   margin: 0 !important;
 }
 </style>
