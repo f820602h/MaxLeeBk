@@ -86,30 +86,31 @@ tags: [Vus.js,SVG,Webpack]
 ::advance-code{:file-name='svgBuilder.js'}
 ```javascript
 import { readFileSync, readdirSync } from "fs";
+import { extname } from "path";
 
 // 將 SVG 內容轉換為 Symbol 的函式，接受一個 SVG 檔案路徑作為參數
 function symbolFormatter(svgPath) {
   const svgFrontTag = /<svg([^>+].*?)>/;
-  const hasViewBox = /(viewBox="[^>+].*?")/g;
-  const clearHeightWidth = /(width|height)="([^>+].*?)"/g;
-  const clearReturn = /(\r)|(\n)/g;
+  const viewBox = /(viewBox="[^>+].*?")/;
+  const widthHeight = /(width|height)="([^>+].*?)"/g;
+  const carriageReturn = /(\r)|(\n)/g;
 
   return readFileSync(svgPath)
     .toString()
-    .replace(clearReturn, "") // 移除換行符號
+    .replace(carriageReturn, "") // 移除換行符號
     .replace(svgFrontTag, (match, $1) => {
       let width = 0;
       let height = 0;
 
       // 取得 SVG 的 width 和 height 的值後，將其從 SVG 內容中移除
-      let content = $1.replace(clearHeightWidth, (match, s1, s2) => {
+      let content = $1.replace(widthHeight, (match, s1, s2) => {
         if (s1 === "width") width = s2;
         if (s1 === "height") height = s2;
         return "";
       });
 
       // 如果 SVG 沒有 viewBox 屬性，則加入 viewBox 屬性
-      if (!hasViewBox.test($1)) content += `viewBox="0 0 ${width} ${height}"`;
+      if (!viewBox.test($1)) content += `viewBox="0 0 ${width} ${height}"`;
       
       // 將 SVG 內容轉換為 Symbol，並使用檔名作為 Symbol 的 id
       return `<symbol id="${content.name.replace(".svg", "")}" ${content}>`;
@@ -127,6 +128,8 @@ function findSvgFile(dir) {
     if (content.isDirectory()) {
       symbolRes.push(...findSvgFile(dir + content.name + "/"));
     } else {
+      // 如果不是 SVG 檔，則跳過
+      if (extname(content.name) !== ".svg") continue;
       symbolRes.push(symbolFormatter(dir + content.name));
     }
   }
