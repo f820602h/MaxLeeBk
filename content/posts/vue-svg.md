@@ -89,13 +89,13 @@ import { readFileSync, readdirSync } from "fs";
 import { extname } from "path";
 
 // 將 SVG 內容轉換為 Symbol 的函式，接受一個 SVG 檔案路徑作為參數
-function symbolFormatter(svgPath) {
+function symbolFormatter(dir, svgName) {
   const svgFrontTag = /<svg([^>+].*?)>/;
   const viewBox = /(viewBox="[^>+].*?")/;
   const widthHeight = /(width|height)="([^>+].*?)"/g;
   const carriageReturn = /(\r)|(\n)/g;
 
-  return readFileSync(svgPath)
+  return readFileSync(dir + svgName)
     .toString()
     .replace(carriageReturn, "") // 移除換行符號
     .replace(svgFrontTag, (match, $1) => {
@@ -113,7 +113,7 @@ function symbolFormatter(svgPath) {
       if (!viewBox.test($1)) content += `viewBox="0 0 ${width} ${height}"`;
       
       // 將 SVG 內容轉換為 Symbol，並使用檔名作為 Symbol 的 id
-      return `<symbol id="${content.name.replace(".svg", "")}" ${content}>`;
+      return `<symbol id="${svgName.replace(".svg", "")}" ${content}>`;
     })
     .replace("</svg>", "</symbol>");
 }
@@ -130,7 +130,7 @@ function findSvgFile(dir) {
     } else {
       // 如果不是 SVG 檔，則跳過
       if (extname(content.name) !== ".svg") continue;
-      symbolRes.push(symbolFormatter(dir + content.name));
+      symbolRes.push(symbolFormatter(dir, content.name));
     }
   }
 
