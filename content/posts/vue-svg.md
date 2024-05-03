@@ -88,7 +88,7 @@ tags: [Vus.js,SVG,Webpack]
 import { readFileSync, readdirSync } from "fs";
 import { extname } from "path";
 
-// 將 SVG 內容轉換為 Symbol 的函式，接受一個 SVG 檔案路徑作為參數
+// 將 SVG 內容轉換為 Symbol 的函式，需要傳入目標資料夾路徑以及 SVG 檔名
 function symbolFormatter(dir, svgName) {
   const svgFrontTag = /<svg([^>+].*?)>/;
   const viewBox = /(viewBox="[^>+].*?")/;
