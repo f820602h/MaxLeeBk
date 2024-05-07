@@ -135,6 +135,10 @@ function dateFormatter(date: string) {
           </div>
         </template>
       </ContentDoc>
+
+      <ClientOnly>
+        <PostMessageBoard class="mt-10" />
+      </ClientOnly>
     </div>
   </main>
 </template>
