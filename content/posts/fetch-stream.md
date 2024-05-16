@@ -128,11 +128,11 @@ Streams API 可以讓我們以流（Stream）的方式獲取資料，若資料�
 
 在 `Response` 中還有一個 `body` 屬性，是一個 `ReadableStream` 的實體，而其中的 `getReader` 方法可以讓我們取得一個 `ReadableStreamDefaultReader`，只要呼叫它的 `read` 方法，就可以取得「流」的資料。
 
-::advance-code{:line='[3,4,9,10,11,12,13]'}
+::advance-code{:line='[4,9,10,11,12,13]'}
 ```javascript
 fetch("http://localhost:3000/")
   .then((res) => {
-    /** @type {ReadableStreamDefaultReader} */
+    /** @type { ReadableStreamDefaultReader } */
     const reader = res.body.getReader(); 
 
     let result = "";
@@ -267,7 +267,7 @@ fetch("http://localhost:3000/")
 
 #### # ReadableStream.cancel / ReadableStreamDefaultReader.cancel
 
-在 `Response.body` 中還有一個 `cancel` 方法，它可以用來關閉一個流，而當一個流被關閉了，那對應得 `Response` 也就會被取消。所以我們嘗試這樣處理：
+在 `Response.body` 中還有一個 `cancel` 方法，它可以用來關閉一個流，而當一個流被關閉了，那對應的 `Response` 及其請求也就會被取消。所以我們嘗試這樣處理：
 
 ::advance-code{:line='[6]'}
 ```javascript
@@ -357,9 +357,9 @@ aborter();
 
 #### # new ReadableStream
 
-所以我們無法使用 Fetch Stream 來實現取消請求嗎？其實不然，因為我們還有一個方法可以使用，那就是使用 `ReadableStream` 的建構子來建立一個新的流，這樣我們就可以自由的對這個流進行操作了。
+所以我們無法使用 Fetch Stream 來實現取消請求嗎？其實不然，因為我們還有一個方法可以使用，那就是使用 `ReadableStream` 的建構子來建立一個新的流，用來代替原本的流「被鎖定」，並且還可以對這個新的流有額外的控制。
 
-當我們要創建一個新的 `ReadableStream` 實體時，需要傳入一個設定對應生命週期 Callback 的物件，這個物件中有一個 `start` 方法，這個方法會在流開始時被呼叫，而這個方法中有一個 `controller` 參數，這個參數是一個 `ReadableStreamDefaultController` 的實體，我們可以透過它來對流做一些內部操作。
+當我們要創建一個新的 `ReadableStream` 實體時，需要傳入一個設定對應生命週期 Callback 的物件，這個物件中有一個 `start` 方法，這個方法會在流開始時被呼叫，並且在被呼叫時會被傳入 `controller` 參數，這個參數是一個 `ReadableStreamDefaultController` 的實體，我們可以透過它來對流做一些內部操作。
 
 ```javascript
 const stream = new ReadableStream({
@@ -376,19 +376,27 @@ const stream = new ReadableStream({
 });
 ```
 
-有了這個新的流，我們就可以將原本從 `Response` 中所拿到的 `reader` 進行操作，將拿到的資料最為這個新的流的片段，並且一樣在用新的 `Response` 包裹，這樣後續的 `res.json()` 也會是在對這個新的流進行操作，但這次我們對這個新的流有更多的控制權。
+<br/>
 
-::advance-code{:line='[6,9,10,11,12,13,28]'}
+下面我們就用這個方式創建一個「自訂流」<sup>①</sup>，並且從 `res.body` 這個「原始流」拿到 `reader`<sup>②</sup>，此時「原始流」會被這個 `reader` 鎖定，但這次 `reader` 是由我們全權掌控，從中取得的資料也會被做為「自訂流」的資料源片段。
+
+接著暴露出一個 `aborter` 函式<sup>③</sup>，當中透過 `reader.cancel()` 來釋放「原始流」的鎖定，再者是利用 `controller.error` 在「自訂流」的內部發出錯誤，這樣我們就成功取消了這次的請求。
+
+最後再用新的 `Response` 包裹這個「自訂流」<sup>④</sup>，這樣後續的 `res.json()` 鎖定的流就會是這個「自訂流」，而不是原本的「原始流」，如此就沒有鎖定衝突的問題了。
+
+::advance-code{:line='[5,9,11,12,13,14,15,30]'}
 ```javascript
 let aborter = null;
 
 fetch("http://localhost:3000/")
   .then((res) => {
-    const reader = res.body.getReader();
-    const stream = new ReadableStream({
+    const stream = new ReadableStream({ // 1
       start(controller) {
         let aborted = false;
-        aborter = () => {
+
+        const reader = res.body.getReader(); // 2
+
+        aborter = () => { // 3
           reader.cancel();
           controller.error(new Error("Fetch aborted"));
           aborted = true;
@@ -400,14 +408,14 @@ fetch("http://localhost:3000/")
               if (!aborted) controller.close();
               return;
             }
-            controller.enqueue(value);
+            controller.enqueue(value); 
             push();
           });
         };
         push();
       }
     });
-    return new Response(stream, { headers: res.headers });
+    return new Response(stream, { headers: res.headers }); // 4
   })
   .then(res => res.json())
   .then((data) => {
@@ -420,8 +428,6 @@ fetch("http://localhost:3000/")
 aborter();
 ```
 ::
-
-我們暴露出了的 `aborter` 首先會進行 `reader.cancel()`，由於這次沒有其他的 `reader` 對原本的流進行鎖定，所以這次的取消請求就成功了，再者是利用 `controller.error` 在流的內部發出錯誤，這樣我們就可以在 `catch` 中進行處理了。
 
 > 這邊我們已經成功實作出「取消請求」的功能，若要實作「請求逾時」的功能，只要搭配 `setTimeout` 來使用即可。
 
@@ -754,6 +760,8 @@ const getData = () => {
     });
 };
 ```
+
+<br/>
 
 ##### 參考資料
 - [【MDN】Streams API concepts](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)
