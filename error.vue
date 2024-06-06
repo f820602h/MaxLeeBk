@@ -1,7 +1,12 @@
 <script setup lang="ts">
-defineProps<{
-  error: { url: string; statusCode: number; message: string };
-}>();
+import type { NuxtError } from "#app";
+const { hide } = useLoading();
+
+defineProps<{ error: NuxtError }>();
+
+onMounted(() => {
+  hide();
+});
 </script>
 
 <template>
