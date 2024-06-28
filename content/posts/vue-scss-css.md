@@ -6,7 +6,8 @@ tags: [Vue, SCSS, CSS]
 
 > 此篇相關技術的版本： Vue (v3 以上) / SCSS (Dart Sass v1.23 以上)
 
-## 背景
+<!-- MARK: 背景 -->
+## 背景 
 
 這篇文章的起因是最近在專案中遇到了「網站中有些頁面需要 RWD，有些頁面不需要」的需求，導致在這些不同頁面中的共用元件樣式會需要根據需不需要 RWD 來調整。
 
@@ -17,6 +18,7 @@ tags: [Vue, SCSS, CSS]
 
 ---
 
+<!-- MARK: 變數之間的三角輪迴 -->
 ## 變數之間的三角輪迴
 
 在前端開發中，不外乎就是處理資料、狀態和樣式，在這個過程中偶爾會希望邏輯與樣式之間可以互通有無，若能夠直接傳遞變數就可以減少繁瑣的操作，下面就來了解 Vue、SCSS 與 CSS 中的變數該如何轉移。
@@ -199,7 +201,7 @@ p {
 你可能想為甚麼不直接透過 `v-bind:style` 傳入就好了呢？其實原因就是「簡化復用方式」，要是 `loadingColor` 並不是只用在單一樣式上，而是有很多地方需要用到，那麼這樣的寫法就會讓模板區塊更乾淨。
 
 ::flex-box
-  ::advance-code{file-name="v-bind in Template"}
+  ::advance-code{file-name="v-bind in inline style"}
   ```vue
   <template>
     <div :style="{ borderColor: loadingColor }">
@@ -301,8 +303,8 @@ onMounted(() => {
 
 ---
 
+<!-- MARK: 智慧的三角神力 - CSS -->
 ## 智慧的三角神力 - CSS
-
 
 #### # var() 預備值
 
@@ -383,6 +385,7 @@ p {
 
 ---
 
+<!-- MARK: 力量的三角神力 - SCSS -->
 ## 力量的三角神力 - SCSS
 
 #### # SCSS @mixin
@@ -540,9 +543,42 @@ p {
 
 ---
 
+<!-- MARK: 勇氣的三角神力 - Vue -->
 ## 勇氣的三角神力 - Vue
 
-其實 Vue 的厲害之處已經悄悄表現得淋漓盡致了，若是沒有 Vue 本身強大的編譯能力以及 Vite 的建置功能，前面很多技巧都是無法實現的。不過這邊依然有一個額外的 Vue 環境技巧可以和大家分享。
+其實 Vue 的厲害之處已經悄悄表現得淋漓盡致了，若是沒有 Vue 本身強大的編譯能力以及 Vite 的建置功能，前面很多技巧都是無法實現的。不過這邊依然有一些額外的技巧可以和大家分享。
+
+<br/>
+
+#### # Vue - Variables in Inline Style Binding
+
+還記得前面說明「v-bind in CSS」時，有展示在模板中使用 `v-bind:style` 的效果不太優雅，但其實也是有一個相對折衷的方式，那就是雖然使用 `v-bind:style` 不過物件中定義的是 CSS 變數。沒想要 Vue 竟然還支援這樣的定義方式，真的想得很周到。
+
+```vue
+<template>
+  <div :style="{ '--loading-color': loadingColor }">
+    <p>Hello World</p>
+  </div>
+</template>
+
+<script setup>
+import { ref, computed } from "vue";
+
+const isLoading = ref(false);
+const loadingColor = computed(() => {
+  return isLoading.value ? "red" : "blue";
+});
+</script>
+
+<style lang="scss" scoped>
+div {
+  border-color: var(--loading-color);
+}
+p {
+  color: var(--loading-color);
+}
+</style>
+```
 
 <br/>
 
@@ -579,10 +615,9 @@ p {
   ::
 ::
 
-
-
 ---
 
+<!-- MARK: 運用神力 -->
 ## 運用神力
 
 有了以上的前置知識，就可以開始說明我是如何運用上述技巧來解決文章開頭的問題了。那先重新回顧一下問題並設定情境：
