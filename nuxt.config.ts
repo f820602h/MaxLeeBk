@@ -5,6 +5,20 @@ export default {
   content: {
     contentHead: false,
     highlight: {
+      langs: [
+        "json",
+        "js",
+        "jsx",
+        "ts",
+        "html",
+        "css",
+        "scss",
+        "vue",
+        "shell",
+        "mdc",
+        "md",
+        "yaml",
+      ],
       theme: {
         default: "vitesse-light",
         "light-mode": "vitesse-light",
@@ -18,6 +32,9 @@ export default {
     },
   },
   devtools: { enabled: false },
+  devServer: {
+    port: 3030,
+  },
   app: {
     head: {
       link: [

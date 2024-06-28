@@ -18,16 +18,18 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="code" class="advance-code flex flex-col mt-16px">
-    <div
-      v-if="fileName"
-      class="flex items-center -mb-4px pl-1 text-gray-400 dark:text-gray-400 text-xs"
-    >
-      <div class="i-iconoir:multiple-pages-empty mt-1px" />
-      <div class="ml-1 leading-14px">{{ fileName }}</div>
+  <ClientOnly>
+    <div ref="code" class="advance-code flex flex-col mt-16px">
+      <div
+        v-if="fileName"
+        class="flex items-center -mb-4px pl-1 text-gray-400 dark:text-gray-400 text-xs"
+      >
+        <div class="i-iconoir:multiple-pages-empty mt-1px" />
+        <div class="ml-1 leading-14px">{{ fileName }}</div>
+      </div>
+      <slot />
     </div>
-    <slot />
-  </div>
+  </ClientOnly>
 </template>
 
 <style scoped lang="scss">
