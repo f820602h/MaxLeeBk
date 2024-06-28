@@ -302,7 +302,7 @@ $img-bg-color-invert: white;
   }
 
   blockquote {
-    margin: 16px 0 4px;
+    margin: 16px 0 8px;
     padding: 16px;
     border: 1px solid $box-border-color-sp;
     color: $highlight-color;

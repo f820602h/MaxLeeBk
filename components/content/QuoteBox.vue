@@ -14,7 +14,7 @@ defineProps<{ from?: string; url?: string }>();
 </template>
 
 <style scoped lang="scss">
-div :deep(> *) {
+div :deep(*:not(li)) {
   font-family: sans-serif;
   margin: 0 !important;
 }

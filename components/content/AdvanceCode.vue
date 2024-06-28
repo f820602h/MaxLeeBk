@@ -18,7 +18,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="code" class="advance-code flex flex-col mt-12px">
+  <div ref="code" class="advance-code flex flex-col mt-16px">
     <div
       v-if="fileName"
       class="flex items-center -mb-4px pl-1 text-gray-400 dark:text-gray-400 text-xs"

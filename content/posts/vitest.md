@@ -6,7 +6,6 @@ tags: [Vus.js,Vitest,Testing]
 
 > Test Double - 測試替身 是一種讓 SUT 可以不依靠 DOC 而單獨被測試的作法，在實作上分為 Stub 和 Mock。
 
-
 ## Stub vs. Mock
 
 #### # Stub （Stub、Dummy、Fake）
