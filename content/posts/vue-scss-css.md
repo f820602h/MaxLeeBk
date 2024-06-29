@@ -30,7 +30,7 @@ tags: [Vue, SCSS, CSS]
 
 先說說為什麼會有 SCSS 變數要轉換成 CSS 變數的需求，這是因為在 Vue 專案中，除非做了一些額外設定，否則 SCSS 變數是無法共享給子原件的，但 CSS 變數卻可以，所以經過這樣的轉換就可以更便捷的設定樣式。
 
-> 這裡的「額外設定」指的是 Vite 中的 `preprocessorOptions`，後面會在詳細介紹。
+> 這裡的「額外設定」指的是 Vite 中的 `preprocessorOptions`，後面會再詳細介紹。
 
 ::flex-box
   ::advance-code{file-name="SCSS Variables"}

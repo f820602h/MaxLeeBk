@@ -196,7 +196,7 @@ $img-bg-color-invert: white;
     font-size: 40px;
   }
   h2 {
-    font-size: 28px;
+    font-size: 32px;
     margin: 24px 0px;
   }
   h3 {

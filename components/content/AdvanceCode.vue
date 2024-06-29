@@ -20,7 +20,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="code" class="advance-code flex flex-col mt-16px">
+  <div ref="code" class="advance-code flex flex-col my-12px pt-1">
     <div
       v-if="fileName"
       class="flex items-center -mb-4px pl-1 text-gray-400 dark:text-gray-400 text-xs"
@@ -38,6 +38,7 @@ onMounted(() => {
 
   :deep(pre) {
     flex-grow: 1;
+    margin-bottom: 0 !important;
   }
 }
 </style>
