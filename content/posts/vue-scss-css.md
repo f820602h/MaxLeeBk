@@ -9,7 +9,7 @@ tags: [Vue, SCSS, CSS]
 <!-- MARK: 背景 -->
 ## 背景 
 
-這篇文章的起因是最近在專案中遇到了「網站中有些頁面需要 RWD，有些頁面不需要」的需求，導致在這些不同頁面中的共用元件樣式會需要根據需不需要 RWD 來調整。
+這篇文章的起因是最近在專案中遇到了「網站中有些頁面需要 RWD，有些頁面不需要」的需求，導致在這些不同頁面中的共用元件樣式會根據要不要 RWD 而改變。
 
 雖然聽起來不是什麼困難的需求，但一般常見的處理方式總讓我覺得不是很俐落，於是就開始尋找其他作法。而在研究的過程中讓我聯想到了很多在 Vue 專案中使用 SCSS 與 CSS 的小技巧，所以就乾脆趁著這個機會把一些相關特性以及最終方案和大家分享。
 
@@ -25,6 +25,7 @@ tags: [Vue, SCSS, CSS]
 
 <br />
 
+<!-- MARK: SCSS Variables -> CSS Variables -->
 #### # SCSS Variables -> CSS Variables
 
 先說說為什麼會有 SCSS 變數要轉換成 CSS 變數的需求，這是因為在 Vue 專案中，除非做了一些額外設定，否則 SCSS 變數是無法共享給子原件的，但 CSS 變數卻可以，所以經過這樣的轉換就可以更便捷的設定樣式。
@@ -136,6 +137,7 @@ tags: [Vue, SCSS, CSS]
 
 <br />
 
+<!-- MARK: CSS Variables -> SCSS Variables -->
 #### # CSS Variables -> SCSS Variables
 
 基本上 CSS 變數是可以直接在 SCSS 中使用的，但或許在寫 SCSS 的 `@function` 或 `@mixin` 時希望使用一個 SCSS 變數來儲存管理時，還是可以很簡單的轉換。
@@ -171,6 +173,7 @@ tags: [Vue, SCSS, CSS]
 
 <br />
 
+<!-- MARK: Vue State -> CSS Variables / SCSS Variables -->
 #### # Vue State -> CSS Variables / SCSS Variables
 
 接著是可能更實用的 Vue 狀態轉換成樣式變數，由於不管是 CSS 還是 SCSS 方法都一樣，所以就一起講。在 Vue3 中，多了一個「v-bind in CSS」的功能，可以很簡單的將邏輯中的資料綁定到樣式當中，並且是動態響應的。
@@ -241,6 +244,7 @@ p {
 
 <br/>
 
+<!-- MARK: CSS Variables -> Vue State -->
 #### # CSS Variables -> Vue State
 
 要將 CSS 變數轉變為 Vue State 也是可以的，只要透過 `window.getComputedStyle()` 取得元素的樣式，再透過 `getPropertyValue()` 取得 CSS 變數的值，不過這個方法所拿到的值並不是響應式的，所以如果 CSS 變數有變動，Vue State 並不會跟著變動。
@@ -264,6 +268,7 @@ onMounted(() => {
 
 <br/>
 
+<!-- MARK: SCSS Variables -> Vue State -->
 #### # SCSS Variables -> Vue State
 
 最後是 SCSS 變數轉變為 Vue State，這個方法主要是透過 Vite 的 CSS Modules 功能搭配 SCSS 的 `:export` 變數匯出來實現，好處是可以是將 `.scss` 檔案作為一個變數的統一管理模組，並且無論是在 `<script>` 還是 `<style>` 都可以引入變數。
