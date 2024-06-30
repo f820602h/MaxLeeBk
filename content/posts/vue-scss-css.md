@@ -69,7 +69,7 @@ tags: [Vue, SCSS, CSS]
   ::
 ::
 
-而且這樣的特性沒有限定父層一定要用 Global Style，只要將 `:root` 換成有包裹子層的元素，就算使用 `scoped` 依然可以讓子層的取得變數。
+而且這樣的特性沒有限定父層一定要用 Global Style，只要將 `:root` 換成有包裹子層的元素，就算使用 `scoped` 依然可以讓子層取得變數。
 
 ::flex-box
   ::advance-code{file-name="Parent.vue" :line=[1]}
@@ -271,7 +271,7 @@ onMounted(() => {
 <!-- MARK: SCSS Variables -> Vue State -->
 #### # SCSS Variables -> Vue State
 
-最後是 SCSS 變數轉變為 Vue State，這個方法主要是透過 Vite 的 CSS Modules 功能搭配 SCSS 的 `:export` 變數匯出來實現，好處是可以是將 `.scss` 檔案作為一個變數的統一管理模組，並且無論是在 `<script>` 還是 `<style>` 都可以引入變數。
+最後是 SCSS 變數轉變為 Vue State，這個方法主要是透過 Vite 的 CSS Modules 功能搭配 SCSS 的 `:export` 來匯出變數，好處是可以是將 `.scss` 檔案作為一個變數的統一管理模組，並且無論是在 `<script>` 還是 `<style>` 都可以引入變數。
 
 ::flex-box
   ::advance-code{file-name="variables.module.scss"}
@@ -680,7 +680,7 @@ p {
   ::
 ::
 
-通常以往到了這裡，我們可能就會透過 `inject`、`provide` 來將這個資訊傳遞給子元件，然後再到子元件中寫這樣的內容：
+以往寫到這邊，可能就會選擇透過 `inject`、`provide` 來將資訊傳遞給子元件，然後再到子元件中寫這樣的內容：
 
 ::advance-code{file-name="Header.vue"}
 ```vue
@@ -734,9 +734,9 @@ $header-mobile-height: 50px;
 
 #### # 單一 CSS 變數
 
-不過這樣在其他元件使用時還是得在樣式中透過 `@import` 來引入，所以乾脆在 `<App>` 中透過將其轉換為 CSS 變數，這樣就可以在任何元件中直接使用了。
+不過這樣在其他元件使用時還是得在樣式中透過 `@import` 來引入，所以乾脆在 `<App>` 中將其轉換為 CSS 變數，這樣就可以在任何元件中直接使用了。
 
-而且甚至可以直接在 `<App>` 中就先將變版的變數覆蓋寫好，這樣其他元件裡就不需要再判斷應該要使用 `header-height` 還是 `header-mobile-height` 了。
+甚至可以直接在 `<App>` 中就先將變數進行變版的覆蓋，這樣其他元件裡就不需要再判斷應該要使用 `header-height` 還是 `header-mobile-height` 了，而是使用單一的 CSS 變數即可。
 
 ::flex-box
   ::advance-code{file-name="App.vue"}
@@ -792,13 +792,13 @@ $header-mobile-height: 50px;
   ::
 ::
 
-這時候 `<Header>` 就不需要再去判斷 `isRWD` 了，只要直接取用 CSS 變數即可，而且這並不只是將原本的邏輯搬到 `<App>` 中而已，而是未來所有需要使用 Header 高度的元件都不再需要關注 RWD 與大小版的判斷，只要直接取用 CSS 變數即可。此外，如果未來新增其他如 Footer、Sidebar 這類層級的元件時，也只要增加新的變數即可。
+並且這不是單純的將邏輯搬到 `<App>` 中而已，而是未來所有需要使用 Header 高度的元件都不再需要關注 RWD 與大小版的判斷，只要直接取用 CSS 變數即可。如果未來需要新增其他如 Footer、Sidebar 這類層級的元件時，也只要增加新的變數即可。
 
 <br />
 
 #### # @mixin 與其他技法搭配
 
-這樣 `<Header>` 的部分就解決了，不過接下來 `<MyComp>` 的情況有些不同，畢竟把一般元件的樣式抽到 CSS Module 中管理可能會有點過頭，但反過來為了一個小小的樣式變動而去試圖判斷 RWD 狀態也有點麻煩，所以我打算透過 `@mixin` 來解決。
+這樣 `<Header>` 的部分就解決了，不過接下來 `<MyComp>` 的情況有些不同，畢竟把一般元件的樣式抽到 CSS Module 中管理可能有點大材小用，但反過來為了一個小小的樣式變動而去試圖判斷 RWD 狀態也有點麻煩，所以我打算透過 `@mixin` 來解決。
 
 ::flex-box
   ::advance-code{file-name="rwd.scss"}
