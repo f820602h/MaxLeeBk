@@ -76,46 +76,30 @@ const color2 = computed(() => ({
               <p class="text-black dark:text-white font-black text-sm">
                 Max Lee
               </p>
-              <p class="text-gray-600 dark:text-gray-400 text-xs">
-                Max Your Mind
-              </p>
+              <p class="text-gray-500 text-xs">Max Your Mind</p>
             </h2>
           </NuxtLink>
         </hgroup>
 
         <nav>
           <ul class="flex items-center gap-5">
-            <li
-              class="text-gray-700 hover:text-black dark:text-#bbb hover:dark:text-white duration-150"
-            >
-              <NuxtLink
-                to="/about"
-                class="p-2px text-sm font-bold"
-                title="About"
-              >
+            <li class="hover:text-black hover:dark:text-white duration-200">
+              <NuxtLink to="/about" class="p-2px text-sm font-bold">
                 About
               </NuxtLink>
             </li>
-            <li
-              class="text-gray-700 hover:text-black dark:text-#bbb hover:dark:text-white duration-150"
-            >
-              <NuxtLink to="/blog" class="p-2px text-sm font-bold" title="Blog">
+            <li class="hover:text-black hover:dark:text-white duration-200">
+              <NuxtLink to="/blog" class="p-2px text-sm font-bold">
                 Blog
               </NuxtLink>
             </li>
-            <li
-              class="text-gray-700 hover:text-black dark:text-#bbb hover:dark:text-white duration-150"
-            >
-              <NuxtLink
-                to="/works"
-                class="p-2px text-sm font-bold"
-                title="Works"
-              >
+            <li class="hover:text-black hover:dark:text-white duration-200">
+              <NuxtLink to="/works" class="p-2px text-sm font-bold">
                 Works
               </NuxtLink>
             </li>
             <li
-              class="flex items-center text-gray-700 hover:text-black dark:text-#bbb hover:dark:text-white duration-150"
+              class="flex items-center hover:text-black hover:dark:text-white duration-200"
             >
               <a
                 href="https://github.com/f820602h"
@@ -127,7 +111,7 @@ const color2 = computed(() => ({
               </a>
             </li>
             <li
-              class="flex items-center text-gray-700 hover:text-black dark:text-#bbb hover:dark:text-white duration-150"
+              class="flex items-center hover:text-black hover:dark:text-white duration-200"
             >
               <button
                 class="p-2px text-lg font-bold"
@@ -155,6 +139,7 @@ const color2 = computed(() => ({
 
 <style scoped lang="scss">
 header {
+  min-width: 360px;
   backdrop-filter: blur(3px);
   transition: background 0.2s linear;
 }

@@ -128,11 +128,11 @@ const works = {
 
               <div class="p-1">
                 <h4
-                  class="text-lg font-bold mb-1 text-gray-700 dark:text-gray-400 group-hover:text-black dark:group-hover:text-white duration-350"
+                  class="font-bold mb-1 group-hover:text-black dark:group-hover:text-white duration-200"
                   v-text="work.title"
                 />
                 <p
-                  class="min-h-40px text-sm text-gray-500 group-hover:text-black dark:group-hover:text-white duration-350"
+                  class="min-h-40px text-sm text-gray-500 group-hover:text-black dark:group-hover:text-white duration-200"
                   v-text="work.description"
                 />
               </div>
@@ -141,7 +141,7 @@ const works = {
             <a
               :href="work.github"
               target="_blank"
-              class="github p-4px text-lg text-gray-600 hover:text-black dark:text-#bbb dark:hover:text-white duration-350"
+              class="github p-4px text-lg hover:text-black dark:hover:text-white duration-200"
             >
               <div class="i-iconoir:github" />
             </a>
@@ -175,8 +175,9 @@ const works = {
 
   p {
     display: -webkit-box;
-    -webkit-box-orient: vertical;
+    line-clamp: 2;
     -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
     overflow: hidden;
   }
 
@@ -192,7 +193,7 @@ const works = {
 }
 
 .slide {
-  animation: slide 1s;
+  animation: slide 0.75s;
 }
 
 @keyframes slide {

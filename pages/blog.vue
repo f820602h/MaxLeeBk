@@ -53,31 +53,29 @@ const groupingByYear = computed(() => {
       :key="yearDate.year"
       class="relative max-w-650px min-h-300px mx-auto pb-60px"
     >
-      <h2 class="year absolute top-30px right-0 w-250px sm:w-400px">
-        <Transition v-for="i in 10" :key="i" name="fade" appear>
-          <div class="text-100px sm:text-150px">
-            {{ yearDate.year }}
-          </div>
-        </Transition>
+      <h2
+        class="year absolute top-30px right-0 z-1 w-250px sm:w-400px pointer-events-none"
+      >
+        <div
+          v-for="i in 10"
+          :key="i"
+          class="absolute top-0 lef-0text-100px text-transparent font-bold sm:text-150px"
+        >
+          {{ yearDate.year }}
+        </div>
       </h2>
 
-      <ul>
+      <ul class="relative z-2">
         <TransitionGroup name="list" appear>
           <li
             v-for="(article, index) in yearDate.articles"
             v-show="!yearDate.hidden || index < 5"
             :key="article.title"
             :data-index="index"
-            class="group py-3 cursor-pointer"
+            class="py-3 hover:text-black dark:hover:text-white hover:scale-[1.05] cursor-pointer transform-origin-center-left duration-200"
           >
-            <NuxtLink
-              :to="article._path"
-              class="block sm:flex items-center duration-200"
-            >
-              <h3
-                class="mr-2 text-base sm:text-lg text-gray-700 dark:text-#bbb group-hover:text-black dark:group-hover:text-white group-hover:font-bold duration-200"
-                v-text="article.title"
-              />
+            <NuxtLink :to="article._path" class="block sm:flex items-center">
+              <h3 class="mr-2" v-text="article.title" />
               <span
                 class="text-sm text-gray-500"
                 v-text="dateFormatter(article.date)"
@@ -90,7 +88,7 @@ const groupingByYear = computed(() => {
       <Transition name="fade" appear>
         <button
           v-show="yearDate.articles.length > 5 && yearDate.hidden"
-          class="text-gray-400 hover:text-black dark:hover:text-white duration-200"
+          class="text-gray-500 hover:text-black dark:hover:text-white duration-200"
           @click="seeMoreYear.push(yearDate.year)"
         >
           see more ...
@@ -103,9 +101,6 @@ const groupingByYear = computed(() => {
 <style scoped lang="scss">
 ul {
   li {
-    perspective: 100px;
-    perspective-origin: left center;
-
     &.list-enter-active {
       @for $i from 1 through 50 {
         &:nth-child(#{$i}) {
@@ -117,25 +112,11 @@ ul {
         }
       }
     }
-
-    &:hover {
-      a {
-        transform: translateZ(8px);
-      }
-    }
   }
 }
 
 .year {
-  perspective: 100px;
-  perspective-origin: center center;
-
   div {
-    position: absolute;
-    top: 0;
-    left: 0;
-    font-weight: bold;
-    color: transparent;
     transition: 0.2s;
 
     @for $i from 1 through 10 {
@@ -144,22 +125,13 @@ ul {
         transform: translateX(-#{$i * 2}px) rotateZ(-#{$i * 2}deg);
       }
     }
-
-    &.fade-enter-active {
-      @for $i from 1 through 10 {
-        &:nth-child(#{$i}) {
-          transition-delay: #{1 - $i * 0.05}s;
-        }
-      }
-    }
   }
 }
 
 .dark-mode .year div {
   @for $i from 1 through 10 {
     &:nth-child(#{$i}) {
-      -webkit-text-stroke: 1px rgba(45, 45, 45, 1 - $i * 0.1);
-      transform: translateX(-#{$i * 2}px) rotateZ(-#{$i * 2}deg);
+      -webkit-text-stroke: 1px rgba(65, 65, 65, 1 - $i * 0.1);
     }
   }
 }

@@ -164,6 +164,10 @@ defineOgImageComponent("NuxtSeo");
 </template>
 
 <style scoped lang="scss">
+main {
+  animation: fade 0.75s;
+}
+
 a {
   text-wrap: nowrap;
   border-bottom: 1px dashed transparent;
@@ -171,5 +175,16 @@ a {
 
 article {
   line-height: 32px;
+}
+
+@keyframes fade {
+  0% {
+    pointer-events: none;
+    opacity: 0;
+  }
+  100% {
+    pointer-events: unset;
+    opacity: 1;
+  }
 }
 </style>
