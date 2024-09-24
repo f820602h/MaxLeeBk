@@ -40,7 +40,7 @@ const routes = [
 ]
 ```
 
-> 答案是 Vue Router 會導向 `PageB` 頁面，不過這裡面其實有兩件事情需要釐清。
+> 答案是會導向 `PageB` 頁面，不過這裡面其實有兩件事情需要釐清。
 
 <br/>
 
@@ -217,7 +217,7 @@ export function createRouteRecordMatcher(
 
 #### # tokenizePath
 
-現在知道 `tokensToParser` 是在 `createRouteRecordMatcher` 中被呼叫的，並且將 `tokenizePath` 所回傳的結果做為參數傳入。那接來就看看 `tokenizePath` 內部到底做了什麼事情吧。
+現在知道 `tokensToParser` 是在 `createRouteRecordMatcher` 中被呼叫的，並且將 `tokenizePath` 所回傳的結果做為參數傳入。那就接著看看 `tokenizePath` 內部到底做了什麼事情。
 
 ::advance-code{file-name="router/src/matcher/pathTokenizer.ts" :line='[1]'}
 ```ts
@@ -228,7 +228,7 @@ export function tokenizePath(path: string): Array<Token[]> {
 ```
 ::
 
-找到了 `tokenizePath` 的 [位置](https://github.com/vuejs/router/blob/14219b01bee142423265a3aaacd1eac0dcc95071/packages/router/src/matcher/pathTokenizer.ts#L46) 後發現當中的邏輯又長又複雜，所以我們用比較偷懶的方式，可以看到 `tokenizePath` 在回傳型別的部分是 `Array<Token[]>`，並且在同一隻檔案的開頭可以看到這些型別的定義。
+找到了 `tokenizePath` 的 [位置](https://github.com/vuejs/router/blob/14219b01bee142423265a3aaacd1eac0dcc95071/packages/router/src/matcher/pathTokenizer.ts#L46) 後發現當中的邏輯又長又複雜，所以我們用比較偷懶的方式，可以看到 `tokenizePath` 在回傳型別的部分是 `Array<Token[]>`，並且在同一隻檔案的開頭可以看到以下的型別定義。
 
 ::advance-code{file-name="router/src/matcher/pathTokenizer.ts"}
 ```ts
@@ -278,15 +278,15 @@ export function createRouteRecordMatcher(
 
 ![](/img/content/vue-router-ranking/token.png)
 
-以 `PageB` 的來說，`tokenizePath` 會將其路徑轉換成 `[[{type: 0, value: "page" }], []]`，用這個結果可以推測出 `tokenizePath` 會以 `/` 將路徑分段，並根據分段的內容來判斷 `Token` 的類型。最後這樣的陣列會被作為 `segments` 傳入 `tokensToParser`。這就是為什麼當初 `PageB` 的分數會有兩個了。
+用上述這些線索可以推測 `tokenizePath` 會以 `/` 將路徑分段，並根據分段的內容來指定 `type`。最後這樣的陣列會被作為 `segments` 參數傳入 `tokensToParser`。這也就是為什麼 `PageB` 的分數會有兩個了。
 
 <br/>
 
 #### # insertMatcher
 
-等待 `tokensToParser` 計算完分數後，`matcher` 幾乎也就大功告成了，這時 `addRoute` 內部就會將它丟進 `insertMatcher` [函式](https://github.com/vuejs/router/blob/14219b01bee142423265a3aaacd1eac0dcc95071/packages/router/src/matcher/index.ts#L227) 裡，透過它來將 `matcher` 根據分數大小插入 `matchers` 陣列之中。
+等待 `tokensToParser` 計算完分數後，`matcher` 就會被回傳出來並被傳入 `insertMatcher` [函式](https://github.com/vuejs/router/blob/14219b01bee142423265a3aaacd1eac0dcc95071/packages/router/src/matcher/index.ts#L227)之中，來使它根據分數大小插入 `matchers` 陣列之中。也就是前面用 `getRoutes` 取得的 `RouteRecordMatcher` 陣列。
 
-::advance-code{file-name="router/src/matcher/index.ts" :line='[3]'}
+::advance-code{file-name="router/src/matcher/index.ts" :line='[2, 3]'}
 ```ts
 function insertMatcher(matcher: RouteRecordMatcher) {
   const index = findInsertionIndex(matcher, matchers)
@@ -299,7 +299,7 @@ function insertMatcher(matcher: RouteRecordMatcher) {
 ```
 ::
 
-而在 `insertMatcher` 內部的 `findInsertionIndex` 還會再繼續呼叫 `comparePathParserScore` 來比較分數大小並找到正確的陣列位置。詳細的原始碼在 [這裡](https://github.com/vuejs/router/blob/14219b01bee142423265a3aaacd1eac0dcc95071/packages/router/src/matcher/pathParserRanker.ts#L302)。
+而在 `insertMatcher` 內部的 `findInsertionIndex` 則是會再透過 `comparePathParserScore` [函式](https://github.com/vuejs/router/blob/14219b01bee142423265a3aaacd1eac0dcc95071/packages/router/src/matcher/pathParserRanker.ts#L302) 來比較分數大小並找到正確的陣列位置。
 
 為了不花時間去細究分數比較的邏輯，下面我直接用一個直觀的結果來表示 Vue Router 是怎麼排序這些長度不同的路由分數的，下面每一行都是一個路由的分數，每個數字都代表了一段 `Token` 的分數。
 
@@ -321,7 +321,7 @@ const matcherScore = [
 ]
 ```
 
-從結果可以看得出來 Vue Router 會依序比較路由分數，所以你會看到 `[[20]]` 被排到了最後面，當順位第一的分數排完後就會再比較第二個分數，所以你會看到 `[[80], [90]]` 被排在了最前面的位置。如果遇到分數完全一樣的情況才會用路由設定的順序來決定。
+從結果可以看出來 Vue Router 會先比較第一個 `Token` 分數，所以你會看到 `[[20]]` 被排到了最後面，當順位第一的分數排序完畢，就會再比較第二個 `Token` 分數，所以你會看到 `[[80], [90]]` 被排在了最前面的位置。如果遇到分數完全一樣的情況才會用路由設定的順序來決定。
 
 > 到這邊其實我們就把前面所以疑惑的地方給解答了，再幫大家總結一下：
 > 1. 路由分數是在呼叫 `createRouter` 時就在 `createRouterMatcher` 中完成計算及排序的。
@@ -332,9 +332,7 @@ const matcherScore = [
 
 #### # resolve
 
-有了路由的排序後，每當呼叫 `router.push` 或是在網址列輸入網址時，背後都會呼叫 `router.resolve` 這個 [函式](https://github.com/vuejs/router/blob/14219b01bee142423265a3aaacd1eac0dcc95071/packages/router/src/router.ts#L459)，然後再由它來呼叫 `matcher` 的 `resolve` 方法來找到符合的路由。
-
-最後只要目標路由是以路徑的形式指定的，`matcher.resolve` 就會在已經完成分數計算及排序的路由陣列 `matchers` 中尋找第一個符合的路由。
+有了路由排序後，只要使用 `router.push` 或是在網址列輸入網址時，背後都會藉由 `router.resolve` 這個 [函式](https://github.com/vuejs/router/blob/14219b01bee142423265a3aaacd1eac0dcc95071/packages/router/src/router.ts#L459)，來操作 `matcher` 的 `resolve` [方法](https://github.com/vuejs/router/blob/14219b01bee142423265a3aaacd1eac0dcc95071/packages/router/src/matcher/index.ts#L235) 來找到符合的路由。
 
 ::advance-code{file-name="router/src/router.ts" :line='[6]'}
 ```ts
@@ -348,6 +346,8 @@ function resolve(
 }
 ```
 ::
+
+只要目標路由是以路徑的形式指定的，`matcher.resolve` 就會在已經完成分數計算及排序的路由陣列 `matchers` 中尋找第一個符合的路由。
 
 ::advance-code{file-name="router/src/matcher/index.ts" :line='[8]'}
 ```ts
