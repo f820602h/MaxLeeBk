@@ -14,6 +14,7 @@ body {
   --global-font: "Roboto", sans-serif;
   --global-color: #393939;
   --global-bg-color: #f9f9f9;
+  --global-bg-color-rgb: 249 249 249;
 
   --highlight-color: black;
   --highlight-color-hover: white;
@@ -22,7 +23,9 @@ body {
   --box-bg-color: #efefef;
   --box-bg-light-color: #f6f6f6;
   --box-border-color: #d9d9d9;
-  --box-border-color-sp: #9578f7;
+
+  --sp-box-bg-color: rgb(149 120 247 / 10%);
+  --sp-box-border-color: #9578f7;
 
   --code-font: "Fira Mono", monospace;
   --code-bg-color: white;
@@ -38,6 +41,7 @@ body {
 .dark-mode body {
   --global-color: #ccc;
   --global-bg-color: #1a1a1a;
+  --global-bg-color-rgb: 26 26 26;
 
   --highlight-color: white;
   --highlight-color-hover: black;
@@ -46,7 +50,8 @@ body {
   --box-bg-color: #222;
   --box-bg-light-color: #151515;
   --box-border-color: #444;
-  --box-border-color-sp: #9578f7;
+  --box-border-color-sp: rgb(149 120 247 / 10%);
+  --box-border-color-sp-border: #9578f7;
 
   --code-bg-color: #161618;
   --code-highlight-bg-color: #222;

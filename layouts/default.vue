@@ -142,5 +142,6 @@ header {
   min-width: 360px;
   backdrop-filter: blur(3px);
   transition: background 0.2s linear;
+  background: rgb(var(--global-bg-color-rgb) / 50%);
 }
 </style>

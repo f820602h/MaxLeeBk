@@ -2,8 +2,8 @@
 
 <template>
   <section>
-    <main>
+    <div>
       <AdaptGiscus />
-    </main>
+    </div>
   </section>
 </template>

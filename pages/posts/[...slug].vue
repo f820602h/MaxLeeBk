@@ -277,9 +277,9 @@ function dateFormatter(date: string) {
   blockquote {
     margin: 16px 0 8px;
     padding: 16px;
-    border: 1px solid var(--box-border-color-sp);
+    border: 1px solid var(--sp-box-border-color);
     color: var(--highlight-color);
-    background-color: rgba(var(--box-border-color-sp), 0.1);
+    background-color: var(--sp-box-bg-color);
     @extend %rounded;
 
     p {
