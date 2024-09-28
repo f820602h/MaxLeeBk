@@ -59,7 +59,7 @@ const groupingByYear = computed(() => {
         <div
           v-for="i in 10"
           :key="i"
-          class="absolute top-0 lef-0text-100px text-transparent font-bold sm:text-150px"
+          class="absolute top-0 lef-0 text-100px text-transparent font-bold sm:text-150px"
         >
           {{ yearDate.year }}
         </div>
@@ -115,15 +115,13 @@ ul {
   }
 }
 
-.year {
-  div {
-    transition: 0.2s;
+.year div {
+  transition: 0.2s;
 
-    @for $i from 1 through 10 {
-      &:nth-child(#{$i}) {
-        -webkit-text-stroke: 1px rgba(200, 200, 200, 1 - $i * 0.1);
-        transform: translateX(-#{$i * 2}px) rotateZ(-#{$i * 2}deg);
-      }
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      -webkit-text-stroke: 1px rgba(200, 200, 200, 1 - $i * 0.1);
+      transform: translateX(-#{$i * 2}px) rotateZ(-#{$i * 2}deg);
     }
   }
 }

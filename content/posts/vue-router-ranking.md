@@ -19,7 +19,7 @@ const routes = [
 ]
 ```
 
-儘管不小心把路由設定成以下這樣有重複的 `path`，Vue Router 也不會報錯，而是會導向第一個符合網址匹配的 `About` 頁面，而也就是這樣的結果，讓我們產生了 **「認為 Vue Router 是根據路由設定的陣列順序來決定導向的頁面」** 的誤會。
+儘管不小心把不同路由設定成相同的 `path`，Vue Router 也不會報錯，而是會導向第一個符合網址匹配的 `About` 頁面，不過這樣的結果讓我們產生了 **「Vue Router 會根據路由順序來決定最終導向頁面」** 的誤會。
 
 ```js
 const routes = [
@@ -31,7 +31,7 @@ const routes = [
 
 ## 發生衝突
 
-實際上 Vue Router 的運作方式比我們想的還要再複雜一些，這裡就用一個比較好理解的例子來打破前面建立的既定印象。就以下設定的路由來說，當使用者在網址列輸入 `/page` 時，Vue Router 會導向 `PageA` 還是 `PageB` 呢？
+實際上 Vue Router 的運作方式要再複雜一些，這裡實際用一個例子來打破前面建立的既定印象。請問以下面的路由設定來說，當使用者在進入網址 `/page` 時，Vue Router 會導向 `PageA` 還是 `PageB` 呢？
 
 ```js
 const routes = [
@@ -40,13 +40,13 @@ const routes = [
 ]
 ```
 
-> 答案是會導向 `PageB` 頁面，不過這裡面其實有兩件事情需要釐清。
+> 答案是會導向 `PageB` 頁面，而這裡面其實有兩件事情需要釐清。
 
 <br/>
 
 #### 1. Strict options
 
-首先是 `strict` 設定，在預設情況下，Vue Router 並不會特別區分末端是否有斜線。也就是 `/page` 其實可以同時匹配 `PageA` 及 `PageB`，除非特地設定 `strict: true` 才會去嚴格比對到 `PageA`。
+首先是 `strict` 設定，在預設情況下 Vue Router 並不會特別區分末端是否有斜線。也就是 `/page` 其實可以同時匹配 `PageA` 及 `PageB`，除非特地設定 `strict: true` 才會去嚴格比對到 `PageA`。
 
 ```js
 const routes = [
@@ -62,9 +62,9 @@ const router = createRouter({ routes, strict: true })
 
 這時候腦筋動比較快的人應該就會發現第二個問題，那就是既然 `/page` 可以同時匹配 `PageA` 及 `PageB`，那為何 Vue Router 卻是匹配了排序比較後面的 `PageB`？
 
-其實就是因為「路由設定順序」並不是決定路由匹配的主要因素，反而 Vue Router 會先依照路由分數進行排序，如果有複數路由的分數一樣才會根據設定時的順序來決定。
+那就是因為「路由順序」並不是決定路由匹配的主要因素，反而 Vue Router 會先依照路由分數進行排序，當有路由的分數一樣時，才會根據順序來決定。
 
-以上述的例子來說 `PageA` 的路由分數會是 `80`，而 `PageB` 的路由分數會是 `80 | 90`，所以才會先匹配 `PageB`。
+以上述的例子來說 `PageA` 的路由分數會是 `80`，而 `PageB` 的路由分數會是 `80 | 90`，所以就會先匹配 `PageB`。
 
 ```js
 const routes = [
@@ -75,7 +75,7 @@ const routes = [
 
 ## 解開誤會
 
-相信看了上面的解釋後大家反而更困惑了，路由分數是什麼時候計算的？為什麼分數會有兩個數字？計算方式？比較方式？其實我當時也和大家一樣困惑，因為官方文件幾乎沒有提到這塊，只有隱晦的幾句話帶到一下。
+相信看了上面的解釋後大家反而更困惑了，路由分數是什麼？何時計算的？為什麼分數會有兩個數字？計算方式？比較方式？其實我當時也和大家一樣困惑，因為官方文件幾乎沒有提到這塊，只有 [隱晦的幾句話](https://router.vuejs.org/zh/guide/essentials/route-matching-syntax.html#%E8%B0%83%E8%AF%95) 帶到一下。
 
 既然文件沒說，那我們就去看看 Vue Router 的原始碼是怎麼寫的，將這些問題一個個破解吧。
 
@@ -85,7 +85,7 @@ const routes = [
 
 #### # createRouterMatcher & RouteRecordMatcher
 
-其實路由分數在我們設定路由並呼叫 `createRouter()` 時就已經計算了，函式的第一行就是呼叫 `createRouterMatcher` 來建立 `matcher`，不過這個 `matcher` 並沒有直接暴露出來給開發者，所以平時我們並不會注意到有這個東西。
+其實路由分數在使用 `createRouter` 進行初始化路由時就已經計算了，函式中的第一行是透過 `createRouterMatcher` 建立 `matcher`，不過這個 `matcher` 並沒有直接暴露出來給開發者，所以平時可能並不會注意到有這個東西。
 
 ::advance-code{file-name="router/src/router.ts" :line='[2]'}
 ```ts
@@ -98,7 +98,7 @@ export function createRouter(options: RouterOptions): Router {
 
 不過 `createRouterMatcher` 這個函式是有釋出的，根據 [API 文件](https://router.vuejs.org/api/#createRouterMatcher) 的說明，原來它會返回一個 [RouterMatcher 實體](https://router.vuejs.org/api/interfaces/RouterMatcher.html)，而這個實體就會是我們這次的關鍵。
 
-當中 `addRoute`、`clearRoute` 很明顯是操作類型的方法，可以先不管，把注意放在 `getRoutes` 這個方法上， [文件](https://router.vuejs.org/api/interfaces/RouterMatcher.html#getRoutes) 中指出這個方法會返回一個 `RouteRecordMatcher` 的陣列，但卻沒有詳細說明它是什麼，所以我們可以自己嘗試呼叫並印出結果看看。
+實體中有很多方法，不過我們先把注意力放在 `getRoutes`， [文件](https://router.vuejs.org/api/interfaces/RouterMatcher.html#getRoutes) 中指出這個方法會返回一個 `RouteRecordMatcher` 的陣列，不過並沒有詳細說明它是什麼，只好由我們自己嘗試印出結果看看。
 
 ::advance-code{file-name="router.js" :line='[6]'}
 ```js
@@ -113,13 +113,13 @@ console.log(createRouterMatcher(routes).getRoutes())
 
 ![](/img/content/vue-router-ranking/matcher.png)
 
-將返回陣列的 `RouteRecordMatcher` 展開後，會發現當中的 `record.name` 屬性表明了這些物件就是我們設定的路由沒錯，而物件中的 `score` 屬性也和前面說明的一樣，分別是 `[[80]]` 和 `[[80], [90]]`。只不過路由的順序已經被 Vue Router 根據分數高低重新排列了。
+將結果陣列中的 `RouteRecordMatcher` 個別展開後，會發現 `record.name` 屬性表明了這些物件就是我們設定的路由，而物件中的 `score` 屬性也和前面說明的一樣，分別是 `[[80]]` 和 `[[80], [90]]`。而且路由順序已經以分數高低被排列了。
 
 <br/>
 
 #### # PathScore
 
-既然已經發現了 `RouteRecordMatcher` 物件中有 `score` 屬性，索性用它作為關鍵字在原始碼中搜尋一番，就可以在 [這裡](https://github.com/vuejs/router/blob/14219b01bee142423265a3aaacd1eac0dcc95071/packages/router/src/matcher/pathParserRanker.ts#L100-L114) 找到名為 `PathScore` 的列舉，透過其中的註解就可以猜到這個列舉是在定義不同情況的路由路徑所能得到的分數。
+既然已經發現了 `RouteRecordMatcher` 物件中有 `score` 屬性，索性用它作為關鍵字在原始碼中搜尋一番，這時可以在 [這裡](https://github.com/vuejs/router/blob/14219b01bee142423265a3aaacd1eac0dcc95071/packages/router/src/matcher/pathParserRanker.ts#L100-L114) 找到名為 `PathScore` 的列舉，透過其中的註解就可以猜到這個列舉是在定義不同情況的路由路徑所能得到的分數。
 
 ::advance-code{file-name="router/src/matcher/pathParserRanker.ts"}
 ```ts
@@ -141,13 +141,15 @@ const enum PathScore {
 ```
 ::
 
+> 分數不用特別記，只要記得一個大方向是靜態路由分數會比動態路由高，因為詳細分數與排序可以靠 `createRouterMatcher` 印出來查看。
+
 <br/>
 
 #### # tokensToParser
 
-而就在 `PathScore` 的 [底下](https://github.com/vuejs/router/blob/14219b01bee142423265a3aaacd1eac0dcc95071/packages/router/src/matcher/pathParserRanker.ts#L126-L291) 剛好就有一個函式 `tokensToParser`，函式中大量的使用了 `PathScore` 列舉，並且有明顯的分數計算邏輯，最後確實也返回了帶有 `score` 屬性的物件。
+而就在 `PathScore` 的底下剛好就有一個 [函式](https://github.com/vuejs/router/blob/14219b01bee142423265a3aaacd1eac0dcc95071/packages/router/src/matcher/pathParserRanker.ts#L126-L291) `tokensToParser`，當中大量的使用了 `PathScore` 列舉，並且明顯有分數計算邏輯，並且最終返回了帶有 `score` 屬性的物件。
 
-::advance-code{file-name="router/src/matcher/pathParserRanker.ts" :line='[5]'}
+::advance-code{file-name="router/src/matcher/pathParserRanker.ts" :line='[5,8]'}
 ```ts
 export function tokensToParser(
   segments: Array<Token[]>,
@@ -167,24 +169,29 @@ export function tokensToParser(
 
 #### # 先綜觀全局
 
-為了知道 `segments` 是什麼，我們必須要找到 `tokensToParser` 是在哪裡被呼叫並且被傳入什麼樣的參數，然後一步步往源頭追朔，才能知道 Vue Router 是如何計算路由分數的。經過一番搜尋後，將整個流程整理成這樣的關係圖就能比較清楚了。
+為了知道 `segments` 是什麼，我們必須要找到 `tokensToParser` 是在哪裡被呼叫並且被傳入什麼樣的參數，並且一步步往源頭追朔，才能知道 Vue Router 是如何計算路由分數的。經過一番搜尋後，我將整個流程整理成以下的關係圖。
 
 ![](/img/content/vue-router-ranking/flow.png)
 
-首先可以看到最初的起點依然是 `createRouter`，然後可以看到前面提到的 `createRouterMatcher`，在其內部有定義一個 `addRoute` 的方法，並且會將個別路由都丟進去執行，也就是橘色矩形框起來的部分。
+可以看到最初的起點肯定是 `createRouter`，接著是前面提到的 `createRouterMatcher`，它內部定義了 `addRoute` 的方法，並且會將個別路由都丟進去執行，也就是橘色矩形框起來的部分。
 
 <br/>
 
 #### # normalizeRouteRecord
 
-首先可以看到在 `addRoute` 內部會先使用 `normalizeRouteRecord` 這個 [函式](https://github.com/vuejs/router/blob/14219b01bee142423265a3aaacd1eac0dcc95071/packages/router/src/matcher/index.ts#L383)，它單純就是將原本個別路由的設定融合一些額外的屬性，輸出一個全新的物件，Vue Router 將其稱為 `record`。
+在 `addRoute` 內部首先會使用 `normalizeRouteRecord` 這個 [函式](https://github.com/vuejs/router/blob/14219b01bee142423265a3aaacd1eac0dcc95071/packages/router/src/matcher/index.ts#L383)，它會使用別路由的設定來為新物件屬性賦值，並添加一些新的屬性，最終將其返回並稱為 `record`。
 
-::advance-code{file-name="router/src/matcher/index.ts"}
+::advance-code{file-name="router/src/matcher/index.ts" :line='[5,6,7]'}
 ```ts
 export function normalizeRouteRecord(
   record: RouteRecordRaw & { aliasOf?: RouteRecordNormalized }
 ): RouteRecordNormalized {
   const normalized: Omit<RouteRecordNormalized, 'mods'> = {
+    path: record.path,
+    redirect: record.redirect,
+    name: record.name,
+    leaveGuards: new Set(),
+    updateGuards: new Set(),
     // ...
   }
   return normalized as RouteRecordNormalized
@@ -196,7 +203,7 @@ export function normalizeRouteRecord(
 
 #### # createRouteRecordMatcher
 
-路由在轉變成 `record` 後，就會再被丟進 `createRouteRecordMatcher` 這個 [函式](https://github.com/vuejs/router/blob/14219b01bee142423265a3aaacd1eac0dcc95071/packages/router/src/matcher/pathMatcher.ts#L19) 處理，函式中會創建一個新物件並將他返回，`record` 便是它的屬性之一，而當中被 `assign` 的 `parser` 就是透過前面提到的 `tokensToParser` 回傳出來的。
+路由在轉變成 `record` 後，就會再被丟進 `createRouteRecordMatcher` 這個 [函式](https://github.com/vuejs/router/blob/14219b01bee142423265a3aaacd1eac0dcc95071/packages/router/src/matcher/pathMatcher.ts#L19) 處理，當中創建了一個新物件並將他返回，`record` 會是它的屬性之一，而被 `assign` 的 `parser` 就是透過前面提到的 `tokensToParser` 回傳出來的。
 
 ::advance-code{file-name="router/src/matcher/pathMatcher.ts" :line='[6]'}
 ```ts
@@ -228,7 +235,7 @@ export function tokenizePath(path: string): Array<Token[]> {
 ```
 ::
 
-找到了 `tokenizePath` 的 [位置](https://github.com/vuejs/router/blob/14219b01bee142423265a3aaacd1eac0dcc95071/packages/router/src/matcher/pathTokenizer.ts#L46) 後發現當中的邏輯又長又複雜，所以我們用比較偷懶的方式，可以看到 `tokenizePath` 在回傳型別的部分是 `Array<Token[]>`，並且在同一隻檔案的開頭可以看到以下的型別定義。
+找到了 `tokenizePath` 的 [位置](https://github.com/vuejs/router/blob/14219b01bee142423265a3aaacd1eac0dcc95071/packages/router/src/matcher/pathTokenizer.ts#L46) 後發現當中的邏輯又長又複雜，所以我們用比較偷懶的方式。`tokenizePath` 在回傳型別的部分是 `Array<Token[]>`，並且在同一隻檔案的開頭可以看到以下的型別定義。
 
 ::advance-code{file-name="router/src/matcher/pathTokenizer.ts"}
 ```ts
@@ -260,7 +267,7 @@ export type Token = TokenStatic | TokenParam | TokenGroup
 ```
 ::
 
-另外還可以偷偷修改一下原始碼，把 `Token` 們印出來看看。
+另外也偷偷修改一下原始碼，把 `Token` 們印出來看看。
 
 ::advance-code{file-name="router/src/matcher/pathMatcher.ts" :line='[6]'}
 ```ts
@@ -278,13 +285,13 @@ export function createRouteRecordMatcher(
 
 ![](/img/content/vue-router-ranking/token.png)
 
-用上述這些線索可以推測 `tokenizePath` 會以 `/` 將路徑分段，並根據分段的內容來指定 `type`。最後這樣的陣列會被作為 `segments` 參數傳入 `tokensToParser`。這也就是為什麼 `PageB` 的分數會有兩個了。
+有了以上這些線索就可以推測 `tokenizePath` 會以 `/` 將路徑分段，並根據分段的內容來指定 `type`。最後這樣的陣列會被作為 `segments` 參數傳入 `tokensToParser`。這也就是為什麼 `PageB` 的分數會有兩個了。
 
 <br/>
 
 #### # insertMatcher
 
-等待 `tokensToParser` 計算完分數後，`matcher` 就會被回傳出來並被傳入 `insertMatcher` [函式](https://github.com/vuejs/router/blob/14219b01bee142423265a3aaacd1eac0dcc95071/packages/router/src/matcher/index.ts#L227)之中，來使它根據分數大小插入 `matchers` 陣列之中。也就是前面用 `getRoutes` 取得的 `RouteRecordMatcher` 陣列。
+等待 `tokensToParser` 計算完分數後，`matcher` 就會被返回並被傳入 `insertMatcher` [函式](https://github.com/vuejs/router/blob/14219b01bee142423265a3aaacd1eac0dcc95071/packages/router/src/matcher/index.ts#L227)之中，來使它根據分數大小插入 `matchers` 陣列之中。也就是前面用 `getRoutes` 取得的 `RouteRecordMatcher` 陣列。
 
 ::advance-code{file-name="router/src/matcher/index.ts" :line='[2, 3]'}
 ```ts
