@@ -74,6 +74,7 @@ export default {
     "@vueuse/nuxt",
     "@nuxtjs/color-mode",
     "nuxt-og-image",
+    "@nuxtjs/robots",
   ],
   css: ["@unocss/reset/tailwind.css"],
 };

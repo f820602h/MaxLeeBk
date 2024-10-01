@@ -43,6 +43,9 @@ devDependencies:
   '@nuxtjs/eslint-config-typescript':
     specifier: ^12.1.0
     version: 12.1.0(eslint@8.52.0)(typescript@5.2.2)
+  '@nuxtjs/robots':
+    specifier: ^4.1.7
+    version: 4.1.7(vite@5.4.8)(vue@3.5.10)
   '@typescript-eslint/parser':
     specifier: ^6.8.0
     version: 6.9.0(eslint@8.52.0)(typescript@5.2.2)
@@ -2048,6 +2051,29 @@ packages:
       - supports-color
       - webpack-sources
     dev: false
+
+  /@nuxtjs/robots@4.1.7(vite@5.4.8)(vue@3.5.10):
+    resolution: {integrity: sha512-1rz2oyBNmpfIzqNG9LfGft+H8Wpp1BMmPyNhkm7BuG/jUXTBFaCh6HDeK6Otx2y53Z9JtCDhiIs/JHj/L4WLPw==}
+    dependencies:
+      '@nuxt/devtools-kit': 1.5.1(magicast@0.3.5)(vite@5.4.8)
+      '@nuxt/kit': 3.13.2(magicast@0.3.5)
+      consola: 3.2.3
+      defu: 6.1.4
+      nuxt-site-config: 2.2.18(vite@5.4.8)(vue@3.5.10)
+      nuxt-site-config-kit: 2.2.18(vue@3.5.10)
+      pathe: 1.1.2
+      pkg-types: 1.2.0
+      sirv: 2.0.4
+      std-env: 3.7.0
+      ufo: 1.5.4
+    transitivePeerDependencies:
+      - magicast
+      - rollup
+      - supports-color
+      - vite
+      - vue
+      - webpack-sources
+    dev: true
 
   /@parcel/watcher-android-arm64@2.4.1:
     resolution: {integrity: sha512-LOi/WTbbh3aTn2RYddrO8pnapixAziFl6SMxHM69r3tvdSm94JtCenaKgk1GRg5FJ5wpMCpHeW+7yqPlvZv7kg==}
