@@ -26,6 +26,9 @@ export default {
       },
     },
   },
+  build: {
+    transpile: ["shiki"],
+  },
   runtimeConfig: {
     public: {
       linkApiKay: process.env.NUXT_LINK_API_KEY,
