@@ -63,7 +63,9 @@ export default {
       ],
     },
   },
-  ogImage: { fonts: ["Noto+Sans+TC:700"] },
+  ogImage: {
+    fonts: ["Noto+Sans+TC:700"],
+  },
   nitro: {
     typescript: { typeCheck: true },
     prerender: { routes: ["/sitemap.xml"] },
