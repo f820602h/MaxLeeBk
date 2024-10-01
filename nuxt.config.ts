@@ -1,7 +1,5 @@
 export default {
-  site: {
-    url: "https://maxlee.me",
-  },
+  site: { url: "https://maxlee.me" },
   content: {
     contentHead: false,
     highlight: {
@@ -26,30 +24,16 @@ export default {
       },
     },
   },
-  build: {
-    transpile: ["shiki"],
-  },
-  runtimeConfig: {
-    public: {
-      linkApiKay: process.env.NUXT_LINK_API_KEY,
-    },
-  },
+  build: { transpile: ["shiki"] },
+  runtimeConfig: { public: { linkApiKay: process.env.NUXT_LINK_API_KEY } },
   devtools: { enabled: false },
-  devServer: {
-    port: 3030,
-  },
+  devServer: { port: 3030 },
   app: {
     head: {
       link: [
-        {
-          rel: "icon",
-          type: "image/svg+xml",
-          href: "/favicon.ico",
-        },
-        {
-          rel: "preconnect",
-          href: "https://fonts.googleapis.com",
-        },
+        { rel: "icon", type: "image/svg+xml", href: "/favicon.ico" },
+        { rel: "canonical", href: "https://maxlee.me" },
+        { rel: "preconnect", href: "https://fonts.googleapis.com" },
         {
           rel: "preconnect",
           href: "https://fonts.gstatic.com",
@@ -62,71 +46,27 @@ export default {
       ],
       title: "Max Lee",
       meta: [
-        {
-          name: "description",
-          content: "Max Lee's Portfolio",
-        },
-        {
-          property: "og:title",
-          content: "Max Lee",
-        },
-        {
-          property: "og:description",
-          content: "Max Lee's Portfolio",
-        },
-        {
-          property: "og:site_name",
-          content: "Max Lee",
-        },
-        {
-          property: "og:type",
-          content: "website",
-        },
-        {
-          property: "og:url",
-          content: "https://maxlee.me",
-        },
-        {
-          property: "og:image",
-          content: "https://maxlee.me/og.png",
-        },
-        {
-          property: "og:image:alt",
-          content: "Max Lee's Portfolio",
-        },
-        {
-          name: "twitter:title",
-          content: "Max Lee",
-        },
-        {
-          name: "twitter:description",
-          content: "Max Lee's Portfolio",
-        },
-        {
-          name: "twitter:card",
-          content: "summary_large_image",
-        },
-        {
-          name: "twitter:image",
-          content: "https://maxlee.me/og.png",
-        },
-        {
-          name: "twitter:image:alt",
-          content: "Max Lee",
-        },
+        { name: "robots", content: "index, follow" },
+        { name: "description", content: "Max Lee's Portfolio" },
+        { property: "og:title", content: "Max Lee" },
+        { property: "og:description", content: "Max Lee's Portfolio" },
+        { property: "og:site_name", content: "Max Lee" },
+        { property: "og:type", content: "website" },
+        { property: "og:url", content: "https://maxlee.me" },
+        { property: "og:image", content: "https://maxlee.me/og.png" },
+        { property: "og:image:alt", content: "Max Lee's Portfolio" },
+        { name: "twitter:title", content: "Max Lee" },
+        { name: "twitter:description", content: "Max Lee's Portfolio" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:image", content: "https://maxlee.me/og.png" },
+        { name: "twitter:image:alt", content: "Max Lee" },
       ],
     },
   },
-  ogImage: {
-    fonts: ["Noto+Sans+TC:700"],
-  },
+  ogImage: { fonts: ["Noto+Sans+TC:700"] },
   nitro: {
-    typescript: {
-      typeCheck: true,
-    },
-    prerender: {
-      routes: ["/sitemap.xml"],
-    },
+    typescript: { typeCheck: true },
+    prerender: { routes: ["/sitemap.xml"] },
   },
   modules: [
     "@nuxt/content",

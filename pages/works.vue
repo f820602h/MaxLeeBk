@@ -1,14 +1,16 @@
 <script setup lang="ts">
 const title = "Works - Max Lee";
 const description = "Projects developed by Max Lee";
+const url = "https://maxlee.me/works";
 
 useHead({
+  link: [{ rel: "canonical", href: url }],
   title,
   meta: [
     { name: "description", content: description },
     { property: "og:title", content: title },
     { property: "og:description", content: description },
-    { property: "og:url", content: "https://maxlee.me/blog" },
+    { property: "og:url", content: url },
     { property: "og:image:alt", content: title },
     { name: "twitter:title", content: title },
     { name: "twitter:description", content: description },
