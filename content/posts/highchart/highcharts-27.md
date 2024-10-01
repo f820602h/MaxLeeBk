@@ -2,6 +2,7 @@
 title: 資視就是力量 - Highcharts / Vue 資料綁定
 date: 2020/10/11 21:22:00
 tags: [JavaScript,Highcharts,12th鐵人賽]
+description: Highcharts 是一套純 JavaScript 的圖表庫，採用 SVG 渲染。不過似乎是使用人數較少的關係，國內的相關文章寥寥可數，加上官方文件的中翻文本也是較舊的版號，所以這次希望能以一個使用過 Highcharts 的開發者角度來跟各位介紹它，希望以我的使用經驗可以讓大家認識 Highcharts 的強大功能與應用，那就先來看看它的優點與特性吧！
 ---
 
 昨天我們成功安裝 Highcharts-Vue 並繪製出一個基本的圖表，不過既然都已經使用 Vue 了，我們應該要好好運用「資料綁定」的概念，也就是當資料變動時，我們不需要再額外操作圖表，圖表就會自己動態的更新變化。

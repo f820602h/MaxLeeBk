@@ -2,6 +2,7 @@
 title: Vue Router 可能跟你想的不一樣
 date: 2024/9/20 16:00:00
 tags: [Vus.js,Vue Router]
+description: Vue Router 並不是根據路由順序來決定最終導向頁面，而是根據路由分數來決定，這篇文章將透過解析原始碼來與大家一起重新認識 Vue Router。
 ---
 
 > 文章撰寫當下，Vue Router 版本為 v4.4.5。

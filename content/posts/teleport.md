@@ -2,6 +2,7 @@
 title: Vue3 Teleport 應用
 date: 2023/10/20 12:00:00
 tags: [Vue, Teleport]
+description: Vue3 的 Teleport 是一個內建的元件，可以將子元件移動到指定的 DOM 元素下，這樣可以避免父層的樣式影響，或是實現一些特殊的動畫效果。
 ---
 
 

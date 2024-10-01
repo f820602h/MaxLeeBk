@@ -2,6 +2,7 @@
 title: Lighthouse CI
 date: 2023/09/14 20:46:25
 tags: [Performance, Lighthouse]
+description: Lighthouse CI 是一個自動化跑分工具，可以在每次部署時都執行跑分並將跑分紀錄下來，甚至可以起一個 server 來視覺化每次跑分的趨勢。
 ---
 > 官方文件：[https://github.com/GoogleChrome/lighthouse-ci](https://github.com/GoogleChrome/lighthouse-ci)
 

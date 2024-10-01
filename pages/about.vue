@@ -2,17 +2,20 @@
 import { useStagePlay } from "vue-stage-play";
 const { action } = useStagePlay();
 
+const title = "About - Max Lee";
+const description = "Introduction of Max Lee";
+
 useHead({
-  title: "About - Max Lee",
+  title,
   meta: [
-    {
-      property: "og:title",
-      content: "About - Max Lee",
-    },
-    {
-      name: "twitter:title",
-      content: "About - Max Lee",
-    },
+    { name: "description", content: description },
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:url", content: "https://maxlee.me/about" },
+    { property: "og:image:alt", content: title },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+    { name: "twitter:image:alt", content: title },
   ],
 });
 

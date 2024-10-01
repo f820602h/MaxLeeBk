@@ -2,6 +2,7 @@
 title: 在 Vue 聰明使用 SVG-Icon
 date: 2020/5/18 20:46:25
 tags: [Vus.js,SVG,Webpack]
+description: 在 Vue 專案中使用 SVG 圖示，我們可以透過 SVG Sprites 來解決一次引入，多次使用的問題，這篇文章將介紹如何在 Vue2 和 Vue3 中使用 SVG Sprites。
 ---
 
 > 2024/4/30 更新：

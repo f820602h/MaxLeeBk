@@ -2,6 +2,7 @@
 title: JS地下城 - 井字遊戲
 date: 2019/12/01 20:46:25
 tags: [JavaScript,JS地下城]
+description: 本篇為六角學院 - JS地下城攻略文，透過 JavaScript 製作一個簡易的井字遊戲，讓使用者可以透過點擊格子來進行遊戲，並且判定勝負，並且可以保留遊戲歷史戰績。
 ---
 > 本篇為六角學院 - JS地下城攻略文　[Github](https://github.com/f820602h/OXGame/)｜[Demo](https://f820602h.github.io/OXGame/)
 

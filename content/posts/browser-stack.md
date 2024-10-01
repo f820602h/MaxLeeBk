@@ -2,6 +2,7 @@
 title: BrowserStack
 date: 2023/07/23 20:46:25
 tags: [Performance, Lighthouse]
+description: BrowserStack 是一個提供跨瀏覽器測試的平台，透過它可以讓我們在不同瀏覽器、不同裝置上測試我們的網站，這篇文章將介紹如何使用 BrowserStack 來進行 E2E 測試。
 ---
 
 > 👉 多裝置、多瀏覽器、多版本的端點測試方案

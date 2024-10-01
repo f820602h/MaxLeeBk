@@ -2,6 +2,7 @@
 title: Test Doubles in Vitest
 date: 2023/11/28 16:00:00
 tags: [Vus.js,Vitest,Testing]
+description: 透過 Vitest API 來認識測試替身的概念與使用方式
 ---
 
 > Test Double - 測試替身 是一種讓 SUT 可以不依靠 DOC 而單獨被測試的作法，在實作上分為 Stub 和 Mock。

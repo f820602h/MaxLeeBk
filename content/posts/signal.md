@@ -2,6 +2,7 @@
 title: Signal - 蓄勢待發的 Virtual DOM 殺手
 date: 2024/4/20 15:30:00
 tags: [Javascript]
+description: 近期前端框架掀起一股 No Virtual DOM 浪潮，Signal 提案、Vue Vapor Mode、Svelte、Solid.js 等框架紛紛崛起，Virtual DOM 是否真的要退位讓道了？
 ---
 
 ## No Virtual DOM 浪潮

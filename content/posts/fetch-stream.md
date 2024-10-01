@@ -2,6 +2,7 @@
 title: Fetch & Streams API
 date: 2024/3/20 15:30:00
 tags: [Javascript]
+description: 本篇將嘗試使用 Fetch Stream 實踐 XMLHttpRequest 的 `abort` 和 `timeout`，以及將大型資料以流（Stream）的方式獲取。
 ---
 
 > 本篇將嘗試使用 Fetch Stream 實踐 XMLHttpRequest 的 `abort` 和 `timeout`，以及將大型資料以流（Stream）的方式獲取。

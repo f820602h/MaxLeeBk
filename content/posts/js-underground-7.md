@@ -2,6 +2,7 @@
 title: JS地下城 - Canvas
 date: 2019/11/01 20:46:25
 tags: [JavaScript,Canvas,JS地下城]
+description: 本篇為六角學院 - JS地下城攻略文，透過 Canvas 來實作一個簡易的繪圖板，讓使用者可以透過滑鼠在畫布上繪圖，並且可以進行基本設定(粗細、顏色)、清空、復原、重做、下載等功能。
 ---
 > 本篇為六角學院 - JS地下城攻略文　[Github](https://github.com/f820602h/Canvas)｜[Demo](https://f820602h.github.io/Canvas/)
 

@@ -2,6 +2,7 @@
 title: 資視就是力量 - Highcharts / Vue 建立圖表
 date: 2020/10/10 14:20:00
 tags: [JavaScript,Highcharts,12th鐵人賽]
+description: Highcharts 是一套純 JavaScript 的圖表庫，採用 SVG 渲染。不過似乎是使用人數較少的關係，國內的相關文章寥寥可數，加上官方文件的中翻文本也是較舊的版號，所以這次希望能以一個使用過 Highcharts 的開發者角度來跟各位介紹它，希望以我的使用經驗可以讓大家認識 Highcharts 的強大功能與應用，那就先來看看它的優點與特性吧！
 ---
 
 經過連續五天的實作練習，相信大家應該對於製作 Highcharts 圖表暸若指掌了，不過現在使用前端框架已是網頁開發的主流，Highcharts 是否有因應的方案呢？答案是有的，無論是 Angular、React 還是 Vue，都有對應的套件可以使用，不過本系列會以 Vue 的版本來介紹，若是其他框架的使用者，可以到 **[官方Github](https://github.com/highcharts)** 去找找對應的套件。

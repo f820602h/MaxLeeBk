@@ -2,6 +2,7 @@
 title: 前端效能改善與 Lighthouse
 date: 2023/8/16 12:00:00
 tags: [Performance, Lighthouse]
+description: 透過 Lighthouse 來檢測網站效能，並進行改善
 ---
 
 ## 基本介紹

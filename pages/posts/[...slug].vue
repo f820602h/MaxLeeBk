@@ -9,6 +9,7 @@ const postPath = computed(() => {
 const { data } = await useAsyncData(postPath.value, () =>
   queryContent(`/posts/${postPath.value}`).findOne(),
 );
+
 const postNav = await useAsyncData(
   `${postPath.value}-nav`,
   () =>
@@ -19,17 +20,24 @@ const postNav = await useAsyncData(
   { watch: [postPath] },
 );
 
+const title = computed(() => `${data.value?.title} - Max Lee`);
+const description = computed(() => data.value?.description);
+
 useHead({
-  title: `${data.value?.title} - Max Lee`,
+  title: title.value,
   meta: [
+    { name: "description", content: description.value },
+    { property: "og:title", content: title.value },
+    { property: "og:description", content: description.value },
+    { property: "og:type", content: "article" },
     {
-      property: "og:title",
-      content: `${data.value?.title} - Max Lee`,
+      property: "og:url",
+      content: `https://maxlee.me/posts/${data.value?._path}`,
     },
-    {
-      name: "twitter:title",
-      content: `${data.value?.title} - Max Lee`,
-    },
+    { property: "og:image:alt", content: title.value },
+    { name: "twitter:title", content: title.value },
+    { name: "twitter:description", content: description.value },
+    { name: "twitter:image:alt", content: title.value },
   ],
 });
 

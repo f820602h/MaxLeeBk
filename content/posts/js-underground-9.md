@@ -2,6 +2,7 @@
 title: JS地下城 - 幸運輪盤
 date: 2020/01/14 20:46:25
 tags: [JavaScript,JS地下城]
+description: 本篇為六角學院 - JS地下城攻略文，透過 JavaScript 製作一個簡易的幸運輪盤，讓使用者可以透過按鈕抽獎，並且可以設定獎品的數量、機率、獎品圖示等。
 ---
 > 本篇為六角學院 - JS地下城攻略文　[Github](https://github.com/f820602h/Lucky-Wheel/)｜[Demo](https://f820602h.github.io/Lucky-Wheel/)
 

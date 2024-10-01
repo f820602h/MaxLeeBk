@@ -2,6 +2,7 @@
 title: 用 Axios Instance 管理 API
 date: 2020/5/27 20:46:25
 tags: [Vus.js,Axios]
+description: Axios 對於前端來說是非常熟悉好用的非同步操作工具，透過 Axios Instance 可以進一步管理 API，讓我們的程式碼更加模組化。
 ---
 > 自從用前端框架開始開發後，就沒在用 JQuery Ajax 了，取而代之的是 Axios
 

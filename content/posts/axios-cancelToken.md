@@ -2,6 +2,7 @@
 title: 透過 CancelToken 解析 Axios 原始碼
 date: 2020/7/7 15:23:00
 tags: [Vus.js,Axios]
+description: 藉由設計「取消重複請求機制」來解析 Axios 的原始碼，看看 CancelToken 背後是如何實現取消請求的功能。
 ---
 > 本篇會藉由設計「取消重複請求機制」來解析 axios 的原始碼，篇幅較長請耐心閱讀，如果要直接看實作可以點 [這裡](#實際運用)
 

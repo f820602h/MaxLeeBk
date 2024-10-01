@@ -2,6 +2,7 @@
 title: Vue、SCSS、CSS 三角神力
 date: 2024/6/28 16:00:00
 tags: [Vue, SCSS, CSS]
+description: 透過 Vue、SCSS 與 CSS 變數之間的轉換，讓樣式設定更加便捷
 ---
 
 > 此篇相關技術的版本： Vue (v3 以上) / SCSS (Dart Sass v1.23 以上)

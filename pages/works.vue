@@ -1,15 +1,18 @@
 <script setup lang="ts">
+const title = "Works - Max Lee";
+const description = "Projects developed by Max Lee";
+
 useHead({
-  title: "Works - Max Lee",
+  title,
   meta: [
-    {
-      property: "og:title",
-      content: "Works - Max Lee",
-    },
-    {
-      name: "twitter:title",
-      content: "Works - Max Lee",
-    },
+    { name: "description", content: description },
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:url", content: "https://maxlee.me/blog" },
+    { property: "og:image:alt", content: title },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+    { name: "twitter:image:alt", content: title },
   ],
 });
 

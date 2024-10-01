@@ -2,6 +2,7 @@
 title: 資視就是力量 - Highcharts / Vue 做個記帳本 (上)
 date: 2020/10/12 09:45:00
 tags: [JavaScript,Highcharts,12th鐵人賽]
+description: Highcharts 是一套純 JavaScript 的圖表庫，採用 SVG 渲染。不過似乎是使用人數較少的關係，國內的相關文章寥寥可數，加上官方文件的中翻文本也是較舊的版號，所以這次希望能以一個使用過 Highcharts 的開發者角度來跟各位介紹它，希望以我的使用經驗可以讓大家認識 Highcharts 的強大功能與應用，那就先來看看它的優點與特性吧！
 ---
 
 既然已經掌握了 Highcharts-Vue 的基本使用技巧，那今明兩天打算帶大家來實作一個「記帳本」，用一個比較完整的應用來完結這個系列，也算是一個學習成果的回顧。
