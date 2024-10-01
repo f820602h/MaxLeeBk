@@ -24,6 +24,12 @@ const title = computed(() => `${data.value?.title} - Max Lee`);
 const description = computed(() => data.value?.description);
 
 useHead({
+  link: [
+    {
+      rel: "canonical",
+      href: `https://maxlee.me/posts/${data.value?._path}`,
+    },
+  ],
   title: title.value,
   meta: [
     { name: "description", content: description.value },
@@ -38,10 +44,6 @@ useHead({
     { name: "twitter:title", content: title.value },
     { name: "twitter:description", content: description.value },
     { name: "twitter:image:alt", content: title.value },
-    {
-      name: "canonical",
-      content: `https://maxlee.me/posts/${data.value?._path}`,
-    },
   ],
 });
 
