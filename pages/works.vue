@@ -50,13 +50,13 @@ const littleWorks = [
     github: "https://github.com/f820602h/Translate-Review-Extension",
   },
   {
-    title: "Max Blog",
+    title: "Max Portfolio",
     description:
-      "My first blog website was developed using the Hexo framework.",
-    image: "/img/works/blog.png",
-    gif: "",
-    link: "https://maxleebk.com/",
-    github: "https://github.com/f820602h/Max-Blog",
+      "The current personal website, developed with Nuxt.js, using Markdown files as the content source.",
+    image: "/img/works/maxleeme.png",
+    gif: "/img/works/maxleeme.gif",
+    link: "https://maxlee.me",
+    github: "https://github.com/f820602h/maxlee.me",
   },
   {
     title: "Snaaaaaaake",
@@ -121,7 +121,7 @@ const works = {
                 class="relative w-full rounded overflow-hidden mb-1 bg-gray-300 dark:bg-gray-800"
               >
                 <img
-                  class="absolute top-0 left-0 block w-full"
+                  class="absolute top-1/2 left-1/2 block w-full transform -translate-x-1/2 -translate-y-1/2"
                   :src="work.gif"
                 />
                 <img
@@ -166,6 +166,9 @@ const works = {
     aspect-ratio: 2/1;
 
     .image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       opacity: 1;
     }
   }
