@@ -38,6 +38,10 @@ useHead({
     { name: "twitter:title", content: title.value },
     { name: "twitter:description", content: description.value },
     { name: "twitter:image:alt", content: title.value },
+    {
+      name: "canonical",
+      content: `https://maxlee.me/posts/${data.value?._path}`,
+    },
   ],
 });
 
