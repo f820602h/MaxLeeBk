@@ -23,6 +23,14 @@ const color2 = computed(() => ({
     { offset: 1, color: waveColor.value, opacity: 0 },
   ],
 }));
+
+const nav = [
+  { name: "About", path: "/about" },
+  { name: "Blog", path: "/blog" },
+  { name: "Works", path: "/works" },
+];
+
+const route = useRoute();
 </script>
 
 <template>
@@ -30,7 +38,7 @@ const color2 = computed(() => ({
     <ClientOnly>
       <div class="fixed top-80% left-0 w-full">
         <VueSurf
-          v-if="$route.path !== '/' && !$route.path.includes('/posts')"
+          v-if="route.path !== '/' && !route.path.includes('/posts')"
           class="top-50px"
           width="100%"
           :marquee-speed="5"
@@ -44,7 +52,7 @@ const color2 = computed(() => ({
           :color="color1"
         />
         <VueSurf
-          v-if="$route.path !== '/' && !$route.path.includes('/posts')"
+          v-if="route.path !== '/' && !route.path.includes('/posts')"
           width="100%"
           :marquee-speed="3"
           :apexes-series="[
@@ -83,38 +91,32 @@ const color2 = computed(() => ({
 
         <nav>
           <ul class="flex items-center gap-5">
-            <li class="hover:text-black hover:dark:text-white duration-200">
-              <NuxtLink to="/about" class="p-2px text-sm font-bold">
-                About
-              </NuxtLink>
-            </li>
-            <li class="hover:text-black hover:dark:text-white duration-200">
-              <NuxtLink to="/blog" class="p-2px text-sm font-bold">
-                Blog
-              </NuxtLink>
-            </li>
-            <li class="hover:text-black hover:dark:text-white duration-200">
-              <NuxtLink to="/works" class="p-2px text-sm font-bold">
-                Works
-              </NuxtLink>
-            </li>
             <li
-              class="flex items-center hover:text-black hover:dark:text-white duration-200"
+              v-for="link in nav"
+              :key="link.path"
+              class="hover:text-purple-600 duration-200"
             >
+              <NuxtLink
+                class="p-2px text-sm font-bold"
+                :to="link.path"
+                :title="link.name"
+              >
+                {{ link.name }}
+              </NuxtLink>
+            </li>
+            <li class="flex items-center hover:text-purple-600 duration-200">
               <a
                 href="https://github.com/f820602h"
-                class="p-2px text-lg font-bold"
+                class="p-2px text-lg"
                 target="_blank"
                 title="Github"
               >
                 <div class="i-iconoir:github" />
               </a>
             </li>
-            <li
-              class="flex items-center hover:text-black hover:dark:text-white duration-200"
-            >
+            <li class="flex items-center hover:text-purple-600 duration-200">
               <button
-                class="p-2px text-lg font-bold"
+                class="p-2px text-lg"
                 @click="
                   $colorMode.preference =
                     $colorMode.value === 'dark' ? 'light' : 'dark'
@@ -141,7 +143,11 @@ const color2 = computed(() => ({
 header {
   min-width: 360px;
   backdrop-filter: blur(3px);
-  transition: background 0.2s linear;
-  background: rgb(var(--global-bg-color-rgb) / 50%);
+  background-color: rgb(249 249 249 / 50%);
+  transition: background-color 0.2s;
+}
+
+.dark-mode header {
+  background: rgb(26 26 26 / 50%);
 }
 </style>
