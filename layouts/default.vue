@@ -143,11 +143,7 @@ const route = useRoute();
 header {
   min-width: 360px;
   backdrop-filter: blur(3px);
-  background-color: rgb(249 249 249 / 50%);
+  background: rgb(var(--global-bg-color-rgb) / 50%);
   transition: background-color 0.2s;
-}
-
-.dark-mode header {
-  background: rgb(26 26 26 / 50%);
 }
 </style>
