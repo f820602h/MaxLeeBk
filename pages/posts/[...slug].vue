@@ -10,7 +10,7 @@ const { data } = await useAsyncData(postPath.value, () =>
   queryContent(`/posts/${postPath.value}`).findOne(),
 );
 
-const postNav = await useAsyncData(
+const { data: nav, status: navStatus } = await useLazyAsyncData(
   `${postPath.value}-nav`,
   () =>
     queryContent()
@@ -82,21 +82,24 @@ function dateFormatter(date: string) {
             <ContentRenderer :value="doc" />
           </article>
 
-          <div class="post-nav-group flex justify-between items-center gap-4">
+          <div
+            v-if="navStatus !== 'pending'"
+            class="post-nav-group flex justify-between items-center gap-4"
+          >
             <NuxtLink
-              v-if="postNav.data.value?.[0]"
-              :to="postNav.data.value[0]._path"
+              v-if="nav?.[0]"
+              :to="nav[0]._path"
               class="post-nav md:w-1/2 p-3 rounded duration-200"
             >
               <div class="hidden md:block">
                 <hgroup class="flex items-center">
                   <div class="i-iconoir:arrow-left-circle flex-shrink-0" />
                   <h5 class="font-bold truncate ml-1">
-                    {{ postNav.data.value[0].title }}
+                    {{ nav[0].title }}
                   </h5>
                 </hgroup>
                 <p class="text-xs mt-1 duration-200">
-                  https://maxlee.me{{ postNav.data.value[0]._path }}
+                  https://maxlee.me{{ nav[0]._path }}
                 </p>
               </div>
 
@@ -108,19 +111,19 @@ function dateFormatter(date: string) {
             <div v-else class="w-1/2" />
 
             <NuxtLink
-              v-if="postNav.data.value?.[1]"
-              :to="postNav.data.value[1]._path"
+              v-if="nav?.[1]"
+              :to="nav[1]._path"
               class="post-nav group md:w-1/2 p-3 rounded duration-200"
             >
               <div class="hidden md:block">
                 <hgroup class="flex items-center justify-end">
                   <h5 class="font-bold truncate mr-1">
-                    {{ postNav.data.value[1].title }}
+                    {{ nav[1].title }}
                   </h5>
                   <div class="i-iconoir:arrow-right-circle flex-shrink-0" />
                 </hgroup>
                 <p class="text-xs text-right mt-1 duration-200">
-                  https://maxlee.me{{ postNav.data.value[1]._path }}
+                  https://maxlee.me{{ nav[1]._path }}
                 </p>
               </div>
 
@@ -131,6 +134,10 @@ function dateFormatter(date: string) {
             </NuxtLink>
             <div v-else class="w-1/2" />
           </div>
+
+          <ClientOnly>
+            <PostMessageBoard class="mt-10" />
+          </ClientOnly>
         </template>
 
         <template #not-found>
@@ -149,10 +156,6 @@ function dateFormatter(date: string) {
           </div>
         </template>
       </ContentDoc>
-
-      <ClientOnly>
-        <PostMessageBoard class="mt-10" />
-      </ClientOnly>
     </div>
   </main>
 </template>

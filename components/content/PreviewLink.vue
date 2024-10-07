@@ -3,7 +3,7 @@ const props = defineProps<{ url: string }>();
 
 const config = useRuntimeConfig();
 
-const { data, pending } = await useAsyncData(
+const { data, status } = await useLazyAsyncData(
   props.url,
   () =>
     fetch("https://api.linkpreview.net/", {
@@ -12,13 +12,15 @@ const { data, pending } = await useAsyncData(
       mode: "cors",
       body: JSON.stringify({ q: props.url }),
     }).then((res) => res.json()),
-  { lazy: true, default: () => ({}) },
+  { default: () => ({}) },
 );
 </script>
 
 <template>
   <div class="my-12px">
-    <a v-if="!pending && !data.title" :href="props.url">{{ props.url }}</a>
+    <a v-if="status === 'pending' && !data.title" :href="props.url">
+      {{ props.url }}
+    </a>
     <a
       v-else
       :href="props.url"
