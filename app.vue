@@ -1,17 +1,10 @@
-<script setup lang="ts">
-const { page } = useContent();
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <StagePlaySpotlight>
-    <div>
-      <PageHeader />
-      <PageSurf v-if="page.title !== 'Home'" />
-
-      <NuxtPage class="relative pt-68px" />
-
-      <PageLoading />
-    </div>
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
   </StagePlaySpotlight>
 </template>
 

@@ -77,12 +77,9 @@ const groupingByYear = computed(() => {
             v-show="!yearDate.hidden || index < 5"
             :key="article.title"
             :data-index="index"
-            class="hover:text-black dark:hover:text-white hover:scale-[1.05] cursor-pointer transform-origin-center-left duration-200"
+            class="py-3 hover:text-black dark:hover:text-white hover:scale-[1.05] cursor-pointer transform-origin-center-left duration-200"
           >
-            <NuxtLink
-              :to="article._path"
-              class="block sm:flex items-center py-3"
-            >
+            <NuxtLink :to="article._path" class="block sm:flex items-center">
               <h3 class="mr-2" v-text="article.title" />
               <span
                 class="text-sm text-gray-500"

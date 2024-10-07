@@ -4,11 +4,11 @@ export function useLoading() {
     isLoadingShow: readonly(isLoadingShow),
 
     show: () => {
-      if (!import.meta.client) return;
+      if (!process.client) return;
       isLoadingShow.value = true;
     },
     hide: () => {
-      if (!import.meta.client) return;
+      if (!process.client) return;
       isLoadingShow.value = false;
     },
   };
