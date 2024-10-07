@@ -1,0 +1,78 @@
+<script setup lang="ts">
+const nav = [
+  { name: "About", path: "/about" },
+  { name: "Blog", path: "/blog" },
+  { name: "Works", path: "/works" },
+];
+</script>
+
+<template>
+  <header class="fixed top-0 z-500 w-full">
+    <div
+      class="flex items-center justify-between max-w-1920px mx-auto h-68px px-24px md:px-48px"
+    >
+      <hgroup class="pt-1">
+        <NuxtLink href="/" class="flex items-center" focusable="false">
+          <div
+            class="w-32px h-32px sm:w-50px sm:h-50px brightness-55 dark:brightness-100"
+          >
+            <img src="/img/logo.svg" alt="max.lee" />
+          </div>
+          <h2 class="hidden sm:block ml-2 pb-2px">
+            <p class="text-black dark:text-white font-black text-sm">Max Lee</p>
+            <p class="text-gray-500 text-xs">Max Your Mind</p>
+          </h2>
+        </NuxtLink>
+      </hgroup>
+
+      <nav>
+        <ul class="flex items-center gap-5">
+          <li
+            v-for="link in nav"
+            :key="link.path"
+            class="hover:text-purple-600 duration-200"
+          >
+            <NuxtLink
+              class="p-2px text-sm font-bold"
+              :to="link.path"
+              :title="link.name"
+            >
+              {{ link.name }}
+            </NuxtLink>
+          </li>
+          <li class="flex items-center hover:text-purple-600 duration-200">
+            <a
+              href="https://github.com/f820602h"
+              class="p-2px text-lg"
+              target="_blank"
+              title="Github"
+            >
+              <div class="i-iconoir:github" />
+            </a>
+          </li>
+          <li class="flex items-center hover:text-purple-600 duration-200">
+            <button
+              class="p-2px text-lg"
+              @click="
+                $colorMode.preference =
+                  $colorMode.value === 'dark' ? 'light' : 'dark'
+              "
+            >
+              <div class="i-iconoir:sun-light dark:hidden" />
+              <div class="i-iconoir:half-moon hidden dark:block" />
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+</template>
+
+<style scoped lang="scss">
+header {
+  min-width: 360px;
+  backdrop-filter: blur(3px);
+  background: rgb(var(--global-bg-color-rgb) / 50%);
+  transition: background-color 0.2s;
+}
+</style>

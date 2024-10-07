@@ -1,53 +1,25 @@
 <script setup lang="ts">
-const route = useRoute();
-const postPath = computed(() => {
-  return typeof route.params.slug === "string"
-    ? route.params.slug
-    : route.params.slug.join("/");
-});
-
-const { data } = await useAsyncData(postPath.value, () =>
-  queryContent(`/posts/${postPath.value}`).findOne(),
-);
-
-const postNav = await useAsyncData(
-  `${postPath.value}-nav`,
-  () =>
-    queryContent()
-      .sort({ date: 1, $numeric: true })
-      .only(["_path", "title"])
-      .findSurround(`/posts/${postPath.value}`),
-  { watch: [postPath] },
-);
-
-const title = computed(() => `${data.value?.title} - Max Lee`);
-const description = computed(() => data.value?.description);
+const { page } = useContent();
+const title = computed(() => `${page.value.title} - Max Lee`);
+const description = computed(() => page.value.description);
+const path = computed(() => `https://maxlee.me${page.value._path}`);
 
 useHead({
-  link: [
-    {
-      rel: "canonical",
-      href: `https://maxlee.me/posts/${data.value?._path}`,
-    },
-  ],
+  link: [{ rel: "canonical", href: path.value }],
   title: title.value,
   meta: [
     { name: "description", content: description.value },
     { property: "og:title", content: title.value },
     { property: "og:description", content: description.value },
     { property: "og:type", content: "article" },
-    {
-      property: "og:url",
-      content: `https://maxlee.me/posts/${data.value?._path}`,
-    },
+    { property: "og:url", content: path.value },
     { property: "og:image:alt", content: title.value },
     { name: "twitter:title", content: title.value },
     { name: "twitter:description", content: description.value },
     { name: "twitter:image:alt", content: title.value },
   ],
 });
-
-defineOgImageComponent("PostOgImage", { title: data.value?.title });
+defineOgImageComponent("PostOgImage", { title: title.value });
 
 function dateFormatter(date: string) {
   return new Date(date).toLocaleString("en-us", {
@@ -56,6 +28,16 @@ function dateFormatter(date: string) {
     day: "numeric",
   });
 }
+
+const postNav = await useAsyncData(
+  `${title.value}-nav`,
+  () =>
+    queryContent()
+      .sort({ date: 1, $numeric: true })
+      .only(["_path", "title"])
+      .findSurround(page.value._path),
+  { watch: [page] },
+);
 </script>
 
 <template>
@@ -68,7 +50,7 @@ function dateFormatter(date: string) {
         <div class="i-iconoir:reply" />
       </NuxtLink>
 
-      <ContentDoc :path="`/posts/${postPath}`">
+      <ContentDoc :path="`${page._path}`">
         <template #default="{ doc }">
           <article id="max-post" class="pb-120px">
             <hgroup>

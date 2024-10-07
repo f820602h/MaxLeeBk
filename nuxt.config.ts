@@ -1,6 +1,16 @@
 export default {
   site: { url: "https://maxlee.me" },
   content: {
+    documentDriven: {
+      globals: {
+        theme: {
+          where: {
+            _id: "content:_theme.yml",
+          },
+          without: ["_"],
+        },
+      },
+    },
     contentHead: false,
     highlight: {
       langs: [
