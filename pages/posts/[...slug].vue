@@ -22,24 +22,17 @@ const { data: nav, status: navStatus } = await useLazyAsyncData(
 
 const title = computed(() => `${data.value?.title} - Max Lee`);
 const description = computed(() => data.value?.description);
+const path = computed(() => `https://maxlee.me${data.value?._path}`);
 
 useHead({
-  link: [
-    {
-      rel: "canonical",
-      href: `https://maxlee.me/posts/${data.value?._path}`,
-    },
-  ],
+  link: [{ rel: "canonical", href: path }],
   title: title.value,
   meta: [
     { name: "description", content: description.value },
     { property: "og:title", content: title.value },
     { property: "og:description", content: description.value },
     { property: "og:type", content: "article" },
-    {
-      property: "og:url",
-      content: `https://maxlee.me/posts/${data.value?._path}`,
-    },
+    { property: "og:url", content: path },
     { property: "og:image:alt", content: title.value },
     { name: "twitter:title", content: title.value },
     { name: "twitter:description", content: description.value },
