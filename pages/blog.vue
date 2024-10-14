@@ -25,7 +25,50 @@ const { data } = await useAsyncData("blog", () =>
     .find(),
 );
 
-const seeMoreYear = ref<string[]>([]);
+const single = computed(() => {
+  if (!data.value) return [];
+  const regex = /^\/posts\/[\w\W][^/]+$/;
+  return data.value.filter((article) => regex.test(article._path || ""));
+});
+
+type Series = {
+  title: string;
+  year: string;
+  hidden: boolean;
+  articles: any[];
+};
+
+const seeMoreGroup = ref<string[]>([]);
+const seriesList = computed(() => {
+  if (!data.value) return [];
+  const regex = /^\/posts\/[\w\W]+\/[\w\W]+$/;
+  const result = data.value
+    .filter((article) => regex.test(article._path || ""))
+    .reduce((acc, article) => {
+      const seriesTitle = article.title?.split("/")[0].trim() || "";
+      const seriesYear = article.date.slice(0, 4);
+      const seriesIndex = acc.findIndex(
+        (series) => series.title === seriesTitle,
+      );
+      if (seriesIndex === -1) {
+        acc.push({
+          title: seriesTitle,
+          year: seriesYear,
+          articles: [article],
+          hidden: !seeMoreGroup.value.includes(seriesTitle),
+        });
+      } else {
+        acc[seriesIndex].articles.push(article);
+      }
+      return acc;
+    }, [] as Series[]);
+  result.forEach((series) => {
+    series.articles.sort((a, b) => {
+      return new Date(a.date).getTime() - new Date(b.date).getTime();
+    });
+  });
+  return result;
+});
 
 function dateFormatter(date: string) {
   return new Date(date).toLocaleString("en-us", {
@@ -41,9 +84,11 @@ const groupingByYear = computed(() => {
   const groupedArticles = uniqueYears.map((year) => {
     return {
       year,
-      hidden: !seeMoreYear.value.includes(year),
-      articles: (data.value || []).filter((article) =>
+      articles: (single.value || []).filter((article) =>
         article.date.includes(year),
+      ),
+      seriesList: (seriesList.value || []).filter((series) =>
+        series.year.includes(year),
       ),
     };
   });
@@ -73,35 +118,61 @@ const groupingByYear = computed(() => {
       <ul class="relative z-2">
         <TransitionGroup name="list" appear>
           <li
-            v-for="(article, index) in yearDate.articles"
-            v-show="!yearDate.hidden || index < 5"
-            :key="article.title"
-            :data-index="index"
-            class="hover:text-black dark:hover:text-white hover:scale-[1.05] cursor-pointer transform-origin-center-left duration-200"
+            v-for="item in [...yearDate.seriesList, ...yearDate.articles]"
+            v-show="true"
+            :key="item.title"
+            class=""
           >
-            <NuxtLink
-              :to="article._path"
-              class="block sm:flex items-center py-3"
+            <component
+              :is="'_path' in item ? 'NuxtLink' : 'div'"
+              :to="'_path' in item ? item?._path : undefined"
+              class="flex items-center pt-3 text-truncate"
+              :class="'_path' in item ? 'clickable pb-3' : 'pb-1'"
             >
-              <h3 class="mr-2" v-text="article.title" />
+              <div class="flex items-center">
+                <span
+                  v-if="'articles' in item"
+                  class="i-iconoir:folder mr-2 text-gray-500"
+                ></span>
+                <span
+                  v-else
+                  class="i-iconoir:page-edit mr-2 text-gray-500"
+                ></span>
+                <h3 class="mr-2" v-text="item.title" />
+              </div>
               <span
-                class="text-sm text-gray-500"
-                v-text="dateFormatter(article.date)"
+                v-if="'date' in item"
+                class="hidden sm:block text-sm text-gray-500"
+                v-text="dateFormatter(item.date)"
               />
-            </NuxtLink>
+            </component>
+
+            <template v-if="'articles' in item">
+              <template
+                v-for="(article, a_index) in item.articles"
+                :key="article.title"
+              >
+                <NuxtLink
+                  v-if="a_index < 5 || !item.hidden"
+                  :to="article._path"
+                  class="clickable block sm:flex items-center py-2 pl-6 last:mb-3 text-sm text-gray-500 text-truncate"
+                >
+                  {{ article.title }}
+                </NuxtLink>
+              </template>
+
+              <a
+                v-if="item.articles.length > 5 && item.hidden"
+                href="#"
+                class="clickable block py-2 pl-6 text-sm text-gray-500"
+                @click.prevent="seeMoreGroup.push(item.title)"
+              >
+                see more ...
+              </a>
+            </template>
           </li>
         </TransitionGroup>
       </ul>
-
-      <Transition name="fade" appear>
-        <button
-          v-show="yearDate.articles.length > 5 && yearDate.hidden"
-          class="text-gray-500 hover:text-black dark:hover:text-white duration-200"
-          @click="seeMoreYear.push(yearDate.year)"
-        >
-          see more ...
-        </button>
-      </Transition>
     </section>
   </main>
 </template>
@@ -112,15 +183,15 @@ ul {
     &.list-enter-active {
       @for $i from 1 through 50 {
         &:nth-child(#{$i}) {
-          @if $i < 6 {
-            transition-delay: #{$i * 0.05}s;
-          } @else {
-            transition-delay: #{($i - 5) * 0.05}s;
-          }
+          transition-delay: #{$i * 0.05}s;
         }
       }
     }
   }
+}
+
+.clickable {
+  @apply hover:text-black dark:hover:text-white hover:scale-[1.05] cursor-pointer transform-origin-center-left duration-200;
 }
 
 .year div {
@@ -142,18 +213,9 @@ ul {
   }
 }
 
-.fade-enter-active {
-  transition: all 0.5s;
-  transition-delay: 0.8s;
-}
-.fade-enter-from {
-  opacity: 0;
-}
-
 .list-enter-active {
   pointer-events: none;
   transition: all 0.5s;
-  transition-delay: 0.5s;
 }
 .list-enter-from {
   opacity: 0;
