@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import {} from "nuxt";
+
 const title = "Blog - Max Lee";
 const description = "Articles written by Max Lee";
 const url = "https://maxlee.me/blog";
@@ -94,6 +96,11 @@ const groupingByYear = computed(() => {
   });
   return groupedArticles;
 });
+
+function component(item: any) {
+  if ("_path" in item) return resolveComponent("NuxtLink");
+  return "div";
+}
 </script>
 
 <template>
@@ -124,7 +131,7 @@ const groupingByYear = computed(() => {
             class=""
           >
             <component
-              :is="'_path' in item ? 'NuxtLink' : 'div'"
+              :is="component(item)"
               :to="'_path' in item ? item?._path : undefined"
               class="flex items-center pt-3 text-truncate"
               :class="'_path' in item ? 'clickable pb-3' : 'pb-1'"

@@ -1,5 +1,5 @@
 ---
-title: 那些被忽略但很好用的 Web API / IntersectionObserver
+title: 差點被當塑膠的 Web API / IntersectionObserver
 date: 2021/10/5 20:11:00
 tags: [JavaScript, WebApi, 13th鐵人賽]
 description: Web API 是一個很大的主題，它涵蓋了很多不同的功能，而這次的系列文章就是想要介紹那些深埋在 window 裡，你不曾發覺或是常常遺忘的 API，或許在你開發網頁的過程中有遇過一些特殊需求，當下雖然用了一些管用手法解決，但看完這次的系列文章，你可能會有新的靈感或發現。
