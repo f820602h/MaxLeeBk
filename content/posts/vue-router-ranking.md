@@ -61,7 +61,7 @@ const router = createRouter({ routes, strict: true })
 
 #### 2. Ranking of routes
 
-這時候腦筋動比較快的人應該就會發現第二個問題，那就是既然 `/page` 可以同時匹配 `PageA` 及 `PageB`，那為何 Vue Router 卻是匹配了排序比較後面的 `PageB`？
+這時候腦筋動比較快的人應該就會發現第二個問題，既然 `/page` 可以同時匹配 `PageA` 及 `PageB`，那為何 Vue Router 卻是匹配了排序比較後面的 `PageB`？
 
 那就是因為「路由順序」並不是決定路由匹配的主要因素，反而 Vue Router 會先依照路由分數進行排序，當有路由的分數一樣時，才會根據順序來決定。
 
