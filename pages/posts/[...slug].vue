@@ -49,6 +49,18 @@ function dateFormatter(date: string) {
     day: "numeric",
   });
 }
+
+const y = ref(0);
+
+onMounted(() => {
+  window.addEventListener("scroll", () => {
+    y.value = window.scrollY;
+  });
+});
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
 </script>
 
 <template>
@@ -82,9 +94,9 @@ function dateFormatter(date: string) {
                 <NuxtLink
                   v-if="link?._path"
                   :to="link._path"
-                  class="md:w-1/2 p-3 rounded duration-200"
+                  class="post-nav md:w-1/2 p-3 rounded duration-200"
                 >
-                  <hgroup
+                  <div
                     class="flex items-center gap-1"
                     :class="{ 'flex-row-reverse': link_index }"
                   >
@@ -98,16 +110,16 @@ function dateFormatter(date: string) {
                     <div class="md:hidden text-sm">
                       {{ link_index ? "Next" : "Prev" }} Post
                     </div>
-                    <h5 class="hidden md:block font-bold truncate">
+                    <div class="hidden md:block font-bold truncate">
                       {{ link.title }}
-                    </h5>
-                  </hgroup>
-                  <p
-                    class="hidden md:block text-xs mt-1 duration-200"
+                    </div>
+                  </div>
+                  <div
+                    class="post-nav__url hidden md:block text-xs mt-1 duration-200"
                     :class="{ 'text-right': link_index }"
                   >
                     https://maxlee.me{{ link._path }}
-                  </p>
+                  </div>
                 </NuxtLink>
                 <div v-else class="w-1/2" />
               </template>
@@ -136,6 +148,17 @@ function dateFormatter(date: string) {
         </template>
       </ContentDoc>
     </div>
+
+    <Transition name="slide" appear>
+      <button
+        v-show="y > 400"
+        class="go-to-top pr-2 pl-1 py-1 rounded-tl-2xl rounded-bl-2xl"
+        aria-label="Go to Top"
+        @click="scrollToTop"
+      >
+        <div class="i-iconoir:arrow-up-circle-solid"></div>
+      </button>
+    </Transition>
   </main>
 </template>
 
@@ -358,13 +381,13 @@ function dateFormatter(date: string) {
 .post-nav-group {
   height: 70px;
 
-  a {
+  a.post-nav {
     flex-shrink: 0;
     flex-grow: 0;
     color: var(--nav-color);
     border: 1px solid var(--box-border-color);
 
-    p {
+    .post-nav__url {
       color: var(--box-border-color);
     }
 
@@ -372,10 +395,29 @@ function dateFormatter(date: string) {
       color: var(--highlight-color);
       background-color: var(--box-bg-color);
 
-      p {
+      .post-nav__url {
         color: var(--nav-hover-color);
       }
     }
   }
+}
+
+.go-to-top {
+  position: fixed;
+  right: 0;
+  bottom: 15%;
+  font-size: 24px;
+  color: var(--global-bg-color);
+  background-color: var(--global-color);
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: transform 0.3s;
+}
+
+.slide-enter-from,
+.slide-leave-to {
+  transform: translateX(100%);
 }
 </style>

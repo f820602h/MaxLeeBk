@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@highlightjs/vue-plugin": "^2.1.0",
-    "@iconify-json/iconoir": "^1.1.32",
+    "@iconify-json/iconoir": "^1.2.2",
     "@nuxt/image": "^1.8.0",
     "@nuxtjs/color-mode": "^3.3.0",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
@@ -33,7 +33,7 @@
     "prettier": "^3.0.3",
     "sass": "^1.69.4",
     "typescript": "^5.2.2",
-    "vue-tsc": "^1.8.19"
+    "vue-tsc": "^2.1.6"
   },
   "dependencies": {
     "@giscus/vue": "^3.0.0",

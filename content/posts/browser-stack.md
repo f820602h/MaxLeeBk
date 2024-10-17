@@ -119,7 +119,7 @@ describe("My First Test", () => {
 browserstack-cypress run
 ```
 
-:preview-link{url="https://automate.browserstack.com/dashboard/v2/builds/"}
+:preview-link{url="https://www.browserstack.com/automate"}
 
 
 ---
