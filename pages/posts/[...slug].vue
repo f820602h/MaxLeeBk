@@ -75,62 +75,47 @@ function dateFormatter(date: string) {
             <ContentRenderer :value="doc" />
           </article>
 
-          <div
-            v-if="navStatus !== 'pending'"
-            class="post-nav-group flex justify-between items-center gap-4"
-          >
-            <NuxtLink
-              v-if="nav?.[0]"
-              :to="nav[0]._path"
-              class="post-nav md:w-1/2 p-3 rounded duration-200"
-            >
-              <div class="hidden md:block">
-                <hgroup class="flex items-center">
-                  <div class="i-iconoir:arrow-left-circle flex-shrink-0" />
-                  <h5 class="font-bold truncate ml-1">
-                    {{ nav[0].title }}
-                  </h5>
-                </hgroup>
-                <p class="text-xs mt-1 duration-200">
-                  https://maxlee.me{{ nav[0]._path }}
-                </p>
-              </div>
-
-              <div class="flex items-center gap-1 md:hidden">
-                <div class="i-iconoir:arrow-left-circle" />
-                <div class="text-sm">Prev Post</div>
-              </div>
-            </NuxtLink>
-            <div v-else class="w-1/2" />
-
-            <NuxtLink
-              v-if="nav?.[1]"
-              :to="nav[1]._path"
-              class="post-nav group md:w-1/2 p-3 rounded duration-200"
-            >
-              <div class="hidden md:block">
-                <hgroup class="flex items-center justify-end">
-                  <h5 class="font-bold truncate mr-1">
-                    {{ nav[1].title }}
-                  </h5>
-                  <div class="i-iconoir:arrow-right-circle flex-shrink-0" />
-                </hgroup>
-                <p class="text-xs text-right mt-1 duration-200">
-                  https://maxlee.me{{ nav[1]._path }}
-                </p>
-              </div>
-
-              <div class="flex items-center gap-1 md:hidden">
-                <div class="text-sm">Next Post</div>
-                <div class="i-iconoir:arrow-right-circle" />
-              </div>
-            </NuxtLink>
-            <div v-else class="w-1/2" />
+          <div class="post-nav-group flex justify-between items-center gap-4">
+            <template v-if="navStatus !== 'pending'">
+              <template v-for="(link, link_index) in nav" :key="link_index">
+                <NuxtLink
+                  v-if="link?._path"
+                  :to="link._path"
+                  class="md:w-1/2 p-3 rounded duration-200"
+                >
+                  <hgroup
+                    class="flex items-center gap-1"
+                    :class="{ 'flex-row-reverse': link_index }"
+                  >
+                    <div
+                      class="flex-shrink-0"
+                      :class="{
+                        'i-iconoir:arrow-right-circle': link_index,
+                        'i-iconoir:arrow-left-circle': !link_index,
+                      }"
+                    />
+                    <div class="md:hidden text-sm">
+                      {{ link_index ? "Next" : "Prev" }} Post
+                    </div>
+                    <h5 class="hidden md:block font-bold truncate">
+                      {{ link.title }}
+                    </h5>
+                  </hgroup>
+                  <p
+                    class="hidden md:block text-xs mt-1 duration-200"
+                    :class="{ 'text-right': link_index }"
+                  >
+                    https://maxlee.me{{ link._path }}
+                  </p>
+                </NuxtLink>
+                <div v-else class="w-1/2" />
+              </template>
+            </template>
           </div>
 
-          <ClientOnly>
+          <!-- <ClientOnly>
             <PostMessageBoard class="mt-10" />
-          </ClientOnly>
+          </ClientOnly> -->
         </template>
 
         <template #not-found>
@@ -378,8 +363,10 @@ function dateFormatter(date: string) {
 }
 
 .post-nav-group {
+  height: 70px;
+
   a {
-    flex-shrink: 1;
+    flex-shrink: 0;
     flex-grow: 0;
     color: var(--nav-color);
     border: 1px solid var(--box-border-color);
