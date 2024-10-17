@@ -13,13 +13,13 @@ description: BrowserStack 是一個提供跨瀏覽器測試的平台，透過它
 
 ![](/img/content/browser-stack/case.png)
 
-<br/>
+---
 
 ## SetUp
 
 **註冊 BrowserStack 帳號並取得 `username` & `access key`**
 
-:preview-link{url="https://www.browserstack.com/accounts/settings"}
+:preview-link{url="https://www.browserstack.com/"}
 
 **全域安裝 BrowserStack Cypress Cli**
 
@@ -29,7 +29,7 @@ npm install -g browserstack-cypress-cli
 
 **資料夾結構**
 
-```
+```bash
 ├── test
 │   ├── plugins
 │   │     └── index.js             # 實際上的 cypress configuration
@@ -98,7 +98,7 @@ module.exports = (on, config) => {
 
 :preview-link{url="https://docs.cypress.io/guides/references/configuration"}
 
-<br/>
+---
 
 ## Testing
 
@@ -121,9 +121,8 @@ browserstack-cypress run
 
 :preview-link{url="https://automate.browserstack.com/dashboard/v2/builds/"}
 
-![](/img/content/browser-stack/case.png)
 
-<br/>
+---
 
 ## CI / CD
 
@@ -175,7 +174,7 @@ npm install -g browserstack-cypress-cli || echo "browserstack install failed..."
 browserstack-cypress run || echo "browserstack test failed..."
 ```
 
-<br/>
+---
 
 ## Local Testing
 

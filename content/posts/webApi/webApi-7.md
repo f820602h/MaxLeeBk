@@ -17,7 +17,7 @@ description: Web API 是一個很大的主題，它涵蓋了很多不同的功�
 
 <br/>
 
-#### # Navigator.mediaDevices.getUserMedia
+### # Navigator.mediaDevices.getUserMedia
 
 而我們要取得 MediaStream 的手段就是要先向使用者獲取設備的授權，這時候就要使用 `getUserMedia`：
 
@@ -38,7 +38,7 @@ navigator.mediaDevices
 
 <br/>
 
-#### # MediaStream.getVideoTracks
+### # MediaStream.getVideoTracks
 
 當我們取得 MediaStream 後，我們還需要再取得當中的 Track，之後才可以透過 ImageCapture 來操作，這時候就需要使用 MediaStream 自身的 method `getVideoTracks`。
 
@@ -67,7 +67,7 @@ const imageCapture = new ImageCapture(videoTrack);
 
 <br/>
 
-#### # ImageCapture.takePhoto
+### # ImageCapture.takePhoto
 
 當我們為一個 ImageCapture 綁定了 VideoTrack 後，我們就可以透過 ImageCapture 底下的 methods 來進行圖像擷取了：
 
@@ -94,7 +94,7 @@ document.querySelector("button").addEventListener("click", function () {
 
 <br/>
 
-#### # ImageCapture.grabFrame
+### # ImageCapture.grabFrame
 
 再來要介紹的則是 `grabFrame`，它和 `takePhoto` 一樣是擷取 videoTrack 的影像，差別在於它回傳的是 ImageBitmap 物件，而這種物件的好處是可以直接拿來畫在 Canvas 上。
 

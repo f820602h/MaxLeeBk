@@ -7,7 +7,7 @@ description: 近期前端框架掀起一股 No Virtual DOM 浪潮，Signal 提�
 
 ## No Virtual DOM 浪潮
 
-#### # Signal 提案
+### # Signal 提案
 
 最近在前端圈有個 Github Repo 算是蠻受關注的 - [proposal-signals](https://github.com/tc39/proposal-signals)，這是一項由 Daniel Ehrenberg 為主導，向 TC39 提案的項目，主要是希望可以透過一系列稱為 Signal 的 API 來為 Javascript 提供一個更方便的狀態（State）與視圖（View）更新同步方案。
 
@@ -55,7 +55,7 @@ setInterval(() => counter.set(counter.get() + 1), 1000);
 
 <br/>
 
-#### # Vue Vapor Mode
+### # Vue Vapor Mode
 
 如果你在 2022 年之後，有聽過尤雨溪大大在各大技術 Conf 上的演講，高機率會聽到他提到 [Vapor Mode](https://github.com/vuejs/core-vapor)，它是一個正在開發的不同版本的 Vue，而與原版最大的不同在於，它不再使用 Virtual DOM 來進行 DOM 的比對，而是直接對 DOM 進行操作。在 Vue 的 [官方文件](https://vuejs.org/guide/extras/reactivity-in-depth.html#connection-to-signals) 中你也可以看到關於 Vapor 的描述，並且也可以看到 Signal 的字眼，而會有這個版本誕生，尤雨溪也不避言得表示是受到 Solid.js 的啟發。
 
@@ -65,7 +65,7 @@ setInterval(() => counter.set(counter.get() + 1), 1000);
 
 <br/>
 
-#### # Svelte & Solid.js
+### # Svelte & Solid.js
 
 這一兩年可謂是前端框架的戰國時代，各個框架新秀都有著自己的特色，不過其中有兩個框架在這波浪潮中脫穎而出，分別是 Svelte 和 Solid.js，而恰巧的是這兩個框架都是不使用 Virtual DOM 的框架。
 
@@ -123,7 +123,7 @@ React 的 vdom 其實性能不怎麼樣。Vue 2.0 引入 vdom 的主要原因是
 
 了解 Virtual DOM 的優勢與劣勢後，下面我想用具體的程式碼來展示用 Virtual DOM 的框架與不用 Virtual DOM 的框架渲染機制上的巨大差異。下面我們會使用 React、Vue 以及 Solid.js 來寫一個 `App -> Parent -> ChildrenOne -> ChildrenTwo` 的元件結構，並觀察父元件的狀態改變時，子元件的渲染情況。
 
-#### # React (v18.2)
+### # React (v18.2)
 
 ::advance-code{file-name="Parent.jsx"}
 ```javascript
@@ -177,7 +177,7 @@ function Parent() {
 
 <br/>
 
-#### # Vue (v3.4)
+### # Vue (v3.4)
 
 ::advance-code{file-name="Parent.vue"}
 ```vue
@@ -225,7 +225,7 @@ const count = ref(0)
 
 <br/>
 
-#### # Solid.js (v1.8)
+### # Solid.js (v1.8)
 
 ::advance-code{file-name="Parent.jsx"}
 ```javascript
@@ -279,7 +279,7 @@ function Parent() {
 
 <br/>
 
-#### # 差異
+### # 差異
 
 我們在各階層的元件中都加入了 `Math.random()` 來觀察每次渲染時的情況，只要數字有更新就可以判斷元件有被重新渲染過，另外 `ChildrenOne` 會接收 `Parent` 所傳入的 `count` 狀態，`ChildrenTwo` 則是單純顯示的元件。
 
@@ -299,7 +299,7 @@ function Parent() {
 
 ## 編譯與狀態更新
 
-#### # Solid.js (v1.8)
+### # Solid.js (v1.8)
 
 前面說了，Solid 能夠在極小的粒度上進行狀態更新，是得益於它將狀態更新編譯為獨立的 DOM 操作。我們可以用官方提供的 [Playground](https://playground.solidjs.com/) 來看看程式碼的編譯結果：
 
@@ -351,7 +351,7 @@ function Parent() {
 
 <br/>
 
-#### # React (v18.2)
+### # React (v18.2)
 
 React 不像 Solid 有那麼重的編譯程度，僅僅只是透過 Babel 的插件將 JSX 轉換為 `React.createElement`。而在每一次的更新時，React 都會重新呼叫 Function Component 中的 render 函式，並將新的狀態作為參數傳入，最終產生一個新的 Virtual DOM Tree。
 
@@ -361,7 +361,7 @@ React 不像 Solid 有那麼重的編譯程度，僅僅只是透過 Babel 的插
 
 <br/>
 
-#### # Vue (v3.4)
+### # Vue (v3.4)
 
 Vue 的編譯程度也不低，畢竟它需要將模板語言轉換為 Javascript，首先依然會將元件編譯為一個 render 函式，不過 Vue 還會在編譯階段為元件中的元素進行 Patch Flag 的標記以及靜態提升（Static Hoisting），目的是讓其在執行階段進行畫面更新時可以再更精確，避免 Diff 演算法的過度比對。也就是所謂的「靶向更新」，更是 Vue 3 大幅提升效能的原因之一。
 
@@ -429,7 +429,7 @@ export function shouldUpdateComponent(
 
 <br/>
 
-#### # Vue Vapor Mode
+### # Vue Vapor Mode
 
 另外我們也額外來看看 Vue 的 Vapor Mode 會怎麼編譯程式碼，可以透過 Vapor Mode 提供的 [Playground](vapor-repl.netlify.app) 測試：
 
@@ -480,7 +480,7 @@ export function shouldUpdateComponent(
 
 <br/>
 
-#### # React & Heuristic Algorithm & Fiber
+### # React & Heuristic Algorithm & Fiber
 
 React 為了解決傳統 Virtual DOM Diff 演算法的效能問題，開發出了啟發式演算法（Heuristic Algorithm），透過兩個假設將原本複雜度為 O(n^3) 的過程最佳化到 O(n)，隨後又在 React 16 中推出了 [Fiber](https://react.dev/learn/reacting-to-input-with-state) 架構，這個架構可以讓原本遞迴生成虛擬 DOM Tree 的過程轉變為鏈結的結構的 Fiber Tree，使得過程中可以中斷並恢復，而不會阻塞 UI 的更新，以此避免渲染卡頓掉禎的問題。
 
@@ -488,7 +488,7 @@ React 為了解決傳統 Virtual DOM Diff 演算法的效能問題，開發出�
 
 <br/>
 
-#### # Vue & Compiler-Informed Virtual DOM & 雙端 Diff
+### # Vue & Compiler-Informed Virtual DOM & 雙端 Diff
 
 前面已經有提過 Vue 在編譯階段所做的最佳化，包含了 Patch Flag 標記、靜態提升還有 Block Tree，這些都讓 Vue 在執行階段進行 Virtual DOM Diff 可以更加有效率，Vue 將其稱為 Compiler-Informed Virtual DOM。
 
@@ -527,6 +527,6 @@ Similarly, the recent chorus of "The Virtual DOM is slow" is just as ill-informe
 
 <br/>
 
-##### 參考資料
+### 參考資料
 - [Rich Harris - Virtual DOM is pure overhead](https://svelte.dev/blog/virtual-dom-is-pure-overhead)
 - [【稀土掘金】2024年了，虚拟DOM该何去何从](https://juejin.cn/post/7306018455462150179)

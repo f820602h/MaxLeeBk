@@ -50,14 +50,14 @@ series: [{
 
 **而當你用數值設定法來設定數據點，就可以下方兩個數據列屬性來調整上述規則。**
 
-#### # series.pointStart
+### # series.pointStart
 `型別: Number` `預設: 0` 
 
 這個屬性設定的是你數據列中第一個數據點的Ｘ軸起始數值。
 
 <br/>
 
-#### # series.pointInterval
+### # series.pointInterval
 `型別: Number` `預設: 1`
 
 這個屬性設定的是你數據列中每個數據點之間相隔多少Ｘ軸數值。如果不太理解這兩個屬性的話，可以看看我準備的 **[範例](https://codepen.io/max-lee/pen/XWdqNmR)**。
@@ -116,7 +116,7 @@ series: [{
 
 <br/>
 
-#### # series.data.x / series.data.y
+### # series.data.x / series.data.y
 `型別: Number` `預設: undefined`
 
 **特別注意，這裡的Ｘ和Ｙ不再是調整偏移量了，它們設定的是數據點的Ｘ軸數值以及Ｙ軸數值。**
@@ -125,28 +125,28 @@ series: [{
 
 <br/>
 
-#### # series.data.name
+### # series.data.name
 `型別: String` `預設: undefined`
 
 這個屬性可以對數據點設定名稱，如果有設定的話提示框還會以名稱來取代Ｘ軸刻度標籤，另外這個屬性對圓餅圖來說也很重要，因為圓餅圖的圖例、數據標籤顯示的都是「數據點名稱」，而非數據列名稱或數值。
 
 <br/>
 
-#### # series.data.className
+### # series.data.className
 `型別: String` `預設: undefined`
 
 顧名思義，這個屬性是用來增加數據點在 HTML 中的 Class Attribute 的，好處是我們可以更針對性地選取到某個數據點，可以方便日後進行圖表互動。
 
 <br/>
 
-#### # series.data.legendIndex
+### # series.data.legendIndex
 `型別: Number` `預設: undefined`
 
 前面有說圓餅圖的圖例顯示的是「數據點名稱」，而這個屬性就是讓圓餅圖數據點可以調整圖例順序的，用法和 `series.legendIndex` 一樣。
 
 <br/>
 
-#### # series.data.sliced
+### # series.data.sliced
 `型別: Boolean` `預設: undefined`
 
 這個屬性也是圓餅圖的數據點才有，讓你可以決定某塊扇形是否要向外突出。而突出的偏移量你可以用數據列的 `series.slicedOffset` 屬性來調整。
@@ -193,7 +193,7 @@ series: [{
 
 <br/>
 
-#### # series.keys
+### # series.keys
 `型別: Array[String]` `預設: undefined` 
 
 這個屬性融合了陣列設定法與物件設定法，讓你能用陣列設定數據點卻又可以加入額外屬性，而使用方式是提供 `keys` 一組陣列，陣列項目為想設定的**數據點屬性名稱**，接下來你只要按這個陣列的順序來設定數據點，Highcharts 就會以這個順序去解析你的 `data` 項目。

@@ -51,7 +51,7 @@ chart.series[0].data[0].remove();
 
 <br/>
 
-#### # chart.update(options)
+### # chart.update(options)
 `options: Object`
 
 這個 Method 可以更新圖表內的任何設定，包括數據列、座標軸等等都能夠更新，而使用方式便是將要更新
@@ -75,7 +75,7 @@ chart.update({
 
 <br/>
 
-#### # chart.addSeries(series)
+### # chart.addSeries(series)
 `series: Object`
 
 昨天其實有簡單帶到這個 Method，它可以在圖表中新增一組新的數據列，只要把新數據列的設定物件傳進參數即可。
@@ -96,7 +96,7 @@ chart.addSeries({
 
 <br/>
 
-#### # series.update(options)
+### # series.update(options)
 `options: Object`
 
 和前面的 `chart.update()` 是一樣概念，將你要更新的數據列設定物件作為參數傳入函式中，即可改變數據列的設定。
@@ -118,7 +118,7 @@ chart.series[1].update({
 
 <br/>
 
-#### # series.remove()
+### # series.remove()
 
 這個 Method 就單純很多，選取你要的數據列後呼叫這個方法，該數據點便會從圖表中移除。
 
@@ -128,7 +128,7 @@ chart.series[0].remove();
 
 <br/>
 
-#### # series.setData(data)
+### # series.setData(data)
 `data: Array`
 
 如果僅僅只是要改變數據列的 `data` 屬性，那可以選擇使用這個 Method，而不需要使用 `update()`，呼叫時只要傳入新的數據點陣列即可。
@@ -143,7 +143,7 @@ chart.series[0].setData([4,5,6]);
 
 <br/>
 
-#### # series.addPoint(point)
+### # series.addPoint(point)
 `point: Number|Array|Object`
 
 看過前面的 `addSeries()` 之後應該很好理解，就是在你要操作的數據列中新增一個數據點，而傳入的參數可以接受任何形式的數據點格式，形式種類之前在「數據點設定」的章節中有介紹過。
@@ -154,7 +154,7 @@ chart.series[0].addPoint({x: 10, y: 10});
 
 <br/>
 
-#### # series.removePoint(index)
+### # series.removePoint(index)
 `index: Number`
 
 在你呼叫這個 Method 時，會從你正在操作的數據列中移除一個數據點，而你必須傳入該數據點的索引值，Highcharts 才知道要移除的是哪一個。
@@ -175,7 +175,7 @@ chart.series[0].removePoint(2);
 
 <br/>
 
-#### # point.update(options)
+### # point.update(options)
 `options: Number|Array|Object`
 
 和前面的所有的 `update` 方法都是一樣的，將你要更新的數據點設定作為參數傳入函式中，即可改變數據點的設定，不過此 Method 的參數可以接受任何數據點設定格式。
@@ -190,7 +190,7 @@ chart.series[0].data[3].update({ y: 20, color: "red" });
 
 <br/>
 
-#### # point.remove()
+### # point.remove()
 
 也是很單純的一個 Method，選取好要操作的數據點後並呼叫函式，便會將該數據點從數據列中移除。
 
@@ -206,7 +206,7 @@ chart.series[0].data[3].remove();
 
 <br/>
 
-#### # series.id / series.data.id
+### # series.id / series.data.id
 `型別: String` `預設: undefined`
 
 這兩個屬性可以為數據列／數據點設定 ID Name，這樣就可以透過 `chart.get()` 這個 Method 來直接選取它們。

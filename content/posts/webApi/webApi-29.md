@@ -17,7 +17,7 @@ description: Web API 是一個很大的主題，它涵蓋了很多不同的功�
 
 <br/>
 
-#### # Navigator.geolocation
+### # Navigator.geolocation
 
 Geolocation 的支援度是非常高的，電腦、手機，各家瀏覽器基本上都是可以使用的，不過在使用前你依然可以先進行檢查，若瀏覽器支援的話，只要透過 `navigator.geolocation` 就能取得 Geolocation 實體。
 
@@ -31,7 +31,7 @@ if ("geolocation" in navigator) {
 
 <br/>
 
-#### # Geolocation.getCurrentPosition
+### # Geolocation.getCurrentPosition
 
 有了 Geolocation 實體後，就可以用 `getCurrentPosition` method 來取得座標位置了，該方法有三個參數，其中第一個為必傳，後兩個為選填：
 
@@ -73,7 +73,7 @@ navigator.geolocation.getCurrentPosition(successHandler, errorHandler, {
 
 <br/>
 
-#### # Geolocation.watchPosition
+### # Geolocation.watchPosition
 
 除了 `getCurrentPosition` 可以拿到執行當下的使用者定位之外，還有另外一個 method 是 `watchPosition`，它的功能與參數都與 `getCurrentPosition` 相同，差別是它會在使用者的位置發生改變時主動觸發 Success CallBack，等於是在監聽使用者的定位。
 
@@ -92,7 +92,7 @@ const geoId = navigator.geolocation.watchPosition(successHandler, errorHandler);
 
 <br/>
 
-#### # Geolocation.clearWatch
+### # Geolocation.clearWatch
 
 在上方 `watchPosition` 的範例中，我們用 `geoId` 來接它丟出來 ID 編號，我們可以將編號傳入 `clearWatch` method 中，便可以使對應的 `watchPosition` 停止監聽使用者定位。
 
@@ -103,7 +103,7 @@ navigator.geolocation.clearWatch(geoId);
 
 <br/>
 
-#### # Position 物件
+### # Position 物件
 
 就如前面所說，Success CallBack 在成功獲取位置資訊時會被觸發，並且可以拿到 Position 物件，其中就包含了許多與地理位置相關的屬性可以使用：
 
@@ -121,7 +121,7 @@ navigator.geolocation.clearWatch(geoId);
 
 <br/>
 
-#### # PositionError 物件
+### # PositionError 物件
 
 另一方面，Error CallBack 則會在發生錯誤時觸發，並取得 PositionError 物件，該物件中的 `code` 屬性將會告知我們目前的錯誤是何種類型及原因：
 
@@ -133,7 +133,7 @@ navigator.geolocation.clearWatch(geoId);
 
 <br/>
 
-#### # 簡單的小範例
+### # 簡單的小範例
 
 有了 Geolocation API 之後，我們就可以製作一些與位置有關的簡單小功能，像下方的範例就是取得使用者位置後，將經緯度丟給後端來計算距離最近的門市，然後將門市資訊提供給用戶。
 

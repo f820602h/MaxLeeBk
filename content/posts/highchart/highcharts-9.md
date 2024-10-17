@@ -33,14 +33,14 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # Axis.visible
+### # Axis.visible
 `型別: Boolean` `預設: true`
 
 座標軸正常來說是必要的圖表元素，所以不像其他元素有 `enabled` 屬性來做開關，但你可以用 `visible` 來隱藏座標軸。
 
 <br/>
 
-#### # Axis.type
+### # Axis.type
 `型別: String` `預設: "linear`
 
 座標軸共有四種類型可以設定，
@@ -55,7 +55,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # Axis.categories
+### # Axis.categories
 `型別: Array[String]` `預設: undefined`
 
 當你要以類別作為座標刻度時，你需要為這個屬性提供一組陣列，當中即是你所要顯示的類別字串，我們的範例就是一個使用 `categories` 的案例，
@@ -68,14 +68,14 @@ xAxis: {
 
 <br/>
 
-#### # Axis.tickAmount
+### # Axis.tickAmount
 `型別: Number` `預設: undefined`
 
 這個屬性是線性類型專屬，它可以控制你的座標刻度的數量，如果沒有設定的話，則 Highcharts 會自動幫你計算合適的數量。
 
 <br/>
 
-#### # Axis.tickInterval / Axis.minorTickInterval
+### # Axis.tickInterval / Axis.minorTickInterval
 `型別: Number` `預設: undefined`
 
 座標刻度之間要相隔多少數值也是可以調整的，而根據不同的座標軸類型會有不同的定義：
@@ -85,21 +85,21 @@ xAxis: {
 
 <br/>
 
-#### # Axis.minTickInterval
+### # Axis.minTickInterval
 `型別: Number` `預設: undefined`
 
 和上面兩個很類似的還有這個屬性，你可以設定座標刻度「最少」要間隔多少數值，定義方法跟上面列舉的方式一模一樣。
 
 <br/>
 
-#### # Axis.tickPositions
+### # Axis.tickPositions
 `型別: Array[Number]` `預設: undefined`
 
 你可以用這個屬性來決定「哪幾個」座標刻度要出現，設定時你需要提供一組陣列，陣列裡則是你希望顯示刻度的索引，當然在線性座標軸中數值本身就是索引。
 
 <br/>
 
-#### # Axis.tickPositioner
+### # Axis.tickPositioner
 `型別: Function => Array[Number]` `預設: undefined`
 
 這個屬性與 `tickPositions` 有一樣的功能，不過你提供的是一個函式，想當然這個函式的輸出也必須是索引陣列，但好處是你可以進行一些計算，而且在函式中你可以透過 `this.tickPositions` 來拿到初始的刻度索引陣列。
@@ -120,21 +120,21 @@ var myChart = Highcharts.chart(container, {
 
 <img src="/img/content/highcharts-9/tickPositions.png" style="max-width: 600px;" />
 
-#### # Axis.reversed
+### # Axis.reversed
 `型別: Boolean` `預設: false`
 
 一般來說座標刻度大小是由左至右/由下至上地排列，但你可用這個屬性將這樣的順序給顛倒。
 
 <br/>
 
-#### # Axis.opposite
+### # Axis.opposite
 `型別: Boolean` `預設: false`
 
 這個屬性可以決定要不要讓座標軸出現在另外一邊，即Ｘ軸出現在上方或Ｙ軸出現在右邊，像如果你有雙座標軸的話，其中一個就可以放在另一邊。
 
 <br/>
 
-#### # Axis.alignTicks
+### # Axis.alignTicks
 `型別: Boolean` `預設: false`
 
 另一個與雙座標軸相關的屬性是 `alignTicks`，它可以決定兩邊的座標刻度是否要對齊，關掉的話觀看起來會比較混亂，所以如果沒特殊需求的話一般不會調整。
@@ -143,28 +143,28 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # Axis.allowDecimals
+### # Axis.allowDecimals
 `型別: Boolean` `預設: true`
 
 這個屬性可以決定是否允許出現浮點數的座標軸刻度，如果不希望出現小數點記得要設為 `false`。
 
 <br/>
 
-#### # Axis.max / Axis.min
+### # Axis.max / Axis.min
 `型別: Number` `預設: undefined`
 
 預設的情況下 Highcharts 會自動幫你計算合適的座標刻度的數值範圍，但你可以用這兩個屬性來設定座標軸的最大／最小刻度，並且會固定顯示在座標軸上，當有數據點高於 `max` 或低於 `min` 就會被畫布切掉。
 
 <br/>
 
-#### # Axis.softMax / Axis.softMin
+### # Axis.softMax / Axis.softMin
 `型別: Number` `預設: undefined`
 
 與上面的 `min/max` 相似，這兩個屬性也是設定座標軸的最大／最小刻度，並且會固定顯示在座標軸上，不過當有數據點高於 `softMax` 或低於 `softMin` 時並不會被切掉，而是會重新計算合適的刻度數值。
 
 <br/>
 
-#### # Axis.ceiling / Axis.floor
+### # Axis.ceiling / Axis.floor
 `型別: Number` `預設: undefined`
 
 另外一組設定最大／最小刻度的是 `ceiling` 和 `floor`，當你設定它們時，它們並不會固定顯示在座標軸上，而是當有數據點高於 `softMax` 或低於 `softMin` 時才會出現，並且將其切掉。
@@ -175,7 +175,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # Axis.startOnTick / Axis.endOnTick
+### # Axis.startOnTick / Axis.endOnTick
 `型別: Boolean` `預設: 請見提醒`
 
 這兩個屬性可以控制你的座標軸是否要以一個座標刻度做開頭／結尾，如果設為 `false`，第一個／最後一個座標刻度就會與繪圖區 (plot) 邊界有些微的間距。
@@ -184,7 +184,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # Axis.showFirstLabel / Axis.showLastLabel
+### # Axis.showFirstLabel / Axis.showLastLabel
 `型別: Boolean` `預設: true`
 
 決定座標軸的第一個／最後一個座標刻度要不要顯示它的文字標籤。 

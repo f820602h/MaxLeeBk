@@ -17,7 +17,7 @@ description: Web API 是一個很大的主題，它涵蓋了很多不同的功�
 
 <br/>
 
-#### # Element.scrollIntoView
+### # Element.scrollIntoView
 
 `scrollIntoView` 並不隸屬於 Window，反而是 Element 的 method，而執行 `scrollIntoView` 就會是需要進入視窗中的目標元素。
 

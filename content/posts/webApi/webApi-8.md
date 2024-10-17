@@ -17,7 +17,7 @@ DesignMode 翻譯成中文就是設計模式，但要設計什麼呢？設計整
 
 <br/>
 
-#### # Document.designMode
+### # Document.designMode
 
 今天最主要的 API 就這麼一個，也沒有什麼技巧可言，就是這麼一行簡單的 code：
 
@@ -31,7 +31,7 @@ document.designMode = "on"; // 關閉則設定成 "off"
 
 <br/>
 
-#### # iframe & designMode
+### # iframe & designMode
 
 另外，DesignMode 也不是只能運用在目前的頁面，你也可以針對頁面中的 iframe 來設定：
 

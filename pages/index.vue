@@ -99,16 +99,23 @@ const meq = computed<StyleValue>(() => ({
       :style="cardStyle"
     >
       <div class="mind relative">
-        <img class="w-full" src="/img/back.png" :style="layerHead" />
+        <img
+          class="w-full"
+          src="/img/back.png"
+          :style="layerHead"
+          alt="a blow head"
+        />
         <img
           class="absolute top-0 left-0 w-full"
           src="/img/blow.png"
           :style="layerBlow"
+          alt="a blow head"
         />
         <img
           class="absolute top-0 left-0 w-full"
           src="/img/face.png"
           :style="layerHead"
+          alt="a blow head"
         />
         <h2
           class="greeting absolute top-50% left-0 w-full h-50px sm:h-55px flex items-center justify-center pt-4px bg-black text-white font-bold"

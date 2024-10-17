@@ -21,7 +21,7 @@ Notification 對於電腦瀏覽器到支援度是不錯的，但在行動裝置�
 
 <br/>
 
-#### # Window.Notification
+### # Window.Notification
 
 Notification 使用起來並不困難，它本身是一個建構函式，透過 `new` 關鍵字創建，並傳入一個必要參數即可：
 
@@ -69,7 +69,7 @@ Notification 的第一個參數是 `title`，會顯示為通知的標題，該�
 
 <br/>
 
-#### # Notification 實體
+### # Notification 實體
 
 如果我們在創建 Notification 時有將宣告在變數中，我們就可以取得 Notification 實體，並訪問它的相關屬性，而它的屬性其實就是當初在呼叫建構函式時所傳入的參數，像是這樣：
 
@@ -112,7 +112,7 @@ notification.addEventListener("click", function (event) {
 
 <br/>
 
-#### # Window.Notification.permission
+### # Window.Notification.permission
 
 由於 Notification 算是一個有點打擾使用者的功能，所以使用前是需要取得授權的，而 Notification 這個建構函示（class）本身有提供 `permission` 這個靜態屬性讓我們確認授權的狀態。
 
@@ -134,7 +134,7 @@ if (!window.Notification) {
 
 <br/>
 
-#### # Window.Notification.requestPermission
+### # Window.Notification.requestPermission
 
 若是授權狀態為 `"default"`，那表示使用者並未對通知功能表示明確的答覆，這時候就需要我們使用 `requestPermission` 來詢問，它本身會再去確認一次授權狀態，若發現狀態為 `"default"` 就會跳出詢問授權的對話框，並且在使用者答覆之後利用 Promise 將結果丟給我們。
 

@@ -19,7 +19,7 @@ description: Highcharts 是一套純 JavaScript 的圖表庫，採用 SVG 渲染
 
 <br/>
 
-#### 1.設定事件屬性
+### 1.設定事件屬性
 
 我們在圖表元件 `LedgerChart.vue` 中新增一個 Method，並將它作為圖表 `click` 事件的回呼函式，而由於回呼函式可以接到 Highcharts 的 `event` 物件，我們就可以拿到時間戳，並利用 `$emit` 來傳至 `App.vue`。
 
@@ -46,7 +46,7 @@ options() {
 
 <br/>
 
-#### 2.父層監聽自定義事件
+### 2.父層監聽自定義事件
 
 剛剛在 `LedgerChart.vue` 有 `emit` 了自定義事件，現在要在父層來監聽接收這事件，這樣每次點擊數據列就都會更新 `date` 了。
 
@@ -84,7 +84,7 @@ export default {
 
 <br/>
 
-#### 3.清單元件 - LedgerList.vue
+### 3.清單元件 - LedgerList.vue
 
 再來就是下方要顯示的明細清單了，檔案內容如下，主要是透過接收一個 `date` 的 Prop，每當它更新時就會觸發 `watch`，然後利用 Json-Server 的 Filter 功能來抓出「當天」的資料，如此就能將消費明細顯示在畫面上了。
 
@@ -128,7 +128,7 @@ export default {
 
 <br/>
 
-#### 4.掛載元件並傳入 Prop
+### 4.掛載元件並傳入 Prop
 
 清單元件完成後就將他掛到 `App.vue` 上了，並且記得要把剛剛的 `date` 傳進清單元件中。如此一來我們就成功增加了查看明細的新功能囉！
 

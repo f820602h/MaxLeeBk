@@ -48,28 +48,28 @@ Media queries 在撰寫時都會相下面這樣去訂定變化的條件時機，
 
 <br/>
 
-#### # responsive.rules.condition.maxWidth
+### # responsive.rules.condition.maxWidth
 `型別: Number` `預設: undefined`
 
 當圖表的寬度小於這個屬性設定的值時，便會發生設定變化。
 
 <br/>
 
-#### # responsive.rules.condition.maxHeight
+### # responsive.rules.condition.maxHeight
 `型別: Number` `預設: undefined`
 
 當圖表的寬度小於這個屬性設定的值時，便會發生設定變化。
 
 <br/>
 
-#### # responsive.rules.condition.minWidth
+### # responsive.rules.condition.minWidth
 `型別: Number` `預設: 0`
 
 當圖表的寬度大於這個屬性設定的值時，便會發生設定變化。
 
 <br/>
 
-#### # responsive.rules.condition.minHeight
+### # responsive.rules.condition.minHeight
 `型別: Number` `預設: 0`
 
 當圖表的高度大於這個屬性設定的值時，便會發生設定變化。
@@ -100,7 +100,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # responsive.rules.chartOptions
+### # responsive.rules.chartOptions
 `型別: Object` `預設: undefined`
 
 物件內容就是你希望改變的圖表設定及其值，前面所有介紹過的圖表元素設定都可以改變！

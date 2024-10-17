@@ -28,14 +28,14 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # legend.enabled
+### # legend.enabled
 `型別: Boolean` `預設: undefined`
 
 你可以利用這個屬性將圖例顯示/隱藏，另外要特別注意，假如你已經將 `enabled` 設為 `true` 卻沒顯示圖例，這是因為 `series.showInLegend` 這個屬性在某些圖表類型（例如圓餅圖）中預設是 `false`，必須要同時把這個屬性打開，圖例才會出現。
 
 <br/>
 
-#### # legend.align
+### # legend.align
 
 `型別: String` `預設: "center"`
 
@@ -43,7 +43,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # legend.verticalAlign
+### # legend.verticalAlign
 
 `型別: String` `預設: "bottom"`
 
@@ -51,7 +51,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # legend.layout
+### # legend.layout
 
 `型別: String` `預設: "horizontal"`
 
@@ -63,7 +63,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # legend.floating
+### # legend.floating
 
 `型別: Boolean` `預設: false`
 
@@ -71,7 +71,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # legend.x / legend.y
+### # legend.x / legend.y
 
 `型別: Number` `預設: 0`
 
@@ -79,7 +79,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # legend.backgroundColor
+### # legend.backgroundColor
 
 `型別: String|Object` `預設: undefined`
 
@@ -87,7 +87,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # legend.border系列
+### # legend.border系列
 
 因為 `border` 的相關設定在 **[圖表整體設定](/posts/highchart/highcharts-4/#chartborderWidth-chartplotBorderWidth)** 提過了，所以這邊就只放預設值給大家參考。
 
@@ -101,28 +101,28 @@ legend: {
 
 <br/>
 
-#### # legend.margin
+### # legend.margin
 `型別: Number` `預設: 12`
 
 若圖例的垂直位置靠下，那圖例的 `margin` 是調整圖例與 **座標軸** 的間距，垂直對齊靠上則是與 **繪圖區** 的間距。
 
 <br/>
 
-#### # legend.padding
+### # legend.padding
 `型別: Number` `預設: 8`
 
 所有圖例會全部包在一個容器裡，你可以調整容器的內間距，這個屬性在有設定背景色或邊框時會比較看得出來。
 
 <br/>
 
-#### # legend.itemDistance
+### # legend.itemDistance
 `型別: Number` `預設: 8`
 
 這個屬性只有在 `legend.layout` 是水平配置的情況下才會有效，調整的是個別圖例之間的水平間距。
 
 <br/>
 
-#### # legend.itemMarginTop / legend.itemMarginBottom
+### # legend.itemMarginTop / legend.itemMarginBottom
 `型別: Number` `預設: 0`
 
 這兩個屬性剛好相對於 `itemDistance`，它們調整的是個別圖例之間的垂直間距，不過不管是水平配置或垂直配置下都可以使用。
@@ -133,7 +133,7 @@ legend: {
 
 <br/>
 
-#### # legend.itemStyle / legend.itemHoverStyle / legend.itemHiddenStyle
+### # legend.itemStyle / legend.itemHoverStyle / legend.itemHiddenStyle
 `型別: Object` `預設: 如下顯示`
 
 ```javascript
@@ -157,35 +157,35 @@ legend: {
 
 <br/>
 
-#### # legend.symbolWidth / legend.symbolHeight
+### # legend.symbolWidth / legend.symbolHeight
 `型別: Number` `預設: undefined`
 
 你可以透過這兩個屬性調整圖例符號（symbol）的寬高，在沒有設定時會自動去抓 `itemStyle.fontSize` 的大小。
 
 <br/>
 
-#### # legend.squareSymbol
+### # legend.squareSymbol
 `型別: Boolean` `預設: true`
 
 這個屬性會大大影響圖例符號的寬高設定，它會決定是否要讓符號維持寬高相等，所以如果你需要長方形/橢圓形的符號，記得關閉這個設定。
 
 <br/>
 
-#### # legend.symbolRadius
+### # legend.symbolRadius
 `型別: Number` `預設: undefined`
 
 這個屬性決定了圖例符號的倒圓角，不設定的話會自動計算為 `symbolHeight` 的一半，這也是為什麼預設會是圓形的原因。
 
 <br/>
 
-#### # legend.symbolPadding
+### # legend.symbolPadding
 `型別: Number` `預設: 5`
 
 圖例符號與圖例文字之間的間距可以透過這個屬性調整，預設有 `5px` 的距離。
 
 <br/>
 
-#### # legend.labelFormat / legend.labelFormatter
+### # legend.labelFormat / legend.labelFormatter
 
 這兩個屬性在「圖例設定」中算是比較重要也比較實用的，它們可以用來調整圖例標籤的「文字格式」，不過它們的使用方式比較複雜度，所以之後會用獨立的章節來特別介紹「格式化屬性」，今天我們就暫時先跳過。
 

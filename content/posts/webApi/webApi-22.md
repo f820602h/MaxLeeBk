@@ -21,7 +21,7 @@ IntersectionObserver 幫我們觀察的是元素的「相交（intersect）」�
 
 <br/>
 
-#### # Window.IntersectionObserver
+### # Window.IntersectionObserver
 
 和其他「觀察者」一樣，`IntersectionObserver` 為一個建構函示，需要使用 `new` 關鍵字來創建實體，並且需要傳入 Callback Function 作為參數，該 Callback 會獲得一個存放 IntersectionObserverEntry 的陣列以及「觀察者（observer）」自身實體，
 
@@ -72,7 +72,7 @@ const observer = new IntersectionObserver(callback, {
 
 <br/>
 
-#### # IntersectionObserver.observe
+### # IntersectionObserver.observe
 
 老樣子，觀察者們都需要我們使用 `observe` method 來指定觀察對象：
 
@@ -87,7 +87,7 @@ observer.observe(div);
 
 <br/>
 
-#### # IntersectionObserver.unobserve
+### # IntersectionObserver.unobserve
 
 若要註銷某元素的觀察，IntersectionObserver 一樣有 `unobserve` method 可以使用：
 
@@ -103,7 +103,7 @@ observer.unobserve(div);
 
 <br/>
 
-#### # IntersectionObserver.disconnect
+### # IntersectionObserver.disconnect
 
 當然也可以一次性的註銷所有元素的觀察，同樣要記得，IntersectionObserver 實體並不會消失，只是沒有觀測中的元素而已，你依然可以再次使用 `observe` 來註冊一個新的觀察：
 
@@ -120,7 +120,7 @@ observer.observe(box2);
 
 <br/>
 
-#### # IntersectionObserverEntry 物件
+### # IntersectionObserverEntry 物件
 
 IntersectionObserver 和之前介紹的 MutationObserver 和 ResizeObserver 不同，它是**「非同步」**觸發的，畢竟「相交與否」這件事情是一個瞬間，不會有不斷疊加的狀態，所以也就不需要考慮連續觸發導致的效能問題，也就是說儘管你非常快速的來回捲動，它也不會將事件合併。
 
@@ -172,7 +172,7 @@ const observer = new IntersectionObserver((entries) => {
 
 <br/>
 
-#### # 使用情境
+### # 使用情境
 
 IntersectionObserver 的使用情境很多，可以做「捲動特效」或是「無限捲動」，下面我們就來試試寫個無間捲動的功能看看，先看效果：
 

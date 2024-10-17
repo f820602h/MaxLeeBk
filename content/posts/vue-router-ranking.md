@@ -30,6 +30,8 @@ const routes = [
 ]
 ```
 
+---
+
 ## 發生衝突
 
 實際上 Vue Router 的運作方式要再複雜一些，這裡實際用一個例子來打破前面建立的既定印象。請問以下面的路由設定來說，當使用者在進入網址 `/page` 時，Vue Router 會導向 `PageA` 還是 `PageB` 呢？
@@ -45,7 +47,7 @@ const routes = [
 
 <br/>
 
-#### 1. Strict options
+### 1. Strict options
 
 首先是 `strict` 設定，在預設情況下 Vue Router 並不會特別區分末端是否有斜線。也就是 `/page` 其實可以同時匹配 `PageA` 及 `PageB`，除非特地設定 `strict: true` 才會去嚴格比對到 `PageA`。
 
@@ -59,7 +61,7 @@ const router = createRouter({ routes, strict: true })
 
 <br/>
 
-#### 2. Ranking of routes
+### 2. Ranking of routes
 
 這時候腦筋動比較快的人應該就會發現第二個問題，既然 `/page` 可以同時匹配 `PageA` 及 `PageB`，那為何 Vue Router 卻是匹配了排序比較後面的 `PageB`？
 
@@ -74,6 +76,8 @@ const routes = [
 ]
 ```
 
+---
+
 ## 解開誤會
 
 相信看了上面的解釋後大家反而更困惑了，路由分數是什麼？何時計算的？為什麼分數會有兩個數字？計算方式？比較方式？其實我當時也和大家一樣困惑，因為官方文件幾乎沒有提到這塊，只有 [隱晦的幾句話](https://router.vuejs.org/zh/guide/essentials/route-matching-syntax.html#%E8%B0%83%E8%AF%95) 帶到一下。
@@ -84,7 +88,7 @@ const routes = [
 
 <br/>
 
-#### # createRouterMatcher & RouteRecordMatcher
+### # createRouterMatcher & RouteRecordMatcher
 
 其實路由分數在使用 `createRouter` 進行初始化路由時就已經計算了，函式中的第一行是透過 `createRouterMatcher` 建立 `matcher`，不過這個 `matcher` 並沒有直接暴露出來給開發者，所以平時可能並不會注意到有這個東西。
 
@@ -118,7 +122,7 @@ console.log(createRouterMatcher(routes).getRoutes())
 
 <br/>
 
-#### # PathScore
+### # PathScore
 
 既然已經發現了 `RouteRecordMatcher` 物件中有 `score` 屬性，索性用它作為關鍵字在原始碼中搜尋一番，這時可以在 [這裡](https://github.com/vuejs/router/blob/14219b01bee142423265a3aaacd1eac0dcc95071/packages/router/src/matcher/pathParserRanker.ts#L100-L114) 找到名為 `PathScore` 的列舉，透過其中的註解就可以猜到這個列舉是在定義不同情況的路由路徑所能得到的分數。
 
@@ -146,7 +150,7 @@ const enum PathScore {
 
 <br/>
 
-#### # tokensToParser
+### # tokensToParser
 
 而就在 `PathScore` 的底下剛好就有一個 [函式](https://github.com/vuejs/router/blob/14219b01bee142423265a3aaacd1eac0dcc95071/packages/router/src/matcher/pathParserRanker.ts#L126-L291) `tokensToParser`，當中大量的使用了 `PathScore` 列舉，並且明顯有分數計算邏輯，並且最終返回了帶有 `score` 屬性的物件。
 
@@ -168,7 +172,7 @@ export function tokensToParser(
 
 <br/>
 
-#### # 先綜觀全局
+### # 先綜觀全局
 
 為了知道 `segments` 是什麼，我們必須要找到 `tokensToParser` 是在哪裡被呼叫並且被傳入什麼樣的參數，並且一步步往源頭追朔，才能知道 Vue Router 是如何計算路由分數的。經過一番搜尋後，我將整個流程整理成以下的關係圖。
 
@@ -178,7 +182,7 @@ export function tokensToParser(
 
 <br/>
 
-#### # normalizeRouteRecord
+### # normalizeRouteRecord
 
 在 `addRoute` 內部首先會使用 `normalizeRouteRecord` 這個 [函式](https://github.com/vuejs/router/blob/14219b01bee142423265a3aaacd1eac0dcc95071/packages/router/src/matcher/index.ts#L383)，它會使用別路由的設定來為新物件屬性賦值，並添加一些新的屬性，最終將其返回並稱為 `record`。
 
@@ -202,7 +206,7 @@ export function normalizeRouteRecord(
 
 <br/>
 
-#### # createRouteRecordMatcher
+### # createRouteRecordMatcher
 
 路由在轉變成 `record` 後，就會再被丟進 `createRouteRecordMatcher` 這個 [函式](https://github.com/vuejs/router/blob/14219b01bee142423265a3aaacd1eac0dcc95071/packages/router/src/matcher/pathMatcher.ts#L19) 處理，當中創建了一個新物件並將他返回，`record` 會是它的屬性之一，而被 `assign` 的 `parser` 就是透過前面提到的 `tokensToParser` 回傳出來的。
 
@@ -223,7 +227,7 @@ export function createRouteRecordMatcher(
 
 <br/>
 
-#### # tokenizePath
+### # tokenizePath
 
 現在知道 `tokensToParser` 是在 `createRouteRecordMatcher` 中被呼叫的，並且將 `tokenizePath` 所回傳的結果做為參數傳入。那就接著看看 `tokenizePath` 內部到底做了什麼事情。
 
@@ -290,7 +294,7 @@ export function createRouteRecordMatcher(
 
 <br/>
 
-#### # insertMatcher
+### # insertMatcher
 
 等待 `tokensToParser` 計算完分數後，`matcher` 就會被返回並被傳入 `insertMatcher` [函式](https://github.com/vuejs/router/blob/14219b01bee142423265a3aaacd1eac0dcc95071/packages/router/src/matcher/index.ts#L227)之中，來使它根據分數大小插入 `matchers` 陣列之中。也就是前面用 `getRoutes` 取得的 `RouteRecordMatcher` 陣列。
 
@@ -338,7 +342,7 @@ const matcherScore = [
 
 <br/>
 
-#### # resolve
+### # resolve
 
 有了路由排序後，只要使用 `router.push` 或是在網址列輸入網址時，背後都會藉由 `router.resolve` 這個 [函式](https://github.com/vuejs/router/blob/14219b01bee142423265a3aaacd1eac0dcc95071/packages/router/src/router.ts#L459)，來操作 `matcher` 的 `resolve` [方法](https://github.com/vuejs/router/blob/14219b01bee142423265a3aaacd1eac0dcc95071/packages/router/src/matcher/index.ts#L235) 來找到符合的路由。
 
@@ -374,6 +378,8 @@ function resolve(
 ::
 
 > 如果路由是透過 `{ name: "PageA" }` 的方式指定，則會跳過 `matchers` 的搜尋，直接根據名稱找到對應的路由。
+
+---
 
 ## 回顧錯誤
 
@@ -427,7 +433,7 @@ console.table(
 
 <br/>
 
-#### # getInsertionAncestor
+### # getInsertionAncestor
 
 原來，前面提到 `insertMatcher` 會呼叫 `findInsertionIndex` 來進行分數的比較，並將 `matcher` 插入對應的順位中，如果分數完全相同才會依照路由設定的順序來決定。但這中間其實還藏了另一個判斷，那就是利用 `getInsertionAncestor` 這個 [函式](https://github.com/vuejs/router/blob/14219b01bee142423265a3aaacd1eac0dcc95071/packages/router/src/matcher/index.ts#L589) 來判斷當下這個路由是否有分數相同的父層路由。
 
@@ -473,7 +479,7 @@ function getInsertionAncestor(matcher: RouteRecordMatcher) {
 
 <br/>
 
-#### # 問題發生
+### # 問題發生
 
 本來正常運作的路由設定，直到遇到了這次的新需求後就發生了變故，其中需求是這樣的：
 
@@ -517,7 +523,7 @@ const routes = [
 
 <br/>
 
-#### # 解決方法
+### # 解決方法
 
 最後的解決方向是，既然 `LoginPage` 本身不是一個實際的頁面，那就應該在它被 Vue Router 配對到時導轉出來，所以最後是在 `LoginPage` 裡增加 `redirect` 設定來解決此次問題。
 
@@ -537,6 +543,8 @@ const routes = [
 ```
 ::
 
+---
+
 ## 總結
 
 會遇到這次的問題只能先檢討自己才疏學淺，沒有好好理解 Vue Router 的實際運作方式。不過也正好是因為有遇到這樣的需求才能讓我有機會從錯誤中學習，花費時間研究原始碼，最終也才能透徹的理解 Vue Router 背後巧妙的設計，並且將自己的經驗分享給大家。
@@ -544,8 +552,8 @@ const routes = [
 最後的最後，如果你好奇自己網站的路由分數長什麼樣子，其實官方有推出一個 [工具](https://paths.esm.dev/?p=AAMeJVyAwBAUbHbAAJcKuAkgKAGeAlgA4AS8OxgBQAk4P5sALcD2gEABAkOlyYaeUpEmvTlsScKIHeMosLrNAoQz0PAq1CVbHTnCGwCy&t=/talent/) 來幫助你快速查看。或是也可以打開 Vue DevTool 的 Router 面板來查找。
 
 
-<br/><br/>
+<br/>
 
-##### 參考資料
+### 參考資料
 - [Vue Router Documentation](https://router.vuejs.org/guide/essentials/route-matching-syntax.html)
 - [Vue Router Source Code](https://github.com/vuejs/router/)

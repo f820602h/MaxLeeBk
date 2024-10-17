@@ -13,15 +13,13 @@ description: Web API 是一個很大的主題，它涵蓋了很多不同的功�
 
 ## CreateDocumentFragment
 
-<br/>
-
 先直接說明 CreateDocumentFragment 的功能好了，它可以幫我們創建一個 DocumentFragment，而 DocumentFragment 就如同一個虛擬的文件片段，就算對其進行節點操作時並不會造成瀏覽器回流（reflow），也就是不會耗費資源來進行畫面更新，這也就是它最大的優點。
 
 如果你還沒接觸過前端框架的話，那相信你在遇到需要新增動態元素至畫面上時你通常會有下面這幾個方法：
 
 <br/>
 
-#### # innerHTML
+### # innerHTML
 
 首先是比較基礎的方式是用，也就是用字串的方式來設定某個元素的 HTML 內容，使用起來非常間單，不過如果想要塞入的內容結構上比較複雜的話那就會非常麻煩了（字串裡可是沒有編輯器提示的啊～）。
 
@@ -49,7 +47,7 @@ ul.innerHTML += htmlContent;
 
 <br/>
 
-#### # appendChild
+### # appendChild
 
 相比 `innerHTML`，`appendChild` 應該才是更常使用的方法：
 
@@ -88,7 +86,7 @@ for (let i = 0; i < list.length; i++) {
 
 <br/>
 
-#### # createDocumentFragment
+### # createDocumentFragment
 
 但如果使用 `createDocumentFragment` 可就不一樣了，我們是在一個虛擬的文件片段中加入新元素，這樣就完全不會造成畫面的更新，因為它根本就沒渲染在畫面上。
 

@@ -82,7 +82,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # 格式語法
+### # 格式語法
 其實就和我們上面的 JavaScript 案例中使用的「ES6 - 模版字符串」有點類似，但只需要「大括號」即可。
 ```javascript
 `這是一個變數: ${variables}` // ES6 - 模版字符串
@@ -91,7 +91,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # HTML標籤
+### # HTML標籤
 另外，格式化字串中可以使用部分 HTML 行內元素，像是 `<b>`、`<strong>`、`<i>`、`<em>`、`<br/>`、`<span>`，並且也可以加上行內樣式來調整外觀，但因為 Highcharts 是以 SVG 渲染的，所以只接受能夠與 SVG 相容的 CSS 屬性。
 
 ```javascript
@@ -100,7 +100,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # 數字處理
+### # 數字處理
 
 最後，Highcharts 還提供了一些符號來幫助我們處理數字「千分位」與「小數點」。當中的「冒號」要接在你的變數名稱後，而「逗號」表示使用千分位符號，而後面的 `.0f` 表示要顯示小數點後第幾位。
 
@@ -121,7 +121,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # 函式裡的This
+### # 函式裡的This
 
 其實 `formatter` 的原理和開頭的 JavaScript 程式碼一樣，Highcharts 會把一組一組的物件放進 `this` 裡。
 
@@ -146,7 +146,7 @@ series: [{
 
 <br/>
 
-#### # 數字處理
+### # 數字處理
 
 在 `formatter` 函式中你可以呼叫 `Highcharts.numberFormat` 來處理「千分位」與「小數點」，不需要自己寫冗長的程式碼。
 
@@ -161,7 +161,7 @@ formatter: function() {
 
 <br/>
 
-#### # series.custom / series.data.custom
+### # series.custom / series.data.custom
 `型別: Any` `預設: undefined`
 
 假如你很肯定某些資訊在 `this` 是沒有的，那可以在這兩個屬性中放入自定義的資料，這樣就可以在 `formatter` 中拿到這些資料了
@@ -202,7 +202,7 @@ series: [{
 
 <br/>
 
-#### # 圖例文字標籤
+### # 圖例文字標籤
 
 圖例標籤的格式化屬性拿到的物件一般是「數據列物件」，但如果是圓餅圖這種以數據點為圖例單位的圖表，則是「數據點物件」，兩種物件長得不太一樣，不過常用的有 `name`、`color`、`index` 這幾個。
 
@@ -223,7 +223,7 @@ legend: {
 
 
 
-#### # 提示框內容
+### # 提示框內容
 
 提示框內容的格式化屬性是最多也最特別的，可以看看下方的說明圖可能較好理解，另外 `tooltip.formatter` 所拿到的物件屬性會受到 `tooltip.shared` 的影響，建議可以印出來看看差別。
 
@@ -248,7 +248,7 @@ tooltip: {
 
 <br/>
 
-#### # 座標軸刻度標籤
+### # 座標軸刻度標籤
 
 座標軸刻度標籤的格式化屬性拿到的物件是「刻度標籤物件」，裡面會有座標軸的相關設定屬性、圖表物件，以及該刻度所代表的Ｘ／Ｙ值 `value`，也有 `isFirst`、`isLast`，幫助你判斷該刻度是否為第一個或最後一個。
 
@@ -266,7 +266,7 @@ xAxis: { // Y軸亦同
 
 <br/>
 
-#### # 數據標籤
+### # 數據標籤
 
 數據標籤的格式化屬性拿到的物件是「數據標籤物件」，基本上內含屬性就和圖例標籤是差不多的，不過同時包含了「數據列物件」、「數據點物件」，所以可用的數據又更多了。
 

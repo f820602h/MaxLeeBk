@@ -20,7 +20,9 @@ $ npm install --save-dev lhci
 $ npm run <your script>
 ```
 
-## **Configuration**
+---
+
+## Configuration
 
 ```js
 // lighthouserc.js
@@ -78,22 +80,26 @@ module.exports = {
 
 [https://github.com/GoogleChrome/lighthouse-ci/blob/main/docs/configuration.md](https://github.com/GoogleChrome/lighthouse-ci/blob/main/docs/configuration.md)
 
-<br/>
+---
 
 ## 使用 Lighthouse Server Locally
 
 > ⚠️ 必須安裝 chrome
 
-#### STEP 1 - 建立  server
+<br/>
 
-<方案壹>  使用 Docker Image
+### 1. 建立 Server
+
+#### 方案一、使用 Docker Image
 
 ```bash
 $ docker volume create lhci-data
 $ docker container run --publish 9001:9001 --mount='source=lhci-data,target=/data' --detach patrickhulce/lhci-server
 ```
 
-<方案貳> 自己寫 Node server
+<br/>
+
+#### 方案二、自己寫 Node server
 
 ```bash
 $ npm install @lhci/server mysql2
@@ -119,7 +125,9 @@ createServer({
 $ node app.js
 ```
 
-#### STEP 2 - 要跑分的專案與 server 進行 token 設定
+<br/>
+
+### 2. 要跑分的專案與 server 進行 token 設定
 
 ```bash
 $ curl https://your-lhci-server.example.com/version # Make sure you can connect to your server.
@@ -149,22 +157,26 @@ module.exports = {
 };
 ```
 
-#### STEP 3  - 開始跑分
+<br/>
+
+### 3. 開始跑分
 
 ```bash
 $ npm run build
 $ lhci autorun
 ```
 
-#### STEP 4  - 查看 Lighthouse Server
+<br/>
+
+### 4. Lighthouse Server
 
 ![](/img/content/lighthouse/ci.webp)
 
-<br/>
+---
 
 ## 加入 CI CD 流程
 
-#### Github Action
+### # Github Action
 
 安裝 github app 並提供 repo 權限
 

@@ -118,7 +118,7 @@ Car {
 
 當然實體與建構函式之間的連結不僅僅只是一個標記那麼簡單，它們各自有著特別的屬性，讓 JavaScript 能夠實踐所謂的「繼承」，而現在我們就要來深入認識這些屬性。
 
-#### # prototype
+### # prototype
 在 JavaScript 裡，每個函式都擁有 `prototype` 這個訪問器屬性，而建構函式也是函式，當然就也有 `prototype`。
 
 <p style="font-size:12px; line-height:1.5; margin-top: 4px">＊ 訪問器屬性 - 你可以把它當成一種隱藏的內建屬性，所以平常不會注意到。</p>
@@ -144,7 +144,7 @@ console.log(Car === Car.prototype.constructor.prototype.constructor.prototype.co
 
 <br />
 
-#### # \_\_proto\_\_
+### # \_\_proto\_\_
 
 在 JavaScript 裡，每個物件型別的變數都有 `__proto__` 這個訪問器屬性，而實例就是物件，當然就也有 `__proto__`。
 <p style="font-size:12px; line-height:1.5; margin-top: 4px">＊ 物件型別(Object) - 例如：物件、陣列、函式、日期等。</p>
@@ -319,6 +319,6 @@ let fn = function(){}; // new Function()
 
 <br />
 
-參考資料：
+### 參考資料
 - [該來理解 JavaScript 的原型鏈了 - huli](https://blog.techbridge.cc/2017/04/22/javascript-prototype/)
 - [你懂 JavaScript 嗎？#19 原型（Prototype）- Summer](https://cythilya.github.io/2018/10/26/prototype/)

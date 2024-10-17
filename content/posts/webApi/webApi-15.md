@@ -19,7 +19,7 @@ description: Web API 是一個很大的主題，它涵蓋了很多不同的功�
 
 <br/>
 
-#### # otherWindow.postMessage
+### # otherWindow.postMessage
 
 PostMessage API 底下就是只有 `postMessage` 這個 method，非常的單純，卻也無比強大，其中 `otherWindow` 所指的是「目前分頁以外的 Window」，這個 Window 可以是利用 `window.open` 執行返回的 Window 物件，或是一個 `iframe` 元素的 `contentWindow`，而也就是訊息要送達的目的地。
 
@@ -40,7 +40,7 @@ otherPage.postMessage("Hi,Max", "https://maxleebk.com/");
 
 <br/>
 
-#### # Window:message Event
+### # Window:message Event
 
 訊息有傳送的一方，自然也要有接收的一方，而接收方要順利接到訊息的話，只要在 `window` 上監聽 `message` 這個事件即可，而訊息的部分則會被放在 Event 物件的 `data` 屬性裡:
 

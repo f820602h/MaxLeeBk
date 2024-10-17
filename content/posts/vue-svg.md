@@ -15,7 +15,7 @@ description: 在 Vue 專案中使用 SVG 圖示，我們可以透過 SVG Sprites
 
 <br />
 
-##### 第一種：Using SVG as an ＜img＞
+#### 第一種：Using SVG as an ＜img＞
 利用 `<img>` 標籤來引入，此時 SVG 被視為一個圖檔載入，最大的缺點就是無法利用 CSS 來改變 SVG 的樣式。
 如果你有 Icon 會有改變顏色的需求，你就需要兩張不同顏色的圖檔，兩個 `<img>` 標籤，然後用判斷式來控制，非常繁瑣。
 
@@ -28,7 +28,7 @@ description: 在 Vue 專案中使用 SVG 圖示，我們可以透過 SVG Sprites
 
 <br />
 
-##### 第二種：Inline SVG
+#### 第二種：Inline SVG
 直接將 `<svg>` 標籤放進 Html 結構中，這種方法雖然解決了改變顏色的問題，但卻讓程式碼看起來非常雜亂。
 
 ::advance-code{:line='[4]'}
@@ -80,7 +80,7 @@ description: 在 Vue 專案中使用 SVG 圖示，我們可以透過 SVG Sprites
 
 <br />
 
-##### 一、撰寫 Vite Plugin
+#### 一、撰寫 Vite Plugin
 
 在專案中新增一個 `svgBuilder.js`，名稱和路徑你都可以自己調整，並且撰寫以下程式碼：
 
@@ -171,7 +171,7 @@ export const svgBuilder = (path) => {
 
 <br />
 
-##### 二、使用 Plugin
+#### 二、使用 Plugin
 
 完成 Plugin 後，我們要在 `vite.config.js` 中正式使用 Plugin。
 
@@ -192,7 +192,7 @@ export default () => {
 
 <br />
 
-##### 三、全域元件
+#### 三、全域元件
 
 最後，新增一個元件來包裝 SVG Sprites，並且全域註冊這個元件。
 
@@ -250,7 +250,7 @@ defineProps({
 
 <br />
 
-##### 一、安裝
+#### 一、安裝
 
 首先建立資料夾路徑 `src/assets/icon`，之後的 `.svg` 檔都會放在這裡。接著安裝今天的主角 `svg-sprite-loader`，它就是這次要使用的 Webpack Loader。
 
@@ -300,7 +300,7 @@ module.exports = {
 
 <br />
 
-##### 二、使用
+#### 二、使用
 
 這樣處理完之後就可以在 Vue 元件中引入 `.svg` 檔，並且在 `template` 裡使用 `<use>`，你就可以獲得一個能夠改變顏色的 SVG Icon 了。
 
@@ -320,7 +320,7 @@ import "@/src/assets/icon/target.svg";
 <br />
 <br />
 
-##### 三、全域引入與全域元件
+#### 三、全域引入與全域元件
 
 雖然已經解決了改變 Icon 顏色以及程式碼雜亂的問題，但每當要使用 Icon 時，都必須在元件中引入對應的 `.svg` 檔，也是增添不少管理上的麻煩，這時可以在 `main.js` 中，利用 Webpack 的 `require.context` 一次性引入所有檔案（[官方說明](https://webpack.js.org/guides/dependency-management/#require-context)）。
 

@@ -27,7 +27,7 @@ description: 透過 Vue、SCSS 與 CSS 變數之間的轉換，讓樣式設定�
 <br />
 
 <!-- MARK: SCSS Variables -> CSS Variables -->
-#### # SCSS Variables -> CSS Variables
+### # SCSS Variables -> CSS Variables
 
 先說說為什麼會有 SCSS 變數要轉換成 CSS 變數的需求，這是因為在 Vue 專案中，除非做了一些額外設定，否則 SCSS 變數是無法共享給子元件的，但 CSS 變數卻可以，所以經過這樣的轉換就可以更便捷的設定樣式。
 
@@ -139,7 +139,7 @@ description: 透過 Vue、SCSS 與 CSS 變數之間的轉換，讓樣式設定�
 <br />
 
 <!-- MARK: CSS Variables -> SCSS Variables -->
-#### # CSS Variables -> SCSS Variables
+### # CSS Variables -> SCSS Variables
 
 基本上 CSS 變數是可以直接在 SCSS 中使用的，但或許在寫 SCSS 的 `@function` 或 `@mixin` 時希望使用一個 SCSS 變數來儲存管理時，還是可以很簡單的轉換。
 
@@ -175,7 +175,7 @@ description: 透過 Vue、SCSS 與 CSS 變數之間的轉換，讓樣式設定�
 <br />
 
 <!-- MARK: Vue State -> CSS Variables / SCSS Variables -->
-#### # Vue State -> CSS Variables / SCSS Variables
+### # Vue State -> CSS Variables / SCSS Variables
 
 接著是可能更實用的 Vue 狀態轉換成樣式變數，由於不管是 CSS 還是 SCSS 方法都一樣，所以就一起講。在 Vue3 中，多了一個「v-bind in CSS」的功能，可以很簡單的將邏輯中的資料綁定到樣式當中，並且是動態響應的。
 
@@ -246,7 +246,7 @@ p {
 <br/>
 
 <!-- MARK: CSS Variables -> Vue State -->
-#### # CSS Variables -> Vue State
+### # CSS Variables -> Vue State
 
 要將 CSS 變數轉變為 Vue State 也是可以的，只要透過 `window.getComputedStyle()` 取得元素的樣式，再透過 `getPropertyValue()` 取得 CSS 變數的值，不過這個方法所拿到的值並不是響應式的，所以如果 CSS 變數有變動，Vue State 並不會跟著變動。
 
@@ -270,7 +270,7 @@ onMounted(() => {
 <br/>
 
 <!-- MARK: SCSS Variables -> Vue State -->
-#### # SCSS Variables -> Vue State
+### # SCSS Variables -> Vue State
 
 最後是 SCSS 變數轉變為 Vue State，這個方法主要是透過 Vite 的 CSS Modules 功能搭配 SCSS 的 `:export` 來匯出變數，好處是可以是將 `.scss` 檔案作為一個變數的統一管理模組，並且無論是在 `<script>` 還是 `<style>` 都可以引入變數。
 
@@ -312,7 +312,7 @@ onMounted(() => {
 <!-- MARK: 智慧的三角神力 - CSS -->
 ## 智慧的三角神力 - CSS
 
-#### # var() 預備值
+### # var() 預備值
 
 `var()` 在 CSS 中可以用來取得變數的值，不過它其實還有第二個參數，當變數不存在或未定義時就會回傳這個參數，這樣就可以避免變數不存在時的也能有一個預備值。
 
@@ -324,7 +324,7 @@ p {
 
 <br/>
 
-#### # initial 關鍵字
+### # initial 關鍵字
 
 `initial` 關鍵字是用來重置元素的樣式，當你想要讓某個樣式屬性回到預設值時，就可以使用它。
 
@@ -354,7 +354,7 @@ p {
 
 <br/>
 
-#### # CSS 邏輯運算
+### # CSS 邏輯運算
 
 沒錯，儘管 CSS 並非程式語言，但我們依然可以通過一些特殊的技法來模擬邏輯運算。首先要搭配前面「v-bind in CSS」的方法，將 `isLoading` 與 `isLogin` 轉換成值為 `0` 或 `1` 的 CSS 變數。
 
@@ -394,7 +394,7 @@ p {
 <!-- MARK: 力量的三角神力 - SCSS -->
 ## 力量的三角神力 - SCSS
 
-#### # SCSS @mixin
+### # SCSS @mixin
 
 `@mixin` 是 SCSS 提供的一種 At-Rule，用途是為了避免撰寫重複的樣式，將重複的樣式抽出來，並透過 `@include` 來使用。
 
@@ -462,7 +462,7 @@ p {
 
 <br/>
 
-#### # SCSS @at-root
+### # SCSS @at-root
 
 `@at-root` 是另一個 At-Rule，它的作用是將樣式提升到最外層，當不希望巢狀樣式是有階層關係時就可以使用它。
 
@@ -492,7 +492,7 @@ p {
 
 <br/>
 
-#### # Parent Selector
+### # Parent Selector
 
 `&` 是 SCSS 中的特殊符號，代表的是父層的選擇器，這個特性在撰寫巢狀樣式時非常好用，可以讓我們在子層樣式中直接取用父層的選擇器。
 
@@ -556,7 +556,7 @@ p {
 
 <br/>
 
-#### # Vue - Variables in Inline Style Binding
+### # Vue - Variables in Inline Style Binding
 
 還記得前面說明「v-bind in CSS」時，有展示在模板中使用 `v-bind:style` 的效果不太優雅，但其實也是有一個相對折衷的方式，那就是雖然使用 `v-bind:style` 不過物件中定義的是 CSS 變數。沒想要 Vue 竟然還支援這樣的定義方式，真的想得很周到。
 
@@ -588,7 +588,7 @@ p {
 
 <br/>
 
-#### # Vite - Preprocessor Options AdditionalData
+### # Vite - Preprocessor Options AdditionalData
 
 其實就是前面提到可以讓 SCSS 變數在 Vue 專案中全域共享的方法，這個設定可以將你提供的內容預載到每個元件的 Scoped Style 中。
 
@@ -644,7 +644,7 @@ p {
 
 <br />
 
-#### # 頁面判斷
+### # 頁面判斷
 
 針對以上的情況，為了能夠釐清哪些頁面需要 RWD，哪些頁面不需要，才能在元件中正確的套用樣式，而這個判斷可以透過 Vue Router 的 `meta` 來設定，如此就可以在根元件 `<App>` 中透過 `route` 取得這個資訊。
 
@@ -715,7 +715,7 @@ header {
 
 <br />
 
-#### # CSS Module 管理變數
+### # CSS Module 管理變數
 
 首先，`<Header>` 的高度很有可能被其他元件拿來使用，例如設定 `sticky` 元素的 `top`，或是計算 `scrollTo()` 這類用途。所以應該將這樣的變數使用 CSS Module 的來管理，這樣不管是要處理邏輯還是處理樣式時都可以取用。
 
@@ -733,7 +733,7 @@ $header-mobile-height: 50px;
 
 <br />
 
-#### # 單一 CSS 變數
+### # 單一 CSS 變數
 
 不過這樣在其他元件使用時還是得在樣式中透過 `@import` 來引入，所以乾脆在 `<App>` 中將其轉換為 CSS 變數，這樣就可以在任何元件中直接使用了。
 
@@ -797,7 +797,7 @@ $header-mobile-height: 50px;
 
 <br />
 
-#### # @mixin 與其他技法搭配
+### # @mixin 與其他技法搭配
 
 這樣 `<Header>` 的部分就解決了，不過接下來 `<MyComp>` 的情況有些不同，畢竟把一般元件的樣式抽到 CSS Module 中管理可能有點大材小用，但反過來為了一個小小的樣式變動而去試圖判斷 RWD 狀態也有點麻煩，所以我打算透過 `@mixin` 來解決。
 
@@ -893,7 +893,7 @@ $header-mobile-height: 50px;
 
 <br />
 
-#### # Vite AdditionalData
+### # Vite AdditionalData
 
 另外為了不用每次都要 `@import` 這個 `rwd.scss`，可以透過 Vite 的 `preprocessorOptions` 來將它預載到每個元件的 Scoped Style 中。
 
@@ -931,7 +931,7 @@ export default defineConfig({
 
 <br/><br/>
 
-##### 參考資料
+### 參考資料
 - [Sass: @mixin and @include](https://sass-lang.com/documentation/at-rules/mixin/#indented-mixin-syntax)
 - [Sass: Parent Selector](https://sass-lang.com/documentation/style-rules/parent-selector/)
 - [Vue: v-bind() in CSS](https://vuejs.org/api/sfc-css-features.html#v-bind-in-css)

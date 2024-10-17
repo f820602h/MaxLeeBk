@@ -17,15 +17,13 @@ description: Web API 是一個很大的主題，它涵蓋了很多不同的功�
 
 <br/>
 
-#### # Window.ResizeObserver
+### # Window.ResizeObserver
 
 ResizeObserver： 一樣是一個建構函式，所以需要使用 `new` 關鍵字來建立實體，建立時需要傳入一個 Callback Function 作為參數，該 Function 可以接到由 ResizeObserver 提供的一個陣列作為參數，該陣列中會一個或多個 ResizeObserverEntry 物件：
 
 <br/>
 
 - **ResizeObserverEntry**： 該物件中會有一些屬性，讓我們可以取得一些有關元素的「大小」、「位置」資訊，後面會再詳細介紹。
-
-<br/>
 
 ```javascript
 const observer = new ResizeObserver(function (entries) {
@@ -35,7 +33,7 @@ const observer = new ResizeObserver(function (entries) {
 
 <br/>
 
-#### # ResizeObserver.observe
+### # ResizeObserver.observe
 
 就和昨天說的一樣，ResizeObserver 創建後並不會直接開始進行觀察，我們需要透過 `observe` 來註冊想要監測的元素，這樣 ResizeObserver 才會在該元素發生變動時進行動作，這裡有兩個參數傳入：
 
@@ -64,7 +62,7 @@ observer.observe(div, {
 
 <br/>
 
-#### # ResizeObserver.disconnect
+### # ResizeObserver.disconnect
 
 和 MutationObserver 一樣，只要使用 `disconnect` 這個 method 就可以註銷目前所有被觀察的元素，後續只要再次呼叫 `observe` 來註冊一個被觀察的元素，ResizeObserver 依然會持續運作。
 
@@ -78,7 +76,7 @@ observer.disconnect();
 
 <br/>
 
-#### # ResizeObserver.unobserve
+### # ResizeObserver.unobserve
 
 ResizeObserver 除了 `disconnect` 之外，還額外多了一個 `unobserve` method，它可以讓我們註銷「單個」元素的觀察，當某個元素已經不在需要受到監測，就可以將其做為參數，`unobserve` 便會把它從 ResizeObserver 的監測中移除。
 
@@ -96,7 +94,7 @@ observer.unobserve(div);
 
 <br/>
 
-#### # ResizeObserver 特性
+### # ResizeObserver 特性
 
 一樣的，ResizeObserver 為了優化效能問題，如果有一連串連續且即時的元素尺寸變動，那 ResizeObserver 並不會一次次觸發，而是會將它們合併成一次變動，並且只會紀錄最終的結果。
 
@@ -124,7 +122,7 @@ element2.style.height = "200px";
 
 <br/>
 
-#### # ResizeObserverEntry 物件
+### # ResizeObserverEntry 物件
 
 ResizeObserverEntry 的屬性雖然不多，但都較為複雜，所以下面就一一拉出來說明：
 

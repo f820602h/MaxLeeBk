@@ -9,14 +9,14 @@ description: 透過 Vitest API 來認識測試替身的概念與使用方式
 
 ## Stub vs. Mock
 
-#### # Stub （Stub、Dummy、Fake）
+### # Stub （Stub、Dummy、Fake）
 - **目的：** Stub 用於提供預定義的輸出。它們不關心外部行為，只是在被呼叫時返回特定的值或行為。
 - **使用場景：** 當你需要測試的代碼部分依賴於某個組件，且這個組件的響應是已知且固定的，或是該組件已被測試過，你就可以使用 Stub。
 - **行為：** 通常是被動的，只在被直接呼叫時才回應。
 
 <br/>
 
-#### # Mock（Mock、Spy）
+### # Mock（Mock、Spy）
 - **目的：** Mock 不僅提供輸出，還能檢查交互行為是否符合預期。它們用於驗證 DOC 與 SUT 之間的交互。
 - **使用場景：** 當你需要驗證程式是否以正確的方式與外部系統交互時，你應該使用 Mock。
 - **行為：** 更加主動，會檢查呼叫的次數、傳入參數等。
@@ -46,11 +46,11 @@ describe('fetchData', () => {
 });
 ```
 
-<br/>
+---
 
 ## Stub vs. Dummy vs. Fake
 
-#### # Stub
+### # Stub
 當測試的功能依賴於一些外部系統或複雜的組件時，可以使用 Stub 來模擬這些依賴，提供固定的輸出。
 
 ```js
@@ -68,7 +68,7 @@ console.log(result); // { id: 1, name: 'John Doe' }
 
 <br/>
 
-#### # Dummy
+### # Dummy
 當函數或方法需要一個參數，但在這個特定的測試案例中該參數不重要時，可以使用 Dummy。
 
 ```js
@@ -86,7 +86,7 @@ performAction('save', dummyLogger); // logger不會執行任何有意義的操�
 
 <br/>
 
-#### # Fake
+### # Fake
 當需要模擬一個具有實際功能的組件，但又不想引入複雜性或外部依賴時，可以使用 Fake。
 
 ```js
@@ -105,11 +105,11 @@ const result = getUserData(1, fakeDatabase);
 console.log(result); // { id: 1, name: 'John Doe' }
 ```
 
-<br/>
+---
 
 ## Mock vs. Spy
 
-#### # Mock
+### # Mock
 是一種完全模擬的對象，用於模擬外部系統或復雜行為，並且允許進行徹底的行為驗證。
 
 ::advance-code{file-name="math.js" :line='[]'}
@@ -136,7 +136,7 @@ describe("add function" ,() => {
 
 <br/>
 
-#### # Spy
+### # Spy
 用於監控已存在的對象或函數的行為，而不改變它們的原有行為。它適用於需要確保函數被調用，且調用方式正確的情境。
 
 ::advance-code{file-name="math.js" :line='[]'}
@@ -164,11 +164,11 @@ describe("add function" ,() => {
 
 > Spy 比較微妙，有時候你的使用方式會使它看起來像個 Stub，但其實它依然是個 Mock，你只是沒有使用它觀測行為的功能。
 
-<br/>
+---
 
 ## 使用 Vitest API 實例
 
-#### # vi.stubEnv
+### # vi.stubEnv
 
 ::advance-code{file-name="categoryTool.js" :line='[3]'}
 ```js
@@ -194,7 +194,9 @@ describe("categoryToolMiddleWare", () => {
 ```
 ::
 
-#### # vi.stubGlobal
+<br/>
+
+### # vi.stubGlobal
 
 ::advance-code{file-name="query.js" :line='[3]'}
 ```js
@@ -238,7 +240,9 @@ describe("queryMiddleWare", () => {
 ```
 ::
 
-#### # vi.useFakeTimers
+<br/>
+
+### # vi.useFakeTimers
 
 ::advance-code{file-name="windowFocus.js" :line='[9]'}
 ```js
@@ -282,7 +286,9 @@ describe("windowFocusMiddleWare", () => {
 ```
 ::
 
-#### # vi.mock & vi.fn
+<br/>
+
+### # vi.mock & vi.fn
 
 ::advance-code{file-name="windowFocus.js" :line='[1,4]'}
 ```js
@@ -314,7 +320,9 @@ describe("windowFocusMiddleWare", () => {
 ```
 ::
 
-#### # vi.spyOn
+<br/>
+
+### # vi.spyOn
 
 ::advance-code{file-name="viewPage.js" :line='[2]'}
 ```js

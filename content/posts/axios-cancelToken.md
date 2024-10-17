@@ -25,7 +25,7 @@ description: 藉由設計「取消重複請求機制」來解析 Axios 的原始
 
 ## 發送請求與攔截器
 
-#### # Class Axios
+### # Class Axios
 先從最主要的 `Axios類別` 看起，每一個 axios 應用都會創建一個 `Axios類別`，而當中最核心的就是 `request` 方法，不過我們先暫時跳過。
 後面兩段則是在類別上又新增了好幾個方法，讓我們可以發起不同的http請求： `axios.get()`、`axios.post()`。
 不過仔細一看會發現，最終我們呼叫的還是 `request`，所以才會說 `request` 是 axios 的核心。
@@ -65,7 +65,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 ```
 <br />
 
-#### # Class InterceptorManager
+### # Class InterceptorManager
 在前面我們有看到，`Axios類別` 中有個 `interceptors` 屬性，其值為物件，並且有 `request` 和 `response` 的屬性。
 這兩個屬性都是 `InterceptorManager類別`，而這個類別是用來管理攔截器的，我在 [上一篇](https://f820602h.github.io/Max-Blog/2020/05/27/axios-instance/) 有介紹過攔截器是什麼，忘記的人快去複習一下。
 
@@ -105,7 +105,7 @@ InterceptorManager.prototype.forEach = function(fn) {
 但現在我們要再更深入了解Axios是怎麼在請求前後透過攔截器處理 `request` 和 `response` 的，這時候就要回去看 `Axios.prototype.request` 了。
 <br />
 
-#### # Axios.prototype.request
+### # Axios.prototype.request
 可以發現，每當我們發送請求 `Axios.prototype.request` 會宣告一個陣列以及一個Promise物件。
 並且利用 `InterceptorManager.prototype.forEach` 把我們攔截器中新增的函式一一放進 `chain` 中。
 至於 `dispatchRequest` 就是Axios主要發送 `XMLHttpRequest` 的函式，我們等等會提到。
@@ -162,7 +162,7 @@ Promise.resolve(config)
 
 <br />
 
-#### # Function dispatchRequest
+### # Function dispatchRequest
 現在知道了攔截器是如何串接的了，那 `dispatchRequest` 是如何發送http請求的呢？
 我們只看重點部分，當中 `adapter` 會根據發送請求的環境對應到不同的適配器(建立請求的函式)，而 `dispatchRequest` 會再以 `then()` 串接，由http請求的成功或失敗來決定要進入回應攔截器的 `fulfilled` 函式或 `rejected` 函式。
 ```javascript
@@ -192,7 +192,7 @@ module.exports = function dispatchRequest(config) {
 另外可以看到 `throwIfCancellationRequested` 不斷的出現，這個函式會檢查請求是否已經被「要求」取消，等我們進入到 CancelToken 時會再提到它。
 <br />
 
-#### # Function xhrAdapter
+### # Function xhrAdapter
 由於我們是以瀏覽器發送請求，所以這邊以 `xhrAdapter` 適配器為主，[完整程式碼](https://github.com/axios/axios/blob/master/dist/axios.js#L977-L1146)。
 `xhrAdapter` 整段很長，但如果只看重點，其實就是在發送 `XMLHttpRequest`，並在過程中做一些判斷來決定要 `resolve` 或 `reject` 這個 `Promise`。
 ```javascript
@@ -236,7 +236,7 @@ module.exports = function xhrAdapter(config) {
 
 ## CancelToken
 
-#### # 基本用法
+### # 基本用法
 在看原始碼前，我們先看看 `CancelToken` 是怎麼使用的。
 這段程式做了什麼可以先不管，我們只要知道，如果要使用 `CancelToken` 就必須在 `request` 的 `config` 中新增一個 `cancelToken` 屬性。
 ```javascript
@@ -250,7 +250,7 @@ cancel()
 ```
 <br/>
 
-#### # Class CancelToken
+### # Class CancelToken
 再來就該看看我們在 `cancelToken` 屬性中建構的 `CancelToken類別` 是什麼。
 * 首先，每一個 `CancelToken` 都會建立一個 `Promise`，並且將 `resolve` 主動權給拿了出來，定義給`resolvePromise`。
 * 再者，當我們要建構一個 `CancelToken` 的時候必須傳入一個 `function`，它會直接被呼叫並且得到一個名為 `cancel` 的函式作為參數。
@@ -294,7 +294,7 @@ CancelToken.prototype.throwIfRequested = function throwIfRequested() {
 所以 axios 只要根據這兩個屬性，就能判斷此次請求是否已經被取消，而 `throwIfRequested` 就是利用 `reason` 來判斷是否要拋出錯誤。
 <br/>
 
-#### # throwIfCancellationRequested
+### # throwIfCancellationRequested
 還記得我們在 `dispatchRequest` 裡有看到 `throwIfCancellationRequested` 不斷的被呼叫嗎？[這裡](#Function-dispatchRequest)
 它的作用就是判斷 `config` 是否有被加上 `cancelToken` 屬性，有的話就會呼叫 `CancelToken.prototype.throwIfRequested`，以此來判斷請求是否已被取消。
 ```javascript
@@ -304,7 +304,7 @@ function throwIfCancellationRequested(config) {
 ```
 <br/>
 
-#### # Function xhrAdapter
+### # Function xhrAdapter
 沒錯，又再次看到了 `xhrAdapter`，因為在前面我暫時省略了 `xhrAdapter` 內部的一個判斷。
 當它發現 `config.cancelToken` 存在，便會為 `CancelToken.promise` 接上一個 `then()`，意味著當 `promise` 被 `resolve` 的那一刻，請求就會被 `abort`。
 
@@ -336,7 +336,7 @@ module.exports = function xhrAdapter(config) {
 
 <br/>
 
-#### # 重點整理
+### # 重點整理
 首先我們可以知道 CancelToken 的原理就是在 `request config` 中加上一個 `CancelToken類別`，並且利用其類別屬性來判斷 `cancel` 函式是否被呼叫執行，若已執行代表該請求被「要求」取消。
 
 另外可以發現 axios 在以下三個時機點都有檢查請求的取消與否：

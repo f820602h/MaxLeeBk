@@ -24,7 +24,7 @@ Selection 本身是一個物件，它代表的是目前使用者所選的文本�
 
 <br/>
 
-#### # Window.getSelection
+### # Window.getSelection
 
 如果想要取得目前選取範圍的 Selection 物件，那只要呼叫這個 method 就可以了：
 
@@ -35,7 +35,7 @@ console.log(selectionObj); // Selection 物件
 
 <br/>
 
-#### # Selection.anchorNode
+### # Selection.anchorNode
 
 取得了 Selection 物件後我們就可以讀取它本身的一些屬性了，而 `anchorNode` 就是其中之一，它會給我們當初反白時 anchor 位置所在的節點。
 
@@ -48,7 +48,7 @@ console.log(selectionObj.anchorNode); // 一個文字節點
 
 <br/>
 
-#### # Selection.anchorOffset
+### # Selection.anchorOffset
 
 知道 anchor 所在節點後，還可以透過 `anchorOffset` 來知道 anchor 點下的位置距離節點開頭相差了幾個字：
 
@@ -59,7 +59,7 @@ console.log(selectionObj.anchorOffset); // 一個 number，代表與節點開頭
 
 <br/>
 
-#### # Selection.focusNode
+### # Selection.focusNode
 
 當然了，可以知道 anchor 的位置，自然也能知道 focus 的位置。
 
@@ -70,7 +70,7 @@ console.log(selectionObj.focusNode); // 一個文字節點
 
 <br/>
 
-#### # Selection.focusOffset
+### # Selection.focusOffset
 
 以此類推，有 `focusNode` 就也會有 `focusOffset`：
 
@@ -81,7 +81,7 @@ console.log(selectionObj.focusOffset); // 一個 number，代表與節點開頭�
 
 <br/>
 
-#### # Selection.toString
+### # Selection.toString
 
 那除了一些唯讀屬性之外呢，Selection 物件有有一些自身的 methods 可以使用，其中最簡單也最重要的自然就是取得所選範圍的文本內容，這時候只要呼叫 `toString` 就可以了：
 
@@ -92,7 +92,7 @@ console.log(selectionObj.toString()); // 所選範圍的文本內容
 
 <br/>
 
-#### # Selection.collapse
+### # Selection.collapse
 
 `collapse` 是個比較特別的 method，它會讓 Selection 坍縮到只剩下一個點，也就是從一個反白區塊變成只剩下一個閃爍的輸入游標在畫面上。
 
@@ -118,7 +118,7 @@ console.log(selectionObj.toString()); // 所選範圍的文本內容
 
 <br/>
 
-#### # Selection.extend
+### # Selection.extend
 
 另一個和 `collapse` 很像的是 `extend`，它會讓 anchor 保持不變並移動 focus，也就是說你可以改變反白的區域。它的參數也和 `collapse` 一樣，第一個是你要將 focus 移動到哪個節點，第二個則是要移動到該節點的第幾個字。
 
@@ -140,7 +140,7 @@ console.log(selectionObj.toString()); // 所選範圍的文本內容
 
 <br/>
 
-#### # Selection.selectAllChildren
+### # Selection.selectAllChildren
 
 這個 method 算是非常好用的，它可以夠傳入一個元素節點來指定目前的選取範圍。如果你傳的是整個 `document.body` 那就相當於是全選整個網頁。
 
@@ -155,7 +155,7 @@ console.log(selectionObj.toString()); // 所選範圍的文本內容
 
 <br/>
 
-#### # Selection.deleteFromDocument
+### # Selection.deleteFromDocument
 
 `deleteFromDocument` 可以幫我們將目前選取的區塊從整個文件中刪除，當然，他指的是目前瀏覽的頁面，並不會連同你的程式碼一併刪除。
 
@@ -172,7 +172,7 @@ console.log(selectionObj.toString()); // 所選範圍的文本內容
 
 <br/>
 
-#### # Document:selectionchange Event
+### # Document:selectionchange Event
 
 最後，除了主動針對 Selection 物件進行操作外，Document 本來還可以監聽 `selectionchange` 的事件，當今天文件中的選取範圍有了更動，該事件就會觸發，並執行我們指定的 Callback。
 

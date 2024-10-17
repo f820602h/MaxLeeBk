@@ -17,7 +17,7 @@ FullScreen API 主要是幫我們處理全螢幕顯示的功能，大部分都�
 
 <br/>
 
-#### # Document.fullscreenEnabled
+### # Document.fullscreenEnabled
 
 這是一個唯讀屬性，用來確認目前的頁面是否允許我們開啟全螢幕顯示，所以在你操作之前，可以先確認該屬性是否為 `true`。
 
@@ -29,7 +29,7 @@ const enabled = document.fullscreenEnabled;
 
 <br/>
 
-#### # Document.fullscreen
+### # Document.fullscreen
 
 這也是一個唯讀屬性，用來確認目前的頁面是否正處於全螢幕模式。
 
@@ -39,7 +39,7 @@ console.log(document.fullscreen);
 
 <br/>
 
-#### # Element.requestFullscreen
+### # Element.requestFullscreen
 
 這個的話就是主要用來開啟全螢幕的 API 了，這裡的 Element 代表的是 DOM 元素，所以看到這裡可以發現 FullScreen API 並沒有提供一個全域物件，FullScreen API 反而是多個不同 methods 的總稱。
 
@@ -73,7 +73,7 @@ images.forEach((img) => {
 
 <br/>
 
-#### # Document.exitFullscreen
+### # Document.exitFullscreen
 
 有開啟全螢幕，自然就會有關閉的部分，基本上使用者可以自己按 ESC 鍵離開全螢幕模式，不過你也可以透過 `exitFullscreen` 來觸發這件事，例如讓 Enter 鍵也可以關閉：
 
@@ -90,7 +90,7 @@ document.addEventListener("keydown", function (e) {
 
 <br/>
 
-#### # Document.fullscreenElement
+### # Document.fullscreenElement
 
 `fullscreenElement` 是一個唯讀的屬性，它會指向目前正在全螢幕模式的元素。
 
@@ -105,7 +105,7 @@ images.addEventListener("click", function () {
 
 <br/>
 
-#### # 瀏覽器支援度
+### # 瀏覽器支援度
 
 看完今天的介紹後，你可能覺得全螢幕是一個非常基本的功能，但其實 FullScreen API 在瀏覽器中的支援度還不是非常完整，所以當我們想要使用的時候可能要做一些額外的處理：
 

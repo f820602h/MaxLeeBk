@@ -29,7 +29,7 @@ RequestIdleCallback 會在瀏覽器「每一幀」中剩下的空閒裡來執行
 
 <br/>
 
-#### # Window.requestIdleCallback
+### # Window.requestIdleCallback
 
 `requestIdleCallback` 有兩個參數要傳入：
 
@@ -47,7 +47,7 @@ cancelIdleCallback(handlerId); // 取消requestIdleCallback
 
 <br/>
 
-#### # IdleDeadline
+### # IdleDeadline
 
 而我們傳入的 Callback Function 會被丟進一個由 `requestIdleCallback` 提供的參數，該參數通常取名為 `deadline`，並且有兩個屬性可以使用：
 
@@ -64,7 +64,7 @@ requestIdleCallback(function (deadline) {
 
 <br/>
 
-#### # 實際測試
+### # 實際測試
 
 由於 JavaScript 是單執行緒，所以要是我今天進行了一個需要耗費大量時間的任務，那使用者的 UI 操作其實也會受到影響。
 就像下面這個範例中，在 `count` 被函式 `add` 加到 1000000 以前，你不管怎麼敲擊鍵盤，`keydown` 事件都不會被觸發，因為瀏覽器正在忙著算數：
@@ -105,7 +105,7 @@ function add(deadline) {
 
 <br/>
 
-#### # 使用情境
+### # 使用情境
 
 在了解 RequestIdleCallback 的效果後，我第一個想到的實際應用會是 LazyLoad，想像以下，如果我們有個網頁，當中有幾十甚至幾百張的高畫質圖片需要顯示，可想而知瀏覽器的負擔會相當的大，非常有可能會影響頁面的效能與任務執行，但如果們我利用 `requestIdleCallback` 來處理，就可以在不影響主執行緒的情況下載入圖片。
 

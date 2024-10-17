@@ -40,7 +40,7 @@ Drag & Drop 其實是「拖」和「放」兩個動作，也就是除了「拖�
 
 <br/>
 
-#### # Attribute:draggable
+### # Attribute:draggable
 
 通常來說，按住元素不放也是沒辦法拖曳的，若要使其可以拖曳必須要在 HTML 標籤上加入 `draggable` 屬性：
 
@@ -52,13 +52,13 @@ Drag & Drop 其實是「拖」和「放」兩個動作，也就是除了「拖�
 
 <br/>
 
-#### # 交互事件
+### # 交互事件
 
 由於前面的表格已經大致說明了各個事件的觸發時機了，應該也都不難離解，所以我們就直接試試看能夠利用事件做些什麼效果，以及 Drag Source 和 Drop Location 之間該怎麼互動。
 
 <br/>
 
-**- 樣式改變**
+#### 樣式改變
 
 我們可以利用 `dragstart` 和 `dragend` 來改變 Drag Source 的樣式，讓使用者能更清楚目前被拖曳的元素是哪一個，以及利用 `dragenter` 和 `dragleave` 來改變 Drop Location 的樣式：
 
@@ -112,7 +112,7 @@ containers.forEach((container) => {
 
 <br/>
 
-**- 鼠標位置**
+#### 鼠標位置
 
 由於 `drag` 和 `dragover` 都是不斷觸發的事件，所以我們可以用來追蹤使用者游標的位置：
 
@@ -134,7 +134,7 @@ containers.forEach((container) => {
 
 <br/>
 
-**- 移動元素**
+#### 移動元素
 
 最後只要搭配上 `drop` 事件，我們就可以達成移動元素的效果，不過有個要注意的事情是 `dragover` 和 `drop` 會有執行上的衝突，所以如果要讓 `drop` 的 Callback 能夠順利觸發，必須要在 `dragover` 中將預設行為給取消掉：
 

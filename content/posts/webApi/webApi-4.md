@@ -17,7 +17,7 @@ description: Web API 是一個很大的主題，它涵蓋了很多不同的功�
 
 <br/>
 
-#### # 螢幕更新頻率
+### # 螢幕更新頻率
 
 大家應該知道，其實動畫就是一連串的靜態畫面以一定的頻率連續顯示，讓人的眼睛及大腦可以腦部成一個動態過程，而這個「一定的頻率」到底是多少呢？以現在這個影音世代來說，每秒六十張影格是一個可以讓動畫看起來最順暢的。
 
@@ -25,7 +25,7 @@ description: Web API 是一個很大的主題，它涵蓋了很多不同的功�
 
 <br/>
 
-#### # setTimeOut
+### # setTimeOut
 
 如果依照每秒 60 幀的需求來使用 `setTimeOut` 來撰寫動畫的話，大致上都會是這樣寫的：
 
@@ -50,7 +50,7 @@ clearTimeout(timerID); // 動畫停止
 
 <br/>
 
-#### # setInterval
+### # setInterval
 
 相比 `setTimeOut` ，可能更多人會用 `setInterval`，因為它自己就可以不斷重複執行 callback，不用搞什麼遞迴：
 
@@ -91,7 +91,7 @@ queue = ["第二次 callback"];
 
 <br/>
 
-#### # RequestAnimationFrame
+### # RequestAnimationFrame
 
 但如果使用今天的主角 RequestAnimationFrame 來製作動畫，那上述缺點就通通沒有了，因為它會自動與螢幕的更新頻率同步，以此來避免掉幀的問題。
 

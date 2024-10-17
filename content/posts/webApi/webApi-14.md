@@ -11,7 +11,7 @@ description: Web API 是一個很大的主題，它涵蓋了很多不同的功�
 
 ---
 
-#### # Window.CustomEvent
+### # Window.CustomEvent
 
 CustomEvent 本身是一個建構函式，也就是我們常講的 `class`，當我們想要建立自訂事件時，就透過 `new` 關鍵字來呼叫它即可，並且要記得傳入代表事件名稱的字串，另外還可以傳入第二個參數來設定事件觸發時傳遞的資料。
 
@@ -36,7 +36,7 @@ document.querySelector("#element").addEventListener("myEvent", function (event) 
 
 <br/>
 
-#### # EventTarget.dispatchEvent
+### # EventTarget.dispatchEvent
 
 與 CustomEvent 最極其相關的 API 就是 DispatchEvent 了，它是一個可以讓我們主動觸發事件的方法，當我們創建並綁定了一個事件後，就必須要倚靠它來幫我們啟動事件了。
 
@@ -67,7 +67,7 @@ div.dispatchEvent(customEvent);
 
 <br/>
 
-#### # 運用場景
+### # 運用場景
 
 認識了 CustomEvent 後，我們來假設一個需求：**_「今天有個頁面，在進入時會向後端 request 資料，當資料回來後，我們要更改頁面的標題及一個 list 的內容」_**，當然了，如果使用前端框架的話，這是一個非常簡單的事情，但我們先假如這次專案不允許使用框架，那一般的寫法可能會是這樣：
 

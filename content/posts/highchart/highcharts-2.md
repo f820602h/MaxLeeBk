@@ -35,7 +35,7 @@ description: Highcharts 是一套純 JavaScript 的圖表庫，採用 SVG 渲染
 
 如果你只是要一個簡單的圖表，沒有特別的設計與互動需求，那其實簡單幾個步驟 Highcharts 就能讓你的資料圖像化。
 
-#### 1. 引入 Highcharts
+### 1. 引入 Highcharts
 
 你可以用 CDN 的方式將 Highcharts 的 js 檔引入，或是到 [官網](https://www.highcharts.com/blog/download/) 下載放進專案裡。
 
@@ -45,7 +45,7 @@ description: Highcharts 是一套純 JavaScript 的圖表庫，採用 SVG 渲染
 
 <br/>
 
-#### 2. 新增圖表容器
+### 2. 新增圖表容器
 
 然後你需要一個容器來放置你的圖表，你可以給它設定寬度以免圖表佔滿整個畫面。
 
@@ -55,7 +55,7 @@ description: Highcharts 是一套純 JavaScript 的圖表庫，採用 SVG 渲染
 
 <br/>
 
-#### 3. 準備好你的資料
+### 3. 準備好你的資料
 
 根據我們的情境，我們可以先把表格資料先整理成物件：
 
@@ -74,7 +74,7 @@ const data = {
 
 <br/>
 
-#### 4. 繪製表格
+### 4. 繪製表格
 
 接下來我們只要根據 Highcharts 制定好的方法將資料帶入並設定，圖表就完成啦！
 若你對下面的程式碼一知半解的話先不用太在意，我們明天會好好解釋的。

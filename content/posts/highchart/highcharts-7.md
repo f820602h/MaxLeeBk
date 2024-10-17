@@ -24,14 +24,14 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # tooltip.enabled
+### # tooltip.enabled
 `型別: Boolean` `預設: true`
 
 你可以利用這個屬性將提示框功能開啟/關閉。
 
 <br/>
 
-#### # tooltip.backgroundColor
+### # tooltip.backgroundColor
 
 `型別: String|Object|Null` `預設: undefined`
 
@@ -39,7 +39,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # tooltip.border系列
+### # tooltip.border系列
 
 因為 `border` 的相關設定在 **[圖表整體設定](/posts/highchart/highcharts-4/#chartborderWidth-chartplotBorderWidth)** 提過了，所以這邊就只放預設值給大家參考。
 
@@ -53,7 +53,7 @@ legend: {
 
 <br/>
 
-#### # tooltip.style
+### # tooltip.style
 `型別: Object` `預設: 如下顯示`
 
 樣式屬性在前面已經介紹過蠻多次了，如果需要複習的話可以 **[按這邊](/posts/highchart/highcharts-5/#titlestyle)**，這裡就不再多做介紹。
@@ -71,21 +71,21 @@ tooltip: {
 
 <br/>
 
-#### # tooltip.padding
+### # tooltip.padding
 `型別: Number` `預設: 8`
 
 用來調整提示框的內間距，預設有 `8px` 的距離。
 
 <br/>
 
-#### # tooltip.distance
+### # tooltip.distance
 `型別: Number` `預設: 8`
 
 用來調整提示框與數據點之間的距離，官網是寫預設為 `16px` 但我測試起來應該是 `8px`，剛好是提示框小箭頭的高度，另外如果你設為 `0` 的話，小箭頭會自動隱藏。
 
 <br/>
 
-#### # tooltip.followPointer
+### # tooltip.followPointer
 `型別: Boolean` `預設: false`
 
 這兩個屬性與互動行為有關，指的是提示框是否要跟著**鼠標**一起移動，如果開啟的話， `tooltip.distance` 會變成是提示框與鼠標之間的距離。
@@ -94,21 +94,21 @@ tooltip: {
 
 <br/>
 
-#### # tooltip.outside
+### # tooltip.outside
 `型別: Boolean` `預設: undefined`
 
 用來決定提示框是否可以超出整個圖表的外框範圍，這個屬性的使用情境比較少，一般是用在圖表較小的時候。
 
 <br/>
 
-#### # tooltip.hideDelay
+### # tooltip.hideDelay
 `型別: Number` `預設: 500`
 
 當數據點離開 `hover` 狀態時，提示框在延遲一段時間後才會消失，而這個屬性可以調整這段時間，單位是毫秒。
 
 <br/>
 
-#### # tooltip.shared
+### # tooltip.shared
 `型別: Boolean` `預設: false`
 
 這個屬性可以調整當使用者 `hover` 數據點時，提示框的資訊要顯示**該數據點**還是**所有數據列中的數據點**資料。
@@ -117,13 +117,13 @@ tooltip: {
 
 <br/>
 
-#### # tooltip.format系列  
+### # tooltip.format系列  
 
 昨天在「圖例設定」中有看到所謂的「格式化屬性」，而提示框也是有的，而且數量還不少，`headerFormat` `pointFormat` `footerFormat`...等，不過使用方法都大同小異，所以就等之後的獨立章節再來統一介紹吧，現在暫時先跳過。
 
 <br/>
 
-#### # tooltip.valuePrefix / tooltip.valueSuffix 
+### # tooltip.valuePrefix / tooltip.valueSuffix 
 `型別: String` `預設: undefined`
 
 這兩個屬性和格式化屬性做的事情非常相似，不過使用方式單純很多，單純就是在數據點的數值加上前/後綴詞，非常適合用來增加單位或符號，例如我們在範例中這樣設定就可以改變提示框的文案。
@@ -135,7 +135,7 @@ tooltip: { valuePrefix: "共", valueSuffix: "人" }
 
 <br/>
 
-#### # tooltip.valueDecimals
+### # tooltip.valueDecimals
 `型別: Number` `預設: undefined`
 
 這個屬性跟上面兩個屬性相關，它控制的是數據點的數值要顯示小數點後幾位。

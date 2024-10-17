@@ -46,7 +46,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # options.colors
+### # options.colors
 `型別: Array[String]` `預設: 請見下方`
 
 這個顏色屬性直接隸屬於 `options` 物件底下，而它的值是一組陣列，陣列裡必須是合法的顏色字串，然後 **「所有數據列」** 便會依據它自己的順序從 `colors` 裡拉出顏色來設定，**假如顏色用完了就會在回到第一個繼續循環**。
@@ -61,14 +61,14 @@ default = ["#7cb5ec", "#434348", "#90ed7d", "#f7a35c", "#8085e9", "#f15c80", "#e
 
 <br/>
 
-#### # plotOptions.series.color
+### # plotOptions.series.color
 `型別: String` `預設: undefined`
 
 這個顏色屬性就非常很單純了，就是把 **「所有數據列」** 改成指定的顏色。
 
 <br/>
 
-#### # plotOptions.[type].color
+### # plotOptions.[type].color
 `型別: String` `預設: undefined`
 
 由於昨天解釋過繪圖區的權重關係，所以這個顏色屬性應該也不難懂，就是把 **「所有指定類型的數據列」** 改成指定的顏色，須要特別注意的是，假如你設定的圖表種類未涵蓋所有圖表的話，那其他圖表會「從頭」開始設定 `options.colors` 中的顏色，並且跳過已經有指定顏色的圖表。
@@ -90,21 +90,21 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # series.color
+### # series.color
 `型別: String` `預設: undefined`
 
 這個顏色屬性一樣很簡單，就是把 **「這個數據列」** 改成指定的顏色。而且和上一個屬性一樣，剩下的數據列會「從頭」開始設定 `options.colors` 中的顏色，並且跳過已經有指定顏色的圖表。
 
 <br/>
 
-#### # plotOptions.series.colorByPoint
+### # plotOptions.series.colorByPoint
 `型別: Boolean` `預設: false`
 
 這個屬性可以決定是否要用 `colors` 來依序設定 **「所有數據列的數據點顏色」**，這裡指的 `colors` 不一定是 `options.colors`，而是權重最高的 `colors`。
 
 <br/>
 
-#### # plotOptions.series.colors
+### # plotOptions.series.colors
 `型別: Array[String]` `預設: undefined`
 
 假如你的數據列沒有開啟 `colorByPoint`，那這個顏色屬性基本上就沒以任何作用，但如果開啟了，這個屬性就會覆蓋 `options.colors`，並用你提供的顏色陣列來依序設定**「所有數據列的數據點顏色」**。
@@ -126,7 +126,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # plotOptions.[type].colorByPoint / plotOptions.[type].colors
+### # plotOptions.[type].colorByPoint / plotOptions.[type].colors
 
 這組應該就不用多作介紹了吧，作用和前面一樣，只不過對象換成 **「所有指定類型數據列的數據點顏色」**。
 
@@ -156,7 +156,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # series.colorByPoint / series.colors
+### # series.colorByPoint / series.colors
 
 數據列中也是有同一組的設定，也是必須要 `colorByPoint` 開啟才會作用，不過作用對象就換成了 **「單一數據列的數據點顏色」**。
 
@@ -185,7 +185,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # series.data.color
+### # series.data.color
 `型別: String` `預設: undefined`
 
 這個顏色屬性是權重最高的，它可以決定 **「單一數據點顏色」**，不過跟數據列不同的是，它會直接覆蓋 `colors` 設定的顏色，而 **不會被跳過**。

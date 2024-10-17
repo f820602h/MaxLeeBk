@@ -17,7 +17,7 @@ Battery API 是一個與使用者的裝置電池相關的 API，我們可以透�
 
 <br/>
 
-#### # Navigator.getBattery
+### # Navigator.getBattery
 
 裝置電池的資訊會被包裹在一個叫做 BatteryManager 的物件中，要取得該物件的話，我們必須要透過呼叫 `navigator.getBattery` 來取得：
 
@@ -31,7 +31,7 @@ navigator.getBattery().then((battery) => {
 
 <br/>
 
-#### # BatteryManager
+### # BatteryManager
 
 取得 BatteryManager 後，我們就可以看到裡面會有四個比較重要的屬性：
 

@@ -55,6 +55,7 @@ function dateFormatter(date: string) {
   <main class="max-w-1920px mx-auto py-60px px-24px md:px-48px">
     <div class="max-w-1000px mx-auto">
       <NuxtLink
+        aria-label="Back to Blog"
         to="/blog"
         class="inline-block p-1 text-gray-500 hover:text-black dark:hover:text-white duration-200"
       >
@@ -175,19 +176,11 @@ function dateFormatter(date: string) {
     margin: 24px 0px;
   }
   h3 {
-    font-size: 24px;
+    font-size: 22px;
     margin: 16px 0px;
   }
   h4 {
-    font-size: 20px;
-    margin: 16px 0px;
-  }
-  h5 {
     font-size: 18px;
-    margin: 12px 0px;
-  }
-  h6 {
-    font-size: 16px;
     margin: 12px 0px;
   }
 

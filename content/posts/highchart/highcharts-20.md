@@ -23,7 +23,7 @@ Highcharts.setOptions(options);       // 主題設定(全域性設定)
 
 <br/>
 
-#### # Highcharts.arrayMax(data) / Highcharts.arrayMin(data)
+### # Highcharts.arrayMax(data) / Highcharts.arrayMin(data)
 `data: Array`
 
 這兩個 Method 非常的方便，可以在一組陣列裡找到最大／最小的值並將它返回。
@@ -34,7 +34,7 @@ console.log(Highcharts.arrayMax([3, 9, 4, 11, 2])); // 11
 
 <br/>
 
-#### # Highcharts.fireEvent(el, event)
+### # Highcharts.fireEvent(el, event)
 `el: targetObject` `event: String` 
 
 這個 Method 可以讓你主動觸發事件，第一個參數要傳入要觸發事件的目標，第二個參數則是事件名稱。
@@ -53,7 +53,7 @@ Highcharts.fireEvent(myChart.series[0], "click");
 
 <br/>
 
-#### # Highcharts.merge(obj, obj,...)
+### # Highcharts.merge(obj, obj,...)
 `obj: Object` 
 
 你可用這個 Method 來把多個物件進行深層合併，就像主題設定、資料更新 Method 作的事情一樣。
@@ -80,7 +80,7 @@ let newObj = Highcharts.merge(obj1, obj2, obj3);
 
 <br/>
 
-#### # chart.setSize(width, height)
+### # chart.setSize(width, height)
 `width: Number` `height: Number`
 
 這個 Method 可以改變圖表的寬高尺寸，單純卻實用的功能。
@@ -94,7 +94,7 @@ chart.setSize(undefined, 800); // 只更改高度
 
 <br/>
 
-#### # chart.setTitle(options) / chart.setSubtitle(options)
+### # chart.setTitle(options) / chart.setSubtitle(options)
 `options: Object`
 
 這兩 Method 是用來更新主標題／副標題的設定的，只要把想更新的設定物件作為參數傳入即可。
@@ -109,7 +109,7 @@ chart.setTitle({
 
 <br/>
 
-#### # chart.destroy()
+### # chart.destroy()
 
 如果你想要將一整個圖表移除可以呼叫這個 Method。
 
@@ -126,7 +126,7 @@ chart.destroy();
 
 <br/>
 
-#### # series.setVisible(visible)
+### # series.setVisible(visible)
 `visible: Boolean|undefined`
 
 這個 Method 可以用來顯示或隱藏數據列，傳入 `true` 作為參數則顯示，傳入 `false` 則隱藏，如果不傳參就會自動進行切換。
@@ -142,7 +142,7 @@ chart.series[0].setVisible(); // 自動切換 顯示<=>隱藏
 
 <br/>
 
-#### # series.getName()
+### # series.getName()
 
 一個很簡單的 Method，呼叫後可以取得該數據列的名字。
 
@@ -159,7 +159,7 @@ let result = chart.series.map(series => series.getName());
 
 <br/>
 
-#### # series.is(type)
+### # series.is(type)
 `visible: String`
 
 也是一個很單純的 Method，可以幫你判斷一組數據列的類型，例如以 `"column"` 作為參數，便會判斷此數據列是否為柱狀圖並回傳布林值。
@@ -184,7 +184,7 @@ let result = chart.series.map(series => series.is("column"));
 
 <br/>
 
-#### # point.getClassName()
+### # point.getClassName()
 
 假如你有為數據點設定 `className` 屬性，那你就可以透過這個 Method 來得到其屬性值。
 
@@ -203,7 +203,7 @@ let result = chart.series[0].data.map(point => point.getClassName());
 
 <br/>
 
-#### # point.onMouseOver()
+### # point.onMouseOver()
 
 這個 Method 可以主動出發數據點的 `mouseOver` 事件，而且就算你沒有設定事件屬性，依然會使數據點進入聚焦狀態。
 
@@ -213,7 +213,7 @@ chart.series[0].data[0].onMouseOver();
 
 <br/>
 
-#### # point.select()
+### # point.select()
 
 這個 Method 可以使用來選取數據點，如果有設定 `select` 事件的話也會被觸發，而且可以無視 `allowPointSelect` 的設定。
 

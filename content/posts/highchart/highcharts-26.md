@@ -15,7 +15,7 @@ description: Highcharts 是一套純 JavaScript 的圖表庫，採用 SVG 渲染
 
 <br/>
 
-#### 1.安裝 Vue CLI
+### 1.安裝 Vue CLI
 
 如果你還未安裝 Vue CLI，那請先打開終端機／命令提示字元並輸入以下指令，將 Vue CLI 工具安裝在全域環境中。
 
@@ -27,7 +27,7 @@ npm install -g @vue-cli
 
 <br/>
 
-#### 2.建立專案
+### 2.建立專案
 
 全域安裝 Vue CLI 後就可以在終端機／命令提示字元中使用 `vue` 指令了，先用以下指令來創建一個新的專案。指令輸入完後，系統會詢問你要使用何種設定，這次系列文章使用 `default` 即可，若是有使用過的話也可以按你自己的習慣設定。
 
@@ -37,7 +37,7 @@ vue create vue-highchart
 
 <br/>
 
-#### 3.安裝套件
+### 3.安裝套件
 
 專案建立完成後，先移動到專案資料夾，並依序安裝 Highcharts 和 Highcharts-Vue，分別是主程式以及 Vue 的擴充。
 
@@ -58,7 +58,7 @@ Vue.use(HighchartsVue);
 
 <br/>
 
-#### 4.新增元件
+### 4.新增元件
 
 那此時前置作業都完成了，接者就可以在 `src/components` 底下新增 `Chart.vue` 元件，名稱你可以自行調整，檔案內容如下：
 
@@ -104,7 +104,7 @@ export default {
 
 <br/>
 
-#### 5.掛載元件
+### 5.掛載元件
 
 元件完成後就，我們打開 `App.vue`，然後將內容改成下面這樣，將剛剛寫好的元件掛載進來，取代原本的 `HelloWorld.vue`。
 
@@ -129,7 +129,7 @@ export default {
 
 <br/>
 
-#### 6.執行APP
+### 6.執行APP
 
 最後只要在專案資料夾底下執行指令就可以看到圖表囉！
 

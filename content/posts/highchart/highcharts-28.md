@@ -17,7 +17,7 @@ description: Highcharts 是一套純 JavaScript 的圖表庫，採用 SVG 渲染
 
 <br/>
 
-#### 1.安裝 Json-Server
+### 1.安裝 Json-Server
 
 為了可以讓記帳本真的可以記帳，我們會需要資料庫來紀錄帳目，而我選擇使用的是 Json-Server，它讓我們可以用一個 Json 檔來作為簡易的資料庫，而且內建基本的 REST API 可以使用，這樣我們就不用真的架一個後端伺服器了，在終端機輸入下方指令就可以全域安裝了。
 
@@ -49,7 +49,7 @@ json-server db.json
 
 <br/>
 
-#### 2.安裝 axios
+### 2.安裝 axios
 
 資料庫有了之後，接下來在專案資料夾底下輸入終端機指令來安裝 `axios`，它可以讓我們更便捷的處理 XMLHttpRequest。
 
@@ -67,7 +67,7 @@ Vue.prototype.axios = axios;
 
 <br/>
 
-#### 3.Highcharts 全域設定
+### 3.Highcharts 全域設定
 
 由於這次的應用會使用到日期座標，所以我們可以來調整一下「語言設定」，設定方法是在 `main.js` 引入原生 Highcharts，然後一樣是呼叫 `setOptions()`。
 
@@ -88,7 +88,7 @@ Highcharts.setOptions({
 
 <br/>
 
-#### 4.表單元件 - LedgerForm.vue
+### 4.表單元件 - LedgerForm.vue
 
 前置作業完成後就可以來開發元件了，首先是上方用來新增帳目的表單元件。新增一個檔案內容如下的元件，其中四個表單欄位剛好對應資料庫的內容，而點擊按鈕觸發的 `addItem` 就是用 `axios` 送出 `post` 請求，便會在資料庫添加一筆新的帳目。
 
@@ -152,7 +152,7 @@ Highcharts.setOptions({
 
 <br/>
 
-#### 5.圖表元件 - LedgerChart.vue
+### 5.圖表元件 - LedgerChart.vue
 
 **可以紀錄帳目後，就要讓消費記錄透過圖表呈現出來了，而需求規格有以下幾點：**
 1. 每一個支出類別都是一組數據列，例如伙食、娛樂、交通..等。

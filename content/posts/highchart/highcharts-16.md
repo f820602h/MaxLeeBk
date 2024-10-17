@@ -65,9 +65,7 @@ var columnChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # 權重最小
-
-<br/>
+### # 權重最小
 
 當然，要是圖表數量多了，總是會有變動的可能，但如果你還記得「越細節，權重越高」這個原則的話，就會知道「主題設定」的權重是最小的，因為它影響的範圍是所有設定中最大的。
 
@@ -95,9 +93,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # 深層合併
-
-<br/>
+### # 深層合併
 
 如果遇到某些物件類型的屬性，例如 `style`、`xAxis.label` ...等等，你可能會覺得要把整個屬性重新覆蓋一次，但其實你一樣只要撰寫不同的地方即可，因為 Highcharts 會自動幫我們做到深層的物件合併。
 
@@ -124,9 +120,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # 順序與重複
-
-<br/>
+### # 順序與重複
 
 雖然「主題設定」非常的方便，不過要特別注意它的執行順序以及重複執行的問題，像是下面的程式碼中，我們先建立圖表才進行主題設定，那圖表是吃不到主題設定的。
 
@@ -151,8 +145,6 @@ var columnChart = Highcharts.chart(container, {
   chart: { type: "column" }
 });
 ```
-
-<br/>
 
 另外，重複執行 `Highcharts.setOptions` 是允許的，Highcharts 會自動把每次執行的設定內容合併，但是一樣要注意執行的順序。
 
@@ -183,9 +175,6 @@ var columnChart = Highcharts.chart(container, {
   chart: { type: "column" }
 });
 ```
-
-
-<br/>
 
 那今天的「主題設定」就介紹到這邊，雖然是比較間單的功能，但卻能幫我們省去很多重複的工作，跟先前介紹的「繪圖區設定」有異曲同工之妙，接著明天要繼續介紹的是「響應式設定」，讓我們的圖表也能適應 RWD 網站。
 

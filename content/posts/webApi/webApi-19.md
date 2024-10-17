@@ -17,7 +17,7 @@ MutationObserver API 就是用來解決上述問題的，它可以讓我們追�
 
 <br/>
 
-#### # Window.MutationObserver
+### # Window.MutationObserver
 
 MutationObserver 本身是建構函式，所以我們需要用 `new` 關鍵字來建立實體，建立時需要傳入一個 Callback Function 作為參數，該 Function 可以接到由 MutationObserver 提供的 MutationRecords 陣列和 MutationObserver 實體作為參數：
 
@@ -36,7 +36,7 @@ const observer = new MutationObserver(function (mutations, owner) {
 
 <br/>
 
-#### # MutationObserver.observe
+### # MutationObserver.observe
 
 我們可以把剛剛 `new` 出來的 MutationObserver 實體譬喻成一個「觀察者」，當這位觀察者監測到節點變動，他就會執行設定好的任務(callback)，但他目前並未被指派要觀察哪一個元素，所以我們要透過 `observe` 這個 method 來指定「被觀察的對象」，其中需要傳入兩個參數：
 
@@ -74,7 +74,7 @@ observer.observe(div, {
 
 <br/>
 
-#### # MutationObserver.disconnect
+### # MutationObserver.disconnect
 
 另外還可以透過 `disconnect` 來註銷目前已經被觀察的 DOM，但 MutationObserver 實體並不會消失，只是暫時不再進行觀察，直到你又使用 `observe` 來註冊一個被觀察對象。
 
@@ -88,7 +88,7 @@ observer.disconnect();
 
 <br/>
 
-#### # MutationRecord 物件
+### # MutationRecord 物件
 
 前面有說，MutationObserver 在執行 Callback 時會提供一個 MutationRecords 陣列，裡面會存放 MutationRecord 物件，這個段落我們要來了解為何 MutationRecord 要存放在陣列中，以及它到底存放著哪些資訊供我們使用。
 
@@ -138,7 +138,7 @@ div.style.background = "pink";
 
 <br/>
 
-#### # 使用情境
+### # 使用情境
 
 老實說，一定要使用 MutationObserver 的情況並不多，可能比較需要使用的情境會是：「專案中使用了第三方套件，為了觀測該套件所進行的一些 DOM 操作」，由於我們無法直接對第三方套件的程式碼進行修改，導致無法掌控 DOM 變動的程序，所以只能透過 MutationObserver 來追蹤。
 

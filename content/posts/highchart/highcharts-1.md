@@ -28,7 +28,7 @@ description: Highcharts 是一套純 JavaScript 的圖表庫，採用 SVG 渲染
 
 <br/>
 
-#### # 優點及特性
+### # 優點及特性
 1. 支援 iOS / Android 以及各家主流瀏覽器，甚至能兼容到 IE6
 2. 採用 SVG 的關係，可操作元素進行事件監聽及互動，並使用 CSS 修改樣式
 3. SVG 不依賴解析度，在大畫面上圖表能避免失真
@@ -38,7 +38,7 @@ description: Highcharts 是一套純 JavaScript 的圖表庫，採用 SVG 渲染
 
 <br/>
 
-#### # SVG & Canvas
+### # SVG & Canvas
 SVG 與 Canvas 時常被拿來比較，而圖表庫也就很自然的分成兩大派，各自都有其優缺點。
 
 部分說法是 Canvas 的效能較好，但其實這樣的說法是比較偏頗的，在效能部分其實要看使用情境，Canvas 的效能會因為畫布大小受影響，SVG 則是受到物件的數量受到影響。另外在小數據大畫布的情況下，SVG 所佔記憶體更小，畫面操作上更滑順，在行動裝置使用上會有較好的表現。

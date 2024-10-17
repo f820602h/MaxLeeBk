@@ -123,6 +123,8 @@ Streams API 可以讓我們以流（Stream）的方式獲取資料，若資料�
 
 <br/>
 
+### 流的源頭
+
 #### # ReadableStream.getReader
 
 呼叫 `fetch` 時所回傳的 `Promise`，會 `resolve` 出一個 `Response` 實體，也就是平時常在 `then` 裡面簡稱的 `res`。一般常用的 `res.json()` 或 `res.text()` 其實都是來自於 `Response`，而我們要用的 Fetch Stream 也藏在其中。
@@ -764,7 +766,7 @@ const getData = () => {
 
 <br/>
 
-##### 參考資料
+### 參考資料
 - [【MDN】Streams API concepts](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)
 - [【web.dev】Streams—The definitive guide](https://web.dev/articles/streams)
 - [【稀土掘金】從 Fetch 到 Streams —— 以流的角度處理網路請求](https://juejin.cn/post/6844904029244358670)

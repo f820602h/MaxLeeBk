@@ -17,7 +17,7 @@ GetBoundingClientRect 可以使我們取得 Element 元素的寬高以及相對�
 
 <br/>
 
-#### # 元素的各種寬高與位置
+### # 元素的各種寬高與位置
 
 為了讓各位更好的理解 GetBoundingClientRect，先來幫各位整理及複習前面提到的這一大堆元素屬性，
 
@@ -35,7 +35,7 @@ GetBoundingClientRect 可以使我們取得 Element 元素的寬高以及相對�
 
 <br/>
 
-#### # Element.getBoundingClientRect
+### # Element.getBoundingClientRect
 
 其實剛剛介紹的眾多屬性，相信大家或多或少都有使用過，尤其在一些捲動事件中常常會出現它們的身影，不過在今天之後，你使用它們的機會可能會漸漸減少了。
 
@@ -94,7 +94,7 @@ window.addEventListener("scroll", function (e) {
 
 <br/>
 
-#### # 實際練習
+### # 實際練習
 
 為了讓大家更能感受到 `getBoundingClientRect` 的強大，我們來做一個 「動態 Highlight」 的小練習，需求是「當游標滑到文章中的粗體字時會自動添加底色，且底色在不同關鍵字之間切換時，要有移動的過渡效果」。先看效果：
 

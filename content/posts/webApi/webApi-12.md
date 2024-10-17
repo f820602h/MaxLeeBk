@@ -17,7 +17,7 @@ History 是一個瀏覽器提供的歷史紀錄操作介面，你可以透過 `w
 
 <br/>
 
-#### # History.length
+### # History.length
 
 `length` 是一個唯讀屬性，可以取得目前瀏覽器分頁的歷史紀錄總數，當你開啟一個新分頁時，它會是 `1`，而每當你瀏覽一個新的網址，它便會不斷增加。
 
@@ -27,7 +27,7 @@ console.log(history.length);
 
 <br/>
 
-#### # History.scrollRestoration
+### # History.scrollRestoration
 
 `scrollRestoration` 這個屬性是可以修改的，它影響的是瀏覽器對於「使用者在歷史紀錄的頁面中移動時」的捲動行為，可以設定的值有兩個：
 
@@ -44,7 +44,7 @@ if (history.scrollRestoration === "manual") {
 
 <br/>
 
-#### # History.back
+### # History.back
 
 `back` 是 History 的其中一個 method，它相當於瀏覽器介面上的「上一頁」，所以如果你希望你的頁面中也有按鈕可以讓使用者返回上一頁，就可以適用它：
 
@@ -56,7 +56,7 @@ document.querySelector("button").addEventListener("click", function () {
 
 <br/>
 
-#### # History.forward
+### # History.forward
 
 沒錯，有上一頁，自然也有下一頁，對應的 method 就是 `forward`。
 
@@ -68,7 +68,7 @@ document.querySelector("button").addEventListener("click", function () {
 
 <br/>
 
-#### # History.go
+### # History.go
 
 比起 `back` 和 `forward` 來說，`go` 就比較靈活了，它可以傳入一個數字來代表要往前或往後至相對於目前頁面的哪個歷史位置，例如傳入 `-1` 就相當於「上一頁」，傳入 `1` 則相當於「下一頁」。
 
@@ -89,7 +89,7 @@ history.go(0); // 瀏覽器會重新整理目前的頁面
 
 <br/>
 
-#### # History.pushState
+### # History.pushState
 
 `pushState` 可以讓我們在不移動頁面的情況下，添加一筆歷史紀錄，它一共有三個參數
 
@@ -107,7 +107,7 @@ history.pushState({ name: "max" }, null, "newPage.html");
 
 <br/>
 
-#### # History.replaceState
+### # History.replaceState
 
 `replaceState` 跟 `pushState` 的參數和效果都一樣，唯一不同的是 `replaceState` 並不是「添加」歷史紀錄，而是修改最新一筆的歷史紀錄。
 
@@ -119,7 +119,7 @@ history.replaceState({ name: "max" }, null, "newPage.html");
 
 <br/>
 
-#### # Window:popstate Event
+### # Window:popstate Event
 
 再來要介紹的這個 WindowEvent 與 `pushState` 跟 `replaceState` 息息相關，這個事件會在使用者進行歷史紀錄操作（例如上一頁、下一頁）時觸發。
 
@@ -137,7 +137,7 @@ history.pushState({ name: "tom" }, null); // 不指定URL，所以網址不會�
 
 <br/>
 
-#### # 復原 / 重做小應用
+### # 復原 / 重做小應用
 
 那學會 `pushState`、`replaceState` 和 `popstate` 能做什麼呢？其實我們可以利用 `state` 的設定來把使用者的一些操作記錄在 History 中：
 

@@ -26,7 +26,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # chart.type
+### # chart.type
 
 `型別: String` `預設: "line"`
 
@@ -34,7 +34,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # chart.inverted
+### # chart.inverted
 
 `型別: Boolean` `預設: false`
 
@@ -42,7 +42,7 @@ var myChart = Highcharts.chart(container, {
 
 ![](/img/content/highcharts-4/inverted.png)
 
-#### # chart.width / chart.height
+### # chart.width / chart.height
 
 `型別: String|Number|null` `預設: null`
 
@@ -50,7 +50,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # chart.reflow
+### # chart.reflow
 
 `型別: Boolean` `預設: true`
 
@@ -58,7 +58,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # chart.backgroundColor / chart.plotBackgroundColor
+### # chart.backgroundColor / chart.plotBackgroundColor
 
 `型別: String|Object|null` `預設: "#ffffff"`
 
@@ -81,7 +81,7 @@ chart: {
 
 <br/>
 
-#### # chart.borderWidth / chart.plotBorderWidth
+### # chart.borderWidth / chart.plotBorderWidth
 
 `型別: Number` `預設: 0`
 
@@ -89,7 +89,7 @@ chart: {
 
 <br/>
 
-#### # chart.borderColor / chart.plotBorderColor
+### # chart.borderColor / chart.plotBorderColor
 
 `型別: String` `預設: "#335cad" / "#cccccc"`
 
@@ -97,7 +97,7 @@ chart: {
 
 <br/>
 
-#### # chart.spacing
+### # chart.spacing
 
 `型別: Array[Number]` `預設: [10, 10, 15, 10]`
 
@@ -105,7 +105,7 @@ chart: {
 
 <br/>
 
-#### # chart.margin
+### # chart.margin
 
 `型別: Array[Number]` `預設: undefined`
 

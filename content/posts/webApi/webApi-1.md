@@ -21,7 +21,7 @@ description: Web API 是一個很大的主題，它涵蓋了很多不同的功�
 
 <img src="/img/content/webApi-1/web-api.png" style="max-width: 500px;" />
 
-#### # 尷尬的痛點
+### # 尷尬的痛點
 
 由於 `window` 是瀏覽器提供給我們的，所以當中的內容完全取決於使用者所使用的瀏覽器。不幸的是，Web API 其實必沒有被統一標準化，有些甚至還在實踐階段，或是有一些還有裝置的限制，也因為如此，並非所有瀏覽器都會把全部的 Web API 實踐出來，所以在我們使用之前可以先去看看 **[瀏覽器的支援度](https://caniuse.com/)** 。
 

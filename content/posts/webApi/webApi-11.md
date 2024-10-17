@@ -17,7 +17,7 @@ description: Web API 是一個很大的主題，它涵蓋了很多不同的功�
 
 <br/>
 
-#### # HTML
+### # HTML
 
 首先我們先準備一下今天的網頁版面：
 
@@ -37,7 +37,7 @@ description: Web API 是一個很大的主題，它涵蓋了很多不同的功�
 
 <br/>
 
-#### # Utilities
+### # Utilities
 
 再來，我們先準備一些共用的變數和函式：
 
@@ -59,7 +59,7 @@ function addClickListener(selector, callback) {
 
 <br/>
 
-#### # 全選按鈕
+### # 全選按鈕
 
 首先第一個按鈕是「全選」，我們希望使用者在點擊按鈕後可以把編輯區域中的文字全部反白：
 
@@ -78,7 +78,7 @@ addClickListener("#all", function (e) {
 
 <br/>
 
-#### # 複製按鈕
+### # 複製按鈕
 
 再來複製按鈕要讓使用者可以將目前反白的文字放進系統剪貼簿中，這樣之後才能將其「貼上」。
 
@@ -93,7 +93,7 @@ addClickListener("#copy", function (e) {
 
 <br/>
 
-#### # 剪下按鈕
+### # 剪下按鈕
 
 剪下按鈕要做的事情其實和「複製」沒差多少，不過除了要將文字加進剪貼簿外，原本的文本內容需要將其移除，所以最後我們使用 Selection 的 `deleteFromDocument` 來處理。
 
@@ -107,7 +107,7 @@ addClickListener("#cut", function (e) {
 
 <br/>
 
-#### # 貼上按鈕
+### # 貼上按鈕
 
 最後就剩貼上按鈕了，也是本次練習中最複雜的功能，因為「貼上」這個動作在將剪貼簿的內容放入編輯區時，可能會有兩種情境需要必一併考慮：
 

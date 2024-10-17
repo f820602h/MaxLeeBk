@@ -55,7 +55,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # this 和 event 物件
+### # this 和 event 物件
 
 在一般 JavaScript 的事件中，`this` 代表的是被賦予事件監聽的那個 DOM 元素，在 Highcharts 也是類似的，`this` 代表的就是那個被設定事件的圖表物件、數據列物件或數據點物件。
 
@@ -84,28 +84,28 @@ events: {
 
 <br/>
 
-#### # chart.events.load
+### # chart.events.load
 `型別: Function` `預設: undefined`
 
 當圖表載入完成後觸發，`event` 物件中則沒有什麼特別的屬性，倒是 `event.target` 和 `this` 一樣，提供的是「圖表物件」。
 
 <br/>
 
-#### # chart.events.redraw
+### # chart.events.redraw
 `型別: Function` `預設: undefined`
 
 當圖表重新繪圖時觸發，包括「尺寸改變」、「數據列、數據點或座標軸的變更」，`event` 物件的內容則與 `load` 事件相同。
 
 <br/>
 
-#### # chart.events.render
+### # chart.events.render
 `型別: Function` `預設: undefined`
 
 這個事件觸發時機等於 `load` 事件加上 `redraw` 事件，而 `event` 物件的內容也與它們相同。
 
 <br/>
 
-#### # chart.events.addSeries
+### # chart.events.addSeries
 `型別: Function` `預設: undefined`
 
 這個事件的觸發時機比較特別，當有一個新的數據列被加進圖表時會觸發，也就是使用 `addSeries()` 這個方法的時候會觸發，而它的 `event` 物件中有一個 `options` 屬性，有著該次加入的數據列內容。
@@ -135,7 +135,7 @@ myChart.addSeries({
 
 <br/>
 
-#### # chart.events.click
+### # chart.events.click
 `型別: Function` `預設: undefined`
 
 當你點擊「繪圖區」時會觸發這個事件，它的 `event` 物件除了有滑鼠事件的相關屬性外，還有提供「座標軸物件」，甚至還有「該點擊處」在圖表中所代表的Ｘ／Ｙ軸數值。
@@ -164,7 +164,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # series.events.click
+### # series.events.click
 `型別: Function` `預設: undefined`
 
 當數據列被點擊時會觸發這個事件，由於是滑鼠事件，所以 `event` 中會有鼠標的相關資訊，另外 `event.point` 會提供你點擊時，處於聚焦狀態的數據點之「數據點物件」。
@@ -173,7 +173,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # series.events.mouseOver
+### # series.events.mouseOver
 `型別: Function` `預設: undefined`
 
 當鼠標使數據列聚焦時就會觸發這個事件，要注意的是有一些圖表類型 (例如折線圖)，有預設開啟 `series.stickyTracking` 這個屬性，導致鼠標進入繪圖區時，一定會使數據列被聚焦。
@@ -184,14 +184,14 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # series.events.mouseOut
+### # series.events.mouseOut
 `型別: Function` `預設: undefined`
 
 當鼠標使數據列從聚焦轉為失焦時就會觸發，其他內容與 `mouseOver` 都一樣。
 
 <br/>
 
-#### # series.events.show
+### # series.events.show
 `型別: Function` `預設: undefined`
 
 當你將數據列從隱藏狀態改為顯示狀態時，就會觸這個事件，另外這個動作也會同時觸發前面介紹的 `redraw` 和 `render` 事件。
@@ -200,7 +200,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # series.events.hide
+### # series.events.hide
 `型別: Function` `預設: undefined`
 
 就是 `show` 的相反版本，其餘並無不同。
@@ -209,7 +209,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # series.events.legendItemClick
+### # series.events.legendItemClick
 `型別: Function` `預設: undefined`
 
 這個屬性是你只要點擊圖例就會觸發，因此觸發順序應該會是 `legendItemClick` 才接到 `show` 或 `hide`，另外你還可以在回呼函式中返回一個 `false`，那就會使本次點擊圖例的效果失效。
@@ -238,28 +238,28 @@ series: [{
 
 <br/>
 
-#### # series.data.events.click
+### # series.data.events.click
 `型別: Function` `預設: undefined`
 
 會在點擊數據點時觸發，要注意的是，只要有數據點是「聚焦狀態」，點擊到數據列的任一位置都會觸發此事件，也就是說鼠標並非要在「點」上。而它的 `event` 物件一樣有滑鼠事件的相關屬性，且 `point` 屬性中也有該數據點的「數據點物件」，和數據列的點擊事件只差在 `this` 的不同。
 
 <br/>
 
-#### # series.data.events.mouseOver
+### # series.data.events.mouseOver
 `型別: Function` `預設: undefined`
 
 當鼠標使數據點聚焦時就觸發，依然受到 `series.stickyTracking` 屬性影響，而 `event` 物件也是只有 `target` 屬性，內容與 `this` 一樣是「數據點物件」。
 
 <br/>
 
-#### # series.data.events.mouseOut
+### # series.data.events.mouseOut
 `型別: Function` `預設: undefined`
 
 當鼠標使數據點從聚焦轉為失焦時觸發，其他內容與 `mouseOver` 都一樣。
 
 <br/>
 
-#### # series.data.events.select
+### # series.data.events.select
 `型別: Function` `預設: undefined`
 
 在你選取了數據點時會觸發這個事件，此事件必須在 `series.allowPointSelect` 開啟的狀態下才能作用，`event` 物件的內容和 `mouse` 系列相同。此外你可以透過回傳 `false` 來取消選取動作：
@@ -278,14 +278,14 @@ data: [{
 
 <br/>
 
-#### # series.data.events.unselect
+### # series.data.events.unselect
 `型別: Function` `預設: undefined`
 
 當數據點被取消選取時觸發，其餘特性均與 `select` 相同。
 
 <br/>
 
-#### # series.data.events.update
+### # series.data.events.update
 `型別: Function` `預設: undefined`
 
 當數據點被更新時會觸發事件，它與 `addSeries` 很類似，`event` 物件中一樣有 `options` 屬性來提供這次要更新的內容，並且也可以在函式中返回 `false` 來阻止這次更新，且數據點成功更新也會觸發 `redraw` 和 `render` 事件。
@@ -296,7 +296,7 @@ data: [{
 
 <br/>
 
-#### # series.data.events.remove
+### # series.data.events.remove
 `型別: Function` `預設: undefined`
 
 當數據點被移除時會觸發，`event.target` 和 `this` 中都會有此次被刪除的數據點之「數據點物件」，且一樣可以返回 `false` 來阻止這次刪除，且數據點成功刪除也會觸發 `redraw` 和 `render` 事件。

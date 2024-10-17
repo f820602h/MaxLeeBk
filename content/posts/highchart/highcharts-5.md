@@ -24,7 +24,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # title.text
+### # title.text
 
 `型別: String|null` `預設: "Chart title"`
 
@@ -34,7 +34,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # title.style
+### # title.style
 
 `型別: Object` `預設: { "color": "#333333", "fontSize": "18px" }`
 
@@ -56,7 +56,7 @@ title: {
 
 <br/>
 
-#### # title.useHTML
+### # title.useHTML
 
 `型別: Boolean` `預設: false`
 
@@ -68,7 +68,7 @@ title: {
 
 <br/>
 
-#### # title.align
+### # title.align
 
 `型別: String` `預設: "center"`
 
@@ -78,7 +78,7 @@ title: {
 
 <br/>
 
-#### # title.verticalAlign
+### # title.verticalAlign
 
 `型別: String` `預設: undefined`
 
@@ -86,7 +86,7 @@ title: {
 
 <br/>
 
-#### # title.floating
+### # title.floating
 
 `型別: Boolean` `預設: false`
 
@@ -98,7 +98,7 @@ title: {
 
 <br/>
 
-#### # title.x / title.y
+### # title.x / title.y
 
 `型別: Number` `預設: 0`
 
@@ -108,7 +108,7 @@ title: {
 
 <br/>
 
-#### # title.margin
+### # title.margin
 
 `型別: Number` `預設: 15`
 
@@ -130,12 +130,12 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # subtitle.style
+### # subtitle.style
 `型別: Object` `預設: { "color": "#666666" }`
 
 <br/>
 
-#### ~~# subtitle.margin~~
+### ~~# subtitle.margin~~
 副標題沒有 `margin` 屬性。
 
 
@@ -153,17 +153,17 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # caption.style
+### # caption.style
 `型別: Object` `預設: { "color": "#666666" }`
 
 <br/>
 
-#### # caption.align
+### # caption.align
 `型別: String` `預設: "left"`
 
 <br/>
 
-#### # caption.verticalAlign
+### # caption.verticalAlign
 `型別: String` `預設: "bottom"`
 
 ---
@@ -181,7 +181,7 @@ var myChart = Highcharts.chart(container, {
 ```
 <br/>
 
-#### # credits.enabled
+### # credits.enabled
 
 `型別: Boolean` `預設: true`
 
@@ -189,7 +189,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # credits.text
+### # credits.text
 
 `型別: String|null` `預設: "Highcharts.com"`
 
@@ -197,7 +197,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # credits.href
+### # credits.href
 
 `型別: String|null` `預設: "https://www.highcharts.com?credits"`
 
@@ -205,7 +205,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # credits.style
+### # credits.style
 
 `型別: Object` `預設: { color: "#999999", cursor: "pointer", fontSize: "9px" }`
 
@@ -213,7 +213,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # credits.position
+### # credits.position
 
 `型別: Object` `預設: 如下顯示`
 

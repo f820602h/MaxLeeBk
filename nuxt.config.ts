@@ -30,6 +30,9 @@ export default {
   devServer: { port: 3030 },
   app: {
     head: {
+      htmlAttrs: {
+        lang: "zh-Hant",
+      },
       link: [
         { rel: "icon", type: "image/svg+xml", href: "/favicon.ico" },
         { rel: "canonical", href: "https://maxlee.me" },

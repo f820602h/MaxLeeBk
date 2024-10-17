@@ -22,7 +22,7 @@ description: Axios 對於前端來說是非常熟悉好用的非同步操作工�
 
 ## 建立實體
 
-#### # Custom Config
+### # Custom Config
 我們可以建立一支檔案 api.js ，先用 axios.create 創造一個實體，裡面放進 Request 的相關設定屬性。
 
 ```javascript
@@ -40,7 +40,7 @@ Request Config 其實有不少屬性可以設定，但一般常見的是上面�
 
 <br />
 
-#### # 攔截器
+### # 攔截器
 
 攔截器的設置可以讓我們在發出 `request` 或接到 `response` 之前做一些事情，例如改變 `response` 回來的資料格式，或是根據不同 `request` 來添加不同的 config 等等。
 
@@ -103,7 +103,7 @@ instance.interceptors.response.use(
 
 <br />
 
-#### # 封裝請求
+### # 封裝請求
 
 有了主設定以及攔截器，`axios instance` 就設計得差不多了，一般來說你已經可以把實體 `export` 出去使用了，但為了更有系統性的管理後端提供的 API，我們可以設計成 `function` 再 `export` 出去。
 ```javascript

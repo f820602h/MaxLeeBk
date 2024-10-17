@@ -5,10 +5,14 @@ tags: [Vue, Teleport]
 description: Vue3 的 Teleport 是一個內建的元件，可以將子元件移動到指定的 DOM 元素下，這樣可以避免父層的樣式影響，或是實現一些特殊的動畫效果。
 ---
 
-
 > 官方文件：[https://vuejs.org/guide/built-ins/teleport.html](https://vuejs.org/guide/built-ins/teleport.html)
 
-## Props
+<br/>
+
+- 父子元件的層級不會受影響
+- 資料會 keep alive
+
+## Component Props
 
 ```typescript
 interface TeleportProps {
@@ -17,14 +21,11 @@ interface TeleportProps {
 }
 ```
 
-- 父子元件的層級不會受影響
-- 資料會 keep alive
-
-<br/>
+---
 
 ## Use Case
 
-#### 避開父層的樣式影響
+### # 避開父層的樣式影響
 
 因為 `position: fixed` 與 `transform`、`perspective`、`filter` 衝突。將 Modal 移至 body 底下可以避開這樣的樣式衝突。
 
@@ -52,14 +53,20 @@ interface TeleportProps {
 </style>
 ```
 
-#### FB & YT 的迷你浮動播放器
+<br/>
+
+### # FB & YT 的迷你浮動播放器
 
 ![](/img/content/teleport/youtube.png)
 
-#### 共用的 Layout 區塊 & 共用的 Modal / Toast
+<br/>
+
+### # 共用的 Layout 區塊 & 共用的 Modal / Toast
 
 減少「重複的功能實踐」、「重複的元件使用」或「分散的設定」
 
+
+::advance-code{file-name="Layout.vue" :line='[8,9,10,12,18]'}
 ```vue
 <template>
   <div class="root">
@@ -67,15 +74,12 @@ interface TeleportProps {
     <main>
       <aside></aside>
       <section>
-
         <div class="view-header">
           <h2 id="view-header__title"></h2>
           <p id="view-header__subtitle"></p>
           <div id="view-header__extra"></div>
         </div>
-
         <router-view></router-view>
-
       </section>
     </main>
     <footer></footer>
@@ -99,7 +103,9 @@ provide("modal", {
 })
 </script>
 ```
+::
 
+::advance-code{file-name="SomeRouterPage.vue"}
 ```vue
 <template>
   <div class="route-1">
@@ -126,11 +132,13 @@ provide("modal", {
 const { current, set, remove } = inject("modal")
 </script>
 ```
+::
+
+<br/>
     
-#### 特殊的動畫實現
+### # 特殊的動畫實現
+
+[Vue Starport Demo](https://vue-starport.netlify.app/)
 
 ![](/img/content/teleport/teleport.png)
     
-[Vue Starport Demo](https://vue-starport.netlify.app/)
-
-[Vue Stage Play](https://f820602h.github.io/vue-stage-play/)

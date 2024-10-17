@@ -123,11 +123,13 @@ const works = {
                 <img
                   class="absolute top-1/2 left-1/2 block w-full transform -translate-x-1/2 -translate-y-1/2"
                   :src="work.gif"
+                  :alt="work.title"
                 />
                 <img
                   class="image relative z-10 block w-full duration-550"
                   :class="{ freeze: !work.gif }"
                   :src="work.image"
+                  :alt="work.title"
                 />
               </figure>
 
@@ -144,6 +146,7 @@ const works = {
             </a>
 
             <a
+              :aria-label="`${work.title} Github`"
               :href="work.github"
               target="_blank"
               class="github p-4px text-lg hover:text-black dark:hover:text-white duration-200"

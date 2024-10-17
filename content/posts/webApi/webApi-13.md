@@ -17,7 +17,7 @@ description: Web API 是一個很大的主題，它涵蓋了很多不同的功�
 
 <br/>
 
-#### # Cookie
+### # Cookie
 
 - 每筆可儲存的資料大小約為 4KB
 - 有時效的限制，到期後就會自動刪除
@@ -29,7 +29,7 @@ description: Web API 是一個很大的主題，它涵蓋了很多不同的功�
 
 <br/>
 
-#### # LocalStorage
+### # LocalStorage
 
 - 每筆可儲存的資料大小約為 5MB
 - 沒有時效限制，除非使用者手動刪除，不然會一直存在
@@ -39,7 +39,7 @@ description: Web API 是一個很大的主題，它涵蓋了很多不同的功�
 
 > 跟 Cookie 比較不同，LocalStorage 就可以存一些比較大型、長期性的資料，常常會被拿來當作用戶端的快取，以減少 fetch 資料的次數。
 
-<br/>
+---
 
 ## SessionStorage
 
@@ -53,7 +53,7 @@ SessionStorage 這樣的特性其實就有一個很實用的情境，那就是�
 
 <br/>
 
-#### # SessionStorage.setItem
+### # SessionStorage.setItem
 
 SessionStorage 就連 methods 也都和 LocalStorage 是一樣的，`setItem` 可以讓我們下增/修改一筆 SessionStorage：
 
@@ -65,7 +65,7 @@ sessionStorage.setItem("object", JSON.stringify({ key: "value" }));
 
 <br/>
 
-#### # SessionStorage.getItem
+### # SessionStorage.getItem
 
 `getItem` 則是可以幫我們讀取 SessionStorage 中的某筆資料：
 
@@ -76,7 +76,7 @@ console.log(JSON.parse(data));
 
 <br/>
 
-#### # SessionStorage.removeItem
+### # SessionStorage.removeItem
 
 `removeItem` 則是刪除某筆資料：
 
@@ -86,7 +86,7 @@ const data = sessionStorage.removeItem("object");
 
 <br/>
 
-#### # SessionStorage.clear
+### # SessionStorage.clear
 
 而 `clear` 會將 SessionStorage 中的所有資料都清除：
 

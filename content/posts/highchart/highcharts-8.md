@@ -35,7 +35,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # Axis.title
+### # Axis.title
 
 座標軸標題與圖表標題的設定非常相像，這邊就不多花篇幅介紹，有興趣可以看看 **[官方文件](https://api.highcharts.com/highcharts/xAxis.title)**。
 
@@ -43,7 +43,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # Axis.minorTicks
+### # Axis.minorTicks
 `型別: Boolean` `預設: false`
 
 你可以決定是否要顯示座標軸中的副刻度及副格線，另外要注意「類別座標軸」是無法開啟此屬性的。
@@ -51,7 +51,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # Axis.tickWidth / Axis.minorTickWidth
+### # Axis.tickWidth / Axis.minorTickWidth
 `型別: Number` `預設: 請見表格`
 
 這兩個屬性分別是調整主刻度／副刻度的粗細，單位為 `px`，設為 `0` 的話則會隱藏。
@@ -64,21 +64,21 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # Axis.tickLength / Axis.minorTickLength
+### # Axis.tickLength / Axis.minorTickLength
 `型別: Number` `預設: 10 / 2`
 
 除了粗細之外，主刻度／副刻度的長度也可以調整，單位為 `px`，設為 `0` 的話則會隱藏。
 
 <br/>
 
-#### # Axis.tickColor / Axis.minorTickColor
+### # Axis.tickColor / Axis.minorTickColor
 `型別: String` `預設: "ccd6eb" / "#999999"`
 
 顏色的部分也是可以主刻度／副刻度個別調整，先前提過的顏色格式都是適用的。
 
 <br/>
 
-#### # Axis.tickPosition / Axis.minorTickPosition
+### # Axis.tickPosition / Axis.minorTickPosition
 `型別: String` `預設: "outside"`
 
 這兩個屬性是調整主刻度／副刻度要在軸線以內或以外，但並不包括刻度標籤，可接受的值有 `outside`、`inside`。
@@ -87,7 +87,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # Axis.tickmarkPlacement
+### # Axis.tickmarkPlacement
 `型別: String` `預設: "between"`
 
 這個屬性是專屬於「類別座標軸」的，與「線性座標軸」不同的是，它的刻度標籤並不會與主刻度對齊，而是夾在兩個刻度之間，因此你可以透過這個屬性來調整，可接受的值有 `between`、`on`。
@@ -96,7 +96,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # Axis.lineWidth / Axis.gridLineWidth / Axis.minorGridLineWidth
+### # Axis.lineWidth / Axis.gridLineWidth / Axis.minorGridLineWidth
 `型別: Number` `預設: 請見表格`
 
 這三屬性分別是調整軸線／主格線／副格線的粗細，單位為 `px`，設為 `0` 的話則會隱藏。
@@ -108,14 +108,14 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # Axis.lineColor / Axis.gridLineColor / Axis.minorGridLineColor
+### # Axis.lineColor / Axis.gridLineColor / Axis.minorGridLineColor
 `型別: String` `預設: "ccd6eb" / "#e6e6e6" / "#f2f2f2"`
 
 軸線／主格線／副格線的線條顏色也可以透過這三個屬性做個別設定，先前提過的顏色格式都是適用的。
 
 <br/>
 
-#### # Axis.gridLineDashStyle / Axis.minorGridLineDashStyle
+### # Axis.gridLineDashStyle / Axis.minorGridLineDashStyle
 `型別: String` `預設: "Solid"`
 
 主格線和副格線的線條樣式是能夠調整的，除了實線外，有各種類的虛線可以選擇。想看所有類型的話可以看這個**[官方範例](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/plotoptions/series-dashstyle-all/)**。
@@ -141,14 +141,14 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # xAxis.labels.style
+### # xAxis.labels.style
 `型別: Object` `預設: { color: "#666666", fontSize: "11px" }`
 
 樣式屬性在前面已經介紹過蠻多次了，如果需要複習的話可以 **[按這邊](/posts/highchart/highcharts-5/#titlestyle)**，這裡就不再多做介紹。
 
 <br/>
 
-#### # Axis.labels.align
+### # Axis.labels.align
 `型別: String` `預設: 見清單`
 
 這次跟前面的「水平位置」就不一樣了，這次代表的就真的是「文字對齊」了，一樣有 `left`、`center`、`right`可以設定。
@@ -157,7 +157,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # Axis.labels.reserveSpace
+### # Axis.labels.reserveSpace
 `型別: Boolean` `預設: undefined`
 
 決定是否要為刻度標籤保留空間，一般來說它會是啟動的，但下面兩個狀況會取消，所以記得要特別設定，不然標籤會跟標題擠在一起或超出畫布。
@@ -166,7 +166,7 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # Axis.labels.x / Axis.labels.y
+### # Axis.labels.x / Axis.labels.y
 `型別: Number` `預設: 見清單`
 
 調整刻度標籤的偏移量，用法在之前都有介紹過，單位為`px`。
@@ -175,21 +175,21 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # Axis.labels.rotation
+### # Axis.labels.rotation
 `型別: Number` `預設: 0`
 
 你可以設定刻度標籤的旋轉角度，這在刻度較多或圖表較窄的時候非常實用。
 
 <br/>
 
-#### # Axis.labels.autoRotation
+### # Axis.labels.autoRotation
 `型別: Array[Number]` `預設: [-45]`
 
 如果你希望標籤的旋轉角度可以是漸進式的，那你可以提供這個屬性一組度數的陣列，Highcharts 會自動在陣列中找一個最合適的角度來設定，很適合用在「自適應」的區塊。
 
 <br/>
 
-#### # Axis.labels.format / Axis.labels.formatter
+### # Axis.labels.format / Axis.labels.formatter
 
 我們前面在圖例和提示框都有看到「格式化屬性」，而座標軸的刻度標籤也能夠自訂文字格式，不過我們一樣等到之後獨立章節再來詳細介紹吧，今天先跳過。
 
@@ -212,21 +212,21 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # Axis.plotLines.value
+### # Axis.plotLines.value
 `型別: Number` `預設: undefined`
 
 標註線中最重要的屬性，也就是你要標示在哪個數值刻度上。
 
 <br/>
 
-#### # Axis.plotLines.color
+### # Axis.plotLines.color
 `型別: String` `預設: "#999999`
 
 標註線的線條顏色，前面提過的顏色格式都適用。
 
 <br/>
 
-#### # Axis.plotLines.width
+### # Axis.plotLines.width
 `型別: Number` `預設: "2`
 
 標註線的粗細，單位為 `px`，設為 `0` 則會消失。
@@ -250,14 +250,14 @@ var myChart = Highcharts.chart(container, {
 
 <br/>
 
-#### # Axis.plotLines.from / # Axis.plotLines.to
+### # Axis.plotLines.from / # Axis.plotLines.to
 `型別: Number` `預設: undefined`
 
 標註帶中最重要的兩個屬性，用來設定數值範圍的起點與終點，兩點間距將產生標註帶。
 
 <br/>
 
-#### # Axis.plotLines.color
+### # Axis.plotLines.color
 `型別: String` `預設: "#e6ebf5`
 
 標註帶的區塊顏色，前面提過的顏色格式都適用。

@@ -106,6 +106,7 @@ const route = useRoute();
             </li>
             <li class="flex items-center hover:text-purple-600 duration-200">
               <a
+                aria-label="Github"
                 href="https://github.com/f820602h"
                 class="p-2px text-lg"
                 target="_blank"
@@ -116,6 +117,7 @@ const route = useRoute();
             </li>
             <li class="flex items-center hover:text-purple-600 duration-200">
               <button
+                aria-label="Toggle Dark Mode"
                 class="p-2px text-lg"
                 @click="
                   $colorMode.preference =

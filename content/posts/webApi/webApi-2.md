@@ -19,7 +19,7 @@ Console 這個物件提供了我們操作瀏覽器中除錯控制台（debugging
 
 <br/>
 
-#### # console.count
+### # console.count
 
 顧名思義，`count` 當然是拿來計數的，每當我們呼叫一次 `console.count` 就會進行一次計數。
 
@@ -57,7 +57,7 @@ for (let i = 0; i < zoo.length; i++) {
 
 <br/>
 
-#### # console.time / console.timeEnd
+### # console.time / console.timeEnd
 
 這一組 API 主要可以讓你得知一段程式片段執行的時間，當你呼叫 `console.time` 時，瀏覽器會開始幫我們計時，直到你呼叫 `console.timeEnd`，Console 面板便會打印出這兩個 API 被呼叫的的期間所花費的毫秒數。
 
@@ -88,7 +88,7 @@ setTimeout(() => {
 
 <br/>
 
-#### # console.group / console.groupEnd
+### # console.group / console.groupEnd
 
 偶爾我們 `log` 出的訊息或資訊非常的多，一不小心就會迷失在 Console 面板中，尤其是在 `function` 層級很複雜的時候，一時半刻的也分辨不出哪些訊息是哪邊印出來的，那這組 API 就可以派上用場了。
 
@@ -129,7 +129,7 @@ for (let i = 1; i <= 3; i++) {
 
 <br/>
 
-#### # console.table
+### # console.table
 
 `table` 這個 API 好不好用可能要看情境或因人而異，它主要的功能是可以將陣列或物件打印成一個表格，讓你在觀看時可以更一目了然。
 
