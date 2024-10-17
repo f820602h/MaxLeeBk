@@ -134,7 +134,7 @@ const works = {
               </figure>
 
               <div class="p-1">
-                <h4
+                <h3
                   class="font-bold mb-1 group-hover:text-black dark:group-hover:text-white duration-200"
                   v-text="work.title"
                 />

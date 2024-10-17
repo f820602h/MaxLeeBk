@@ -20,7 +20,7 @@ body {
   --highlight-color-hover: white;
   --highlight-light-color: #292929;
 
-  --box-bg-color: #efefef;
+  --box-bg-color: #e9e9e9;
   --box-bg-light-color: #f6f6f6;
   --box-border-color: #d9d9d9;
 
@@ -29,9 +29,11 @@ body {
 
   --code-font: "Fira Mono", monospace;
   --code-bg-color: white;
+  --code-border-color: #dfdfdf;
   --code-highlight-bg-color: #f4f4fa;
 
   --img-bg-color: transparent;
+  --link-hover-color: #9578f7;
 
   --nav-color: #bbb;
   --nav-hover-color: #6b7280;
@@ -40,23 +42,27 @@ body {
 .dark-mode,
 .dark-mode body {
   --global-color: #ccc;
-  --global-bg-color: #1a1a1a;
-  --global-bg-color-rgb: 26 26 26;
+  --global-bg-color: #0e0e0e;
+  --global-bg-color-rgb: 14 14 14;
 
   --highlight-color: white;
   --highlight-color-hover: black;
   --highlight-light-color: #ddd;
 
-  --box-bg-color: #222;
+  --sp-box-bg-color: rgb(149 120 247 / 10%);
+  --sp-box-border-color: #9578f7;
+
+  --box-bg-color: #303030;
   --box-bg-light-color: #151515;
   --box-border-color: #444;
-  --box-border-color-sp: rgb(149 120 247 / 10%);
-  --box-border-color-sp-border: #9578f7;
 
-  --code-bg-color: #161618;
+  --code-font: "Fira Mono", monospace;
+  --code-bg-color: #050505;
+  --code-border-color: #303030;
   --code-highlight-bg-color: #222;
 
   --img-bg-color: white;
+  --link-hover-color: #9578f7;
 
   --nav-color: #777;
   --nav-hover-color: #6b7280;

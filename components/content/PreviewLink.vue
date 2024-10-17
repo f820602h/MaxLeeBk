@@ -6,12 +6,12 @@ const config = useRuntimeConfig();
 const { data, status } = await useLazyAsyncData(
   props.url,
   () =>
-    fetch("https://api.linkpreview.net/", {
-      method: "POST",
-      headers: { "X-Linkpreview-Api-Key": config.public.linkApiKay },
-      mode: "cors",
-      body: JSON.stringify({ q: props.url }),
-    }).then((res) => res.json()),
+    fetch(
+      `${config.public.linkApi}/fetch-meta?url=${encodeURIComponent(
+        props.url,
+      )}`,
+      { method: "GET", mode: "cors" },
+    ).then((res) => res.json()),
   { default: () => ({}) },
 );
 </script>
@@ -28,11 +28,13 @@ const { data, status } = await useLazyAsyncData(
       target="_blank"
     >
       <div class="flex gap-2 px-2 py-2">
-        <div class="i-iconoir:link relative top-1 -rotate-45 text-sm" />
+        <div
+          class="i-iconoir:link relative top-1 flex-shrink-0 -rotate-45 text-sm"
+        />
         <div>
-          <h6 class="!m-0 !text-base !font-bold">
+          <div class="!m-0 !text-base !font-bold">
             {{ data.title || props.url }}
-          </h6>
+          </div>
           <p
             class="!min-h-40px !my-2px !text-sm !leading-20px !text-gray-500 !dark:text-gray-400"
           >
@@ -81,7 +83,7 @@ span {
 img {
   width: 100% !important;
   height: 100% !important;
-  object-fit: cover !important;
+  object-fit: contain !important;
   border: 0 !important;
   border-radius: 0 !important;
 }

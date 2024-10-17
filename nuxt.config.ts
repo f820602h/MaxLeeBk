@@ -25,7 +25,7 @@ export default {
     },
   },
   build: { transpile: ["shiki"] },
-  runtimeConfig: { public: { linkApiKay: process.env.NUXT_LINK_API_KEY } },
+  runtimeConfig: { public: { linkApi: process.env.NUXT_LINK_API } },
   devtools: { enabled: false },
   devServer: { port: 3030 },
   app: {

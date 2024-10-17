@@ -80,12 +80,10 @@ const route = useRoute();
             >
               <img src="/img/logo.svg" alt="max.lee" />
             </div>
-            <h2 class="hidden sm:block ml-2 pb-2px">
-              <p class="text-black dark:text-white font-black text-sm">
-                Max Lee
-              </p>
+            <h1 class="hidden sm:block ml-2 pb-2px">
+              <p class="text-black dark:text-white font-bold">Max Lee</p>
               <p class="text-gray-500 text-xs">Max Your Mind</p>
-            </h2>
+            </h1>
           </NuxtLink>
         </hgroup>
 

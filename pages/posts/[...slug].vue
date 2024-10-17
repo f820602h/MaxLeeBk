@@ -226,7 +226,7 @@ function scrollToTop() {
     transition: 0.2s;
 
     &:hover {
-      color: var(--highlight-color);
+      color: var(--link-hover-color);
     }
   }
 
@@ -236,8 +236,8 @@ function scrollToTop() {
     transition: 0.3s;
 
     &:hover {
-      color: var(--highlight-color);
-      background-color: var(--highlight-color-hover);
+      border: 1px solid var(--link-hover-color);
+      background-color: var(--sp-box-bg-color);
     }
   }
 
@@ -260,7 +260,7 @@ function scrollToTop() {
 
   pre {
     font-family: var(--code-font);
-    box-shadow: 0px 0px 3px var(--box-border-color);
+    box-shadow: 0px 0px 3px var(--code-border-color);
     background-color: var(--code-bg-color);
     margin: 12px 0;
     padding: 20px 0;
@@ -407,8 +407,10 @@ function scrollToTop() {
   right: 0;
   bottom: 15%;
   font-size: 24px;
-  color: var(--global-bg-color);
-  background-color: var(--global-color);
+  border: 1px solid var(--box-border-color);
+  border-right: none;
+  color: var(--global-color);
+  background-color: var(--box-bg-color);
 }
 
 .slide-enter-active,
